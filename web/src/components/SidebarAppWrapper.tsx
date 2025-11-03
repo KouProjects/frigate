@@ -202,7 +202,7 @@ export const SidebarAppContent = React.forwardRef<
       <main
         ref={ref}
         className={cn(
-          "flex flex-1 flex-col",
+          "flex flex-1 flex-col overflow-auto",
           className,
           contentPadding && "p-4 lg:p-14",
         )}
@@ -235,18 +235,20 @@ export const SidebarAppLayout = React.forwardRef<
   SidebarAppLayoutProps
 >(({ children, className, ...props }, ref) => {
   return (
-    <SidebarProvider>
-      <AppSidebar />
-      <SidebarInset>
-        <div
-          ref={ref}
-          className={cn("flex min-h-screen flex-col", className)}
-          {...props}
-        >
-          {children}
-        </div>
-      </SidebarInset>
-    </SidebarProvider>
+    <div className="flex h-screen w-full">
+      <SidebarProvider>
+        <AppSidebar />
+        <SidebarInset className="flex flex-1 flex-col overflow-hidden">
+          <div
+            ref={ref}
+            className={cn("flex flex-1 flex-col", className)}
+            {...props}
+          >
+            {children}
+          </div>
+        </SidebarInset>
+      </SidebarProvider>
+    </div>
   );
 });
 

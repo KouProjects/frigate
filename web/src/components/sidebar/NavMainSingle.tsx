@@ -10,7 +10,7 @@ import type { NavItem } from "./sidebar-data";
 import { NavLink } from "react-router-dom";
 
 type NavMainSingleProps = {
-  nav_title: string;
+  nav_title?: string;
   items: NavItem[];
 };
 
@@ -18,7 +18,7 @@ export function NavMainSingle({ nav_title, items }: NavMainSingleProps) {
   const { open, setOpen } = useSidebar();
   return (
     <SidebarGroup>
-      <SidebarGroupLabel>{nav_title}</SidebarGroupLabel>
+      {nav_title && <SidebarGroupLabel>{nav_title}</SidebarGroupLabel>}
       <SidebarMenu>
         {items.map((item) => (
           <SidebarMenuItem key={item.title}>

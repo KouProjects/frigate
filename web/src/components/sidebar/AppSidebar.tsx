@@ -14,9 +14,9 @@ import {
 } from "@/components/ui/sidebar";
 import { Link } from "react-router-dom";
 import useNavigation from "@/hooks/use-navigation";
-import { CameraGroupSelector } from "@/components/filter/CameraGroupSelector";
 import { NavUser } from "./nav-user";
 import { NavMainSingle } from "./NavMainSingle";
+import { CameraGroupNavItem } from "./CameraGroupNavItem";
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   const { t } = useTranslation();
@@ -48,9 +48,9 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
             </SidebarMenuButton>
           </SidebarMenuItem>
         </SidebarMenu>
-        <CameraGroupSelector className="mt-2" />
       </SidebarHeader>
       <SidebarContent>
+        <CameraGroupNavItem />
         <NavMainSingle items={navMain} />
       </SidebarContent>
       <SidebarFooter>

@@ -7,7 +7,6 @@ import Bottombar from "./components/navigation/Bottombar";
 import { Suspense, lazy } from "react";
 import { Redirect } from "./components/navigation/Redirect";
 import ProtectedRoute from "@/components/auth/ProtectedRoute";
-import { AuthProvider } from "@/context/auth-context";
 import useSWR from "swr";
 import { FrigateConfig } from "./types/frigateConfig";
 import { SidebarAppLayout } from "./components/SidebarAppWrapper";
@@ -32,13 +31,11 @@ function App() {
 
   return (
     <Providers>
-      <AuthProvider>
-        <BrowserRouter basename={window.baseUrl}>
-          <SidebarAppLayout>
-            {config?.safe_mode ? <SafeAppView /> : <DefaultAppView />}
-          </SidebarAppLayout>
-        </BrowserRouter>
-      </AuthProvider>
+      <BrowserRouter basename={window.baseUrl}>
+        <SidebarAppLayout>
+          {config?.safe_mode ? <SafeAppView /> : <DefaultAppView />}
+        </SidebarAppLayout>
+      </BrowserRouter>
     </Providers>
   );
 }

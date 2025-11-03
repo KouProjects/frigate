@@ -229,7 +229,7 @@ type NewGroupDialogProps = {
   setGroup: (value: string | undefined, replace?: boolean | undefined) => void;
   deleteGroup: () => void;
 };
-function NewGroupDialog({
+export function NewGroupDialog({
   open,
   setOpen,
   currentGroups,
@@ -958,7 +958,7 @@ export function CameraGroupEdit({
             {t("button.cancel", { ns: "common" })}
           </Button>
           <Button
-            variant="select"
+            variant="default"
             disabled={isLoading}
             className="flex flex-1"
             aria-label={t("button.save", { ns: "common" })}
