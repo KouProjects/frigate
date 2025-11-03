@@ -561,7 +561,7 @@ function LibrarySelector({
               className="group flex items-center justify-between"
             >
               <div
-                className="flex-grow cursor-pointer"
+                className="grow cursor-pointer"
                 onClick={() => setPageToggle(face)}
               >
                 {face}

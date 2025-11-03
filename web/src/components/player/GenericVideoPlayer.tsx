@@ -105,7 +105,7 @@ export function GenericVideoPlayer({
 
   return (
     <div ref={containerRef} className="relative flex h-full w-full flex-col">
-      <div className="relative flex flex-grow items-center justify-center">
+      <div className="relative flex grow items-center justify-center">
         {!sourceExists ? (
           <div className="flex aspect-video w-full items-center justify-center bg-background_alt text-lg text-primary">
             Video not available

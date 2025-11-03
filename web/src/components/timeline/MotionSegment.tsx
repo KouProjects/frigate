@@ -192,7 +192,7 @@ export function MotionSegment({
                 firstHalfSegmentWidth > 0 || secondHalfSegmentWidth > 0,
             },
             segmentClasses,
-            severity[0] && "bg-gradient-to-r",
+            severity[0] && "bg-linear-to-r",
             severity[0] && severityColorsBg[severity[0]],
             hasRecording == false && "bg-background",
           )}
@@ -200,10 +200,10 @@ export function MotionSegment({
           onTouchEnd={(event) => handleTouchStart(event, segmentClick)}
         >
           {isFirstSegmentWithoutRecording && (
-            <div className="absolute bottom-[0px] left-0 right-0 h-[1px] bg-primary-variant/40" />
+            <div className="absolute bottom-0 left-0 right-0 h-px bg-primary-variant/40" />
           )}
           {isLastSegmentWithoutRecording && (
-            <div className="absolute -top-[1px] left-0 right-0 h-[1px] bg-primary-variant/50" />
+            <div className="absolute -top-px left-0 right-0 h-px bg-primary-variant/50" />
           )}
           {!motionOnly && (
             <>
@@ -240,8 +240,8 @@ export function MotionSegment({
             secondHalfSegmentWidth > 0 ||
             alwaysShowMotionLine) && (
             <div className="absolute left-1/2 z-10 h-[8px] w-[20px] -translate-x-1/2 transform cursor-pointer md:w-[40px]">
-              <div className="mb-[1px] flex w-[20px] flex-row justify-center pt-[1px] md:w-[40px]">
-                <div className="mb-[1px] flex justify-center">
+              <div className="mb-px flex w-[20px] flex-row justify-center pt-px md:w-[40px]">
+                <div className="mb-px flex justify-center">
                   <div
                     key={`${segmentKey}_motion_data_1`}
                     data-motion-value={secondHalfSegmentWidth}
@@ -259,7 +259,7 @@ export function MotionSegment({
                 </div>
               </div>
 
-              <div className="flex w-[20px] flex-row justify-center pb-[1px] md:w-[40px]">
+              <div className="flex w-[20px] flex-row justify-center pb-px md:w-[40px]">
                 <div className="flex justify-center">
                   <div
                     key={`${segmentKey}_motion_data_2`}

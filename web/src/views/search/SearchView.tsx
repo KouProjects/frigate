@@ -490,7 +490,7 @@ export default function SearchView({
         )}
       >
         {config?.semantic_search?.enabled && (
-          <div className={cn("z-[41] w-full lg:absolute lg:top-0 lg:w-1/3")}>
+          <div className={cn("z-41 w-full lg:absolute lg:top-0 lg:w-1/3")}>
             <InputWithTags
               inputFocused={inputFocused}
               setInputFocused={setInputFocused}
@@ -603,7 +603,7 @@ export default function SearchView({
                           <Tooltip>
                             <TooltipTrigger>
                               <Chip
-                                className={`flex select-none items-center justify-between space-x-1 bg-gray-500 bg-gradient-to-br from-gray-400 to-gray-500 text-xs text-white smart-capitalize`}
+                                className={`flex select-none items-center justify-between space-x-1 bg-gray-500 bg-linear-to-br from-gray-400 to-gray-500 text-xs text-white smart-capitalize`}
                               >
                                 {value.search_source == "thumbnail" ? (
                                   <LuImage className="size-3" />
@@ -634,7 +634,7 @@ export default function SearchView({
                           </Tooltip>
                         </div>
                       )}
-                      <div className="absolute bottom-0 left-0 right-0 z-30 bg-gradient-to-t from-black/70 to-transparent p-2">
+                      <div className="absolute bottom-0 left-0 right-0 z-30 bg-linear-to-t from-black/70 to-transparent p-2">
                         <SearchThumbnailFooter
                           searchResult={value}
                           columns={columns}

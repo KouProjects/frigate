@@ -255,8 +255,8 @@ export default function SearchDetailDialog({
               <div className="flex h-full gap-4 overflow-hidden">
                 <div
                   className={cn(
-                    "scrollbar-container flex-[3] overflow-y-hidden",
-                    page === "snapshot" && !search.has_snapshot && "flex-[2]",
+                    "scrollbar-container flex-3 overflow-y-hidden",
+                    page === "snapshot" && !search.has_snapshot && "flex-2",
                   )}
                 >
                   {page === "snapshot" && search.has_snapshot && (
@@ -290,7 +290,7 @@ export default function SearchDetailDialog({
                     />
                   )}
                 </div>
-                <div className="flex flex-[2] flex-col gap-4 overflow-hidden">
+                <div className="flex flex-2 flex-col gap-4 overflow-hidden">
                   {tabsComponent}
                   <div className="scrollbar-container flex-1 overflow-y-auto">
                     {page == "snapshot" && (
@@ -1275,7 +1275,7 @@ export function ObjectSnapshotTab({
                           href={`${baseUrl}api/events/${search?.id}/snapshot.jpg?bbox=1`}
                           download={`${search?.camera}_${search?.label}.jpg`}
                         >
-                          <Chip className="cursor-pointer rounded-md bg-gray-500 bg-gradient-to-br from-gray-400 to-gray-500">
+                          <Chip className="cursor-pointer rounded-md bg-gray-500 bg-linear-to-br from-gray-400 to-gray-500">
                             <FaDownload className="size-4 text-white" />
                           </Chip>
                         </a>
@@ -1419,7 +1419,7 @@ export function VideoTab({ search }: VideoTabProps) {
             <Tooltip>
               <TooltipTrigger>
                 <Chip
-                  className="cursor-pointer rounded-md bg-gray-500 bg-gradient-to-br from-gray-400 to-gray-500"
+                  className="cursor-pointer rounded-md bg-gray-500 bg-linear-to-br from-gray-400 to-gray-500"
                   onClick={() => {
                     if (reviewItem?.id) {
                       const params = new URLSearchParams({
@@ -1445,7 +1445,7 @@ export function VideoTab({ search }: VideoTabProps) {
                 download
                 href={`${baseUrl}api/${search.camera}/${clipTimeRange}/clip.mp4`}
               >
-                <Chip className="cursor-pointer rounded-md bg-gray-500 bg-gradient-to-br from-gray-400 to-gray-500">
+                <Chip className="cursor-pointer rounded-md bg-gray-500 bg-linear-to-br from-gray-400 to-gray-500">
                   <FaDownload className="size-4 text-white" />
                 </Chip>
               </a>

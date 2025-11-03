@@ -283,7 +283,7 @@ function ConfigEditor() {
 
         <div className="mt-2 flex flex-1 flex-col overflow-hidden">
           {error && (
-            <div className="mt-2 max-h-[30%] min-h-[2.5rem] overflow-auto whitespace-pre-wrap border-2 border-muted bg-background_alt p-4 text-sm text-danger md:max-h-[40%]">
+            <div className="mt-2 max-h-[30%] min-h-10 overflow-auto whitespace-pre-wrap border-2 border-muted bg-background_alt p-4 text-sm text-danger md:max-h-[40%]">
               {error}
             </div>
           )}

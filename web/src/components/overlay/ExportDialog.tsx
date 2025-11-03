@@ -478,7 +478,7 @@ function CustomTimeSelector({
             />
             <SelectSeparator className="bg-secondary" />
             <input
-              className="text-md mx-4 w-full border border-input bg-background p-1 text-secondary-foreground hover:bg-accent hover:text-accent-foreground dark:[color-scheme:dark]"
+              className="text-md mx-4 w-full border border-input bg-background p-1 text-secondary-foreground hover:bg-accent hover:text-accent-foreground dark:scheme-dark"
               id="startTime"
               type="time"
               value={startClock}
@@ -544,7 +544,7 @@ function CustomTimeSelector({
             />
             <SelectSeparator className="bg-secondary" />
             <input
-              className="text-md mx-4 w-full border border-input bg-background p-1 text-secondary-foreground hover:bg-accent hover:text-accent-foreground dark:[color-scheme:dark]"
+              className="text-md mx-4 w-full border border-input bg-background p-1 text-secondary-foreground hover:bg-accent hover:text-accent-foreground dark:scheme-dark"
               id="startTime"
               type="time"
               value={endClock}

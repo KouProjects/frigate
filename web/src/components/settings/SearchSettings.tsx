@@ -111,7 +111,7 @@ export default function ExploreSettings({
                 max={8}
                 min={2}
                 step={1}
-                className="flex-grow"
+                className="grow"
               />
               <span className="w-9 text-center text-sm font-medium">
                 {columns}

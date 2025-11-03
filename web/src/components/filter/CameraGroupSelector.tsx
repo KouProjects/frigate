@@ -345,7 +345,7 @@ function NewGroupDialog({
   return (
     <>
       <Toaster
-        className="toaster group z-[100]"
+        className="toaster group z-100"
         position="top-center"
         closeButton={true}
       />
@@ -471,7 +471,7 @@ export function EditGroupDialog({
   return (
     <>
       <Toaster
-        className="toaster group z-[100]"
+        className="toaster group z-100"
         position="top-center"
         closeButton={true}
       />
@@ -821,7 +821,7 @@ export function CameraGroupEdit({
               <FormLabel>{t("group.name.label")}</FormLabel>
               <FormControl>
                 <Input
-                  className="text-md w-full border border-input bg-background p-2 hover:bg-accent hover:text-accent-foreground dark:[color-scheme:dark]"
+                  className="text-md w-full border border-input bg-background p-2 hover:bg-accent hover:text-accent-foreground dark:scheme-dark"
                   placeholder={t("group.name.placeholder")}
                   {...field}
                 />

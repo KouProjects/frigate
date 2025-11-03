@@ -217,7 +217,7 @@ export default function ObjectPathPlotter() {
                 onClick={() => handleEventClick(event)}
               >
                 <div
-                  className="mr-2 h-4 w-4 flex-shrink-0"
+                  className="mr-2 h-4 w-4 shrink-0"
                   style={{
                     backgroundColor: `rgb(${eventColors[event.id].join(",")})`,
                   }}

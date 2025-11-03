@@ -516,7 +516,7 @@ export default function LiveCameraView({
           >
             {fullscreen && (
               <Button
-                className="bg-gray-500 bg-gradient-to-br from-gray-400 to-gray-500 text-primary"
+                className="bg-gray-500 bg-linear-to-br from-gray-400 to-gray-500 text-primary"
                 aria-label={t("label.back", { ns: "common" })}
                 size="sm"
                 onClick={() => navigate(-1)}

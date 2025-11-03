@@ -718,7 +718,7 @@ function LifecycleItem({
       <div className="ml-0.5 flex min-w-0 flex-1">
         <Tooltip>
           <TooltipTrigger>
-            <div className="flex items-start break-words text-left">
+            <div className="flex items-start wrap-break-word text-left">
               {getLifecycleItemDescription(item)}
             </div>
           </TooltipTrigger>
@@ -752,7 +752,7 @@ function LifecycleItem({
         </Tooltip>
       </div>
 
-      <div className="ml-3 flex-shrink-0 px-1 text-right text-xs text-primary-variant">
+      <div className="ml-3 shrink-0 px-1 text-right text-xs text-primary-variant">
         <div className="whitespace-nowrap">{formattedEventTimestamp}</div>
       </div>
     </div>
@@ -855,7 +855,7 @@ function ObjectTimeline({
       {isWithinEventRange && (
         <div
           className={cn(
-            "absolute left-2 top-2 z-[5] max-h-[calc(100%-1rem)] w-0.5 -translate-x-1/2 bg-selected transition-all duration-300",
+            "absolute left-2 top-2 z-5 max-h-[calc(100%-1rem)] w-0.5 -translate-x-1/2 bg-selected transition-all duration-300",
           )}
           style={{ height: `${activeLineHeight}%` }}
         />

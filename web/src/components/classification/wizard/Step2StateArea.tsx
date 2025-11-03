@@ -231,7 +231,7 @@ export default function Step2StateArea({
       >
         <div
           className={cn(
-            "flex flex-shrink-0 flex-col gap-2 overflow-y-auto rounded-lg bg-secondary p-4",
+            "flex shrink-0 flex-col gap-2 overflow-y-auto rounded-lg bg-secondary p-4",
             isMobile ? "w-full" : "w-64",
           )}
         >

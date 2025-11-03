@@ -563,7 +563,7 @@ function LibrarySelector({
               className="group flex items-center justify-between"
             >
               <div
-                className="flex-grow cursor-pointer capitalize"
+                className="grow cursor-pointer capitalize"
                 onClick={() => setPageToggle(id)}
               >
                 {id.replaceAll("_", " ")}

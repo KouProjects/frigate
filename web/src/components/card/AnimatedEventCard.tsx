@@ -134,7 +134,7 @@ export function AnimatedEventCard({
     <Tooltip>
       <TooltipTrigger asChild>
         <div
-          className="relative h-24 flex-shrink-0 overflow-hidden rounded md:rounded-lg 4k:h-32"
+          className="relative h-24 shrink-0 overflow-hidden rounded md:rounded-lg 4k:h-32"
           style={{
             aspectRatio: alertVideos ? aspectRatio : undefined,
           }}
@@ -145,7 +145,7 @@ export function AnimatedEventCard({
             <Tooltip>
               <TooltipTrigger asChild>
                 <Button
-                  className="absolute left-2 top-1 z-40 bg-gray-500 bg-gradient-to-br from-gray-400 to-gray-500"
+                  className="absolute left-2 top-1 z-40 bg-gray-500 bg-linear-to-br from-gray-400 to-gray-500"
                   size="xs"
                   aria-label={t("markAsReviewed")}
                   onClick={async () => {
@@ -225,7 +225,7 @@ export function AnimatedEventCard({
             </div>
           )}
           {isLoaded && (
-            <div className="absolute inset-x-0 bottom-0 h-6 rounded bg-gradient-to-t from-slate-900/50 to-transparent">
+            <div className="absolute inset-x-0 bottom-0 h-6 rounded bg-linear-to-t from-slate-900/50 to-transparent">
               <div className="absolute bottom-0 left-1 w-full text-xs text-white">
                 <TimeAgo time={event.start_time * 1000} dense />
               </div>

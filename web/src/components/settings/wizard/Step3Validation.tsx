@@ -562,13 +562,13 @@ function StreamIssues({
         {issues.map((issue, index) => (
           <div key={index} className="flex items-center gap-2 text-sm">
             {issue.type === "good" && (
-              <FaCircleCheck className="size-4 flex-shrink-0 text-success" />
+              <FaCircleCheck className="size-4 shrink-0 text-success" />
             )}
             {issue.type === "warning" && (
-              <FaTriangleExclamation className="size-4 flex-shrink-0 text-yellow-500" />
+              <FaTriangleExclamation className="size-4 shrink-0 text-yellow-500" />
             )}
             {issue.type === "error" && (
-              <LuX className="size-4 flex-shrink-0 text-danger" />
+              <LuX className="size-4 shrink-0 text-danger" />
             )}
             <span
               className={

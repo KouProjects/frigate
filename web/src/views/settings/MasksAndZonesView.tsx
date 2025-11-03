@@ -433,7 +433,7 @@ export default function MasksAndZonesView({
       {cameraConfig && editingPolygons && (
         <div className="flex size-full flex-col md:flex-row">
           <Toaster position="top-center" closeButton={true} />
-          <div className="scrollbar-container order-last mb-10 mt-2 flex h-full w-full flex-col overflow-y-auto rounded-lg border-[1px] border-secondary-foreground bg-background_alt p-2 md:order-none md:mr-3 md:mt-0 md:w-3/12">
+          <div className="scrollbar-container order-last mb-10 mt-2 flex h-full w-full flex-col overflow-y-auto rounded-lg border border-secondary-foreground bg-background_alt p-2 md:order-0 md:mr-3 md:mt-0 md:w-3/12">
             {editPane == "zone" && (
               <ZoneEditPane
                 polygons={editingPolygons}
@@ -488,7 +488,7 @@ export default function MasksAndZonesView({
                 <div className="flex w-full flex-col">
                   {(selectedZoneMask === undefined ||
                     selectedZoneMask.includes("zone" as PolygonType)) && (
-                    <div className="mt-0 pt-0 last:border-b-[1px] last:border-secondary last:pb-3">
+                    <div className="mt-0 pt-0 last:border-b last:border-secondary last:pb-3">
                       <div className="my-3 flex flex-row items-center justify-between">
                         <HoverCard>
                           <HoverCardTrigger asChild>
@@ -554,7 +554,7 @@ export default function MasksAndZonesView({
                     selectedZoneMask.includes(
                       "motion_mask" as PolygonType,
                     )) && (
-                    <div className="mt-3 border-t-[1px] border-secondary pt-3 first:mt-0 first:border-transparent first:pt-0 last:border-b-[1px] last:pb-3">
+                    <div className="mt-3 border-t border-secondary pt-3 first:mt-0 first:border-transparent first:pt-0 last:border-b last:pb-3">
                       <div className="my-3 flex flex-row items-center justify-between">
                         <HoverCard>
                           <HoverCardTrigger asChild>
@@ -624,7 +624,7 @@ export default function MasksAndZonesView({
                     selectedZoneMask.includes(
                       "object_mask" as PolygonType,
                     )) && (
-                    <div className="mt-3 border-t-[1px] border-secondary pt-3 first:mt-0 first:border-transparent first:pt-0 last:border-b-[1px] last:pb-3">
+                    <div className="mt-3 border-t border-secondary pt-3 first:mt-0 first:border-transparent first:pt-0 last:border-b last:pb-3">
                       <div className="my-3 flex flex-row items-center justify-between">
                         <HoverCard>
                           <HoverCardTrigger asChild>

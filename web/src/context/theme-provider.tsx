@@ -1,23 +1,10 @@
 import { createContext, useContext, useEffect, useMemo, useState } from "react";
 
 type Theme = "dark" | "light" | "system";
-type ColorScheme =
-  | "theme-blue"
-  | "theme-green"
-  | "theme-nord"
-  | "theme-red"
-  | "theme-high-contrast"
-  | "theme-default";
+type ColorScheme = "theme-modern-edge";
 
 // eslint-disable-next-line react-refresh/only-export-components
-export const colorSchemes: ColorScheme[] = [
-  "theme-blue",
-  "theme-green",
-  "theme-nord",
-  "theme-red",
-  "theme-high-contrast",
-  "theme-default",
-];
+export const colorSchemes: ColorScheme[] = ["theme-modern-edge"];
 
 // Helper function to generate friendly color scheme names
 // eslint-disable-next-line react-refresh/only-export-components
@@ -44,7 +31,7 @@ type ThemeProviderState = {
 const initialState: ThemeProviderState = {
   theme: "system",
   systemTheme: undefined,
-  colorScheme: "theme-default",
+  colorScheme: "theme-modern-edge",
   setTheme: () => null,
   setColorScheme: () => null,
 };
@@ -54,7 +41,7 @@ const ThemeProviderContext = createContext<ThemeProviderState>(initialState);
 export function ThemeProvider({
   children,
   defaultTheme = "system",
-  defaultColorScheme = "theme-default",
+  defaultColorScheme = "theme-modern-edge",
   storageKey = "frigate-ui-theme",
   ...props
 }: ThemeProviderProps) {
@@ -72,9 +59,9 @@ export function ThemeProvider({
   const [colorScheme, setColorScheme] = useState<ColorScheme>(() => {
     try {
       const storedData = JSON.parse(localStorage.getItem(storageKey) || "{}");
-      return storedData.colorScheme === "default"
+      return storedData.colorScheme === "default" || !storedData.colorScheme
         ? defaultColorScheme
-        : storedData.colorScheme || defaultColorScheme;
+        : storedData.colorScheme;
     } catch (error) {
       // eslint-disable-next-line no-console
       console.error("Error parsing color scheme data from storage:", error);
@@ -93,20 +80,20 @@ export function ThemeProvider({
   }, [theme]);
 
   useEffect(() => {
-    //localStorage.removeItem(storageKey);
-    //console.log(localStorage.getItem(storageKey));
     const root = window.document.documentElement;
 
+    // Remove all possible theme classes
     root.classList.remove("light", "dark", "system", ...colorSchemes);
 
-    root.classList.add(theme, colorScheme);
+    // Add current color scheme
+    root.classList.add(colorScheme);
 
+    // Add theme class
     if (systemTheme) {
       root.classList.add(systemTheme);
-      return;
+    } else {
+      root.classList.add(theme);
     }
-
-    root.classList.add(theme);
   }, [theme, colorScheme, systemTheme]);
 
   const value = {

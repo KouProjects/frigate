@@ -240,7 +240,7 @@ export function EventSegment({
                       >
                         <div
                           key={`${segmentKey}_${index}_primary_data`}
-                          className={`h-[8px] w-full bg-gradient-to-r ${roundBottomPrimary ? "rounded-bl-full rounded-br-full" : ""} ${roundTopPrimary ? "rounded-tl-full rounded-tr-full" : ""} ${severityColors[severityValue]}`}
+                          className={`h-[8px] w-full bg-linear-to-r ${roundBottomPrimary ? "rounded-bl-full rounded-br-full" : ""} ${roundTopPrimary ? "rounded-tl-full rounded-tr-full" : ""} ${severityColors[severityValue]}`}
                         ></div>
                       </div>
                     </div>

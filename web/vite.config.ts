@@ -3,6 +3,7 @@ import path, { resolve } from "path";
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react-swc";
 import monacoEditorPlugin from "vite-plugin-monaco-editor";
+import tailwindcss from "@tailwindcss/vite";
 
 const proxyHost = process.env.PROXY_HOST || "localhost:5000";
 
@@ -47,6 +48,7 @@ export default defineConfig({
   },
   plugins: [
     react(),
+    tailwindcss(),
     monacoEditorPlugin.default({
       customWorkers: [{ label: "yaml", entry: "monaco-yaml/yaml.worker" }],
       languageWorkers: ["editorWorkerService"], // we don't use any of the default languages

@@ -18,9 +18,9 @@ const variants = {
   overlay: {
     active: "font-bold text-white bg-selected rounded-full",
     inactive:
-      "text-primary rounded-full bg-gradient-to-br from-gray-400 to-gray-500 bg-gray-500",
+      "text-primary rounded-full bg-linear-to-br from-gray-400 to-gray-500 bg-gray-500",
     disabled:
-      "bg-gradient-to-br from-gray-400 to-gray-500 bg-gray-500 rounded-full cursor-not-allowed opacity-50",
+      "bg-linear-to-br from-gray-400 to-gray-500 bg-gray-500 rounded-full cursor-not-allowed opacity-50",
   },
 };
 

@@ -372,7 +372,7 @@ export function TrackingDetails({
           isDesktop && "overflow-hidden",
           cameraAspect === "tall" ? "max-h-[50dvh] lg:max-h-[70dvh]" : "w-full",
           cameraAspect === "tall" && isMobileOnly && "w-full",
-          cameraAspect !== "tall" && isDesktop && "flex-[3]",
+          cameraAspect !== "tall" && isDesktop && "flex-3",
         )}
         style={{ aspectRatio: aspectRatio }}
         ref={containerRef}
@@ -454,7 +454,7 @@ export function TrackingDetails({
           )}
           <div
             className={cn(
-              "absolute top-2 z-[5] flex items-center gap-2",
+              "absolute top-2 z-5 flex items-center gap-2",
               isIOS ? "right-8" : "right-2",
             )}
           >
@@ -462,7 +462,7 @@ export function TrackingDetails({
               <Tooltip>
                 <TooltipTrigger>
                   <Chip
-                    className="cursor-pointer rounded-md bg-gray-500 bg-gradient-to-br from-gray-400 to-gray-500"
+                    className="cursor-pointer rounded-md bg-gray-500 bg-linear-to-br from-gray-400 to-gray-500"
                     onClick={() => {
                       if (event?.id) {
                         const params = new URLSearchParams({
@@ -488,7 +488,7 @@ export function TrackingDetails({
                   download
                   href={`${baseUrl}api/${event.camera}/start/${event.start_time - REVIEW_PADDING}/end/${(event.end_time ?? Date.now() / 1000) + REVIEW_PADDING}/clip.mp4`}
                 >
-                  <Chip className="cursor-pointer rounded-md bg-gray-500 bg-gradient-to-br from-gray-400 to-gray-500">
+                  <Chip className="cursor-pointer rounded-md bg-gray-500 bg-linear-to-br from-gray-400 to-gray-500">
                     <FaDownload className="size-4 text-white" />
                   </Chip>
                 </a>
@@ -503,7 +503,7 @@ export function TrackingDetails({
         </div>
       </div>
 
-      <div className={cn(isDesktop && "flex-[2] overflow-hidden")}>
+      <div className={cn(isDesktop && "flex-2 overflow-hidden")}>
         {isDesktop && tabs && <div className="mb-4">{tabs}</div>}
         <div
           className={cn(
@@ -631,7 +631,7 @@ export function TrackingDetails({
                     <div className="absolute -top-2 bottom-8 left-6 z-0 w-0.5 -translate-x-1/2 bg-secondary-foreground" />
                     {isWithinEventRange && (
                       <div
-                        className="absolute left-6 top-2 z-[5] max-h-[calc(100%-3rem)] w-0.5 -translate-x-1/2 bg-selected transition-all duration-300"
+                        className="absolute left-6 top-2 z-5 max-h-[calc(100%-3rem)] w-0.5 -translate-x-1/2 bg-selected transition-all duration-300"
                         style={{ height: `${blueLineHeight}%` }}
                       />
                     )}
@@ -770,7 +770,7 @@ function LifecycleIconRow({
 
         <div className="ml-2 flex w-full min-w-0 flex-1">
           <div className="flex flex-col">
-            <div className="text-md flex items-start break-words text-left">
+            <div className="text-md flex items-start wrap-break-word text-left">
               {getLifecycleItemDescription(item)}
             </div>
             <div className="mt-1 flex flex-wrap items-center gap-2 text-xs text-secondary-foreground md:gap-5">
@@ -832,7 +832,7 @@ function LifecycleIconRow({
             </div>
           </div>
         </div>
-        <div className="ml-3 flex-shrink-0 px-1 text-right text-xs text-primary-variant">
+        <div className="ml-3 shrink-0 px-1 text-right text-xs text-primary-variant">
           <div className="flex flex-row items-center gap-3">
             <div className="whitespace-nowrap">{formattedEventTimestamp}</div>
             {(config?.plus?.enabled || item.data.box) && (

@@ -231,7 +231,7 @@ export default function PreviewThumbnailPlayer({
         {!playingBack && (
           <div
             className={cn(
-              "rounded-t-l pointer-events-none absolute inset-x-0 top-0 h-[30%] w-full bg-gradient-to-b from-black/60 to-transparent",
+              "rounded-t-l pointer-events-none absolute inset-x-0 top-0 h-[30%] w-full bg-linear-to-b from-black/60 to-transparent",
               !isSafari && "z-10",
             )}
           />
@@ -254,7 +254,7 @@ export default function PreviewThumbnailPlayer({
                     review.severity == "detection") && (
                     <>
                       <Chip
-                        className={`flex items-start justify-between space-x-1 ${playingBack ? "hidden" : ""} bg-gradient-to-br ${review.has_been_reviewed ? "bg-green-600 from-green-600 to-green-700" : "bg-gray-500 from-gray-400 to-gray-500"} z-0`}
+                        className={`flex items-start justify-between space-x-1 ${playingBack ? "hidden" : ""} bg-linear-to-br ${review.has_been_reviewed ? "bg-green-600 from-green-600 to-green-700" : "bg-gray-500 from-gray-400 to-gray-500"} z-0`}
                         onClick={() => onClick(review, false, true)}
                       >
                         {review.data.objects.sort().map((object) => {
@@ -304,7 +304,7 @@ export default function PreviewThumbnailPlayer({
                       review.severity == "detection") && (
                       <>
                         <Chip
-                          className={`flex items-start justify-between space-x-1 ${playingBack ? "hidden" : ""} z-0 bg-gray-500 bg-gradient-to-br from-gray-400 to-gray-500`}
+                          className={`flex items-start justify-between space-x-1 ${playingBack ? "hidden" : ""} z-0 bg-gray-500 bg-linear-to-br from-gray-400 to-gray-500`}
                           onClick={() => onClick(review, false, true)}
                         >
                           {review.data.metadata.potential_threat_level == 1 ? (
@@ -331,7 +331,7 @@ export default function PreviewThumbnailPlayer({
         {!playingBack && (
           <div
             className={cn(
-              "rounded-b-l pointer-events-none absolute inset-x-0 bottom-0 h-[20%] w-full bg-gradient-to-t from-black/60 to-transparent",
+              "rounded-b-l pointer-events-none absolute inset-x-0 bottom-0 h-[20%] w-full bg-linear-to-t from-black/60 to-transparent",
               !isSafari && "z-10",
             )}
           >

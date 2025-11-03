@@ -331,7 +331,7 @@ export default function NotificationView({
 
   if (!("Notification" in window) || !window.isSecureContext) {
     return (
-      <div className="scrollbar-container order-last mb-10 mt-2 flex h-full w-full flex-col overflow-y-auto pb-2 md:order-none">
+      <div className="scrollbar-container order-last mb-10 mt-2 flex h-full w-full flex-col overflow-y-auto pb-2 md:order-0">
         <div className="grid w-full grid-cols-1 gap-4 md:grid-cols-2">
           <div className="col-span-1">
             <Heading as="h4" className="mb-2">
@@ -385,7 +385,7 @@ export default function NotificationView({
     <>
       <div className="flex size-full flex-col md:flex-row">
         <Toaster position="top-center" closeButton={true} />
-        <div className="scrollbar-container order-last mb-10 mt-2 flex h-full w-full flex-col overflow-y-auto px-2 md:order-none">
+        <div className="scrollbar-container order-last mb-10 mt-2 flex h-full w-full flex-col overflow-y-auto px-2 md:order-0">
           <div
             className={cn(
               isAdmin && "grid w-full grid-cols-1 gap-4 md:grid-cols-2",
@@ -427,7 +427,7 @@ export default function NotificationView({
                           <FormLabel>{t("notification.email.title")}</FormLabel>
                           <FormControl>
                             <Input
-                              className="text-md w-full border border-input bg-background p-2 hover:bg-accent hover:text-accent-foreground dark:[color-scheme:dark] md:w-72"
+                              className="text-md w-full border border-input bg-background p-2 hover:bg-accent hover:text-accent-foreground dark:scheme-dark md:w-72"
                               placeholder={t("notification.email.placeholder")}
                               {...field}
                             />

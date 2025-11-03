@@ -171,7 +171,7 @@ function ThumbnailRow({
         {searchResults?.map((event) => (
           <div
             key={event.id}
-            className="relative aspect-square h-auto max-w-[20%] flex-grow md:max-w-[10%]"
+            className="relative aspect-square h-auto max-w-[20%] grow md:max-w-[10%]"
           >
             <ExploreThumbnailImage
               event={event}

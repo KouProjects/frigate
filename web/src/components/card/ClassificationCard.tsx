@@ -142,7 +142,7 @@ export const ClassificationCard = forwardRef<
           {t("information.pixels", { ns: "common", area: imageArea })}
         </div>
       )}
-      <div className="absolute bottom-0 left-0 right-0 h-[50%] bg-gradient-to-t from-black/60 to-transparent" />
+      <div className="absolute bottom-0 left-0 right-0 h-[50%] bg-linear-to-t from-black/60 to-transparent" />
       <div className="absolute bottom-0 flex w-full select-none flex-row items-center justify-between gap-2 p-2">
         <div
           className={cn(
@@ -301,7 +301,7 @@ export function GroupedClassificationCard({
             <Header
               className={cn(
                 "mx-2 flex flex-row items-center gap-4",
-                isMobile && "flex-shrink-0",
+                isMobile && "shrink-0",
               )}
             >
               <div>

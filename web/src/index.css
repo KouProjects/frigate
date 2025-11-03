@@ -1,31 +1,11 @@
-@import "/themes/tailwind-base.css";
-@import "/themes/theme-default.css";
-@import "/themes/theme-blue.css";
-@import "/themes/theme-green.css";
-@import "/themes/theme-high-contrast.css";
-@import "/themes/theme-nord.css";
-@import "/themes/theme-red.css";
+@import 'tailwindcss';
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "../themes/tailwind-base.css";
+@import "../themes/theme-modern-edge.css";
 
 /* Duplicated var names with color space modifiers for swatches in vscode. See https://github.com/tailwindlabs/tailwindcss/discussions/10619 */
 
-@layer base {
-  * {
-    @apply border-border;
-  }
-  body {
-    @apply bg-background text-foreground;
-  }
-}
-
-@layer utilities {
-  .scrollbar-container {
-    @apply scrollbar-thin scrollbar-track-background_alt scrollbar-thumb-border scrollbar-track-rounded-full scrollbar-thumb-rounded-full;
-  }
-}
+@custom-variant dark (&:is(.dark *));
 
 html {
   overscroll-behavior: none;
@@ -189,3 +169,4 @@ html {
 .react-lazylog-searchbar {
   background-color: transparent !important;
 }
+

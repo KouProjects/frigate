@@ -348,7 +348,7 @@ export function SummaryTimeline({
 
   return (
     <div
-      className={`no-scrollbar relative h-full select-none overflow-hidden border-l-[1px] border-neutral-700 bg-secondary`}
+      className={`no-scrollbar relative h-full select-none overflow-hidden border-l border-neutral-700 bg-secondary`}
       role="scrollbar"
     >
       <div
