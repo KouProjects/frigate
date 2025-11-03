@@ -27,7 +27,7 @@ export default function MobileCameraDrawer({
     <Drawer open={cameraDrawer} onOpenChange={setCameraDrawer}>
       <DrawerTrigger asChild>
         <Button
-          className="rounded-lg smart-capitalize"
+          className="smart-capitalize rounded-lg"
           aria-label={t("menu.live.cameras.title")}
           size="sm"
         >
@@ -35,11 +35,11 @@ export default function MobileCameraDrawer({
         </Button>
       </DrawerTrigger>
       <DrawerContent className="mx-1 max-h-[75dvh] overflow-hidden rounded-t-2xl px-4">
-        <div className="scrollbar-container flex h-auto w-full flex-col items-center gap-2 overflow-y-auto overflow-x-hidden py-4">
+        <div className="scrollbar-container flex h-auto w-full flex-col items-center gap-2 overflow-x-hidden overflow-y-auto py-4">
           {allCameras.map((cam) => (
             <div
               key={cam}
-              className={`mx-4 w-full py-2 text-center smart-capitalize ${cam == selected ? "rounded-lg bg-secondary" : ""}`}
+              className={`smart-capitalize mx-4 w-full py-2 text-center ${cam == selected ? "bg-secondary rounded-lg" : ""}`}
               onClick={() => {
                 onSelectCamera(cam);
                 setCameraDrawer(false);

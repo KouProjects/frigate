@@ -25,7 +25,7 @@ export default function MobileTimelineDrawer({
     <Drawer open={drawer} onOpenChange={setDrawer}>
       <DrawerTrigger asChild>
         <Button
-          className="rounded-lg smart-capitalize"
+          className="smart-capitalize rounded-lg"
           aria-label="Select timeline or events list"
           size="sm"
         >
@@ -34,7 +34,7 @@ export default function MobileTimelineDrawer({
       </DrawerTrigger>
       <DrawerContent className="mx-1 flex max-h-[75dvh] flex-col items-center gap-2 overflow-hidden rounded-t-2xl px-4 pb-4">
         <div
-          className={`mx-4 w-full py-2 text-center smart-capitalize ${selected == "timeline" ? "rounded-lg bg-secondary" : ""}`}
+          className={`smart-capitalize mx-4 w-full py-2 text-center ${selected == "timeline" ? "bg-secondary rounded-lg" : ""}`}
           onClick={() => {
             onSelect("timeline");
             setDrawer(false);
@@ -43,7 +43,7 @@ export default function MobileTimelineDrawer({
           {t("timeline")}
         </div>
         <div
-          className={`mx-4 w-full py-2 text-center smart-capitalize ${selected == "events" ? "rounded-lg bg-secondary" : ""}`}
+          className={`smart-capitalize mx-4 w-full py-2 text-center ${selected == "events" ? "bg-secondary rounded-lg" : ""}`}
           onClick={() => {
             onSelect("events");
             setDrawer(false);
@@ -52,7 +52,7 @@ export default function MobileTimelineDrawer({
           {t("events.label")}
         </div>
         <div
-          className={`mx-4 w-full py-2 text-center smart-capitalize ${selected == "detail" ? "rounded-lg bg-secondary" : ""}`}
+          className={`smart-capitalize mx-4 w-full py-2 text-center ${selected == "detail" ? "bg-secondary rounded-lg" : ""}`}
           onClick={() => {
             onSelect("detail");
             setDrawer(false);

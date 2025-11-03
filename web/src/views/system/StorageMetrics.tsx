@@ -96,11 +96,11 @@ export default function StorageMetrics({
 
   return (
     <div className="scrollbar-container mt-4 flex size-full flex-col overflow-y-auto">
-      <div className="text-sm font-medium text-muted-foreground">
+      <div className="text-muted-foreground text-sm font-medium">
         {t("storage.overview")}
       </div>
       <div className="mt-4 grid grid-cols-1 gap-2 sm:grid-cols-3">
-        <div className="flex-col rounded-lg bg-background_alt p-2.5 md:rounded-2xl">
+        <div className="bg-background_alt flex-col rounded-lg p-2.5 md:rounded-2xl">
           <div className="mb-5 flex flex-row items-center justify-between">
             {t("storage.recordings.title")}
             <Popover>
@@ -130,7 +130,7 @@ export default function StorageMetrics({
             total={totalStorage.total}
           />
           {earliestDate && (
-            <div className="mt-2 text-xs text-primary-variant">
+            <div className="text-primary-variant mt-2 text-xs">
               <span className="font-medium">
                 {t("storage.recordings.earliestRecording")}
               </span>{" "}
@@ -138,7 +138,7 @@ export default function StorageMetrics({
             </div>
           )}
         </div>
-        <div className="flex-col rounded-lg bg-background_alt p-2.5 md:rounded-2xl">
+        <div className="bg-background_alt flex-col rounded-lg p-2.5 md:rounded-2xl">
           <div className="mb-5">/tmp/cache</div>
           <StorageGraph
             graphId="general-cache"
@@ -146,7 +146,7 @@ export default function StorageMetrics({
             total={stats.service.storage["/tmp/cache"]["total"]}
           />
         </div>
-        <div className="flex-col rounded-lg bg-background_alt p-2.5 md:rounded-2xl">
+        <div className="bg-background_alt flex-col rounded-lg p-2.5 md:rounded-2xl">
           <div className="mb-5 flex flex-row items-center justify-between">
             /dev/shm
             {stats.service.storage["/dev/shm"]["total"] <
@@ -158,7 +158,7 @@ export default function StorageMetrics({
                     aria-label={t("storage.shm.title")}
                   >
                     <FaExclamationTriangle
-                      className="size-5 text-danger"
+                      className="text-danger size-5"
                       aria-label={t("storage.shm.title")}
                     />
                   </button>
@@ -169,7 +169,7 @@ export default function StorageMetrics({
                       total: stats.service.storage["/dev/shm"]["total"],
                       min_shm: stats.service.storage["/dev/shm"]["min_shm"],
                     })}
-                    <div className="mt-2 flex items-center text-primary">
+                    <div className="text-primary mt-2 flex items-center">
                       <Link
                         to={getLocaleDocUrl(
                           "frigate/installation#calculating-required-shm-size",
@@ -194,10 +194,10 @@ export default function StorageMetrics({
           />
         </div>
       </div>
-      <div className="mt-4 text-sm font-medium text-muted-foreground">
+      <div className="text-muted-foreground mt-4 text-sm font-medium">
         {t("storage.cameraStorage.title")}
       </div>
-      <div className="mt-4 bg-background_alt p-2.5 md:rounded-2xl">
+      <div className="bg-background_alt mt-4 p-2.5 md:rounded-2xl">
         <CombinedStorageGraph
           graphId={`single-storage`}
           cameraStorage={cameraStorage}

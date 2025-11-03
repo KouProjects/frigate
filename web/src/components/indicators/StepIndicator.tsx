@@ -25,7 +25,7 @@ export default function StepIndicator({
           <div
             key={idx}
             className={cn(
-              "size-3 rounded-full border border-primary/10 transition-colors",
+              "border-primary/10 size-3 rounded-full border transition-colors",
               currentStep === idx
                 ? "bg-selected"
                 : currentStep > idx
@@ -46,7 +46,7 @@ export default function StepIndicator({
           <div
             className={cn(
               "flex size-16 items-center justify-center rounded-full",
-              currentStep == idx ? "bg-selected" : "border-2 border-selected",
+              currentStep == idx ? "bg-selected" : "border-selected border-2",
             )}
           >
             {idx + 1}

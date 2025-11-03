@@ -76,7 +76,7 @@ export default function NameAndIdFields<T extends FieldValues = FieldValues>({
             <div className="flex items-center justify-between">
               <FormLabel>{nameLabel}</FormLabel>
               <span
-                className="cursor-pointer text-right text-xs text-muted-foreground"
+                className="text-muted-foreground cursor-pointer text-right text-xs"
                 onClick={() => setIsIdVisible(!isIdVisible)}
               >
                 {isIdVisible

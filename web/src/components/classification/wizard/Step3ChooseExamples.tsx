@@ -326,7 +326,7 @@ export default function Step3ChooseExamples({
             <h3 className="mb-2 text-lg font-medium">
               {t("wizard.step3.training.title")}
             </h3>
-            <p className="text-sm text-muted-foreground">
+            <p className="text-muted-foreground text-sm">
               {t("wizard.step3.training.description")}
             </p>
           </div>
@@ -341,7 +341,7 @@ export default function Step3ChooseExamples({
             <h3 className="mb-2 text-lg font-medium">
               {t("wizard.step3.generating.title")}
             </h3>
-            <p className="text-sm text-muted-foreground">
+            <p className="text-muted-foreground text-sm">
               {t("wizard.step3.generating.description")}
             </p>
           </div>
@@ -355,14 +355,14 @@ export default function Step3ChooseExamples({
                   className: currentClass,
                 })}
               </h3>
-              <p className="text-sm text-muted-foreground">
+              <p className="text-muted-foreground text-sm">
                 {t("wizard.step3.selectImagesDescription")}
               </p>
             </div>
           )}
           <div
             className={cn(
-              "rounded-lg bg-secondary/30 p-4",
+              "bg-secondary/30 rounded-lg p-4",
               isMobile && "max-h-[60vh] overflow-y-auto",
             )}
           >
@@ -390,8 +390,8 @@ export default function Step3ChooseExamples({
                     <div
                       key={imageName}
                       className={cn(
-                        "aspect-square cursor-pointer overflow-hidden rounded-lg border-2 bg-background transition-all",
-                        isSelected && "border-selected ring-2 ring-selected",
+                        "bg-background aspect-square cursor-pointer overflow-hidden rounded-lg border-2 transition-all",
+                        isSelected && "border-selected ring-selected ring-2",
                       )}
                       onClick={() => toggleImageSelection(imageName)}
                     >
@@ -409,7 +409,7 @@ export default function Step3ChooseExamples({
         </div>
       ) : (
         <div className="flex h-[50vh] flex-col items-center justify-center gap-4">
-          <p className="text-sm text-destructive">
+          <p className="text-destructive text-sm">
             {t("wizard.step3.errors.generationFailed")}
           </p>
           <Button onClick={generateExamples} variant="select">

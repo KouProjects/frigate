@@ -294,7 +294,7 @@ export default function Step1NameAndDefine({
                           <SelectItem
                             key={label}
                             value={label}
-                            className="cursor-pointer hover:bg-secondary-highlight"
+                            className="hover:bg-secondary-highlight cursor-pointer"
                           >
                             {getTranslatedLabel(label)}
                           </SelectItem>
@@ -330,7 +330,7 @@ export default function Step1NameAndDefine({
                             <div className="text-sm">
                               {t("wizard.step1.classificationTypeDesc")}
                             </div>
-                            <div className="mt-3 flex items-center text-primary">
+                            <div className="text-primary mt-3 flex items-center">
                               <a
                                 href={getLocaleDocUrl(
                                   "configuration/custom_classification/object_classification#classification-type",
@@ -411,7 +411,7 @@ export default function Step1NameAndDefine({
                           ? t("wizard.step1.classesStateDesc")
                           : t("wizard.step1.classesObjectDesc")}
                       </div>
-                      <div className="mt-3 flex items-center text-primary">
+                      <div className="text-primary mt-3 flex items-center">
                         <a
                           href={getLocaleDocUrl(
                             watchedModelType === "state"
@@ -433,7 +433,7 @@ export default function Step1NameAndDefine({
               <Button
                 type="button"
                 variant="secondary"
-                className="size-6 rounded-md bg-secondary-foreground p-1 text-background"
+                className="bg-secondary-foreground text-background size-6 rounded-md p-1"
                 onClick={handleAddClass}
               >
                 <LuPlus />
@@ -473,7 +473,7 @@ export default function Step1NameAndDefine({
               ))}
             </div>
             {form.formState.errors.classes && (
-              <p className="text-sm font-medium text-destructive">
+              <p className="text-destructive text-sm font-medium">
                 {form.formState.errors.classes.message}
               </p>
             )}

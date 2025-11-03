@@ -106,7 +106,7 @@ export default function EditRoleCamerasDialog({
           >
             <div className="space-y-2">
               <FormLabel>{t("roles.dialog.form.cameras.title")}</FormLabel>
-              <FormDescription className="text-xs text-muted-foreground">
+              <FormDescription className="text-muted-foreground text-xs">
                 {t("roles.dialog.form.cameras.desc")}
               </FormDescription>
               <div className="scrollbar-container max-h-[40dvh] space-y-2 overflow-y-auto">
@@ -119,12 +119,12 @@ export default function EditRoleCamerasDialog({
                       return (
                         <FormItem
                           key={camera}
-                          className="flex flex-row items-center justify-between space-x-3 space-y-0"
+                          className="flex flex-row items-center justify-between space-y-0 space-x-3"
                         >
                           <div className="space-y-0.5">
                             <FormLabel className="font-normal">
                               <CameraNameLabel
-                                className="mx-2 w-full cursor-pointer text-primary smart-capitalize"
+                                className="text-primary smart-capitalize mx-2 w-full cursor-pointer"
                                 htmlFor={camera.replaceAll("_", " ")}
                                 camera={camera}
                               />

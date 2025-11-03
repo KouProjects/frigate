@@ -663,12 +663,12 @@ export default function InputWithTags({
             className="text-md h-9 pr-32"
             placeholder={t("placeholder.search")}
           />
-          <div className="absolute right-3 top-0 flex h-full flex-row items-center justify-center gap-5">
+          <div className="absolute top-0 right-3 flex h-full flex-row items-center justify-center gap-5">
             {(search || Object.keys(filters).length > 0) && (
               <Tooltip>
                 <TooltipTrigger>
                   <LuX
-                    className="size-4 cursor-pointer text-secondary-foreground"
+                    className="text-secondary-foreground size-4 cursor-pointer"
                     onClick={handleClearInput}
                   />
                 </TooltipTrigger>
@@ -682,7 +682,7 @@ export default function InputWithTags({
               <Tooltip>
                 <TooltipTrigger>
                   <LuStar
-                    className="size-4 cursor-pointer text-secondary-foreground"
+                    className="text-secondary-foreground size-4 cursor-pointer"
                     onClick={handleSetSearchHistory}
                   />
                 </TooltipTrigger>
@@ -697,7 +697,7 @@ export default function InputWithTags({
                 <TooltipTrigger className="cursor-default">
                   <MdImageSearch
                     aria-label={t("similaritySearch.active")}
-                    className="size-4 text-selected"
+                    className="text-selected size-4"
                   />
                 </TooltipTrigger>
                 <TooltipPortal>
@@ -728,10 +728,10 @@ export default function InputWithTags({
               <PopoverContent className="w-80">
                 <div className="space-y-2">
                   <h3 className="font-medium">{t("filter.tips.title")}</h3>
-                  <p className="text-sm text-muted-foreground">
+                  <p className="text-muted-foreground text-sm">
                     {t("filter.tips.desc.text")}
                   </p>
-                  <ul className="list-disc pl-5 text-sm text-primary-variant">
+                  <ul className="text-primary-variant list-disc pl-5 text-sm">
                     <li>{t("filter.tips.desc.step1")}</li>
                     <li>{t("filter.tips.desc.step2")}</li>
                     <li>{t("filter.tips.desc.step3")}</li>
@@ -750,7 +750,7 @@ export default function InputWithTags({
                     </li>
                     <li>{t("filter.tips.desc.step6")}</li>
                   </ul>
-                  <p className="text-sm text-muted-foreground">
+                  <p className="text-muted-foreground text-sm">
                     {t("filter.tips.desc.exampleLabel")}{" "}
                     <code className="text-primary">
                       cameras:front_door label:person before:01012024
@@ -767,7 +767,7 @@ export default function InputWithTags({
                   setInputFocused(false);
                   inputRef.current?.blur();
                 }}
-                className="size-4 cursor-pointer text-secondary-foreground"
+                className="text-secondary-foreground size-4 cursor-pointer"
               />
             ) : (
               <LuChevronDown
@@ -775,7 +775,7 @@ export default function InputWithTags({
                   setInputFocused(true);
                   inputRef.current?.focus();
                 }}
-                className="size-4 cursor-pointer text-secondary-foreground"
+                className="text-secondary-foreground size-4 cursor-pointer"
               />
             )}
           </div>
@@ -783,7 +783,7 @@ export default function InputWithTags({
 
         <CommandList
           className={cn(
-            "scrollbar-container border-t duration-200 animate-in fade-in",
+            "scrollbar-container animate-in fade-in border-t duration-200",
             inputFocused && inputRef.current?.matches(":focus")
               ? "visible"
               : "hidden",
@@ -805,7 +805,7 @@ export default function InputWithTags({
             <CommandGroup heading={t("filter.header.activeFilters")}>
               <div className="my-2 flex flex-wrap gap-2 px-2">
                 {isSimilaritySearch && (
-                  <span className="inline-flex items-center whitespace-nowrap rounded-full bg-blue-100 px-2 py-0.5 text-sm text-blue-800">
+                  <span className="inline-flex items-center rounded-full bg-blue-100 px-2 py-0.5 text-sm whitespace-nowrap text-blue-800">
                     {t("similaritySearch.title")}
                     <button
                       onClick={handleClearSimilarity}
@@ -824,7 +824,7 @@ export default function InputWithTags({
                         .map((value, index) => (
                           <span
                             key={`${filterType}-${index}`}
-                            className="inline-flex items-center whitespace-nowrap rounded-full bg-green-100 px-2 py-0.5 text-sm text-green-800 smart-capitalize"
+                            className="smart-capitalize inline-flex items-center rounded-full bg-green-100 px-2 py-0.5 text-sm whitespace-nowrap text-green-800"
                           >
                             {t("filter.label." + filterType)}:{" "}
                             {filterType === "labels" ? (
@@ -848,7 +848,7 @@ export default function InputWithTags({
                     : !(filterType == "event_id" && isSimilaritySearch) && (
                         <span
                           key={filterType}
-                          className="inline-flex items-center whitespace-nowrap rounded-full bg-green-100 px-2 py-0.5 text-sm text-green-800 smart-capitalize"
+                          className="smart-capitalize inline-flex items-center rounded-full bg-green-100 px-2 py-0.5 text-sm whitespace-nowrap text-green-800"
                         >
                           {filterType === "event_id"
                             ? t("trackedObjectId")
@@ -898,7 +898,7 @@ export default function InputWithTags({
                           }}
                           className="focus:outline-none"
                         >
-                          <LuTrash2 className="h-4 w-4 text-secondary-foreground" />
+                          <LuTrash2 className="text-secondary-foreground h-4 w-4" />
                         </button>
                       </TooltipTrigger>
                       <TooltipPortal>

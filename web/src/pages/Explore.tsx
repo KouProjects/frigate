@@ -23,7 +23,13 @@ import { toast } from "sonner";
 import useSWR from "swr";
 import useSWRInfinite from "swr/infinite";
 import { useDocDomain } from "@/hooks/use-doc-domain";
+import {
+  BreadcrumbItem,
+  SidebarAppContent,
+  SidebarAppHeader,
+} from "@/components/SidebarAppWrapper";
 
+const breadcrumbs: BreadcrumbItem[] = [{ path: "/explore", name: "Explore" }];
 const API_LIMIT = 25;
 
 // always parse these as string arrays
@@ -340,10 +346,10 @@ export default function Explore() {
       return <ActivityIndicator className="size-5" />;
     }
     if (modelState === "downloaded") {
-      return <LuCheck className="size-5 text-success" />;
+      return <LuCheck className="text-success size-5" />;
     }
     if (modelState === "not_downloaded" || modelState === "error") {
-      return <LuX className="size-5 text-danger" />;
+      return <LuX className="text-danger size-5" />;
     }
     return null;
   };
@@ -358,165 +364,170 @@ export default function Explore() {
         !visionFeatureExtractorState))
   ) {
     return (
-      <ActivityIndicator className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2" />
+      <ActivityIndicator className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" />
     );
   }
 
   return (
     <>
-      {config?.semantic_search.enabled &&
-      (!allModelsLoaded || embeddingsReindexing) ? (
-        <div className="absolute inset-0 left-1/2 top-1/2 flex h-96 w-96 -translate-x-1/2 -translate-y-1/2">
-          <div className="flex max-w-96 flex-col items-center justify-center space-y-3 rounded-lg bg-background/50 p-5">
-            <div className="my-5 flex flex-col items-center gap-2 text-xl">
-              <TbExclamationCircle className="mb-3 size-10" />
-              <div>{t("exploreIsUnavailable.title")}</div>
-            </div>
-            {embeddingsReindexing && allModelsLoaded && (
-              <>
-                <div className="text-center text-primary-variant">
-                  {t("exploreIsUnavailable.embeddingsReindexing.context")}
-                </div>
-                <div className="pt-5 text-center">
-                  <AnimatedCircularProgressBar
-                    min={0}
-                    max={reindexState.total_objects}
-                    value={reindexState.processed_objects}
-                    gaugePrimaryColor="hsl(var(--selected))"
-                    gaugeSecondaryColor="hsl(var(--secondary))"
-                  />
-                </div>
-                <div className="flex w-96 flex-col gap-2 py-5">
-                  {reindexState.time_remaining !== null && (
-                    <div className="mb-3 flex flex-col items-center justify-center gap-1">
-                      <div className="text-primary-variant">
-                        {reindexState.time_remaining === -1
-                          ? t(
-                              "exploreIsUnavailable.embeddingsReindexing.startingUp",
-                            )
-                          : t(
-                              "exploreIsUnavailable.embeddingsReindexing.estimatedTime",
-                            )}
+      <SidebarAppHeader breadcrumbs={breadcrumbs} />
+      <SidebarAppContent>
+        {config?.semantic_search.enabled &&
+        (!allModelsLoaded || embeddingsReindexing) ? (
+          <div className="absolute inset-0 top-1/2 left-1/2 flex h-96 w-96 -translate-x-1/2 -translate-y-1/2">
+            <div className="bg-background/50 flex max-w-96 flex-col items-center justify-center space-y-3 rounded-lg p-5">
+              <div className="my-5 flex flex-col items-center gap-2 text-xl">
+                <TbExclamationCircle className="mb-3 size-10" />
+                <div>{t("exploreIsUnavailable.title")}</div>
+              </div>
+              {embeddingsReindexing && allModelsLoaded && (
+                <>
+                  <div className="text-primary-variant text-center">
+                    {t("exploreIsUnavailable.embeddingsReindexing.context")}
+                  </div>
+                  <div className="pt-5 text-center">
+                    <AnimatedCircularProgressBar
+                      min={0}
+                      max={reindexState.total_objects}
+                      value={reindexState.processed_objects}
+                      gaugePrimaryColor="hsl(var(--selected))"
+                      gaugeSecondaryColor="hsl(var(--secondary))"
+                    />
+                  </div>
+                  <div className="flex w-96 flex-col gap-2 py-5">
+                    {reindexState.time_remaining !== null && (
+                      <div className="mb-3 flex flex-col items-center justify-center gap-1">
+                        <div className="text-primary-variant">
+                          {reindexState.time_remaining === -1
+                            ? t(
+                                "exploreIsUnavailable.embeddingsReindexing.startingUp",
+                              )
+                            : t(
+                                "exploreIsUnavailable.embeddingsReindexing.estimatedTime",
+                              )}
+                        </div>
+                        {reindexState.time_remaining >= 0 &&
+                          (formatSecondsToDuration(
+                            reindexState.time_remaining,
+                          ) ||
+                            t(
+                              "exploreIsUnavailable.embeddingsReindexing.finishingShortly",
+                            ))}
                       </div>
-                      {reindexState.time_remaining >= 0 &&
-                        (formatSecondsToDuration(reindexState.time_remaining) ||
-                          t(
-                            "exploreIsUnavailable.embeddingsReindexing.finishingShortly",
-                          ))}
+                    )}
+                    <div className="flex flex-row items-center justify-center gap-3">
+                      <span className="text-primary-variant">
+                        {t(
+                          "exploreIsUnavailable.embeddingsReindexing.step.thumbnailsEmbedded",
+                        )}
+                      </span>
+                      {reindexState.thumbnails}
+                    </div>
+                    <div className="flex flex-row items-center justify-center gap-3">
+                      <span className="text-primary-variant">
+                        {t(
+                          "exploreIsUnavailable.embeddingsReindexing.step.descriptionsEmbedded",
+                        )}
+                      </span>
+                      {reindexState.descriptions}
+                    </div>
+                    <div className="flex flex-row items-center justify-center gap-3">
+                      <span className="text-primary-variant">
+                        {t(
+                          "exploreIsUnavailable.embeddingsReindexing.step.trackedObjectsProcessed",
+                        )}
+                      </span>
+                      {reindexState.processed_objects} /{" "}
+                      {reindexState.total_objects}
+                    </div>
+                  </div>
+                </>
+              )}
+              {!allModelsLoaded && (
+                <>
+                  <div className="text-primary-variant text-center">
+                    {t("exploreIsUnavailable.downloadingModels.context")}
+                  </div>
+                  <div className="flex w-96 flex-col gap-2 py-5">
+                    <div className="flex flex-row items-center justify-center gap-2">
+                      {renderModelStateIcon(visionModelState)}
+                      {t(
+                        "exploreIsUnavailable.downloadingModels.setup.visionModel",
+                      )}
+                    </div>
+                    <div className="flex flex-row items-center justify-center gap-2">
+                      {renderModelStateIcon(visionFeatureExtractorState)}
+                      {t(
+                        "exploreIsUnavailable.downloadingModels.setup.visionModelFeatureExtractor",
+                      )}
+                    </div>
+                    <div className="flex flex-row items-center justify-center gap-2">
+                      {renderModelStateIcon(textModelState)}
+                      {t(
+                        "exploreIsUnavailable.downloadingModels.setup.textModel",
+                      )}
+                    </div>
+                    <div className="flex flex-row items-center justify-center gap-2">
+                      {renderModelStateIcon(textTokenizerState)}
+                      {t(
+                        "exploreIsUnavailable.downloadingModels.setup.textTokenizer",
+                      )}
+                    </div>
+                  </div>
+                  {(textModelState === "error" ||
+                    textTokenizerState === "error" ||
+                    visionModelState === "error" ||
+                    visionFeatureExtractorState === "error") && (
+                    <div className="text-danger my-3 max-w-96 text-center">
+                      {t("exploreIsUnavailable.downloadingModels.error")}
                     </div>
                   )}
-                  <div className="flex flex-row items-center justify-center gap-3">
-                    <span className="text-primary-variant">
-                      {t(
-                        "exploreIsUnavailable.embeddingsReindexing.step.thumbnailsEmbedded",
-                      )}
-                    </span>
-                    {reindexState.thumbnails}
+                  <div className="text-primary-variant text-center">
+                    {t("exploreIsUnavailable.downloadingModels.tips.context")}
                   </div>
-                  <div className="flex flex-row items-center justify-center gap-3">
-                    <span className="text-primary-variant">
-                      {t(
-                        "exploreIsUnavailable.embeddingsReindexing.step.descriptionsEmbedded",
-                      )}
-                    </span>
-                    {reindexState.descriptions}
+                  <div className="text-primary-variant flex items-center">
+                    <Link
+                      to={getLocaleDocUrl("configuration/semantic_search")}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline"
+                    >
+                      {t("readTheDocumentation", { ns: "common" })}
+                      <LuExternalLink className="ml-2 inline-flex size-3" />
+                    </Link>
                   </div>
-                  <div className="flex flex-row items-center justify-center gap-3">
-                    <span className="text-primary-variant">
-                      {t(
-                        "exploreIsUnavailable.embeddingsReindexing.step.trackedObjectsProcessed",
-                      )}
-                    </span>
-                    {reindexState.processed_objects} /{" "}
-                    {reindexState.total_objects}
-                  </div>
-                </div>
-              </>
-            )}
-            {!allModelsLoaded && (
-              <>
-                <div className="text-center text-primary-variant">
-                  {t("exploreIsUnavailable.downloadingModels.context")}
-                </div>
-                <div className="flex w-96 flex-col gap-2 py-5">
-                  <div className="flex flex-row items-center justify-center gap-2">
-                    {renderModelStateIcon(visionModelState)}
-                    {t(
-                      "exploreIsUnavailable.downloadingModels.setup.visionModel",
-                    )}
-                  </div>
-                  <div className="flex flex-row items-center justify-center gap-2">
-                    {renderModelStateIcon(visionFeatureExtractorState)}
-                    {t(
-                      "exploreIsUnavailable.downloadingModels.setup.visionModelFeatureExtractor",
-                    )}
-                  </div>
-                  <div className="flex flex-row items-center justify-center gap-2">
-                    {renderModelStateIcon(textModelState)}
-                    {t(
-                      "exploreIsUnavailable.downloadingModels.setup.textModel",
-                    )}
-                  </div>
-                  <div className="flex flex-row items-center justify-center gap-2">
-                    {renderModelStateIcon(textTokenizerState)}
-                    {t(
-                      "exploreIsUnavailable.downloadingModels.setup.textTokenizer",
-                    )}
-                  </div>
-                </div>
-                {(textModelState === "error" ||
-                  textTokenizerState === "error" ||
-                  visionModelState === "error" ||
-                  visionFeatureExtractorState === "error") && (
-                  <div className="my-3 max-w-96 text-center text-danger">
-                    {t("exploreIsUnavailable.downloadingModels.error")}
-                  </div>
-                )}
-                <div className="text-center text-primary-variant">
-                  {t("exploreIsUnavailable.downloadingModels.tips.context")}
-                </div>
-                <div className="flex items-center text-primary-variant">
-                  <Link
-                    to={getLocaleDocUrl("configuration/semantic_search")}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline"
-                  >
-                    {t("readTheDocumentation", { ns: "common" })}
-                    <LuExternalLink className="ml-2 inline-flex size-3" />
-                  </Link>
-                </div>
-              </>
-            )}
+                </>
+              )}
+            </div>
           </div>
-        </div>
-      ) : (
-        <SearchView
-          search={search}
-          searchTerm={searchTerm}
-          searchFilter={searchFilter}
-          searchResults={searchResults}
-          isLoading={(isLoadingInitialData || isLoadingMore) ?? true}
-          isValidating={isValidating}
-          hasMore={!isReachingEnd}
-          columns={gridColumns}
-          defaultView={defaultView}
-          setSearch={setSearch}
-          setSimilaritySearch={(search) => {
-            setSearchFilter({
-              ...searchFilter,
-              search_type: ["similarity"],
-              event_id: search.id,
-            });
-          }}
-          setSearchFilter={setSearchFilter}
-          onUpdateFilter={setSearchFilter}
-          setColumns={setColumnCount}
-          setDefaultView={setDefaultView}
-          loadMore={loadMore}
-          refresh={mutate}
-        />
-      )}
+        ) : (
+          <SearchView
+            search={search}
+            searchTerm={searchTerm}
+            searchFilter={searchFilter}
+            searchResults={searchResults}
+            isLoading={(isLoadingInitialData || isLoadingMore) ?? true}
+            isValidating={isValidating}
+            hasMore={!isReachingEnd}
+            columns={gridColumns}
+            defaultView={defaultView}
+            setSearch={setSearch}
+            setSimilaritySearch={(search) => {
+              setSearchFilter({
+                ...searchFilter,
+                search_type: ["similarity"],
+                event_id: search.id,
+              });
+            }}
+            setSearchFilter={setSearchFilter}
+            onUpdateFilter={setSearchFilter}
+            setColumns={setColumnCount}
+            setDefaultView={setDefaultView}
+            loadMore={loadMore}
+            refresh={mutate}
+          />
+        )}
+      </SidebarAppContent>
     </>
   );
 }

@@ -75,7 +75,7 @@ export default function TextEntry({
                   type="text"
                 />
               </FormControl>
-              <FormMessage className="text-xs text-destructive" />
+              <FormMessage className="text-destructive text-xs" />
             </FormItem>
           )}
         />

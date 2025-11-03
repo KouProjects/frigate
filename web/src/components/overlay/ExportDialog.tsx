@@ -139,7 +139,7 @@ export default function ExportDialog({
         setShowPreview={setShowPreview}
       />
       <SaveExportOverlay
-        className="pointer-events-none absolute left-1/2 top-8 z-50 -translate-x-1/2"
+        className="pointer-events-none absolute top-8 left-1/2 z-50 -translate-x-1/2"
         show={mode == "timeline"}
         onPreview={() => setShowPreview(true)}
         onSave={() => onStartExport()}
@@ -170,7 +170,7 @@ export default function ExportDialog({
               setMode("select");
             }}
           >
-            <FaArrowDown className="rounded-md bg-secondary-foreground fill-secondary p-1" />
+            <FaArrowDown className="bg-secondary-foreground fill-secondary rounded-md p-1" />
             {isDesktop && (
               <div className="text-primary">
                 {t("menu.export", { ns: "common" })}
@@ -274,7 +274,7 @@ export function ExportContent({
           <DialogHeader>
             <DialogTitle>{t("menu.export", { ns: "common" })}</DialogTitle>
           </DialogHeader>
-          <SelectSeparator className="my-4 bg-secondary" />
+          <SelectSeparator className="bg-secondary my-4" />
         </>
       )}
       <RadioGroup
@@ -293,7 +293,7 @@ export function ExportContent({
                 id={opt}
                 value={opt}
               />
-              <Label className="cursor-pointer smart-capitalize" htmlFor={opt}>
+              <Label className="smart-capitalize cursor-pointer" htmlFor={opt}>
                 {isNaN(parseInt(opt))
                   ? opt == "timeline"
                     ? t("export.time.fromTimeline")
@@ -320,7 +320,7 @@ export function ExportContent({
         value={name}
         onChange={(e) => setName(e.target.value)}
       />
-      {isDesktop && <SelectSeparator className="my-4 bg-secondary" />}
+      {isDesktop && <SelectSeparator className="bg-secondary my-4" />}
       <DialogFooter
         className={isDesktop ? "" : "mt-3 flex flex-col-reverse gap-4"}
       >
@@ -435,7 +435,7 @@ function CustomTimeSelector({
 
   return (
     <div
-      className={`mt-3 flex items-center rounded-lg bg-secondary text-secondary-foreground ${isDesktop ? "mx-8 gap-2 px-2" : "pl-2"}`}
+      className={`bg-secondary text-secondary-foreground mt-3 flex items-center rounded-lg ${isDesktop ? "mx-8 gap-2 px-2" : "pl-2"}`}
     >
       <FaCalendarAlt />
       <div className="flex flex-wrap items-center">
@@ -478,7 +478,7 @@ function CustomTimeSelector({
             />
             <SelectSeparator className="bg-secondary" />
             <input
-              className="text-md mx-4 w-full border border-input bg-background p-1 text-secondary-foreground hover:bg-accent hover:text-accent-foreground dark:scheme-dark"
+              className="text-md border-input bg-background text-secondary-foreground hover:bg-accent hover:text-accent-foreground mx-4 w-full border p-1 dark:scheme-dark"
               id="startTime"
               type="time"
               value={startClock}
@@ -504,7 +504,7 @@ function CustomTimeSelector({
             />
           </PopoverContent>
         </Popover>
-        <FaArrowRight className="size-4 text-primary" />
+        <FaArrowRight className="text-primary size-4" />
         <Popover
           open={endOpen}
           onOpenChange={(open) => {
@@ -544,7 +544,7 @@ function CustomTimeSelector({
             />
             <SelectSeparator className="bg-secondary" />
             <input
-              className="text-md mx-4 w-full border border-input bg-background p-1 text-secondary-foreground hover:bg-accent hover:text-accent-foreground dark:scheme-dark"
+              className="text-md border-input bg-background text-secondary-foreground hover:bg-accent hover:text-accent-foreground mx-4 w-full border p-1 dark:scheme-dark"
               id="startTime"
               type="time"
               value={endClock}

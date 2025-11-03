@@ -331,16 +331,16 @@ export default function NotificationView({
 
   if (!("Notification" in window) || !window.isSecureContext) {
     return (
-      <div className="scrollbar-container order-last mb-10 mt-2 flex h-full w-full flex-col overflow-y-auto pb-2 md:order-0">
+      <div className="scrollbar-container order-last mt-2 mb-10 flex h-full w-full flex-col overflow-y-auto pb-2 md:order-0">
         <div className="grid w-full grid-cols-1 gap-4 md:grid-cols-2">
           <div className="col-span-1">
             <Heading as="h4" className="mb-2">
               {t("notification.notificationSettings.title")}
             </Heading>
             <div className="max-w-6xl">
-              <div className="mb-5 mt-2 flex max-w-5xl flex-col gap-2 text-sm text-primary-variant">
+              <div className="text-primary-variant mt-2 mb-5 flex max-w-5xl flex-col gap-2 text-sm">
                 <p>{t("notification.notificationSettings.desc")}</p>
-                <div className="flex items-center text-primary">
+                <div className="text-primary flex items-center">
                   <Link
                     to={getLocaleDocUrl("configuration/notifications")}
                     target="_blank"
@@ -385,7 +385,7 @@ export default function NotificationView({
     <>
       <div className="flex size-full flex-col md:flex-row">
         <Toaster position="top-center" closeButton={true} />
-        <div className="scrollbar-container order-last mb-10 mt-2 flex h-full w-full flex-col overflow-y-auto px-2 md:order-0">
+        <div className="scrollbar-container order-last mt-2 mb-10 flex h-full w-full flex-col overflow-y-auto px-2 md:order-0">
           <div
             className={cn(
               isAdmin && "grid w-full grid-cols-1 gap-4 md:grid-cols-2",
@@ -397,9 +397,9 @@ export default function NotificationView({
               </Heading>
 
               <div className="max-w-6xl">
-                <div className="mb-5 mt-2 flex max-w-5xl flex-col gap-2 text-sm text-primary-variant">
+                <div className="text-primary-variant mt-2 mb-5 flex max-w-5xl flex-col gap-2 text-sm">
                   <p>{t("notification.notificationSettings.desc")}</p>
-                  <div className="flex items-center text-primary">
+                  <div className="text-primary flex items-center">
                     <Link
                       to={getLocaleDocUrl("configuration/notifications")}
                       target="_blank"
@@ -427,7 +427,7 @@ export default function NotificationView({
                           <FormLabel>{t("notification.email.title")}</FormLabel>
                           <FormControl>
                             <Input
-                              className="text-md w-full border border-input bg-background p-2 hover:bg-accent hover:text-accent-foreground dark:scheme-dark md:w-72"
+                              className="text-md border-input bg-background hover:bg-accent hover:text-accent-foreground w-full border p-2 md:w-72 dark:scheme-dark"
                               placeholder={t("notification.email.placeholder")}
                               {...field}
                             />
@@ -452,7 +452,7 @@ export default function NotificationView({
                                   {t("notification.cameras.title")}
                                 </FormLabel>
                               </div>
-                              <div className="max-w-md space-y-2 rounded-lg bg-secondary p-4">
+                              <div className="bg-secondary max-w-md space-y-2 rounded-lg p-4">
                                 <FormField
                                   control={form.control}
                                   name="allEnabled"
@@ -501,7 +501,7 @@ export default function NotificationView({
                               </div>
                             </>
                           ) : (
-                            <div className="font-normal text-destructive">
+                            <div className="text-destructive font-normal">
                               {t("notification.cameras.noCameras")}
                             </div>
                           )}
@@ -554,7 +554,7 @@ export default function NotificationView({
                 >
                   <Separator
                     className={cn(
-                      "my-2 flex bg-secondary",
+                      "bg-secondary my-2 flex",
                       isAdmin && "md:hidden",
                     )}
                   />
@@ -617,18 +617,18 @@ export default function NotificationView({
               {isAdmin && notificationCameras.length > 0 && (
                 <div className="mt-4 gap-2 space-y-6">
                   <div className="space-y-3">
-                    <Separator className="my-2 flex bg-secondary" />
+                    <Separator className="bg-secondary my-2 flex" />
                     <Heading as="h4" className="my-2">
                       {t("notification.globalSettings.title")}
                     </Heading>
                     <div className="max-w-xl">
-                      <div className="mb-5 mt-2 flex flex-col gap-2 text-sm text-primary-variant">
+                      <div className="text-primary-variant mt-2 mb-5 flex flex-col gap-2 text-sm">
                         <p>{t("notification.globalSettings.desc")}</p>
                       </div>
                     </div>
 
                     <div className="flex max-w-2xl flex-col gap-2.5">
-                      <div className="rounded-lg bg-secondary p-5">
+                      <div className="bg-secondary rounded-lg p-5">
                         <div className="grid gap-6">
                           {notificationCameras.map((item) => (
                             <CameraNotificationSwitch
@@ -716,23 +716,23 @@ export function CameraNotificationSwitch({
       <div className="flex flex-col items-start justify-start">
         <div className="flex flex-row items-center justify-start gap-3">
           {!isSuspended ? (
-            <LuCheck className="size-6 text-success" />
+            <LuCheck className="text-success size-6" />
           ) : (
-            <LuX className="size-6 text-danger" />
+            <LuX className="text-danger size-6" />
           )}
           <div className="flex flex-col">
             <CameraNameLabel
-              className="text-md cursor-pointer text-primary smart-capitalize"
+              className="text-md text-primary smart-capitalize cursor-pointer"
               htmlFor="camera"
               camera={camera}
             />
 
             {!isSuspended ? (
-              <div className="flex flex-row items-center gap-2 text-sm text-success">
+              <div className="text-success flex flex-row items-center gap-2 text-sm">
                 {t("notification.active")}
               </div>
             ) : (
-              <div className="flex flex-row items-center gap-2 text-sm text-danger">
+              <div className="text-danger flex flex-row items-center gap-2 text-sm">
                 {t("notification.suspended", {
                   time: formatSuspendedUntil(notificationSuspendUntil),
                 })}

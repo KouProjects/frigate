@@ -370,11 +370,11 @@ export default function FaceLibrary() {
         />
         {selectedFaces?.length > 0 ? (
           <div className="flex items-center justify-center gap-2">
-            <div className="mx-1 flex w-48 items-center justify-center text-sm text-muted-foreground">
+            <div className="text-muted-foreground mx-1 flex w-48 items-center justify-center text-sm">
               <div className="p-1">{`${selectedFaces.length} selected`}</div>
               <div className="p-1">{"|"}</div>
               <div
-                className="cursor-pointer p-2 text-primary hover:rounded-lg hover:bg-secondary"
+                className="text-primary hover:bg-secondary cursor-pointer p-2 hover:rounded-lg"
                 onClick={() => setSelectedFaces([])}
               >
                 {t("button.unselect", { ns: "common" })}
@@ -386,19 +386,19 @@ export default function FaceLibrary() {
                 setDeleteDialogOpen({ name: pageToggle, ids: selectedFaces })
               }
             >
-              <LuTrash2 className="size-7 rounded-md p-1 text-secondary-foreground" />
+              <LuTrash2 className="text-secondary-foreground size-7 rounded-md p-1" />
               {isDesktop && t("button.deleteFaceAttempts")}
             </Button>
           </div>
         ) : (
           <div className="flex items-center justify-center gap-2">
             <Button className="flex gap-2" onClick={() => setAddFace(true)}>
-              <LuScanFace className="size-7 rounded-md p-1 text-secondary-foreground" />
+              <LuScanFace className="text-secondary-foreground size-7 rounded-md p-1" />
               {isDesktop && t("button.addFace")}
             </Button>
             {pageToggle != "train" && (
               <Button className="flex gap-2" onClick={() => setUpload(true)}>
-                <LuImagePlus className="size-7 rounded-md p-1 text-secondary-foreground" />
+                <LuImagePlus className="text-secondary-foreground size-7 rounded-md p-1" />
                 {isDesktop && t("button.uploadImage")}
               </Button>
             )}
@@ -406,7 +406,7 @@ export default function FaceLibrary() {
         )}
       </div>
       {pageToggle && faceImages?.length === 0 && pageToggle !== "train" ? (
-        <div className="absolute left-1/2 top-1/2 flex -translate-x-1/2 -translate-y-1/2 flex-col items-center justify-center text-center">
+        <div className="absolute top-1/2 left-1/2 flex -translate-x-1/2 -translate-y-1/2 flex-col items-center justify-center text-center">
           <LuFolderCheck className="size-16" />
           {t("nofaces")}
         </div>
@@ -526,9 +526,9 @@ function LibrarySelector({
 
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
-          <Button className="flex justify-between smart-capitalize">
+          <Button className="smart-capitalize flex justify-between">
             {pageToggle == "train" ? t("train.title") : pageToggle}
-            <span className="ml-2 text-primary-variant">
+            <span className="text-primary-variant ml-2">
               ({(pageToggle && faceData?.[pageToggle]?.length) || 0})
             </span>
           </Button>
@@ -550,7 +550,7 @@ function LibrarySelector({
           {trainImages.length > 0 && faces.length > 0 && (
             <>
               <DropdownMenuSeparator />
-              <div className="mb-1 ml-1.5 text-xs text-secondary-foreground">
+              <div className="text-secondary-foreground mb-1 ml-1.5 text-xs">
                 {t("collections")}
               </div>
             </>
@@ -565,7 +565,7 @@ function LibrarySelector({
                 onClick={() => setPageToggle(face)}
               >
                 {face}
-                <span className="ml-2 text-muted-foreground">
+                <span className="text-muted-foreground ml-2">
                   ({faceData?.[face].length})
                 </span>
               </div>
@@ -581,7 +581,7 @@ function LibrarySelector({
                         setRenameFace(face);
                       }}
                     >
-                      <LuPencil className="size-4 text-primary" />
+                      <LuPencil className="text-primary size-4" />
                     </Button>
                   </TooltipTrigger>
                   <TooltipPortal>
@@ -599,7 +599,7 @@ function LibrarySelector({
                         setConfirmDelete(face);
                       }}
                     >
-                      <LuTrash2 className="size-4 text-destructive" />
+                      <LuTrash2 className="text-destructive size-4" />
                     </Button>
                   </TooltipTrigger>
                   <TooltipPortal>
@@ -685,7 +685,7 @@ function TrainingGrid({
 
   if (attemptImages.length == 0) {
     return (
-      <div className="absolute left-1/2 top-1/2 flex -translate-x-1/2 -translate-y-1/2 flex-col items-center justify-center text-center">
+      <div className="absolute top-1/2 left-1/2 flex -translate-x-1/2 -translate-y-1/2 flex-col items-center justify-center text-center">
         <LuFolderCheck className="size-16" />
         {t("train.empty")}
       </div>
@@ -696,7 +696,7 @@ function TrainingGrid({
     <div
       ref={contentRef}
       className={cn(
-        "scrollbar-container grid grid-cols-2 gap-3 overflow-y-scroll p-1 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8 2xl:grid-cols-10 3xl:grid-cols-12",
+        "scrollbar-container 3xl:grid-cols-12 grid grid-cols-2 gap-3 overflow-y-scroll p-1 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8 2xl:grid-cols-10",
       )}
     >
       {Object.entries(faceGroups).map(([key, group]) => {
@@ -902,7 +902,7 @@ function FaceGrid({
 
   if (sortedFaces.length === 0) {
     return (
-      <div className="absolute left-1/2 top-1/2 flex -translate-x-1/2 -translate-y-1/2 flex-col items-center justify-center text-center">
+      <div className="absolute top-1/2 left-1/2 flex -translate-x-1/2 -translate-y-1/2 flex-col items-center justify-center text-center">
         <LuFolderCheck className="size-16" />
         {t("nofaces")}
       </div>
@@ -913,7 +913,7 @@ function FaceGrid({
     <div
       ref={contentRef}
       className={cn(
-        "scrollbar-container grid grid-cols-2 gap-2 overflow-y-scroll p-1 md:grid-cols-4 xl:grid-cols-8 2xl:grid-cols-10 3xl:grid-cols-12",
+        "scrollbar-container 3xl:grid-cols-12 grid grid-cols-2 gap-2 overflow-y-scroll p-1 md:grid-cols-4 xl:grid-cols-8 2xl:grid-cols-10",
       )}
     >
       {sortedFaces.map((image: string) => (
@@ -931,7 +931,7 @@ function FaceGrid({
             <Tooltip>
               <TooltipTrigger>
                 <LuTrash2
-                  className="size-5 cursor-pointer text-gray-200 hover:text-danger"
+                  className="hover:text-danger size-5 cursor-pointer text-gray-200"
                   onClick={(e) => {
                     e.stopPropagation();
                     onDelete(pageToggle, [image]);

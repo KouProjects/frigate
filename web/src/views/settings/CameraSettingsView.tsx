@@ -308,7 +308,7 @@ export default function CameraSettingsView({
     <>
       <div className="flex size-full flex-col md:flex-row">
         <Toaster position="top-center" closeButton={true} />
-        <div className="scrollbar-container order-last mb-10 mt-2 flex h-full w-full flex-col overflow-y-auto pb-2 md:order-0">
+        <div className="scrollbar-container order-last mt-2 mb-10 flex h-full w-full flex-col overflow-y-auto pb-2 md:order-0">
           {viewMode === "settings" ? (
             <>
               <Heading as="h4" className="mb-2">
@@ -319,7 +319,7 @@ export default function CameraSettingsView({
                 <Trans ns="views/settings">cameraReview.review.title</Trans>
               </Heading>
 
-              <div className="mb-5 mt-2 flex max-w-5xl flex-col gap-2 space-y-3 text-sm text-primary-variant">
+              <div className="text-primary-variant mt-2 mb-5 flex max-w-5xl flex-col gap-2 space-y-3 text-sm">
                 <div className="flex flex-row items-center">
                   <Switch
                     id="alerts-enabled"
@@ -355,14 +355,14 @@ export default function CameraSettingsView({
                       </Label>
                     </div>
                   </div>
-                  <div className="mt-3 text-sm text-muted-foreground">
+                  <div className="text-muted-foreground mt-3 text-sm">
                     <Trans ns="views/settings">cameraReview.review.desc</Trans>
                   </div>
                 </div>
               </div>
               {cameraConfig?.objects?.genai?.enabled_in_config && (
                 <>
-                  <Separator className="my-2 flex bg-secondary" />
+                  <Separator className="bg-secondary my-2 flex" />
 
                   <Heading as="h4" className="my-2">
                     <Trans ns="views/settings">
@@ -370,7 +370,7 @@ export default function CameraSettingsView({
                     </Trans>
                   </Heading>
 
-                  <div className="mb-5 mt-2 flex max-w-5xl flex-col gap-2 space-y-3 text-sm text-primary-variant">
+                  <div className="text-primary-variant mt-2 mb-5 flex max-w-5xl flex-col gap-2 space-y-3 text-sm">
                     <div className="flex flex-row items-center">
                       <Switch
                         id="alerts-enabled"
@@ -386,7 +386,7 @@ export default function CameraSettingsView({
                         </Label>
                       </div>
                     </div>
-                    <div className="mt-3 text-sm text-muted-foreground">
+                    <div className="text-muted-foreground mt-3 text-sm">
                       <Trans ns="views/settings">
                         cameraReview.object_descriptions.desc
                       </Trans>
@@ -397,7 +397,7 @@ export default function CameraSettingsView({
 
               {cameraConfig?.review?.genai?.enabled_in_config && (
                 <>
-                  <Separator className="my-2 flex bg-secondary" />
+                  <Separator className="bg-secondary my-2 flex" />
 
                   <Heading as="h4" className="my-2">
                     <Trans ns="views/settings">
@@ -405,7 +405,7 @@ export default function CameraSettingsView({
                     </Trans>
                   </Heading>
 
-                  <div className="mb-5 mt-2 flex max-w-5xl flex-col gap-2 space-y-3 text-sm text-primary-variant">
+                  <div className="text-primary-variant mt-2 mb-5 flex max-w-5xl flex-col gap-2 space-y-3 text-sm">
                     <div className="flex flex-row items-center">
                       <Switch
                         id="alerts-enabled"
@@ -421,7 +421,7 @@ export default function CameraSettingsView({
                         </Label>
                       </div>
                     </div>
-                    <div className="mt-3 text-sm text-muted-foreground">
+                    <div className="text-muted-foreground mt-3 text-sm">
                       <Trans ns="views/settings">
                         cameraReview.review_descriptions.desc
                       </Trans>
@@ -430,7 +430,7 @@ export default function CameraSettingsView({
                 </>
               )}
 
-              <Separator className="my-2 flex bg-secondary" />
+              <Separator className="bg-secondary my-2 flex" />
 
               <Heading as="h4" className="my-2">
                 <Trans ns="views/settings">
@@ -439,13 +439,13 @@ export default function CameraSettingsView({
               </Heading>
 
               <div className="max-w-6xl">
-                <div className="mb-5 mt-2 flex max-w-5xl flex-col gap-2 text-sm text-primary-variant">
+                <div className="text-primary-variant mt-2 mb-5 flex max-w-5xl flex-col gap-2 text-sm">
                   <p>
                     <Trans ns="views/settings">
                       cameraReview.reviewClassification.desc
                     </Trans>
                   </p>
-                  <div className="flex items-center text-primary">
+                  <div className="text-primary flex items-center">
                     <Link
                       to={getLocaleDocUrl("configuration/review")}
                       target="_blank"
@@ -484,7 +484,7 @@ export default function CameraSettingsView({
                                   <Trans ns="views/settings">
                                     camera.review.alerts
                                   </Trans>
-                                  <MdCircle className="ml-3 size-2 text-severity_alert" />
+                                  <MdCircle className="text-severity_alert ml-3 size-2" />
                                 </FormLabel>
                                 <FormDescription>
                                   <Trans ns="views/settings">
@@ -492,7 +492,7 @@ export default function CameraSettingsView({
                                   </Trans>
                                 </FormDescription>
                               </div>
-                              <div className="max-w-md rounded-lg bg-secondary p-4 md:max-w-full">
+                              <div className="bg-secondary max-w-md rounded-lg p-4 md:max-w-full">
                                 {zones?.map((zone) => (
                                   <FormField
                                     key={zone.name}
@@ -501,11 +501,11 @@ export default function CameraSettingsView({
                                     render={({ field }) => (
                                       <FormItem
                                         key={zone.name}
-                                        className="mb-3 flex flex-row items-center space-x-3 space-y-0 last:mb-0"
+                                        className="mb-3 flex flex-row items-center space-y-0 space-x-3 last:mb-0"
                                       >
                                         <FormControl>
                                           <Checkbox
-                                            className="size-5 text-white accent-white data-[state=checked]:bg-selected data-[state=checked]:text-white"
+                                            className="data-[state=checked]:bg-selected size-5 text-white accent-white data-[state=checked]:text-white"
                                             checked={field.value?.includes(
                                               zone.name,
                                             )}
@@ -525,7 +525,7 @@ export default function CameraSettingsView({
                                             }}
                                           />
                                         </FormControl>
-                                        <FormLabel className="font-normal smart-capitalize">
+                                        <FormLabel className="smart-capitalize font-normal">
                                           {zone.name.replaceAll("_", " ")}
                                         </FormLabel>
                                       </FormItem>
@@ -535,7 +535,7 @@ export default function CameraSettingsView({
                               </div>
                             </>
                           ) : (
-                            <div className="font-normal text-destructive">
+                            <div className="text-destructive font-normal">
                               <Trans ns="views/settings">
                                 cameraReview.reviewClassification.noDefinedZones
                               </Trans>
@@ -583,7 +583,7 @@ export default function CameraSettingsView({
                                   <Trans ns="views/settings">
                                     camera.review.detections
                                   </Trans>
-                                  <MdCircle className="ml-3 size-2 text-severity_detection" />
+                                  <MdCircle className="text-severity_detection ml-3 size-2" />
                                 </FormLabel>
                                 {selectDetections && (
                                   <FormDescription>
@@ -595,7 +595,7 @@ export default function CameraSettingsView({
                               </div>
 
                               {selectDetections && (
-                                <div className="max-w-md rounded-lg bg-secondary p-4 md:max-w-full">
+                                <div className="bg-secondary max-w-md rounded-lg p-4 md:max-w-full">
                                   {zones?.map((zone) => (
                                     <FormField
                                       key={zone.name}
@@ -604,11 +604,11 @@ export default function CameraSettingsView({
                                       render={({ field }) => (
                                         <FormItem
                                           key={zone.name}
-                                          className="mb-3 flex flex-row items-center space-x-3 space-y-0 last:mb-0"
+                                          className="mb-3 flex flex-row items-center space-y-0 space-x-3 last:mb-0"
                                         >
                                           <FormControl>
                                             <Checkbox
-                                              className="size-5 text-white accent-white data-[state=checked]:bg-selected data-[state=checked]:text-white"
+                                              className="data-[state=checked]:bg-selected size-5 text-white accent-white data-[state=checked]:text-white"
                                               checked={field.value?.includes(
                                                 zone.name,
                                               )}
@@ -627,7 +627,7 @@ export default function CameraSettingsView({
                                               }}
                                             />
                                           </FormControl>
-                                          <FormLabel className="font-normal smart-capitalize">
+                                          <FormLabel className="smart-capitalize font-normal">
                                             {zone.name.replaceAll("_", " ")}
                                           </FormLabel>
                                         </FormItem>
@@ -641,14 +641,14 @@ export default function CameraSettingsView({
                               <div className="mb-0 flex flex-row items-center gap-2">
                                 <Checkbox
                                   id="select-detections"
-                                  className="size-5 text-white accent-white data-[state=checked]:bg-selected data-[state=checked]:text-white"
+                                  className="data-[state=checked]:bg-selected size-5 text-white accent-white data-[state=checked]:text-white"
                                   checked={selectDetections}
                                   onCheckedChange={handleCheckedChange}
                                 />
                                 <div className="grid gap-1.5 leading-none">
                                   <label
                                     htmlFor="select-detections"
-                                    className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                                    className="text-sm leading-none font-medium peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
                                   >
                                     <Trans ns="views/settings">
                                       cameraReview.reviewClassification.limitDetections
@@ -712,7 +712,7 @@ export default function CameraSettingsView({
                       )}
                     />
                   </div>
-                  <Separator className="my-2 flex bg-secondary" />
+                  <Separator className="bg-secondary my-2 flex" />
 
                   <div className="flex w-full flex-row items-center gap-2 pt-2 md:w-[25%]">
                     <Button
@@ -754,7 +754,7 @@ export default function CameraSettingsView({
                   size="sm"
                   onClick={handleBack}
                 >
-                  <IoMdArrowRoundBack className="size-5 text-secondary-foreground" />
+                  <IoMdArrowRoundBack className="text-secondary-foreground size-5" />
                   {isDesktop && (
                     <div className="text-primary">
                       {t("button.back", { ns: "common" })}

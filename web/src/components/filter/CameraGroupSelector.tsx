@@ -151,13 +151,13 @@ export function CameraGroupSelector({ className }: CameraGroupSelectorProps) {
           <Tooltip open={tooltip == "default"}>
             <TooltipTrigger asChild>
               <Button
-                className={
-                  group == "default"
-                    ? "bg-blue-900 bg-opacity-60 text-selected focus:bg-blue-900 focus:bg-opacity-60"
-                    : "bg-secondary text-secondary-foreground focus:bg-secondary focus:text-secondary-foreground"
-                }
+                // className={
+                //   group == "default"
+                //     ? "bg-blue-900 bg-opacity-60 text-selected focus:bg-blue-900 focus:bg-opacity-60"
+                //     : "bg-secondary text-secondary-foreground focus:bg-secondary focus:text-secondary-foreground"
+                // }
                 aria-label={t("menu.live.allCameras", { ns: "common" })}
-                size="xs"
+                size="icon"
                 onClick={() => (group ? setGroup("default", true) : null)}
                 onMouseEnter={() => (isDesktop ? showTooltip("default") : null)}
                 onMouseLeave={() => (isDesktop ? showTooltip(undefined) : null)}
@@ -176,13 +176,13 @@ export function CameraGroupSelector({ className }: CameraGroupSelectorProps) {
               <Tooltip key={name} open={tooltip == name}>
                 <TooltipTrigger asChild>
                   <Button
-                    className={
-                      group == name
-                        ? "bg-blue-900 bg-opacity-60 text-selected focus:bg-blue-900 focus:bg-opacity-60"
-                        : "bg-secondary text-secondary-foreground"
-                    }
+                    // className={
+                    //   group == name
+                    //     ? "bg-blue-900 bg-opacity-60 text-selected focus:bg-blue-900 focus:bg-opacity-60"
+                    //     : "bg-secondary text-secondary-foreground"
+                    // }
                     aria-label={t("group.label")}
-                    size="xs"
+                    size="icon"
                     onClick={() => setGroup(name, group != "default")}
                     onMouseEnter={() => (isDesktop ? showTooltip(name) : null)}
                     onMouseLeave={() =>
@@ -209,10 +209,10 @@ export function CameraGroupSelector({ className }: CameraGroupSelectorProps) {
           <Button
             className="bg-secondary text-muted-foreground"
             aria-label={t("group.add")}
-            size="xs"
+            size="icon"
             onClick={() => setAddGroup(true)}
           >
-            <LuPlus className="size-4 text-primary" />
+            <LuPlus className="text-primary size-4" />
           </Button>
           {isMobile && <ScrollBar orientation="horizontal" className="h-0" />}
         </div>
@@ -374,15 +374,15 @@ function NewGroupDialog({
                 <div
                   className={cn(
                     "absolute",
-                    isDesktop && "right-6 top-10",
-                    isMobile && "absolute right-0 top-4",
+                    isDesktop && "top-10 right-6",
+                    isMobile && "absolute top-4 right-0",
                   )}
                 >
                   <Button
                     size="sm"
                     className={cn(
                       isDesktop &&
-                        "size-6 rounded-md bg-secondary-foreground p-1 text-background",
+                        "bg-secondary-foreground text-background size-6 rounded-md p-1",
                       isMobile && "text-secondary-foreground",
                     )}
                     aria-label={t("group.add")}
@@ -821,7 +821,7 @@ export function CameraGroupEdit({
               <FormLabel>{t("group.name.label")}</FormLabel>
               <FormControl>
                 <Input
-                  className="text-md w-full border border-input bg-background p-2 hover:bg-accent hover:text-accent-foreground dark:scheme-dark"
+                  className="text-md border-input bg-background hover:bg-accent hover:text-accent-foreground w-full border p-2 dark:scheme-dark"
                   placeholder={t("group.name.placeholder")}
                   {...field}
                 />
@@ -831,7 +831,7 @@ export function CameraGroupEdit({
           )}
         />
 
-        <Separator className="my-2 flex bg-secondary" />
+        <Separator className="bg-secondary my-2 flex" />
         <div className="scrollbar-container max-h-[40dvh] overflow-y-auto">
           <FormField
             control={form.control}
@@ -857,7 +857,7 @@ export function CameraGroupEdit({
                   <FormControl key={camera}>
                     <div className="flex items-center justify-between gap-1">
                       <CameraNameLabel
-                        className="mx-2 w-full cursor-pointer text-primary smart-capitalize"
+                        className="text-primary smart-capitalize mx-2 w-full cursor-pointer"
                         htmlFor={camera.replaceAll("_", " ")}
                         camera={camera}
                       />
@@ -921,7 +921,7 @@ export function CameraGroupEdit({
           />
         </div>
 
-        <Separator className="my-2 flex bg-secondary" />
+        <Separator className="bg-secondary my-2 flex" />
         <FormField
           control={form.control}
           name="icon"
@@ -946,7 +946,7 @@ export function CameraGroupEdit({
           )}
         />
 
-        <Separator className="my-2 flex bg-secondary" />
+        <Separator className="bg-secondary my-2 flex" />
 
         <div className="flex flex-row gap-2 py-5 md:pb-0">
           <Button

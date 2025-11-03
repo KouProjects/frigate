@@ -433,7 +433,7 @@ export default function MasksAndZonesView({
       {cameraConfig && editingPolygons && (
         <div className="flex size-full flex-col md:flex-row">
           <Toaster position="top-center" closeButton={true} />
-          <div className="scrollbar-container order-last mb-10 mt-2 flex h-full w-full flex-col overflow-y-auto rounded-lg border border-secondary-foreground bg-background_alt p-2 md:order-0 md:mr-3 md:mt-0 md:w-3/12">
+          <div className="scrollbar-container border-secondary-foreground bg-background_alt order-last mt-2 mb-10 flex h-full w-full flex-col overflow-y-auto rounded-lg border p-2 md:order-0 md:mt-0 md:mr-3 md:w-3/12">
             {editPane == "zone" && (
               <ZoneEditPane
                 polygons={editingPolygons}
@@ -488,7 +488,7 @@ export default function MasksAndZonesView({
                 <div className="flex w-full flex-col">
                   {(selectedZoneMask === undefined ||
                     selectedZoneMask.includes("zone" as PolygonType)) && (
-                    <div className="mt-0 pt-0 last:border-b last:border-secondary last:pb-3">
+                    <div className="last:border-secondary mt-0 pt-0 last:border-b last:pb-3">
                       <div className="my-3 flex flex-row items-center justify-between">
                         <HoverCard>
                           <HoverCardTrigger asChild>
@@ -497,9 +497,9 @@ export default function MasksAndZonesView({
                             </div>
                           </HoverCardTrigger>
                           <HoverCardContent>
-                            <div className="my-2 flex flex-col gap-2 text-sm text-primary-variant">
+                            <div className="text-primary-variant my-2 flex flex-col gap-2 text-sm">
                               <p>{t("masksAndZones.zones.desc.title")}</p>
-                              <div className="flex items-center text-primary">
+                              <div className="text-primary flex items-center">
                                 <Link
                                   to={getLocaleDocUrl("configuration/zones")}
                                   target="_blank"
@@ -517,7 +517,7 @@ export default function MasksAndZonesView({
                           <TooltipTrigger asChild>
                             <Button
                               variant="secondary"
-                              className="size-6 rounded-md bg-secondary-foreground p-1 text-background"
+                              className="bg-secondary-foreground text-background size-6 rounded-md p-1"
                               aria-label={t("masksAndZones.zones.add")}
                               onClick={() => {
                                 setEditPane("zone");
@@ -554,7 +554,7 @@ export default function MasksAndZonesView({
                     selectedZoneMask.includes(
                       "motion_mask" as PolygonType,
                     )) && (
-                    <div className="mt-3 border-t border-secondary pt-3 first:mt-0 first:border-transparent first:pt-0 last:border-b last:pb-3">
+                    <div className="border-secondary mt-3 border-t pt-3 first:mt-0 first:border-transparent first:pt-0 last:border-b last:pb-3">
                       <div className="my-3 flex flex-row items-center justify-between">
                         <HoverCard>
                           <HoverCardTrigger asChild>
@@ -563,9 +563,9 @@ export default function MasksAndZonesView({
                             </div>
                           </HoverCardTrigger>
                           <HoverCardContent>
-                            <div className="my-2 flex flex-col gap-2 text-sm text-primary-variant">
+                            <div className="text-primary-variant my-2 flex flex-col gap-2 text-sm">
                               <p>{t("masksAndZones.motionMasks.desc.title")}</p>
-                              <div className="flex items-center text-primary">
+                              <div className="text-primary flex items-center">
                                 <Link
                                   to={getLocaleDocUrl(
                                     "configuration/masks#motion-masks",
@@ -585,7 +585,7 @@ export default function MasksAndZonesView({
                           <TooltipTrigger asChild>
                             <Button
                               variant="secondary"
-                              className="size-6 rounded-md bg-secondary-foreground p-1 text-background"
+                              className="bg-secondary-foreground text-background size-6 rounded-md p-1"
                               aria-label={t("masksAndZones.motionMasks.add")}
                               onClick={() => {
                                 setEditPane("motion_mask");
@@ -624,7 +624,7 @@ export default function MasksAndZonesView({
                     selectedZoneMask.includes(
                       "object_mask" as PolygonType,
                     )) && (
-                    <div className="mt-3 border-t border-secondary pt-3 first:mt-0 first:border-transparent first:pt-0 last:border-b last:pb-3">
+                    <div className="border-secondary mt-3 border-t pt-3 first:mt-0 first:border-transparent first:pt-0 last:border-b last:pb-3">
                       <div className="my-3 flex flex-row items-center justify-between">
                         <HoverCard>
                           <HoverCardTrigger asChild>
@@ -633,9 +633,9 @@ export default function MasksAndZonesView({
                             </div>
                           </HoverCardTrigger>
                           <HoverCardContent>
-                            <div className="my-2 flex flex-col gap-2 text-sm text-primary-variant">
+                            <div className="text-primary-variant my-2 flex flex-col gap-2 text-sm">
                               <p>{t("masksAndZones.objectMasks.desc.title")}</p>
-                              <div className="flex items-center text-primary">
+                              <div className="text-primary flex items-center">
                                 <Link
                                   to={getLocaleDocUrl(
                                     "configuration/masks#object-filter-masks",
@@ -655,7 +655,7 @@ export default function MasksAndZonesView({
                           <TooltipTrigger asChild>
                             <Button
                               variant="secondary"
-                              className="size-6 rounded-md bg-secondary-foreground p-1 text-background"
+                              className="bg-secondary-foreground text-background size-6 rounded-md p-1"
                               aria-label={t("masksAndZones.objectMasks.add")}
                               onClick={() => {
                                 setEditPane("object_mask");

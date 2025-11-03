@@ -105,7 +105,7 @@ export default function EnrichmentMetrics({
   return (
     <>
       <div className="scrollbar-container mt-4 flex size-full flex-col overflow-y-auto">
-        <div className="text-sm font-medium text-muted-foreground">
+        <div className="text-muted-foreground text-sm font-medium">
           {t("enrichments.title")}
         </div>
         <div
@@ -117,8 +117,8 @@ export default function EnrichmentMetrics({
           {statsHistory.length != 0 ? (
             <>
               {embeddingInferenceTimeSeries.map((series) => (
-                <div className="rounded-lg bg-background_alt p-2.5 md:rounded-2xl">
-                  <div className="mb-5 smart-capitalize">{series.name}</div>
+                <div className="bg-background_alt rounded-lg p-2.5 md:rounded-2xl">
+                  <div className="smart-capitalize mb-5">{series.name}</div>
                   {series.name.endsWith("Speed") ? (
                     <ThresholdBarGraph
                       key={series.name}

@@ -122,7 +122,7 @@ export const ClassificationCard = forwardRef<
       <img
         ref={imgRef}
         className={cn(
-          "absolute bottom-0 left-0 right-0 top-0 size-full",
+          "absolute top-0 right-0 bottom-0 left-0 size-full",
           imgClassName,
           isMobile && "w-full",
         )}
@@ -132,18 +132,18 @@ export const ClassificationCard = forwardRef<
       />
       <ImageShadowOverlay upperClassName="z-0" lowerClassName="h-[30%] z-0" />
       {count && (
-        <div className="absolute right-2 top-2 flex flex-row items-center gap-1">
+        <div className="absolute top-2 right-2 flex flex-row items-center gap-1">
           <div className="text-gray-200">{count}</div>{" "}
           <HiSquare2Stack className="text-gray-200" />
         </div>
       )}
       {!count && imageArea != undefined && (
-        <div className="absolute right-1 top-1 rounded-lg bg-black/50 px-2 py-1 text-xs text-white">
+        <div className="absolute top-1 right-1 rounded-lg bg-black/50 px-2 py-1 text-xs text-white">
           {t("information.pixels", { ns: "common", area: imageArea })}
         </div>
       )}
-      <div className="absolute bottom-0 left-0 right-0 h-[50%] bg-linear-to-t from-black/60 to-transparent" />
-      <div className="absolute bottom-0 flex w-full select-none flex-row items-center justify-between gap-2 p-2">
+      <div className="absolute right-0 bottom-0 left-0 h-[50%] bg-linear-to-t from-black/60 to-transparent" />
+      <div className="absolute bottom-0 flex w-full flex-row items-center justify-between gap-2 p-2 select-none">
         <div
           className={cn(
             "flex flex-col items-start text-white",
@@ -292,7 +292,7 @@ export function GroupedClassificationCard({
         <Content
           className={cn(
             "",
-            isDesktop && "min-w-[50%] max-w-[65%]",
+            isDesktop && "max-w-[65%] min-w-[50%]",
             isMobile && "flex flex-col",
           )}
           onOpenAutoFocus={(e) => e.preventDefault()}
@@ -326,7 +326,7 @@ export function GroupedClassificationCard({
                 <ContentDescription className={cn("", isMobile && "px-2")}>
                   {time && (
                     <TimeAgo
-                      className="text-sm text-secondary-foreground"
+                      className="text-secondary-foreground text-sm"
                       time={time}
                       dense
                     />
@@ -345,7 +345,7 @@ export function GroupedClassificationCard({
                             navigate(`/explore?event_id=${event.id}`);
                           }}
                         >
-                          <LuSearch className="size-4 text-secondary-foreground" />
+                          <LuSearch className="text-secondary-foreground size-4" />
                         </div>
                       </TooltipTrigger>
                       <TooltipPortal>

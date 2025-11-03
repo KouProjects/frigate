@@ -410,7 +410,7 @@ export default function AuthenticationView({
           <Heading as="h4" className="mb-2">
             {t("users.management.title")}
           </Heading>
-          <p className="text-sm text-muted-foreground">
+          <p className="text-muted-foreground text-sm">
             {t("users.management.desc")}
           </p>
         </div>
@@ -425,10 +425,10 @@ export default function AuthenticationView({
         </Button>
       </div>
       <div className="mb-6 flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
-        <div className="scrollbar-container flex-1 overflow-hidden rounded-lg border border-border bg-background_alt md:mr-3">
+        <div className="scrollbar-container border-border bg-background_alt flex-1 overflow-hidden rounded-lg border md:mr-3">
           <div className="h-full overflow-auto">
             <Table>
-              <TableHeader className="sticky top-0 bg-muted/50">
+              <TableHeader className="bg-muted/50 sticky top-0">
                 <TableRow>
                   <TableHead className="w-[250px]">
                     {t("users.table.username")}
@@ -452,9 +452,9 @@ export default function AuthenticationView({
                       <TableCell className="font-medium">
                         <div className="flex items-center gap-2">
                           {user.username === "admin" ? (
-                            <LuShield className="size-4 text-primary" />
+                            <LuShield className="text-primary size-4" />
                           ) : (
-                            <LuUserCog className="size-4 text-primary-variant" />
+                            <LuUserCog className="text-primary-variant size-4" />
                           )}
                           {user.username}
                         </div>
@@ -599,7 +599,7 @@ export default function AuthenticationView({
           <Heading as="h4" className="mb-2">
             {t("roles.management.title")}
           </Heading>
-          <p className="text-sm text-muted-foreground">
+          <p className="text-muted-foreground text-sm">
             {t("roles.management.desc")}
           </p>
         </div>
@@ -614,10 +614,10 @@ export default function AuthenticationView({
         </Button>
       </div>
       <div className="mb-6 flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
-        <div className="scrollbar-container flex-1 overflow-hidden rounded-lg border border-border bg-background_alt md:mr-3">
+        <div className="scrollbar-container border-border bg-background_alt flex-1 overflow-hidden rounded-lg border md:mr-3">
           <div className="h-full overflow-auto">
             <Table>
-              <TableHeader className="sticky top-0 bg-muted/50">
+              <TableHeader className="bg-muted/50 sticky top-0">
                 <TableRow>
                   <TableHead className="w-[250px]">
                     {t("roles.table.role")}
@@ -645,7 +645,7 @@ export default function AuthenticationView({
                         {roleData.cameras.length === 0 ? (
                           <Badge
                             variant="default"
-                            className="bg-primary/20 text-xs text-primary hover:bg-primary/30"
+                            className="bg-primary/20 text-primary hover:bg-primary/30 text-xs"
                           >
                             {t("menu.live.allCameras", { ns: "common" })}
                           </Badge>
@@ -663,7 +663,7 @@ export default function AuthenticationView({
                               >
                                 <CameraNameLabel
                                   camera={camera}
-                                  className="text-xs smart-capitalize"
+                                  className="smart-capitalize text-xs"
                                 />
                               </Badge>
                             ))}
@@ -784,13 +784,13 @@ export default function AuthenticationView({
   return (
     <div className="flex size-full flex-col">
       <Toaster position="top-center" closeButton={true} />
-      <div className="scrollbar-container order-last mb-10 mt-2 flex h-full w-full flex-col overflow-y-auto pb-2 md:order-0 md:mr-3 md:mt-0">
+      <div className="scrollbar-container order-last mt-2 mb-10 flex h-full w-full flex-col overflow-y-auto pb-2 md:order-0 md:mt-0 md:mr-3">
         {section === "users" && UsersSection}
         {section === "roles" && RolesSection}
         {!section && (
           <>
             {UsersSection}
-            <Separator className="my-6 flex bg-secondary" />
+            <Separator className="bg-secondary my-6 flex" />
             {RolesSection}
           </>
         )}

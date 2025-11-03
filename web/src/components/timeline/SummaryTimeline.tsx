@@ -348,7 +348,7 @@ export function SummaryTimeline({
 
   return (
     <div
-      className={`no-scrollbar relative h-full select-none overflow-hidden border-l border-neutral-700 bg-secondary`}
+      className={`no-scrollbar bg-secondary relative h-full overflow-hidden border-l border-neutral-700 select-none`}
       role="scrollbar"
     >
       <div
@@ -369,7 +369,7 @@ export function SummaryTimeline({
         ref={visibleSectionRef}
         onMouseDown={handleMouseDown}
         onTouchStart={handleMouseDown}
-        className={`absolute z-20 w-full touch-none bg-primary/30 ${
+        className={`bg-primary/30 absolute z-20 w-full touch-none ${
           isDragging ? "cursor-grabbing" : "cursor-grab"
         }`}
       ></div>

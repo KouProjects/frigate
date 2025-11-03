@@ -15,6 +15,13 @@ import { useEffect, useMemo, useRef } from "react";
 import useSWR from "swr";
 import { useAllowedCameras } from "@/hooks/use-allowed-cameras";
 import { useIsCustomRole } from "@/hooks/use-is-custom-role";
+import {
+  BreadcrumbItem,
+  SidebarAppContent,
+  SidebarAppHeader,
+} from "@/components/SidebarAppWrapper";
+
+const breadcrumbs: BreadcrumbItem[] = [{ path: "/live", name: "Live" }];
 
 function Live() {
   const { t } = useTranslation(["views/live"]);
@@ -139,33 +146,40 @@ function Live() {
   );
 
   return (
-    <div className="size-full" ref={mainRef}>
-      {selectedCameraName === "birdseye" ? (
-        <LiveBirdseyeView
-          supportsFullscreen={supportsFullScreen}
-          fullscreen={fullscreen}
-          toggleFullscreen={toggleFullscreen}
-        />
-      ) : selectedCamera ? (
-        <LiveCameraView
-          key={selectedCameraName}
-          config={config}
-          camera={selectedCamera}
-          supportsFullscreen={supportsFullScreen}
-          fullscreen={fullscreen}
-          toggleFullscreen={toggleFullscreen}
-        />
-      ) : (
-        <LiveDashboardView
-          cameras={cameras}
-          cameraGroup={cameraGroup ?? "default"}
-          includeBirdseye={includesBirdseye}
-          onSelectCamera={setSelectedCameraName}
-          fullscreen={fullscreen}
-          toggleFullscreen={toggleFullscreen}
-        />
-      )}
-    </div>
+    <>
+      <SidebarAppHeader breadcrumbs={breadcrumbs}>
+        {/* Header content can go here */}
+      </SidebarAppHeader>
+      <SidebarAppContent>
+        <div className="size-full" ref={mainRef}>
+          {selectedCameraName === "birdseye" ? (
+            <LiveBirdseyeView
+              supportsFullscreen={supportsFullScreen}
+              fullscreen={fullscreen}
+              toggleFullscreen={toggleFullscreen}
+            />
+          ) : selectedCamera ? (
+            <LiveCameraView
+              key={selectedCameraName}
+              config={config}
+              camera={selectedCamera}
+              supportsFullscreen={supportsFullScreen}
+              fullscreen={fullscreen}
+              toggleFullscreen={toggleFullscreen}
+            />
+          ) : (
+            <LiveDashboardView
+              cameras={cameras}
+              cameraGroup={cameraGroup ?? "default"}
+              includeBirdseye={includesBirdseye}
+              onSelectCamera={setSelectedCameraName}
+              fullscreen={fullscreen}
+              toggleFullscreen={toggleFullscreen}
+            />
+          )}
+        </div>
+      </SidebarAppContent>
+    </>
   );
 }
 

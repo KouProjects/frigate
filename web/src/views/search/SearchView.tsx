@@ -482,7 +482,7 @@ export default function SearchView({
 
       <div
         className={cn(
-          "flex flex-col items-start space-y-2 pl-2 pr-2 md:mb-2 md:pl-3 lg:relative lg:h-10 lg:flex-row lg:items-center lg:space-y-0",
+          "flex flex-col items-start space-y-2 pr-2 pl-2 md:mb-2 md:pl-3 lg:relative lg:h-10 lg:flex-row lg:items-center lg:space-y-0",
           config?.semantic_search?.enabled
             ? "justify-between"
             : "justify-center",
@@ -549,7 +549,7 @@ export default function SearchView({
         className="no-scrollbar flex flex-1 flex-wrap content-start gap-2 overflow-y-auto"
       >
         {uniqueResults?.length == 0 && !isLoading && (
-          <div className="absolute left-1/2 top-1/2 flex -translate-x-1/2 -translate-y-1/2 flex-col items-center justify-center text-center">
+          <div className="absolute top-1/2 left-1/2 flex -translate-x-1/2 -translate-y-1/2 flex-col items-center justify-center text-center">
             <LuSearchX className="size-16" />
             {t("noTrackedObjects")}
           </div>
@@ -559,7 +559,7 @@ export default function SearchView({
           (isValidating && !isLoading)) && // or revalidation
           (searchTerm || // or change of filter/search term
             (searchFilter && Object.keys(searchFilter).length !== 0)) && (
-            <ActivityIndicator className="absolute left-1/2 top-1/2 z-50 -translate-x-1/2 -translate-y-1/2 rounded-2xl bg-background/80 p-3 dark:bg-background/50" />
+            <ActivityIndicator className="bg-background/80 dark:bg-background/50 absolute top-1/2 left-1/2 z-50 -translate-x-1/2 -translate-y-1/2 rounded-2xl p-3" />
           )}
 
         {uniqueResults && (
@@ -599,11 +599,11 @@ export default function SearchView({
                       />
                       {(searchTerm ||
                         searchFilter?.search_type?.includes("similarity")) && (
-                        <div className={cn("absolute right-2 top-2 z-40")}>
+                        <div className={cn("absolute top-2 right-2 z-40")}>
                           <Tooltip>
                             <TooltipTrigger>
                               <Chip
-                                className={`flex select-none items-center justify-between space-x-1 bg-gray-500 bg-linear-to-br from-gray-400 to-gray-500 text-xs text-white smart-capitalize`}
+                                className={`smart-capitalize flex items-center justify-between space-x-1 bg-gray-500 bg-linear-to-br from-gray-400 to-gray-500 text-xs text-white select-none`}
                               >
                                 {value.search_source == "thumbnail" ? (
                                   <LuImage className="size-3" />
@@ -634,7 +634,7 @@ export default function SearchView({
                           </Tooltip>
                         </div>
                       )}
-                      <div className="absolute bottom-0 left-0 right-0 z-30 bg-linear-to-t from-black/70 to-transparent p-2">
+                      <div className="absolute right-0 bottom-0 left-0 z-30 bg-linear-to-t from-black/70 to-transparent p-2">
                         <SearchThumbnailFooter
                           searchResult={value}
                           columns={columns}

@@ -243,14 +243,14 @@ export default function MotionMaskEditPane({
           ? t("masksAndZones.motionMasks.edit")
           : t("masksAndZones.motionMasks.add")}
       </Heading>
-      <div className="my-3 space-y-3 text-sm text-muted-foreground">
+      <div className="text-muted-foreground my-3 space-y-3 text-sm">
         <p>
           <Trans ns="views/settings">
             masksAndZones.motionMasks.context.title
           </Trans>
         </p>
 
-        <div className="flex items-center text-primary">
+        <div className="text-primary flex items-center">
           <Link
             to={getLocaleDocUrl("configuration/masks/")}
             target="_blank"
@@ -262,7 +262,7 @@ export default function MotionMaskEditPane({
           </Link>
         </div>
       </div>
-      <Separator className="my-3 bg-secondary" />
+      <Separator className="bg-secondary my-3" />
       {polygons && activePolygonIndex !== undefined && (
         <div className="my-2 flex w-full flex-row justify-between text-sm">
           <div className="my-1 inline-flex">
@@ -282,20 +282,20 @@ export default function MotionMaskEditPane({
           />
         </div>
       )}
-      <div className="mb-3 text-sm text-muted-foreground">
+      <div className="text-muted-foreground mb-3 text-sm">
         {t("masksAndZones.motionMasks.clickDrawPolygon")}
       </div>
 
-      <Separator className="my-3 bg-secondary" />
+      <Separator className="bg-secondary my-3" />
 
       {polygonArea && polygonArea >= 0.35 && (
         <>
-          <div className="mb-3 text-sm text-danger">
+          <div className="text-danger mb-3 text-sm">
             {t("masksAndZones.motionMasks.polygonAreaTooLarge.title", {
               polygonArea: Math.round(polygonArea * 100),
             })}
           </div>
-          <div className="mb-3 text-sm text-primary">
+          <div className="text-primary mb-3 text-sm">
             {t("masksAndZones.motionMasks.polygonAreaTooLarge.tips")}
             <Link
               to="https://github.com/blakeblackshear/frigate/discussions/13040"

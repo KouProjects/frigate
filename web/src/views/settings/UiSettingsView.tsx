@@ -104,12 +104,12 @@ export default function UiSettingsView() {
     <>
       <div className="flex size-full flex-col md:flex-row">
         <Toaster position="top-center" closeButton={true} />
-        <div className="scrollbar-container order-last mb-10 mt-2 flex h-full w-full flex-col overflow-y-auto pb-2 md:order-0">
+        <div className="scrollbar-container order-last mt-2 mb-10 flex h-full w-full flex-col overflow-y-auto pb-2 md:order-0">
           <Heading as="h4" className="mb-2">
             {t("general.title")}
           </Heading>
 
-          <Separator className="my-2 flex bg-secondary" />
+          <Separator className="bg-secondary my-2 flex" />
 
           <Heading as="h4" className="my-2">
             {t("general.liveDashboard.title")}
@@ -127,7 +127,7 @@ export default function UiSettingsView() {
                   {t("general.liveDashboard.automaticLiveView.label")}
                 </Label>
               </div>
-              <div className="my-2 max-w-5xl text-sm text-muted-foreground">
+              <div className="text-muted-foreground my-2 max-w-5xl text-sm">
                 <p>{t("general.liveDashboard.automaticLiveView.desc")}</p>
               </div>
             </div>
@@ -142,7 +142,7 @@ export default function UiSettingsView() {
                   {t("general.liveDashboard.playAlertVideos.label")}
                 </Label>
               </div>
-              <div className="my-2 max-w-5xl text-sm text-muted-foreground">
+              <div className="text-muted-foreground my-2 max-w-5xl text-sm">
                 <p>{t("general.liveDashboard.playAlertVideos.desc")}</p>
               </div>
             </div>
@@ -157,7 +157,7 @@ export default function UiSettingsView() {
                   {t("general.liveDashboard.displayCameraNames.label")}
                 </Label>
               </div>
-              <div className="my-2 max-w-5xl text-sm text-muted-foreground">
+              <div className="text-muted-foreground my-2 max-w-5xl text-sm">
                 <p>{t("general.liveDashboard.displayCameraNames.desc")}</p>
               </div>
             </div>
@@ -169,7 +169,7 @@ export default function UiSettingsView() {
                 <div className="text-md">
                   {t("general.storedLayouts.title")}
                 </div>
-                <div className="my-2 text-sm text-muted-foreground">
+                <div className="text-muted-foreground my-2 text-sm">
                   <p>{t("general.storedLayouts.desc")}</p>
                 </div>
               </div>
@@ -186,7 +186,7 @@ export default function UiSettingsView() {
                 <div className="text-md">
                   {t("general.cameraGroupStreaming.title")}
                 </div>
-                <div className="my-2 max-w-5xl text-sm text-muted-foreground">
+                <div className="text-muted-foreground my-2 max-w-5xl text-sm">
                   <p>{t("general.cameraGroupStreaming.desc")}</p>
                 </div>
               </div>
@@ -198,7 +198,7 @@ export default function UiSettingsView() {
               </Button>
             </div>
 
-            <Separator className="my-2 flex bg-secondary" />
+            <Separator className="bg-secondary my-2 flex" />
 
             <Heading as="h4" className="my-2">
               {t("general.recordingsViewer.title")}
@@ -209,7 +209,7 @@ export default function UiSettingsView() {
                 <div className="text-md">
                   {t("general.recordingsViewer.defaultPlaybackRate.label")}
                 </div>
-                <div className="my-2 text-sm text-muted-foreground">
+                <div className="text-muted-foreground my-2 text-sm">
                   <p>
                     {t("general.recordingsViewer.defaultPlaybackRate.desc")}
                   </p>
@@ -237,7 +237,7 @@ export default function UiSettingsView() {
                 </SelectGroup>
               </SelectContent>
             </Select>
-            <Separator className="my-2 flex bg-secondary" />
+            <Separator className="bg-secondary my-2 flex" />
 
             <Heading as="h4" className="my-2">
               {t("general.calendar.title")}
@@ -248,7 +248,7 @@ export default function UiSettingsView() {
                 <div className="text-md">
                   {t("general.calendar.firstWeekday.label")}
                 </div>
-                <div className="my-2 text-sm text-muted-foreground">
+                <div className="text-muted-foreground my-2 text-sm">
                   <p>{t("general.calendar.firstWeekday.desc")}</p>
                 </div>
               </div>
@@ -277,7 +277,7 @@ export default function UiSettingsView() {
                 </SelectGroup>
               </SelectContent>
             </Select>
-            <Separator className="my-2 flex bg-secondary" />
+            <Separator className="bg-secondary my-2 flex" />
           </div>
         </div>
       </div>

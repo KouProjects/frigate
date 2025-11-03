@@ -16,6 +16,13 @@ import { Toaster } from "@/components/ui/sonner";
 import { FrigateConfig } from "@/types/frigateConfig";
 import EnrichmentMetrics from "@/views/system/EnrichmentMetrics";
 import { useTranslation } from "react-i18next";
+import {
+  BreadcrumbItem,
+  SidebarAppContent,
+  SidebarAppHeader,
+} from "@/components/SidebarAppWrapper";
+
+const breadcrumbs: BreadcrumbItem[] = [{ path: "/system", name: "System" }];
 
 const allMetrics = ["general", "enrichments", "storage", "cameras"] as const;
 type SystemMetric = (typeof allMetrics)[number];
@@ -64,78 +71,85 @@ function System() {
   });
 
   return (
-    <div className="flex size-full flex-col p-2">
-      <Toaster position="top-center" />
-      <div className="relative flex h-11 w-full items-center justify-between">
-        {isMobile && (
-          <Logo className="absolute inset-x-1/2 h-8 -translate-x-1/2" />
-        )}
-        <ToggleGroup
-          className="*:rounded-md *:px-3 *:py-4"
-          type="single"
-          size="sm"
-          value={pageToggle}
-          onValueChange={(value: SystemMetric) => {
-            if (value) {
-              setPageToggle(value);
-            }
-          }} // don't allow the severity to be unselected
-        >
-          {Object.values(metrics).map((item) => (
-            <ToggleGroupItem
-              key={item}
-              className={`flex items-center justify-between gap-2 ${pageToggle == item ? "" : "*:text-muted-foreground"}`}
-              value={item}
-              aria-label={`Select ${item}`}
+    <>
+      <SidebarAppHeader breadcrumbs={breadcrumbs} />
+      <SidebarAppContent>
+        <div className="flex size-full flex-col p-2">
+          <Toaster position="top-center" />
+          <div className="relative flex h-11 w-full items-center justify-between">
+            {isMobile && (
+              <Logo className="absolute inset-x-1/2 h-8 -translate-x-1/2" />
+            )}
+            <ToggleGroup
+              className="*:rounded-md *:px-3 *:py-4"
+              type="single"
+              size="sm"
+              value={pageToggle}
+              onValueChange={(value: SystemMetric) => {
+                if (value) {
+                  setPageToggle(value);
+                }
+              }} // don't allow the severity to be unselected
             >
-              {item == "general" && <LuActivity className="size-4" />}
-              {item == "enrichments" && <LuSearchCode className="size-4" />}
-              {item == "storage" && <LuHardDrive className="size-4" />}
-              {item == "cameras" && <FaVideo className="size-4" />}
-              {isDesktop && (
-                <div className="smart-capitalize">{t(item + ".title")}</div>
-              )}
-            </ToggleGroupItem>
-          ))}
-        </ToggleGroup>
+              {Object.values(metrics).map((item) => (
+                <ToggleGroupItem
+                  key={item}
+                  className={`flex items-center justify-between gap-2 ${pageToggle == item ? "" : "*:text-muted-foreground"}`}
+                  value={item}
+                  aria-label={`Select ${item}`}
+                >
+                  {item == "general" && <LuActivity className="size-4" />}
+                  {item == "enrichments" && <LuSearchCode className="size-4" />}
+                  {item == "storage" && <LuHardDrive className="size-4" />}
+                  {item == "cameras" && <FaVideo className="size-4" />}
+                  {isDesktop && (
+                    <div className="smart-capitalize">{t(item + ".title")}</div>
+                  )}
+                </ToggleGroupItem>
+              ))}
+            </ToggleGroup>
 
-        <div className="flex h-full items-center">
-          {lastUpdated && (
-            <div className="h-full content-center text-sm text-muted-foreground">
-              {t("lastRefreshed")}
-              <TimeAgo time={lastUpdated * 1000} dense />
+            <div className="flex h-full items-center">
+              {lastUpdated && (
+                <div className="text-muted-foreground h-full content-center text-sm">
+                  {t("lastRefreshed")}
+                  <TimeAgo time={lastUpdated * 1000} dense />
+                </div>
+              )}
             </div>
+          </div>
+          <div className="mt-2 flex items-end gap-2">
+            <div className="h-full content-center font-medium">{t("title")}</div>
+            {statsSnapshot && (
+              <div className="text-muted-foreground h-full content-center text-sm">
+                {statsSnapshot.service.version}
+              </div>
+            )}
+          </div>
+          {page == "general" && (
+            <GeneralMetrics
+              lastUpdated={lastUpdated}
+              setLastUpdated={setLastUpdated}
+            />
+          )}
+          {page == "enrichments" && (
+            <EnrichmentMetrics
+              lastUpdated={lastUpdated}
+              setLastUpdated={setLastUpdated}
+            />
+          )}
+          {page == "storage" && (
+            <StorageMetrics setLastUpdated={setLastUpdated} />
+          )}
+          {page == "cameras" && (
+            <CameraMetrics
+              lastUpdated={lastUpdated}
+              setLastUpdated={setLastUpdated}
+            />
           )}
         </div>
-      </div>
-      <div className="mt-2 flex items-end gap-2">
-        <div className="h-full content-center font-medium">{t("title")}</div>
-        {statsSnapshot && (
-          <div className="h-full content-center text-sm text-muted-foreground">
-            {statsSnapshot.service.version}
-          </div>
-        )}
-      </div>
-      {page == "general" && (
-        <GeneralMetrics
-          lastUpdated={lastUpdated}
-          setLastUpdated={setLastUpdated}
-        />
-      )}
-      {page == "enrichments" && (
-        <EnrichmentMetrics
-          lastUpdated={lastUpdated}
-          setLastUpdated={setLastUpdated}
-        />
-      )}
-      {page == "storage" && <StorageMetrics setLastUpdated={setLastUpdated} />}
-      {page == "cameras" && (
-        <CameraMetrics
-          lastUpdated={lastUpdated}
-          setLastUpdated={setLastUpdated}
-        />
-      )}
-    </div>
+      </SidebarAppContent>
+    </>
   );
 }
 

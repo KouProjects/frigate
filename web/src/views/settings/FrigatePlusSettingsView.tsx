@@ -211,12 +211,12 @@ export default function FrigatePlusSettingsView({
     <>
       <div className="flex size-full flex-col md:flex-row">
         <Toaster position="top-center" closeButton={true} />
-        <div className="scrollbar-container order-last mb-10 mt-2 flex h-full w-full flex-col overflow-y-auto pb-2 md:order-0">
+        <div className="scrollbar-container order-last mt-2 mb-10 flex h-full w-full flex-col overflow-y-auto pb-2 md:order-0">
           <Heading as="h4" className="mb-2">
             {t("frigatePlus.title")}
           </Heading>
 
-          <Separator className="my-2 flex bg-secondary" />
+          <Separator className="bg-secondary my-2 flex" />
 
           <Heading as="h4" className="my-2">
             {t("frigatePlus.apiKey.title")}
@@ -236,11 +236,11 @@ export default function FrigatePlusSettingsView({
                     : t("frigatePlus.apiKey.notValidated")}
                 </Label>
               </div>
-              <div className="my-2 max-w-5xl text-sm text-muted-foreground">
+              <div className="text-muted-foreground my-2 max-w-5xl text-sm">
                 <p>{t("frigatePlus.apiKey.desc")}</p>
                 {!config?.model.plus && (
                   <>
-                    <div className="mt-2 flex items-center text-primary-variant">
+                    <div className="text-primary-variant mt-2 flex items-center">
                       <Link
                         to="https://frigate.video/plus"
                         target="_blank"
@@ -258,7 +258,7 @@ export default function FrigatePlusSettingsView({
 
             {config?.model.plus && (
               <>
-                <Separator className="my-2 flex bg-secondary" />
+                <Separator className="bg-secondary my-2 flex" />
                 <div className="mt-2 max-w-2xl">
                   <Heading as="h4" className="my-2">
                     {t("frigatePlus.modelInfo.title")}
@@ -327,7 +327,7 @@ export default function FrigatePlusSettingsView({
                             <div className="text-md">
                               {t("frigatePlus.modelInfo.availableModels")}
                             </div>
-                            <div className="space-y-3 text-sm text-muted-foreground">
+                            <div className="text-muted-foreground space-y-3 text-sm">
                               <p>
                                 <Trans ns="views/settings">
                                   frigatePlus.modelInfo.modelSelect
@@ -421,7 +421,7 @@ export default function FrigatePlusSettingsView({
                                         )}
                                         : {model.supportedDetectors.join(", ")}
                                       </div>
-                                      <div className="text-xs text-muted-foreground">
+                                      <div className="text-muted-foreground text-xs">
                                         {id}
                                       </div>
                                     </SelectItem>
@@ -438,20 +438,20 @@ export default function FrigatePlusSettingsView({
               </>
             )}
 
-            <Separator className="my-2 flex bg-secondary" />
+            <Separator className="bg-secondary my-2 flex" />
 
             <div className="mt-2 max-w-5xl">
               <Heading as="h4" className="my-2">
                 {t("frigatePlus.snapshotConfig.title")}
               </Heading>
               <div className="mt-2 space-y-3">
-                <div className="my-2 text-sm text-muted-foreground">
+                <div className="text-muted-foreground my-2 text-sm">
                   <p>
                     <Trans ns="views/settings">
                       frigatePlus.snapshotConfig.desc
                     </Trans>
                   </p>
-                  <div className="mt-2 flex items-center text-primary-variant">
+                  <div className="text-primary-variant mt-2 flex items-center">
                     <Link
                       to={getLocaleDocUrl("plus/faq")}
                       target="_blank"
@@ -467,7 +467,7 @@ export default function FrigatePlusSettingsView({
                   <div className="overflow-x-auto">
                     <table className="max-w-2xl text-sm">
                       <thead>
-                        <tr className="border-b border-secondary">
+                        <tr className="border-secondary border-b">
                           <th className="px-4 py-2 text-left">
                             {t("frigatePlus.snapshotConfig.table.camera")}
                           </th>
@@ -486,7 +486,7 @@ export default function FrigatePlusSettingsView({
                           ([name, camera]) => (
                             <tr
                               key={name}
-                              className="border-b border-secondary"
+                              className="border-secondary border-b"
                             >
                               <td className="px-4 py-2">
                                 <CameraNameLabel camera={name} />
@@ -495,7 +495,7 @@ export default function FrigatePlusSettingsView({
                                 {camera.snapshots.enabled ? (
                                   <CheckCircle2 className="mx-auto size-5 text-green-500" />
                                 ) : (
-                                  <XCircle className="mx-auto size-5 text-danger" />
+                                  <XCircle className="text-danger mx-auto size-5" />
                                 )}
                               </td>
                               <td className="px-4 py-2 text-center">
@@ -503,7 +503,7 @@ export default function FrigatePlusSettingsView({
                                 camera.snapshots?.clean_copy ? (
                                   <CheckCircle2 className="mx-auto size-5 text-green-500" />
                                 ) : (
-                                  <XCircle className="mx-auto size-5 text-danger" />
+                                  <XCircle className="text-danger mx-auto size-5" />
                                 )}
                               </td>
                             </tr>
@@ -514,9 +514,9 @@ export default function FrigatePlusSettingsView({
                   </div>
                 )}
                 {needCleanSnapshots() && (
-                  <div className="mt-2 max-w-xl rounded-lg border border-secondary-foreground bg-secondary p-4 text-sm text-danger">
+                  <div className="border-secondary-foreground bg-secondary text-danger mt-2 max-w-xl rounded-lg border p-4 text-sm">
                     <div className="flex items-center gap-2">
-                      <IoIosWarning className="mr-2 size-5 text-danger" />
+                      <IoIosWarning className="text-danger mr-2 size-5" />
                       <div className="max-w-[85%] text-sm">
                         <Trans ns="views/settings">
                           frigatePlus.snapshotConfig.cleanCopyWarning
@@ -528,7 +528,7 @@ export default function FrigatePlusSettingsView({
               </div>
             </div>
 
-            <Separator className="my-2 flex bg-secondary" />
+            <Separator className="bg-secondary my-2 flex" />
 
             <div className="flex w-full flex-row items-center gap-2 pt-2 md:w-[25%]">
               <Button

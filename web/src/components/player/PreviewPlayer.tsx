@@ -93,7 +93,7 @@ export default function PreviewPlayer({
   return (
     <div
       className={cn(
-        "flex size-full items-center justify-center rounded-lg bg-background_alt text-primary md:rounded-2xl",
+        "bg-background_alt text-primary flex size-full items-center justify-center rounded-lg md:rounded-2xl",
         className,
       )}
     >
@@ -343,7 +343,7 @@ function PreviewVideoPlayer({
         </video>
       )}
       {cameraPreviews && !currentPreview && (
-        <div className="absolute inset-0 flex items-center justify-center rounded-lg bg-background_alt text-primary dark:bg-black md:rounded-2xl">
+        <div className="bg-background_alt text-primary absolute inset-0 flex items-center justify-center rounded-lg md:rounded-2xl dark:bg-black">
           {t("noPreviewFoundFor", { camera: cameraName })}
         </div>
       )}
@@ -566,7 +566,7 @@ function PreviewFramesPlayer({
         onLoad={onImageLoaded}
       />
       {previewFrames?.length === 0 && (
-        <div className="-y-translate-1/2 align-center absolute inset-x-0 top-1/2 rounded-lg bg-background_alt text-center text-primary dark:bg-black md:rounded-2xl">
+        <div className="-y-translate-1/2 align-center bg-background_alt text-primary absolute inset-x-0 top-1/2 rounded-lg text-center md:rounded-2xl dark:bg-black">
           {t("noPreviewFoundFor", { cameraName: cameraName })}
         </div>
       )}

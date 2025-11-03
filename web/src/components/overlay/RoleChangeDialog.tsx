@@ -58,7 +58,7 @@ export default function RoleChangeDialog({
         </DialogHeader>
 
         <div className="py-3">
-          <div className="mb-4 text-sm text-muted-foreground">
+          <div className="text-muted-foreground mb-4 text-sm">
             <p>{t("users.dialog.changeRole.roleInfo.intro")}</p>
             <ul className="mt-2 list-disc space-y-1 pl-5">
               <li>
@@ -97,11 +97,11 @@ export default function RoleChangeDialog({
                 >
                   <div className="flex items-center gap-2">
                     {role === "admin" ? (
-                      <LuShield className="size-4 text-primary" />
+                      <LuShield className="text-primary size-4" />
                     ) : role === "viewer" ? (
-                      <LuUser className="size-4 text-primary" />
+                      <LuUser className="text-primary size-4" />
                     ) : (
-                      <LuUser className="size-4 text-muted-foreground" />
+                      <LuUser className="text-muted-foreground size-4" />
                     )}
                     <span>
                       {role === "admin"

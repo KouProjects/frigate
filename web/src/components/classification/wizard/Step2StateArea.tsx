@@ -231,7 +231,7 @@ export default function Step2StateArea({
       >
         <div
           className={cn(
-            "flex shrink-0 flex-col gap-2 overflow-y-auto rounded-lg bg-secondary p-4",
+            "bg-secondary flex shrink-0 flex-col gap-2 overflow-y-auto rounded-lg p-4",
             isMobile ? "w-full" : "w-64",
           )}
         >
@@ -247,20 +247,20 @@ export default function Step2StateArea({
                   <Button
                     type="button"
                     variant="secondary"
-                    className="size-6 rounded-md bg-secondary-foreground p-1 text-background"
+                    className="bg-secondary-foreground text-background size-6 rounded-md p-1"
                     aria-label="Add camera"
                   >
                     <LuPlus />
                   </Button>
                 </PopoverTrigger>
                 <PopoverContent
-                  className="scrollbar-container w-64 border bg-background p-3 shadow-lg"
+                  className="scrollbar-container bg-background w-64 border p-3 shadow-lg"
                   align="start"
                   sideOffset={5}
                   onOpenAutoFocus={(e) => e.preventDefault()}
                 >
                   <div className="flex flex-col gap-2">
-                    <Heading as="h4" className="text-sm text-primary-variant">
+                    <Heading as="h4" className="text-primary-variant text-sm">
                       {t("wizard.step2.selectCamera")}
                     </Heading>
                     <div className="scrollbar-container flex max-h-[30vh] flex-col gap-1 overflow-y-auto">
@@ -270,7 +270,7 @@ export default function Step2StateArea({
                           type="button"
                           variant="ghost"
                           size="sm"
-                          className="h-auto justify-start p-2 capitalize text-primary"
+                          className="text-primary h-auto justify-start p-2 capitalize"
                           onClick={() => {
                             handleAddCamera(cam.name);
                           }}
@@ -285,7 +285,7 @@ export default function Step2StateArea({
             ) : (
               <Button
                 variant="secondary"
-                className="size-6 cursor-not-allowed rounded-md bg-muted p-1 text-muted-foreground"
+                className="bg-muted text-muted-foreground size-6 cursor-not-allowed rounded-md p-1"
                 disabled
               >
                 <LuPlus />
@@ -303,7 +303,7 @@ export default function Step2StateArea({
                   key={area.camera}
                   className={`flex items-center justify-between rounded-md p-2 ${
                     isSelected
-                      ? "bg-selected/20 ring-1 ring-selected"
+                      ? "bg-selected/20 ring-selected ring-1"
                       : "hover:bg-secondary/50"
                   } cursor-pointer`}
                   onClick={() => setSelectedCameraIndex(index)}
@@ -327,7 +327,7 @@ export default function Step2StateArea({
           </div>
 
           {cameraAreas.length === 0 && (
-            <div className="flex flex-1 items-center justify-center text-center text-sm text-muted-foreground">
+            <div className="text-muted-foreground flex flex-1 items-center justify-center text-center text-sm">
               {t("wizard.step2.noCameras")}
             </div>
           )}
@@ -452,7 +452,7 @@ export default function Step2StateArea({
                 </Stage>
               </div>
             ) : (
-              <div className="flex items-center justify-center text-muted-foreground">
+              <div className="text-muted-foreground flex items-center justify-center">
                 {t("wizard.step2.selectCameraPrompt")}
               </div>
             )}

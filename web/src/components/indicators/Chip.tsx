@@ -72,7 +72,7 @@ export function LogChip({ severity, onClickSeverity }: LogChipProps) {
   return (
     <div className="min-w-16 lg:min-w-20">
       <span
-        className={`rounded-md px-1 py-px text-xs smart-capitalize ${onClickSeverity ? "cursor-pointer" : ""} ${severityClassName}`}
+        className={`smart-capitalize rounded-md px-1 py-px text-xs ${onClickSeverity ? "cursor-pointer" : ""} ${severityClassName}`}
         onClick={(e) => {
           e.stopPropagation();
 

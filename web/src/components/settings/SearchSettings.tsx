@@ -62,7 +62,7 @@ export default function ExploreSettings({
           <div className="text-md">
             {t("explore.settings.defaultView.title")}
           </div>
-          <div className="space-y-1 text-xs text-muted-foreground">
+          <div className="text-muted-foreground space-y-1 text-xs">
             {t("explore.settings.defaultView.desc")}
           </div>
         </div>
@@ -100,7 +100,7 @@ export default function ExploreSettings({
               <div className="text-md">
                 {t("explore.settings.gridColumns.title")}
               </div>
-              <div className="space-y-1 text-xs text-muted-foreground">
+              <div className="text-muted-foreground space-y-1 text-xs">
                 {t("explore.settings.gridColumns.desc")}
               </div>
             </div>
@@ -166,7 +166,7 @@ export function SearchTypeContent({
           <div className="text-md">
             {t("explore.settings.searchSource.label")}
           </div>
-          <div className="space-y-1 text-xs text-muted-foreground">
+          <div className="text-muted-foreground space-y-1 text-xs">
             {t("explore.settings.searchSource.desc")}
           </div>
         </div>

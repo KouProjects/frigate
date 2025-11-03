@@ -26,6 +26,13 @@ import { useTranslation } from "react-i18next";
 import { LuFolderX } from "react-icons/lu";
 import { toast } from "sonner";
 import useSWR from "swr";
+import {
+  BreadcrumbItem,
+  SidebarAppContent,
+  SidebarAppHeader,
+} from "@/components/SidebarAppWrapper";
+
+const breadcrumbs: BreadcrumbItem[] = [{ path: "/export", name: "Exports" }];
 
 function Exports() {
   const { t } = useTranslation(["views/exports"]);
@@ -116,117 +123,126 @@ function Exports() {
   useKeyboardListener([], undefined, contentRef);
 
   return (
-    <div className="flex size-full flex-col gap-2 overflow-hidden px-1 pt-2 md:p-2">
-      <Toaster closeButton={true} />
+    <>
+      <SidebarAppHeader breadcrumbs={breadcrumbs} />
+      <SidebarAppContent>
+        <div className="flex size-full flex-col gap-2 overflow-hidden px-1 pt-2 md:p-2">
+          <Toaster closeButton={true} />
 
-      <AlertDialog
-        open={deleteClip != undefined}
-        onOpenChange={() => setDeleteClip(undefined)}
-      >
-        <AlertDialogContent>
-          <AlertDialogHeader>
-            <AlertDialogTitle>{t("deleteExport")}</AlertDialogTitle>
-            <AlertDialogDescription>
-              {t("deleteExport.desc", { exportName: deleteClip?.exportName })}
-            </AlertDialogDescription>
-          </AlertDialogHeader>
-          <AlertDialogFooter>
-            <AlertDialogCancel>
-              {t("button.cancel", { ns: "common" })}
-            </AlertDialogCancel>
-            <Button
-              className="text-white"
-              aria-label="Delete Export"
-              variant="destructive"
-              onClick={() => onHandleDelete()}
+          <AlertDialog
+            open={deleteClip != undefined}
+            onOpenChange={() => setDeleteClip(undefined)}
+          >
+            <AlertDialogContent>
+              <AlertDialogHeader>
+                <AlertDialogTitle>{t("deleteExport")}</AlertDialogTitle>
+                <AlertDialogDescription>
+                  {t("deleteExport.desc", {
+                    exportName: deleteClip?.exportName,
+                  })}
+                </AlertDialogDescription>
+              </AlertDialogHeader>
+              <AlertDialogFooter>
+                <AlertDialogCancel>
+                  {t("button.cancel", { ns: "common" })}
+                </AlertDialogCancel>
+                <Button
+                  className="text-white"
+                  aria-label="Delete Export"
+                  variant="destructive"
+                  onClick={() => onHandleDelete()}
+                >
+                  {t("button.delete", { ns: "common" })}
+                </Button>
+              </AlertDialogFooter>
+            </AlertDialogContent>
+          </AlertDialog>
+
+          <Dialog
+            open={selected != undefined}
+            onOpenChange={(open) => {
+              if (!open) {
+                setSelected(undefined);
+              }
+            }}
+          >
+            <DialogContent
+              className={cn(
+                "max-h-[95dvh] sm:max-w-xl md:max-w-4xl lg:max-w-4xl xl:max-w-7xl",
+                isMobile && "landscape:max-w-[60%]",
+              )}
             >
-              {t("button.delete", { ns: "common" })}
-            </Button>
-          </AlertDialogFooter>
-        </AlertDialogContent>
-      </AlertDialog>
-
-      <Dialog
-        open={selected != undefined}
-        onOpenChange={(open) => {
-          if (!open) {
-            setSelected(undefined);
-          }
-        }}
-      >
-        <DialogContent
-          className={cn(
-            "max-h-[95dvh] sm:max-w-xl md:max-w-4xl lg:max-w-4xl xl:max-w-7xl",
-            isMobile && "landscape:max-w-[60%]",
-          )}
-        >
-          <DialogTitle className="smart-capitalize">
-            {selected?.name?.replaceAll("_", " ")}
-          </DialogTitle>
-          <video
-            className={cn(
-              "size-full rounded-lg md:rounded-2xl",
-              selectedAspect < 1.5 && "aspect-video h-full",
-            )}
-            playsInline
-            preload="auto"
-            autoPlay
-            controls
-            muted
-            onLoadedData={(e) =>
-              setSelectedAspect(
-                e.currentTarget.videoWidth / e.currentTarget.videoHeight,
-              )
-            }
-          >
-            <source
-              src={`${baseUrl}${selected?.video_path?.replace("/media/frigate/", "")}`}
-              type="video/mp4"
-            />
-          </video>
-        </DialogContent>
-      </Dialog>
-
-      {exports && (
-        <div className="flex w-full items-center justify-center p-2">
-          <Input
-            className="text-md w-full bg-muted md:w-1/3"
-            placeholder={t("search")}
-            value={search}
-            onChange={(e) => setSearch(e.target.value)}
-          />
-        </div>
-      )}
-
-      <div className="w-full overflow-hidden">
-        {exports && filteredExports && filteredExports.length > 0 ? (
-          <div
-            ref={contentRef}
-            className="scrollbar-container grid size-full gap-2 overflow-y-auto sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
-          >
-            {Object.values(exports).map((item) => (
-              <ExportCard
-                key={item.name}
-                className={
-                  search == "" || filteredExports.includes(item) ? "" : "hidden"
+              <DialogTitle className="smart-capitalize">
+                {selected?.name?.replaceAll("_", " ")}
+              </DialogTitle>
+              <video
+                className={cn(
+                  "size-full rounded-lg md:rounded-2xl",
+                  selectedAspect < 1.5 && "aspect-video h-full",
+                )}
+                playsInline
+                preload="auto"
+                autoPlay
+                controls
+                muted
+                onLoadedData={(e) =>
+                  setSelectedAspect(
+                    e.currentTarget.videoWidth / e.currentTarget.videoHeight,
+                  )
                 }
-                exportedRecording={item}
-                onSelect={setSelected}
-                onRename={onHandleRename}
-                onDelete={({ file, exportName }) =>
-                  setDeleteClip({ file, exportName })
-                }
+              >
+                <source
+                  src={`${baseUrl}${selected?.video_path?.replace("/media/frigate/", "")}`}
+                  type="video/mp4"
+                />
+              </video>
+            </DialogContent>
+          </Dialog>
+
+          {exports && (
+            <div className="flex w-full items-center justify-center p-2">
+              <Input
+                className="text-md bg-muted w-full md:w-1/3"
+                placeholder={t("search")}
+                value={search}
+                onChange={(e) => setSearch(e.target.value)}
               />
-            ))}
+            </div>
+          )}
+
+          <div className="w-full overflow-hidden">
+            {exports && filteredExports && filteredExports.length > 0 ? (
+              <div
+                ref={contentRef}
+                className="scrollbar-container grid size-full gap-2 overflow-y-auto sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
+              >
+                {Object.values(exports).map((item) => (
+                  <ExportCard
+                    key={item.name}
+                    className={
+                      search == "" || filteredExports.includes(item)
+                        ? ""
+                        : "hidden"
+                    }
+                    exportedRecording={item}
+                    onSelect={setSelected}
+                    onRename={onHandleRename}
+                    onDelete={({ file, exportName }) =>
+                      setDeleteClip({ file, exportName })
+                    }
+                  />
+                ))}
+              </div>
+            ) : (
+              <div className="absolute top-1/2 left-1/2 flex -translate-x-1/2 -translate-y-1/2 flex-col items-center justify-center text-center">
+                <LuFolderX className="size-16" />
+                {t("noExports")}
+              </div>
+            )}
           </div>
-        ) : (
-          <div className="absolute left-1/2 top-1/2 flex -translate-x-1/2 -translate-y-1/2 flex-col items-center justify-center text-center">
-            <LuFolderX className="size-16" />
-            {t("noExports")}
-          </div>
-        )}
-      </div>
-    </div>
+        </div>
+      </SidebarAppContent>
+    </>
   );
 }
 

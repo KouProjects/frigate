@@ -369,7 +369,7 @@ export default function Step1NameCamera({
     <div className="space-y-6">
       {!testResult?.success && (
         <>
-          <div className="text-sm text-muted-foreground">
+          <div className="text-muted-foreground text-sm">
             {t("cameraWizard.step1.description")}
           </div>
 
@@ -423,12 +423,12 @@ export default function Step1NameCamera({
                                   <LuInfo className="size-3" />
                                 </Button>
                               </PopoverTrigger>
-                              <PopoverContent className="pointer-events-auto w-80 text-primary-variant">
+                              <PopoverContent className="text-primary-variant pointer-events-auto w-80">
                                 <div className="space-y-2">
                                   <h4 className="font-medium">
                                     {selectedBrand.label}
                                   </h4>
-                                  <p className="break-all text-sm text-muted-foreground">
+                                  <p className="text-muted-foreground text-sm break-all">
                                     {t("cameraWizard.step1.brandUrlFormat", {
                                       exampleUrl: selectedBrand.exampleUrl,
                                     })}
@@ -529,7 +529,7 @@ export default function Step1NameCamera({
                               type="button"
                               variant="ghost"
                               size="sm"
-                              className="absolute right-0 top-0 h-full px-3 py-2 hover:bg-transparent"
+                              className="absolute top-0 right-0 h-full px-3 py-2 hover:bg-transparent"
                               onClick={() => setShowPassword(!showPassword)}
                             >
                               {showPassword ? (
@@ -575,7 +575,7 @@ export default function Step1NameCamera({
 
       {testResult?.success && (
         <div className="p-4">
-          <div className="mb-3 flex flex-row items-center gap-2 text-sm font-medium text-success">
+          <div className="text-success mb-3 flex flex-row items-center gap-2 text-sm font-medium">
             <FaCircleCheck className="size-4" />
             {t("cameraWizard.step1.testSuccess")}
           </div>
@@ -588,7 +588,7 @@ export default function Step1NameCamera({
                   alt="Camera snapshot"
                   className="max-h-[50dvh] max-w-full rounded-lg object-contain"
                 />
-                <div className="absolute bottom-2 right-2 rounded-md bg-black/70 p-3 text-sm backdrop-blur-sm">
+                <div className="absolute right-2 bottom-2 rounded-md bg-black/70 p-3 text-sm backdrop-blur-sm">
                   <div className="space-y-1">
                     <StreamDetails testResult={testResult} />
                   </div>

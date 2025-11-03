@@ -74,7 +74,7 @@ export function SaveSearchDialog({
           placeholder={t("search.saveSearch.placeholder")}
         />
         {overwrite && (
-          <div className="ml-1 text-sm text-danger">
+          <div className="text-danger ml-1 text-sm">
             {t("search.saveSearch.overwrite", { searchName })}
           </div>
         )}

@@ -18,6 +18,13 @@ import { useTranslation } from "react-i18next";
 import { useRestart } from "@/api/ws";
 import { useResizeObserver } from "@/hooks/resize-observer";
 import { FrigateConfig } from "@/types/frigateConfig";
+import {
+  BreadcrumbItem,
+  SidebarAppContent,
+  SidebarAppHeader,
+} from "@/components/SidebarAppWrapper";
+
+const breadcrumbs: BreadcrumbItem[] = [{ path: "/config", name: "Config" }];
 
 type SaveOptions = "saveonly" | "restart";
 
@@ -234,69 +241,74 @@ function ConfigEditor() {
   }
 
   return (
-    <div className="absolute bottom-2 left-0 right-0 top-2 md:left-2">
-      <div className="relative flex h-full flex-col overflow-hidden">
-        <div className="mr-1 flex items-center justify-between">
-          <div>
-            <Heading as="h2" className="mb-0 ml-1 md:ml-0">
-              {t(config?.safe_mode ? "safeConfigEditor" : "configEditor")}
-            </Heading>
-            {config?.safe_mode && (
-              <div className="text-sm text-secondary-foreground">
-                {t("safeModeDescription")}
+    <>
+      <SidebarAppHeader breadcrumbs={breadcrumbs} />
+      <SidebarAppContent>
+        <div className="absolute top-2 right-0 bottom-2 left-0 md:left-2">
+          <div className="relative flex h-full flex-col overflow-hidden">
+            <div className="mr-1 flex items-center justify-between">
+              <div>
+                <Heading as="h2" className="mb-0 ml-1 md:ml-0">
+                  {t(config?.safe_mode ? "safeConfigEditor" : "configEditor")}
+                </Heading>
+                {config?.safe_mode && (
+                  <div className="text-secondary-foreground text-sm">
+                    {t("safeModeDescription")}
+                  </div>
+                )}
               </div>
-            )}
-          </div>
-          <div className="flex flex-row gap-1">
-            <Button
-              size="sm"
-              className="flex items-center gap-2"
-              aria-label={t("copyConfig")}
-              onClick={() => handleCopyConfig()}
-            >
-              <LuCopy className="text-secondary-foreground" />
-              <span className="hidden md:block">{t("copyConfig")}</span>
-            </Button>
-            <Button
-              size="sm"
-              className="flex items-center gap-2"
-              aria-label={t("saveAndRestart")}
-              onClick={handleSaveAndRestart}
-            >
-              <div className="relative size-5">
-                <LuSave className="absolute left-0 top-0 size-3 text-secondary-foreground" />
-                <MdOutlineRestartAlt className="absolute size-4 translate-x-1 translate-y-1/2 text-secondary-foreground" />
+              <div className="flex flex-row gap-1">
+                <Button
+                  size="sm"
+                  className="flex items-center gap-2"
+                  aria-label={t("copyConfig")}
+                  onClick={() => handleCopyConfig()}
+                >
+                  <LuCopy className="text-secondary-foreground" />
+                  <span className="hidden md:block">{t("copyConfig")}</span>
+                </Button>
+                <Button
+                  size="sm"
+                  className="flex items-center gap-2"
+                  aria-label={t("saveAndRestart")}
+                  onClick={handleSaveAndRestart}
+                >
+                  <div className="relative size-5">
+                    <LuSave className="text-secondary-foreground absolute top-0 left-0 size-3" />
+                    <MdOutlineRestartAlt className="text-secondary-foreground absolute size-4 translate-x-1 translate-y-1/2" />
+                  </div>
+                  <span className="hidden md:block">{t("saveAndRestart")}</span>
+                </Button>
+                <Button
+                  size="sm"
+                  className="flex items-center gap-2"
+                  aria-label={t("saveOnly")}
+                  onClick={() => onHandleSaveConfig("saveonly")}
+                >
+                  <LuSave className="text-secondary-foreground" />
+                  <span className="hidden md:block">{t("saveOnly")}</span>
+                </Button>
               </div>
-              <span className="hidden md:block">{t("saveAndRestart")}</span>
-            </Button>
-            <Button
-              size="sm"
-              className="flex items-center gap-2"
-              aria-label={t("saveOnly")}
-              onClick={() => onHandleSaveConfig("saveonly")}
-            >
-              <LuSave className="text-secondary-foreground" />
-              <span className="hidden md:block">{t("saveOnly")}</span>
-            </Button>
-          </div>
-        </div>
-
-        <div className="mt-2 flex flex-1 flex-col overflow-hidden">
-          {error && (
-            <div className="mt-2 max-h-[30%] min-h-10 overflow-auto whitespace-pre-wrap border-2 border-muted bg-background_alt p-4 text-sm text-danger md:max-h-[40%]">
-              {error}
             </div>
-          )}
-          <div ref={configRef} className="flex-1 overflow-hidden" />
+
+            <div className="mt-2 flex flex-1 flex-col overflow-hidden">
+              {error && (
+                <div className="border-muted bg-background_alt text-danger mt-2 max-h-[30%] min-h-10 overflow-auto border-2 p-4 text-sm whitespace-pre-wrap md:max-h-[40%]">
+                  {error}
+                </div>
+              )}
+              <div ref={configRef} className="flex-1 overflow-hidden" />
+            </div>
+          </div>
+          <Toaster closeButton={true} />
+          <RestartDialog
+            isOpen={restartDialogOpen}
+            onClose={() => setRestartDialogOpen(false)}
+            onRestart={() => sendRestart("restart")}
+          />
         </div>
-      </div>
-      <Toaster closeButton={true} />
-      <RestartDialog
-        isOpen={restartDialogOpen}
-        onClose={() => setRestartDialogOpen(false)}
-        onRestart={() => sendRestart("restart")}
-      />
-    </div>
+      </SidebarAppContent>
+    </>
   );
 }
 

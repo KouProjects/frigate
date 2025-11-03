@@ -140,7 +140,7 @@ export function AnnotationSettingsPane({
   }
 
   return (
-    <div className="mb-3 space-y-3 rounded-lg border border-secondary-foreground bg-background_alt p-2">
+    <div className="border-secondary-foreground bg-background_alt mb-3 space-y-3 rounded-lg border p-2">
       <Heading as="h4" className="my-2">
         {t("trackingDetails.annotationSettings.title")}
       </Heading>
@@ -155,11 +155,11 @@ export function AnnotationSettingsPane({
             {t("trackingDetails.annotationSettings.showAllZones.title")}
           </Label>
         </div>
-        <div className="text-sm text-muted-foreground">
+        <div className="text-muted-foreground text-sm">
           {t("trackingDetails.annotationSettings.showAllZones.desc")}
         </div>
       </div>
-      <Separator className="my-2 flex bg-secondary" />
+      <Separator className="bg-secondary my-2 flex" />
       <Form {...form}>
         <form
           onSubmit={form.handleSubmit(onSubmit)}
@@ -174,13 +174,13 @@ export function AnnotationSettingsPane({
                   {t("trackingDetails.annotationSettings.offset.label")}
                 </FormLabel>
                 <div className="flex flex-col gap-3 md:flex-row-reverse md:gap-8">
-                  <div className="flex flex-row items-center gap-3 rounded-lg bg-destructive/50 p-3 text-sm text-primary-variant md:my-5">
+                  <div className="bg-destructive/50 text-primary-variant flex flex-row items-center gap-3 rounded-lg p-3 text-sm md:my-5">
                     <PiWarningCircle className="size-24" />
                     <div>
                       <Trans ns="views/explore">
                         trackingDetails.annotationSettings.offset.desc
                       </Trans>
-                      <div className="mt-2 flex items-center text-primary">
+                      <div className="text-primary mt-2 flex items-center">
                         <Link
                           to={getLocaleDocUrl("configuration/reference")}
                           target="_blank"
@@ -196,7 +196,7 @@ export function AnnotationSettingsPane({
                   <div className="flex flex-col">
                     <FormControl>
                       <Input
-                        className="text-md w-full border border-input bg-background p-2 hover:bg-accent hover:text-accent-foreground dark:scheme-dark"
+                        className="text-md border-input bg-background hover:bg-accent hover:text-accent-foreground w-full border p-2 dark:scheme-dark"
                         placeholder="0"
                         {...field}
                       />

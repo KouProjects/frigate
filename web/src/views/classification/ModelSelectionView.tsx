@@ -158,7 +158,7 @@ export default function ModelSelectionView({
           modelType={pageToggle}
         />
       ) : (
-        <div className="grid auto-rows-max grid-cols-2 gap-2 overflow-y-auto p-2 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 2xl:grid-cols-8 3xl:grid-cols-10">
+        <div className="3xl:grid-cols-10 grid auto-rows-max grid-cols-2 gap-2 overflow-y-auto p-2 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 2xl:grid-cols-8">
           {selectedClassificationConfigs.map((config) => (
             <ModelCard
               key={config.name}
@@ -188,7 +188,7 @@ function NoModelsView({
       <div className="flex flex-col items-center gap-2">
         <MdModelTraining className="size-8" />
         <Heading as="h4">{t(`noModels.${typeKey}.title`)}</Heading>
-        <div className="mb-3 text-center text-secondary-foreground">
+        <div className="text-secondary-foreground mb-3 text-center">
           {t(`noModels.${typeKey}.description`)}
         </div>
         <Button size="sm" variant="select" onClick={onCreateModel}>
@@ -305,10 +305,10 @@ function ModelCard({ config, onClick, onDelete }: ModelCardProps) {
           src={`${baseUrl}clips/${config.name}/dataset/${coverImage?.name}/${coverImage?.img}`}
         />
         <ImageShadowOverlay />
-        <div className="absolute bottom-2 left-3 text-lg text-white smart-capitalize">
+        <div className="smart-capitalize absolute bottom-2 left-3 text-lg text-white">
           {config.name}
         </div>
-        <div className="absolute bottom-2 right-2 z-40">
+        <div className="absolute right-2 bottom-2 z-40">
           <DropdownMenu>
             <DropdownMenuTrigger asChild onClick={(e) => e.stopPropagation()}>
               <BlurredIconButton>

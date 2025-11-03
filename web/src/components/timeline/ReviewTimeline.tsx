@@ -371,7 +371,7 @@ export function ReviewTimeline({
       <div
         ref={timelineRef}
         className={cn(
-          "no-scrollbar relative h-full select-none overflow-y-auto bg-secondary transition-all duration-500 ease-in-out",
+          "no-scrollbar bg-secondary relative h-full overflow-y-auto transition-all duration-500 ease-in-out select-none",
           isZooming && zoomDirection === "in" && "animate-timeline-zoom-in",
           isZooming && zoomDirection === "out" && "animate-timeline-zoom-out",
           isDragging && (showHandlebar || showExportHandles)
@@ -380,20 +380,20 @@ export function ReviewTimeline({
         )}
       >
         <div ref={segmentsRef} className="relative flex flex-col">
-          <div className="pointer-events-none absolute inset-x-0 top-0 z-20 h-[30px] w-full bg-linear-to-b from-secondary to-transparent"></div>
-          <div className="pointer-events-none absolute inset-x-0 bottom-0 z-20 h-[30px] w-full bg-linear-to-t from-secondary to-transparent"></div>
+          <div className="from-secondary pointer-events-none absolute inset-x-0 top-0 z-20 h-[30px] w-full bg-linear-to-b to-transparent"></div>
+          <div className="from-secondary pointer-events-none absolute inset-x-0 bottom-0 z-20 h-[30px] w-full bg-linear-to-t to-transparent"></div>
           {children}
         </div>
         {children && (
           <>
             {showHandlebar && (
               <div
-                className={`absolute left-0 top-0 ${isDraggingHandlebar && isIOS ? "" : "z-20"} w-full`}
+                className={`absolute top-0 left-0 ${isDraggingHandlebar && isIOS ? "" : "z-20"} w-full`}
                 role="scrollbar"
                 ref={handlebarRef}
               >
                 <div
-                  className="flex touch-none select-none items-center justify-center"
+                  className="flex touch-none items-center justify-center select-none"
                   onMouseDown={handleHandlebar}
                   onTouchStart={handleHandlebar}
                 >
@@ -403,13 +403,13 @@ export function ReviewTimeline({
                     }`}
                   >
                     <div
-                      className={`mx-auto rounded-full bg-destructive ${
+                      className={`bg-destructive mx-auto rounded-full ${
                         dense
                           ? "w-12 md:w-20"
                           : segmentDuration < 60
                             ? "w-[80px]"
                             : "w-20"
-                      } h-5 ${isDraggingHandlebar && isMobile ? "fixed left-1/2 top-[18px] z-20 h-[30px] w-auto -translate-x-1/2 transform bg-destructive/80 px-3" : "static"} flex items-center justify-center`}
+                      } h-5 ${isDraggingHandlebar && isMobile ? "bg-destructive/80 fixed top-[18px] left-1/2 z-20 h-[30px] w-auto -translate-x-1/2 transform px-3" : "static"} flex items-center justify-center`}
                     >
                       <div
                         ref={handlebarTimeRef}
@@ -417,13 +417,13 @@ export function ReviewTimeline({
                       ></div>
                     </div>
                     <div
-                      className={`absolute h-[4px] w-full bg-destructive ${isDraggingHandlebar && isMobile ? "top-1" : "top-1/2 -translate-y-1/2 transform"}`}
+                      className={`bg-destructive absolute h-[4px] w-full ${isDraggingHandlebar && isMobile ? "top-1" : "top-1/2 -translate-y-1/2 transform"}`}
                     ></div>
                   </div>
                 </div>
                 {/* TODO: determine if we should keep this tooltip */}
                 {false && isHandlebarInNoRecordingPeriod && (
-                  <div className="absolute left-1/2 top-full z-50 mt-2 -translate-x-1/2 rounded-md bg-destructive/80 px-4 py-1 text-center text-xs text-white shadow-lg">
+                  <div className="bg-destructive/80 absolute top-full left-1/2 z-50 mt-2 -translate-x-1/2 rounded-md px-4 py-1 text-center text-xs text-white shadow-lg">
                     No recordings
                   </div>
                 )}
@@ -432,12 +432,12 @@ export function ReviewTimeline({
             {showExportHandles && (
               <>
                 <div
-                  className={`export-end absolute left-0 top-0 ${isDraggingExportEnd && isIOS ? "" : "z-20"} w-full`}
+                  className={`export-end absolute top-0 left-0 ${isDraggingExportEnd && isIOS ? "" : "z-20"} w-full`}
                   role="scrollbar"
                   ref={exportEndRef}
                 >
                   <div
-                    className="flex touch-none select-none items-center justify-center"
+                    className="flex touch-none items-center justify-center select-none"
                     onMouseDown={handleExportEnd}
                     onTouchStart={handleExportEnd}
                   >
@@ -447,13 +447,13 @@ export function ReviewTimeline({
                       }`}
                     >
                       <div
-                        className={`mx-auto -mt-4 bg-selected ${
+                        className={`bg-selected mx-auto -mt-4 ${
                           dense
                             ? "w-12 md:w-20"
                             : segmentDuration < 60
                               ? "w-[80px]"
                               : "w-20"
-                        } h-5 ${isDraggingExportEnd && isMobile ? "fixed left-1/2 top-[18px] z-20 mt-0 h-[30px] w-auto -translate-x-1/2 transform rounded-full bg-selected/80 px-3" : "static rounded-tl-lg rounded-tr-lg"} flex items-center justify-center`}
+                        } h-5 ${isDraggingExportEnd && isMobile ? "bg-selected/80 fixed top-[18px] left-1/2 z-20 mt-0 h-[30px] w-auto -translate-x-1/2 transform rounded-full px-3" : "static rounded-tl-lg rounded-tr-lg"} flex items-center justify-center`}
                       >
                         <div
                           ref={exportEndTimeRef}
@@ -461,22 +461,22 @@ export function ReviewTimeline({
                         ></div>
                       </div>
                       <div
-                        className={`absolute h-[4px] w-full bg-selected ${isDraggingExportEnd && isMobile ? "top-0" : "top-1/2 -translate-y-1/2 transform"}`}
+                        className={`bg-selected absolute h-[4px] w-full ${isDraggingExportEnd && isMobile ? "top-0" : "top-1/2 -translate-y-1/2 transform"}`}
                       ></div>
                     </div>
                   </div>
                 </div>
                 <div
                   ref={exportSectionRef}
-                  className="absolute w-full bg-selected/50"
+                  className="bg-selected/50 absolute w-full"
                 ></div>
                 <div
-                  className={`export-start absolute left-0 top-0 ${isDraggingExportStart && isIOS ? "" : "z-20"} w-full`}
+                  className={`export-start absolute top-0 left-0 ${isDraggingExportStart && isIOS ? "" : "z-20"} w-full`}
                   role="scrollbar"
                   ref={exportStartRef}
                 >
                   <div
-                    className="flex touch-none select-none items-center justify-center"
+                    className="flex touch-none items-center justify-center select-none"
                     onMouseDown={handleExportStart}
                     onTouchStart={handleExportStart}
                   >
@@ -486,16 +486,16 @@ export function ReviewTimeline({
                       }`}
                     >
                       <div
-                        className={`absolute h-[4px] w-full bg-selected ${isDraggingExportStart && isMobile ? "top-[12px]" : "top-1/2 -translate-y-1/2 transform"}`}
+                        className={`bg-selected absolute h-[4px] w-full ${isDraggingExportStart && isMobile ? "top-[12px]" : "top-1/2 -translate-y-1/2 transform"}`}
                       ></div>
                       <div
-                        className={`mx-auto mt-4 bg-selected ${
+                        className={`bg-selected mx-auto mt-4 ${
                           dense
                             ? "w-12 md:w-20"
                             : segmentDuration < 60
                               ? "w-[80px]"
                               : "w-20"
-                        } h-5 ${isDraggingExportStart && isMobile ? "fixed left-1/2 top-[4px] z-20 mt-0 h-[30px] w-auto -translate-x-1/2 transform rounded-full bg-selected/80 px-3" : "static rounded-bl-lg rounded-br-lg"} flex items-center justify-center`}
+                        } h-5 ${isDraggingExportStart && isMobile ? "bg-selected/80 fixed top-[4px] left-1/2 z-20 mt-0 h-[30px] w-auto -translate-x-1/2 transform rounded-full px-3" : "static rounded-br-lg rounded-bl-lg"} flex items-center justify-center`}
                       >
                         <div
                           ref={exportStartTimeRef}
@@ -515,7 +515,7 @@ export function ReviewTimeline({
         <div
           className={`absolute z-30 flex gap-2 ${
             isMobile
-              ? "bottom-4 right-1 flex-col gap-3"
+              ? "right-1 bottom-4 flex-col gap-3"
               : "bottom-2 left-1/2 -translate-x-1/2"
           }`}
         >
@@ -529,10 +529,10 @@ export function ReviewTimeline({
                 }}
                 variant="outline"
                 disabled={currentZoomLevelIndex === 0}
-                className="bg-background_alt p-3 hover:bg-accent hover:text-accent-foreground active:scale-95 [@media(hover:none)]:hover:bg-background_alt"
+                className="bg-background_alt hover:bg-accent hover:text-accent-foreground [@media(hover:none)]:hover:bg-background_alt p-3 active:scale-95"
                 type="button"
               >
-                <LuZoomOut className={cn("size-5 text-primary-variant")} />
+                <LuZoomOut className={cn("text-primary-variant size-5")} />
               </Button>
             </TooltipTrigger>
             <TooltipPortal>
@@ -552,10 +552,10 @@ export function ReviewTimeline({
                 }}
                 variant="outline"
                 disabled={currentZoomLevelIndex === zoomLevels.length - 1}
-                className="bg-background_alt p-3 hover:bg-accent hover:text-accent-foreground active:scale-95 [@media(hover:none)]:hover:bg-background_alt"
+                className="bg-background_alt hover:bg-accent hover:text-accent-foreground [@media(hover:none)]:hover:bg-background_alt p-3 active:scale-95"
                 type="button"
               >
-                <LuZoomIn className={cn("size-5 text-primary-variant")} />
+                <LuZoomIn className={cn("text-primary-variant size-5")} />
               </Button>
             </TooltipTrigger>
             <TooltipPortal>

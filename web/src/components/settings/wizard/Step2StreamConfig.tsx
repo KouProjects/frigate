@@ -217,7 +217,7 @@ export default function Step2StreamConfig({
 
   return (
     <div className="space-y-6">
-      <div className="text-sm text-secondary-foreground">
+      <div className="text-secondary-foreground text-sm">
         {t("cameraWizard.step2.description")}
       </div>
 
@@ -231,7 +231,7 @@ export default function Step2StreamConfig({
                     {t("cameraWizard.step2.streamTitle", { number: index + 1 })}
                   </h4>
                   {stream.testResult && stream.testResult.success && (
-                    <div className="mt-1 text-sm text-muted-foreground">
+                    <div className="text-muted-foreground mt-1 text-sm">
                       {[
                         stream.testResult.resolution,
                         stream.testResult.fps
@@ -248,7 +248,7 @@ export default function Step2StreamConfig({
                 <div className="flex items-center gap-2">
                   {stream.testResult?.success && (
                     <div className="flex items-center gap-2 text-sm">
-                      <FaCircleCheck className="size-4 text-success" />
+                      <FaCircleCheck className="text-success size-4" />
                       <span className="text-success">
                         {t("cameraWizard.step2.connected")}
                       </span>
@@ -256,7 +256,7 @@ export default function Step2StreamConfig({
                   )}
                   {stream.testResult && !stream.testResult.success && (
                     <div className="flex items-center gap-2 text-sm">
-                      <LuX className="size-4 text-danger" />
+                      <LuX className="text-danger size-4" />
                       <span className="text-danger">
                         {t("cameraWizard.step2.notConnected")}
                       </span>
@@ -277,7 +277,7 @@ export default function Step2StreamConfig({
 
               <div className="grid grid-cols-1 gap-4">
                 <div className="space-y-2">
-                  <label className="text-sm font-medium text-primary-variant">
+                  <label className="text-primary-variant text-sm font-medium">
                     {t("cameraWizard.step2.url")}
                   </label>
                   <div className="flex flex-row items-center gap-2">
@@ -313,7 +313,7 @@ export default function Step2StreamConfig({
               {stream.testResult &&
                 !stream.testResult.success &&
                 stream.userTested && (
-                  <div className="rounded-md border border-danger/20 bg-danger/10 p-3 text-sm text-danger">
+                  <div className="border-danger/20 bg-danger/10 text-danger rounded-md border p-3 text-sm">
                     <div className="font-medium">
                       {t("cameraWizard.step2.testFailedTitle")}
                     </div>
@@ -325,7 +325,7 @@ export default function Step2StreamConfig({
 
               <div className="space-y-2">
                 <div className="flex items-center gap-1">
-                  <Label className="text-sm font-medium text-primary-variant">
+                  <Label className="text-primary-variant text-sm font-medium">
                     {t("cameraWizard.step2.roles")}
                   </Label>
                   <Popover>
@@ -339,7 +339,7 @@ export default function Step2StreamConfig({
                         <div className="font-medium">
                           {t("cameraWizard.step2.rolesPopover.title")}
                         </div>
-                        <div className="space-y-1 text-muted-foreground">
+                        <div className="text-muted-foreground space-y-1">
                           <div>
                             <strong>detect</strong> -{" "}
                             {t("cameraWizard.step2.rolesPopover.detect")}
@@ -353,7 +353,7 @@ export default function Step2StreamConfig({
                             {t("cameraWizard.step2.rolesPopover.audio")}
                           </div>
                         </div>
-                        <div className="mt-3 flex items-center text-primary">
+                        <div className="text-primary mt-3 flex items-center">
                           <Link
                             to={getLocaleDocUrl("configuration/cameras")}
                             target="_blank"
@@ -368,7 +368,7 @@ export default function Step2StreamConfig({
                     </PopoverContent>
                   </Popover>
                 </div>
-                <div className="rounded-lg bg-background p-3">
+                <div className="bg-background rounded-lg p-3">
                   <div className="flex flex-wrap gap-2">
                     {(["detect", "record", "audio"] as const).map((role) => {
                       const isUsedElsewhere = getUsedRolesExcludingStream(
@@ -395,7 +395,7 @@ export default function Step2StreamConfig({
 
               <div className="space-y-2">
                 <div className="flex items-center gap-1">
-                  <Label className="text-sm font-medium text-primary-variant">
+                  <Label className="text-primary-variant text-sm font-medium">
                     {t("cameraWizard.step2.featuresTitle")}
                   </Label>
                   <Popover>
@@ -412,7 +412,7 @@ export default function Step2StreamConfig({
                         <div className="text-muted-foreground">
                           {t("cameraWizard.step2.featuresPopover.description")}
                         </div>
-                        <div className="mt-3 flex items-center text-primary">
+                        <div className="text-primary mt-3 flex items-center">
                           <Link
                             to={getLocaleDocUrl(
                               "configuration/restream#reduce-connections-to-camera",
@@ -429,7 +429,7 @@ export default function Step2StreamConfig({
                     </PopoverContent>
                   </Popover>
                 </div>
-                <div className="rounded-lg bg-background p-3">
+                <div className="bg-background rounded-lg p-3">
                   <div className="flex items-center justify-between">
                     <span className="text-sm">
                       {t("cameraWizard.step2.go2rtc")}
@@ -459,7 +459,7 @@ export default function Step2StreamConfig({
       </div>
 
       {!hasDetectRole && (
-        <div className="rounded-lg border border-danger/50 p-3 text-sm text-danger">
+        <div className="border-danger/50 text-danger rounded-lg border p-3 text-sm">
           {t("cameraWizard.step2.detectRoleWarning")}
         </div>
       )}

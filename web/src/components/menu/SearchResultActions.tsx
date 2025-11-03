@@ -162,7 +162,7 @@ export default function SearchResultActions({
             aria-label={t("itemMenu.submitToPlus.aria")}
             onClick={showSnapshot}
           >
-            <FrigatePlusIcon className="mr-2 size-4 cursor-pointer text-primary" />
+            <FrigatePlusIcon className="text-primary mr-2 size-4 cursor-pointer" />
             <span>{t("itemMenu.submitToPlus.label")}</span>
           </MenuItem>
         )}

@@ -138,7 +138,7 @@ export default function CreateFaceWizardDialog({
         )}
         {step == 1 && (
           <>
-            <div className="px-8 py-2 text-center text-sm text-secondary-foreground">
+            <div className="text-secondary-foreground px-8 py-2 text-center text-sm">
               {t("steps.description.uploadFace", { name })}
             </div>
             <ImageEntry onSave={onUploadImage}>
@@ -153,14 +153,14 @@ export default function CreateFaceWizardDialog({
         {step == 2 && (
           <div className="mt-2">
             {t("toast.success.addFaceLibrary", { name })}
-            <p className="py-4 text-sm text-primary-variant">
+            <p className="text-primary-variant py-4 text-sm">
               <ul className="list-inside list-disc">
                 <Trans ns="views/faceLibrary">
                   createFaceLibrary.nextSteps
                 </Trans>
               </ul>
             </p>
-            <div className="my-2 flex items-center text-sm text-primary">
+            <div className="text-primary my-2 flex items-center text-sm">
               <Link
                 to={getLocaleDocUrl("configuration/face_recognition")}
                 target="_blank"

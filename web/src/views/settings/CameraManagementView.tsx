@@ -73,7 +73,7 @@ export default function CameraManagementView({
         closeButton
       />
       <div className="flex size-full flex-col md:flex-row">
-        <div className="scrollbar-container order-last mb-10 mt-2 flex h-full w-full flex-col overflow-y-auto pb-2 md:order-0">
+        <div className="scrollbar-container order-last mt-2 mb-10 flex h-full w-full flex-col overflow-y-auto pb-2 md:order-0">
           {viewMode === "settings" ? (
             <>
               <Heading as="h4" className="mb-2">
@@ -115,24 +115,24 @@ export default function CameraManagementView({
                       </Select>
                     </div>
 
-                    <Separator className="my-2 flex bg-secondary" />
+                    <Separator className="bg-secondary my-2 flex" />
                     <div className="max-w-7xl space-y-4">
                       <Heading as="h4" className="my-2">
                         <Trans ns="views/settings">
                           cameraManagement.streams.title
                         </Trans>
                       </Heading>
-                      <div className="mt-3 text-sm text-muted-foreground">
+                      <div className="text-muted-foreground mt-3 text-sm">
                         <Trans ns="views/settings">
                           cameraManagement.streams.desc
                         </Trans>
                       </div>
 
-                      <div className="max-w-md space-y-2 rounded-lg bg-secondary p-4">
+                      <div className="bg-secondary max-w-md space-y-2 rounded-lg p-4">
                         {cameras.map((camera) => (
                           <div
                             key={camera}
-                            className="flex items-center justify-between smart-capitalize"
+                            className="smart-capitalize flex items-center justify-between"
                           >
                             <CameraNameLabel camera={camera} />
                             <CameraEnableSwitch cameraName={camera} />
@@ -140,7 +140,7 @@ export default function CameraManagementView({
                         ))}
                       </div>
                     </div>
-                    <Separator className="mb-2 mt-4 flex bg-secondary" />
+                    <Separator className="bg-secondary mt-4 mb-2 flex" />
                   </>
                 )}
               </div>
@@ -154,7 +154,7 @@ export default function CameraManagementView({
                   size="sm"
                   onClick={handleBack}
                 >
-                  <IoMdArrowRoundBack className="size-5 text-secondary-foreground" />
+                  <IoMdArrowRoundBack className="text-secondary-foreground size-5" />
                   {isDesktop && (
                     <div className="text-primary">
                       {t("button.back", { ns: "common" })}

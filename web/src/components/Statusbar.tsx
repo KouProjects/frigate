@@ -69,7 +69,7 @@ export default function Statusbar() {
   }, [reindexState, addMessage, clearMessages, t]);
 
   return (
-    <div className="absolute bottom-0 left-0 right-0 z-10 flex h-8 w-full items-center justify-between border-t border-secondary-highlight bg-background_alt px-4 dark:text-secondary-foreground">
+    <div className="border-secondary-highlight bg-background_alt dark:text-secondary-foreground absolute right-0 bottom-0 left-0 z-10 flex h-8 w-full items-center justify-between border-t px-4">
       <div className="flex h-full items-center gap-2">
         {cpuPercent && (
           <Link to="/system#general">
@@ -150,7 +150,7 @@ export default function Statusbar() {
                 const message = (
                   <div
                     key={text}
-                    className={`flex items-center gap-2 whitespace-nowrap text-sm ${link ? "cursor-pointer hover:underline" : ""}`}
+                    className={`flex items-center gap-2 text-sm whitespace-nowrap ${link ? "cursor-pointer hover:underline" : ""}`}
                   >
                     <IoIosWarning
                       className={`size-5 ${color || "text-danger"}`}

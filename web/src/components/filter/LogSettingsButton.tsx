@@ -31,7 +31,7 @@ export function LogSettingsButton({
       aria-label={t("logSettings.label")}
     >
       <FaCog className="text-secondary-foreground" />
-      <div className="hidden text-primary md:block">
+      <div className="text-primary hidden md:block">
         {t("menu.settings", { ns: "common" })}
       </div>
     </Button>
@@ -41,7 +41,7 @@ export function LogSettingsButton({
       <div className="space-y-4">
         <div className="space-y-0.5">
           <div className="text-md">{t("filter")}</div>
-          <div className="space-y-1 text-xs text-muted-foreground">
+          <div className="text-muted-foreground space-y-1 text-xs">
             {t("logSettings.filterBySeverity")}
           </div>
         </div>
@@ -55,7 +55,7 @@ export function LogSettingsButton({
         <div className="space-y-0.5">
           <div className="text-md">{t("logSettings.loading.title")}</div>
           <div className="mt-2.5 flex flex-col gap-2.5">
-            <div className="space-y-1 text-xs text-muted-foreground">
+            <div className="text-muted-foreground space-y-1 text-xs">
               {t("logSettings.loading.desc")}
             </div>
             <FilterSwitch
@@ -103,10 +103,10 @@ export function GeneralFilterContent({
   const { t } = useTranslation(["components/filter"]);
   return (
     <>
-      <div className="scrollbar-container h-auto overflow-y-auto overflow-x-hidden">
+      <div className="scrollbar-container h-auto overflow-x-hidden overflow-y-auto">
         <div className="mb-5 flex items-center justify-between">
           <Label
-            className="mx-2 cursor-pointer text-primary"
+            className="text-primary mx-2 cursor-pointer"
             htmlFor="allLabels"
           >
             {t("logSettings.allLogs")}
@@ -126,7 +126,7 @@ export function GeneralFilterContent({
           {["debug", "info", "warning", "error"].map((item) => (
             <div className="flex items-center justify-between" key={item}>
               <Label
-                className="mx-2 w-full cursor-pointer text-primary smart-capitalize"
+                className="text-primary smart-capitalize mx-2 w-full cursor-pointer"
                 htmlFor={item}
               >
                 {item.replaceAll("_", " ")}

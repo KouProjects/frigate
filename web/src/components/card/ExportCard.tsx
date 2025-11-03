@@ -152,14 +152,14 @@ export default function ExportCard({
                 onLoad={() => setLoading(false)}
               />
             ) : (
-              <div className="absolute inset-0 rounded-lg bg-secondary md:rounded-2xl" />
+              <div className="bg-secondary absolute inset-0 rounded-lg md:rounded-2xl" />
             )}
           </>
         )}
         {hovered && (
           <>
-            <div className="absolute inset-0 rounded-lg bg-black bg-opacity-60 md:rounded-2xl" />
-            <div className="absolute right-3 top-2">
+            <div className="bg-opacity-60 absolute inset-0 rounded-lg bg-black md:rounded-2xl" />
+            <div className="absolute top-2 right-3">
               <div className="flex items-center justify-center gap-4">
                 {!exportedRecording.in_progress && (
                   <Tooltip>
@@ -222,7 +222,7 @@ export default function ExportCard({
                         })
                       }
                     >
-                      <LuTrash className="size-4 fill-destructive text-destructive hover:text-white" />
+                      <LuTrash className="fill-destructive text-destructive size-4 hover:text-white" />
                     </BlurredIconButton>
                   </TooltipTrigger>
                   <TooltipContent>{t("tooltip.deleteExport")}</TooltipContent>
@@ -232,7 +232,7 @@ export default function ExportCard({
 
             {!exportedRecording.in_progress && (
               <Button
-                className="absolute left-1/2 top-1/2 h-20 w-20 -translate-x-1/2 -translate-y-1/2 cursor-pointer text-white hover:bg-transparent hover:text-white"
+                className="absolute top-1/2 left-1/2 h-20 w-20 -translate-x-1/2 -translate-y-1/2 cursor-pointer text-white hover:bg-transparent hover:text-white"
                 aria-label={t("button.play", { ns: "common" })}
                 variant="ghost"
                 onClick={() => {
@@ -248,7 +248,7 @@ export default function ExportCard({
           <Skeleton className="absolute inset-0 aspect-video rounded-lg md:rounded-2xl" />
         )}
         <ImageShadowOverlay />
-        <div className="absolute bottom-2 left-3 flex items-end text-white smart-capitalize">
+        <div className="smart-capitalize absolute bottom-2 left-3 flex items-end text-white">
           {exportedRecording.name.replaceAll("_", " ")}
         </div>
       </div>

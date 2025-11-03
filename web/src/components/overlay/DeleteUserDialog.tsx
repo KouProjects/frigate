@@ -33,8 +33,8 @@ export default function DeleteUserDialog({
           </div>
         </DialogHeader>
 
-        <div className="my-4 rounded-md border border-destructive/20 bg-destructive/5 p-4 text-center text-sm">
-          <p className="font-medium text-destructive">
+        <div className="border-destructive/20 bg-destructive/5 my-4 rounded-md border p-4 text-center text-sm">
+          <p className="text-destructive font-medium">
             <Trans
               i18nKey="users.dialog.deleteUser.warn"
               ns="views/settings"

@@ -543,7 +543,7 @@ export function RecordingView({
               size="sm"
               onClick={() => navigate(-1)}
             >
-              <IoMdArrowRoundBack className="size-5 text-secondary-foreground" />
+              <IoMdArrowRoundBack className="text-secondary-foreground size-5" />
               {isDesktop && (
                 <div className="text-primary">
                   {t("button.back", { ns: "common" })}
@@ -558,7 +558,7 @@ export function RecordingView({
                 navigate(`/#${mainCamera}`);
               }}
             >
-              <FaVideo className="size-5 text-secondary-foreground" />
+              <FaVideo className="text-secondary-foreground size-5" />
               {isDesktop && (
                 <div className="text-primary">
                   {t("menu.live.title", { ns: "common" })}
@@ -704,7 +704,7 @@ export function RecordingView({
               <div
                 key={mainCamera}
                 className={cn(
-                  "relative flex max-h-full min-h-0 min-w-0 max-w-full items-center justify-center",
+                  "relative flex max-h-full min-h-0 max-w-full min-w-0 items-center justify-center",
                   isDesktop
                     ? // Desktop: dynamically switch between w-full and h-full based on
                       // container vs camera aspect ratio to ensure proper fitting
@@ -974,7 +974,7 @@ function Timeline({
               timelineType == "timeline"
                 ? "w-[100px] shrink-0"
                 : timelineType == "detail"
-                  ? "min-w-[20rem] max-w-[30%] shrink-0 grow-0 basis-120 md:min-w-[20rem] md:max-w-[25%] lg:min-w-120 lg:max-w-[33%]"
+                  ? "max-w-[30%] min-w-[20rem] shrink-0 grow-0 basis-120 md:max-w-[25%] md:min-w-[20rem] lg:max-w-[33%] lg:min-w-120"
                   : "w-60 shrink-0",
             )
           : cn(
@@ -992,8 +992,8 @@ function Timeline({
 
       {timelineType != "detail" && (
         <>
-          <div className="pointer-events-none absolute inset-x-0 top-0 z-20 h-[30px] w-full bg-linear-to-b from-secondary to-transparent"></div>
-          <div className="pointer-events-none absolute inset-x-0 bottom-0 z-20 h-[30px] w-full bg-linear-to-t from-secondary to-transparent"></div>
+          <div className="from-secondary pointer-events-none absolute inset-x-0 top-0 z-20 h-[30px] w-full bg-linear-to-b to-transparent"></div>
+          <div className="from-secondary pointer-events-none absolute inset-x-0 bottom-0 z-20 h-[30px] w-full bg-linear-to-t to-transparent"></div>
         </>
       )}
       {timelineType == "timeline" ? (
@@ -1036,7 +1036,7 @@ function Timeline({
           isPlaying={isPlaying}
         />
       ) : (
-        <div className="scrollbar-container h-full overflow-auto bg-secondary">
+        <div className="scrollbar-container bg-secondary h-full overflow-auto">
           <div
             className={cn(
               "scrollbar-container grid h-auto grid-cols-1 gap-4 overflow-auto p-4",
@@ -1044,7 +1044,7 @@ function Timeline({
             )}
           >
             {mainCameraReviewItems.length === 0 ? (
-              <div className="mt-5 text-center text-primary">
+              <div className="text-primary mt-5 text-center">
                 {t("events.noFoundForTimePeriod")}
               </div>
             ) : (

@@ -143,7 +143,7 @@ function ReviewActivityDay({
           className={cn(
             "w-4",
             modifiers["recordings"]
-              ? "border-b border-primary/60 text-primary"
+              ? "border-primary/60 text-primary border-b"
               : "text-primary/40",
             modifiers.selected && "border-white text-white",
           )}

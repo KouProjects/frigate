@@ -3,11 +3,15 @@ import { FrigateConfig } from "@/types/frigateConfig";
 import { NavData } from "@/types/navigation";
 import { useMemo } from "react";
 import { isDesktop } from "react-device-detect";
-import { FaCompactDisc, FaVideo } from "react-icons/fa";
-import { IoSearch } from "react-icons/io5";
-import { LuConstruction } from "react-icons/lu";
-import { MdCategory, MdVideoLibrary } from "react-icons/md";
-import { TbFaceId } from "react-icons/tb";
+import {
+  Play,
+  Clapperboard,
+  Search,
+  Download,
+  Wrench,
+  Users,
+  Tag,
+} from "lucide-react";
 import useSWR from "swr";
 import { useIsAdmin } from "./use-is-admin";
 
@@ -33,35 +37,35 @@ export default function useNavigation(
         {
           id: ID_LIVE,
           variant,
-          icon: FaVideo,
+          icon: Play,
           title: "menu.live.title",
           url: "/",
         },
         {
           id: ID_REVIEW,
           variant,
-          icon: MdVideoLibrary,
+          icon: Clapperboard,
           title: "menu.review",
           url: "/review",
         },
         {
           id: ID_EXPLORE,
           variant,
-          icon: IoSearch,
+          icon: Search,
           title: "menu.explore",
           url: "/explore",
         },
         {
           id: ID_EXPORT,
           variant,
-          icon: FaCompactDisc,
+          icon: Download,
           title: "menu.export",
           url: "/export",
         },
         {
           id: ID_PLAYGROUND,
           variant,
-          icon: LuConstruction,
+          icon: Wrench,
           title: "menu.uiPlayground",
           url: "/playground",
           enabled: ENV !== "production",
@@ -69,7 +73,7 @@ export default function useNavigation(
         {
           id: ID_FACE_LIBRARY,
           variant,
-          icon: TbFaceId,
+          icon: Users,
           title: "menu.faceLibrary",
           url: "/faces",
           enabled: isDesktop && config?.face_recognition.enabled && isAdmin,
@@ -77,7 +81,7 @@ export default function useNavigation(
         {
           id: ID_CLASSIFICATION,
           variant,
-          icon: MdCategory,
+          icon: Tag,
           title: "menu.classification",
           url: "/classification",
           enabled: isDesktop && isAdmin,

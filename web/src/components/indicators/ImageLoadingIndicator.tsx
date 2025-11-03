@@ -14,7 +14,7 @@ export default function ImageLoadingIndicator({
   }
 
   return isSafari ? (
-    <div className={cn("pointer-events-none bg-background_alt", className)} />
+    <div className={cn("bg-background_alt pointer-events-none", className)} />
   ) : (
     <Skeleton className={cn("pointer-events-none", className)} />
   );

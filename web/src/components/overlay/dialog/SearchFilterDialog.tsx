@@ -329,7 +329,7 @@ function TimeRangeFilterContent({
           </PopoverTrigger>
           <PopoverContent className="flex flex-row items-center justify-center">
             <input
-              className="text-md mx-4 w-full border border-input bg-background p-1 text-secondary-foreground hover:bg-accent hover:text-accent-foreground dark:scheme-dark"
+              className="text-md border-input bg-background text-secondary-foreground hover:bg-accent hover:text-accent-foreground mx-4 w-full border p-1 dark:scheme-dark"
               id="startTime"
               type="time"
               value={selectedAfterHour}
@@ -342,7 +342,7 @@ function TimeRangeFilterContent({
             />
           </PopoverContent>
         </Popover>
-        <FaArrowRight className="size-4 text-primary" />
+        <FaArrowRight className="text-primary size-4" />
         <Popover
           open={endOpen}
           onOpenChange={(open) => {
@@ -369,7 +369,7 @@ function TimeRangeFilterContent({
           </PopoverTrigger>
           <PopoverContent className="flex flex-col items-center">
             <input
-              className="text-md mx-4 w-full border border-input bg-background p-1 text-secondary-foreground hover:bg-accent hover:text-accent-foreground dark:scheme-dark"
+              className="text-md border-input bg-background text-secondary-foreground hover:bg-accent hover:text-accent-foreground mx-4 w-full border p-1 dark:scheme-dark"
               id="startTime"
               type="time"
               value={
@@ -407,9 +407,9 @@ export function ZoneFilterContent({
         <div className="text-lg">{t("zones.label")}</div>
         {allZones && (
           <>
-            <div className="mb-5 mt-2.5 flex items-center justify-between">
+            <div className="mt-2.5 mb-5 flex items-center justify-between">
               <Label
-                className="mx-2 cursor-pointer text-primary"
+                className="text-primary mx-2 cursor-pointer"
                 htmlFor="allZones"
               >
                 {t("zones.all.title")}
@@ -479,8 +479,8 @@ export function SubFilterContent({
     <div className="overflow-x-hidden">
       <DropdownMenuSeparator className="mb-3" />
       <div className="text-lg">{t("subLabels.label")}</div>
-      <div className="mb-5 mt-2.5 flex items-center justify-between">
-        <Label className="mx-2 cursor-pointer text-primary" htmlFor="allLabels">
+      <div className="mt-2.5 mb-5 flex items-center justify-between">
+        <Label className="text-primary mx-2 cursor-pointer" htmlFor="allLabels">
           {t("subLabels.all")}
         </Label>
         <Switch
@@ -694,7 +694,7 @@ export function SnapshotClipFilterContent({
           <div className="flex items-center space-x-2">
             <Checkbox
               id="snapshot-filter"
-              className="size-5 text-white accent-white data-[state=checked]:bg-selected data-[state=checked]:text-white"
+              className="data-[state=checked]:bg-selected size-5 text-white accent-white data-[state=checked]:text-white"
               checked={isSnapshotFilterActive}
               onCheckedChange={(checked) => {
                 setIsSnapshotFilterActive(checked as boolean);
@@ -707,7 +707,7 @@ export function SnapshotClipFilterContent({
             />
             <Label
               htmlFor="snapshot-filter"
-              className="cursor-pointer text-sm font-medium leading-none"
+              className="cursor-pointer text-sm leading-none font-medium"
             >
               {t("features.hasSnapshot")}
             </Label>
@@ -728,14 +728,14 @@ export function SnapshotClipFilterContent({
             <ToggleGroupItem
               value="yes"
               aria-label={t("button.yes", { ns: "common" })}
-              className="data-[state=on]:bg-selected data-[state=on]:text-white data-[state=on]:hover:bg-selected data-[state=on]:hover:text-white"
+              className="data-[state=on]:bg-selected data-[state=on]:hover:bg-selected data-[state=on]:text-white data-[state=on]:hover:text-white"
             >
               {t("button.yes", { ns: "common" })}
             </ToggleGroupItem>
             <ToggleGroupItem
               value="no"
               aria-label={t("button.no", { ns: "common" })}
-              className="data-[state=on]:bg-selected data-[state=on]:text-white data-[state=on]:hover:bg-selected data-[state=on]:hover:text-white"
+              className="data-[state=on]:bg-selected data-[state=on]:hover:bg-selected data-[state=on]:text-white data-[state=on]:hover:text-white"
             >
               {t("button.no", { ns: "common" })}
             </ToggleGroupItem>
@@ -751,7 +751,7 @@ export function SnapshotClipFilterContent({
                     <div className="inline-flex">
                       <Checkbox
                         id="plus-filter"
-                        className="size-5 text-white accent-white data-[state=checked]:bg-selected data-[state=checked]:text-white"
+                        className="data-[state=checked]:bg-selected size-5 text-white accent-white data-[state=checked]:text-white"
                         checked={isFrigatePlusFilterActive}
                         disabled={isFrigatePlusFilterDisabled}
                         onCheckedChange={(checked) => {
@@ -780,7 +780,7 @@ export function SnapshotClipFilterContent({
               </TooltipProvider>
               <Label
                 htmlFor="plus-filter"
-                className="cursor-pointer text-sm font-medium leading-none"
+                className="cursor-pointer text-sm leading-none font-medium"
               >
                 {t("features.submittedToFrigatePlus.label")}
               </Label>
@@ -806,14 +806,14 @@ export function SnapshotClipFilterContent({
               <ToggleGroupItem
                 value="yes"
                 aria-label={t("button.yes", { ns: "common" })}
-                className="data-[state=on]:bg-selected data-[state=on]:text-white data-[state=on]:hover:bg-selected data-[state=on]:hover:text-white"
+                className="data-[state=on]:bg-selected data-[state=on]:hover:bg-selected data-[state=on]:text-white data-[state=on]:hover:text-white"
               >
                 {t("button.yes", { ns: "common" })}
               </ToggleGroupItem>
               <ToggleGroupItem
                 value="no"
                 aria-label={t("button.no", { ns: "common" })}
-                className="data-[state=on]:bg-selected data-[state=on]:text-white data-[state=on]:hover:bg-selected data-[state=on]:hover:text-white"
+                className="data-[state=on]:bg-selected data-[state=on]:hover:bg-selected data-[state=on]:text-white data-[state=on]:hover:text-white"
               >
                 {t("button.no", { ns: "common" })}
               </ToggleGroupItem>
@@ -824,7 +824,7 @@ export function SnapshotClipFilterContent({
         <div className="flex items-center justify-between">
           <div className="flex items-center space-x-2">
             <Checkbox
-              className="size-5 text-white accent-white data-[state=checked]:bg-selected data-[state=checked]:text-white"
+              className="data-[state=checked]:bg-selected size-5 text-white accent-white data-[state=checked]:text-white"
               id="clip-filter"
               checked={isClipFilterActive}
               onCheckedChange={(checked) => {
@@ -842,7 +842,7 @@ export function SnapshotClipFilterContent({
             />
             <Label
               htmlFor="clip-filter"
-              className="cursor-pointer text-sm font-medium leading-none"
+              className="cursor-pointer text-sm leading-none font-medium"
             >
               {t("features.hasVideoClip")}
             </Label>
@@ -861,14 +861,14 @@ export function SnapshotClipFilterContent({
             <ToggleGroupItem
               value="yes"
               aria-label={t("button.yes", { ns: "common" })}
-              className="data-[state=on]:bg-selected data-[state=on]:text-white data-[state=on]:hover:bg-selected data-[state=on]:hover:text-white"
+              className="data-[state=on]:bg-selected data-[state=on]:hover:bg-selected data-[state=on]:text-white data-[state=on]:hover:text-white"
             >
               {t("button.yes", { ns: "common" })}
             </ToggleGroupItem>
             <ToggleGroupItem
               value="no"
               aria-label={t("button.no", { ns: "common" })}
-              className="data-[state=on]:bg-selected data-[state=on]:text-white data-[state=on]:hover:bg-selected data-[state=on]:hover:text-white"
+              className="data-[state=on]:bg-selected data-[state=on]:hover:bg-selected data-[state=on]:text-white data-[state=on]:hover:text-white"
             >
               {t("button.no", { ns: "common" })}
             </ToggleGroupItem>
@@ -994,14 +994,14 @@ export function RecognizedLicensePlatesFilterContent({
       <DropdownMenuSeparator className="mb-3" />
       <div className="mb-3 text-lg">{t("recognizedLicensePlates.title")}</div>
       {allRecognizedLicensePlates == undefined ? (
-        <div className="flex flex-col items-center justify-center text-sm text-muted-foreground">
-          <ActivityIndicator className="mb-3 mr-2 size-5" />
+        <div className="text-muted-foreground flex flex-col items-center justify-center text-sm">
+          <ActivityIndicator className="mr-2 mb-3 size-5" />
           <p>{t("recognizedLicensePlates.loading")}</p>
         </div>
       ) : allRecognizedLicensePlates.length == 0 ? null : (
         <>
           <Command
-            className="border border-input bg-background"
+            className="border-input bg-background border"
             filter={filterItems}
           >
             <CommandInput
@@ -1040,7 +1040,7 @@ export function RecognizedLicensePlatesFilterContent({
               {selectedRecognizedLicensePlates.map((id) => (
                 <span
                   key={id}
-                  className="inline-flex items-center rounded bg-selected px-2 py-1 text-sm text-white"
+                  className="bg-selected inline-flex items-center rounded px-2 py-1 text-sm text-white"
                 >
                   {id}
                   <button
@@ -1053,17 +1053,17 @@ export function RecognizedLicensePlatesFilterContent({
               ))}
             </div>
           )}
-          <p className="mt-1 text-sm text-muted-foreground">
+          <p className="text-muted-foreground mt-1 text-sm">
             {t("recognizedLicensePlates.selectPlatesFromList")}
           </p>
-          <div className="mt-2 flex items-center justify-between text-sm text-muted-foreground">
+          <div className="text-muted-foreground mt-2 flex items-center justify-between text-sm">
             {filteredPlates.length > 0 &&
             !filteredPlates.every((plate) =>
               selectedRecognizedLicensePlates.includes(plate),
             ) ? (
               <button
                 onClick={handleSelectAllVisible}
-                className="flex items-center gap-1 text-sm text-primary hover:underline"
+                className="text-primary flex items-center gap-1 text-sm hover:underline"
               >
                 <LuSquareCheck className="size-4" />
                 {t("recognizedLicensePlates.selectAll")}
@@ -1073,7 +1073,7 @@ export function RecognizedLicensePlatesFilterContent({
             {selectedRecognizedLicensePlates.length > 0 && (
               <button
                 onClick={handleClearAll}
-                className="flex items-center gap-1 text-sm text-primary hover:underline"
+                className="text-primary flex items-center gap-1 text-sm hover:underline"
               >
                 <LuX className="size-4" />
                 {t("recognizedLicensePlates.clearAll")}

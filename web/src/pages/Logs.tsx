@@ -35,6 +35,13 @@ import { isIOS, isMobile } from "react-device-detect";
 import { isPWA } from "@/utils/isPWA";
 import { isInIframe } from "@/utils/isIFrame";
 import { useTranslation } from "react-i18next";
+import {
+  BreadcrumbItem,
+  SidebarAppContent,
+  SidebarAppHeader,
+} from "@/components/SidebarAppWrapper";
+
+const breadcrumbs: BreadcrumbItem[] = [{ path: "/logs", name: "Logs" }];
 
 function Logs() {
   const { t } = useTranslation(["views/system"]);
@@ -467,144 +474,149 @@ function Logs() {
   }, []);
 
   return (
-    <div className="flex size-full flex-col p-2">
-      <Toaster position="top-center" closeButton={true} />
-      <LogInfoDialog logLine={selectedLog} setLogLine={setSelectedLog} />
+    <>
+      <SidebarAppHeader breadcrumbs={breadcrumbs} />
+      <SidebarAppContent>
+        <div className="flex size-full flex-col p-2">
+          <Toaster position="top-center" closeButton={true} />
+          <LogInfoDialog logLine={selectedLog} setLogLine={setSelectedLog} />
 
-      <div className="relative flex h-11 w-full items-center justify-between">
-        <ScrollArea className="w-full whitespace-nowrap">
-          <div ref={tabsRef} className="flex flex-row">
-            <ToggleGroup
-              type="single"
-              size="sm"
-              value={logService}
-              onValueChange={(value: LogType) => {
-                if (value) {
-                  setLogs([]);
-                  setFilterSeverity(undefined);
-                  setLogService(value);
-                }
-              }}
-            >
-              {Object.values(logTypes).map((item) => (
-                <ToggleGroupItem
-                  key={item}
-                  className={`flex items-center justify-between gap-2 ${logService == item ? "" : "text-muted-foreground"}`}
-                  value={item}
-                  data-nav-item={item}
-                  aria-label={`Select ${item}`}
-                >
-                  <div className="smart-capitalize">{item}</div>
-                </ToggleGroupItem>
-              ))}
-            </ToggleGroup>
-            <ScrollBar orientation="horizontal" className="h-0" />
-          </div>
-        </ScrollArea>
-        <div className="flex items-center gap-2">
-          <Button
-            className="flex items-center justify-between gap-2"
-            aria-label={t("logs.copy.label")}
-            size="sm"
-            onClick={handleCopyLogs}
-          >
-            <FaCopy className="text-secondary-foreground" />
-            <div className="hidden text-primary md:block">
-              {t("logs.copy.label")}
-            </div>
-          </Button>
-          <Button
-            className="flex items-center justify-between gap-2"
-            aria-label={t("logs.download.label")}
-            size="sm"
-            onClick={handleDownloadLogs}
-          >
-            <FaDownload className="text-secondary-foreground" />
-            <div className="hidden text-primary md:block">
-              {t("button.download", { ns: "common" })}
-            </div>
-          </Button>
-          <LogSettingsButton
-            selectedLabels={filterSeverity}
-            updateLabelFilter={setFilterSeverity}
-            logSettings={logSettings}
-            setLogSettings={setLogSettings}
-          />
-        </div>
-      </div>
-
-      <div className="font-mono relative my-2 flex size-full flex-col overflow-hidden whitespace-pre-wrap rounded-md border border-secondary bg-background_alt text-xs sm:p-1">
-        <div className="grid grid-cols-5 *:px-0 *:py-3 *:text-sm *:text-primary/40 md:grid-cols-12">
-          <div className="col-span-3 lg:col-span-2">
-            <div className="flex w-full flex-row items-center">
-              <div className="ml-1 min-w-16 smart-capitalize lg:min-w-20">
-                {t("logs.type.label")}
-              </div>
-              <div className="mr-3">{t("logs.type.timestamp")}</div>
-            </div>
-          </div>
-          <div
-            className={cn(
-              "flex items-center",
-              logService == "frigate" ? "col-span-2" : "col-span-1",
-            )}
-          >
-            {t("logs.type.tag")}
-          </div>
-          <div
-            className={cn(
-              "col-span-5 flex items-center",
-              logService == "frigate"
-                ? "md:col-span-7 lg:col-span-8"
-                : "md:col-span-8 lg:col-span-9",
-            )}
-          >
-            <div className="flex flex-1">{t("logs.type.message")}</div>
-          </div>
-        </div>
-
-        <div ref={lazyLogWrapperRef} className="size-full">
-          {isLoading ? (
-            <ActivityIndicator className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2" />
-          ) : (
-            <EnhancedScrollFollow
-              startFollowing={!isLoading}
-              onCustomScroll={handleScroll}
-              render={({ follow, onScroll }) => (
-                <>
-                  {follow && !logSettings.disableStreaming && (
-                    <div className="absolute right-1 top-3">
-                      <Tooltip>
-                        <TooltipTrigger>
-                          <MdCircle className="mr-2 size-2 animate-pulse cursor-default text-selected shadow-selected drop-shadow-md" />
-                        </TooltipTrigger>
-                        <TooltipContent>{t("logs.tips")}</TooltipContent>
-                      </Tooltip>
-                    </div>
-                  )}
-                  <LazyLog
-                    ref={lazyLogRef}
-                    enableLineNumbers={false}
-                    selectableLines
-                    lineClassName="text-primary bg-background"
-                    highlightLineClassName="bg-primary/20"
-                    onRowClick={handleRowClick}
-                    formatPart={formatPart}
-                    text={logs.join("\n")}
-                    follow={follow}
-                    onScroll={onScroll}
-                    loadingComponent={
-                      <ActivityIndicator className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2" />
+          <div className="relative flex h-11 w-full items-center justify-between">
+            <ScrollArea className="w-full whitespace-nowrap">
+              <div ref={tabsRef} className="flex flex-row">
+                <ToggleGroup
+                  type="single"
+                  size="sm"
+                  value={logService}
+                  onValueChange={(value: LogType) => {
+                    if (value) {
+                      setLogs([]);
+                      setFilterSeverity(undefined);
+                      setLogService(value);
                     }
-                    loading={isLoading}
-                  />
-                </>
+                  }}
+                >
+                  {Object.values(logTypes).map((item) => (
+                    <ToggleGroupItem
+                      key={item}
+                      className={`flex items-center justify-between gap-2 ${logService == item ? "" : "text-muted-foreground"}`}
+                      value={item}
+                      data-nav-item={item}
+                      aria-label={`Select ${item}`}
+                    >
+                      <div className="smart-capitalize">{item}</div>
+                    </ToggleGroupItem>
+                  ))}
+                </ToggleGroup>
+                <ScrollBar orientation="horizontal" className="h-0" />
+              </div>
+            </ScrollArea>
+            <div className="flex items-center gap-2">
+              <Button
+                className="flex items-center justify-between gap-2"
+                aria-label={t("logs.copy.label")}
+                size="sm"
+                onClick={handleCopyLogs}
+              >
+                <FaCopy className="text-secondary-foreground" />
+                <div className="text-primary hidden md:block">
+                  {t("logs.copy.label")}
+                </div>
+              </Button>
+              <Button
+                className="flex items-center justify-between gap-2"
+                aria-label={t("logs.download.label")}
+                size="sm"
+                onClick={handleDownloadLogs}
+              >
+                <FaDownload className="text-secondary-foreground" />
+                <div className="text-primary hidden md:block">
+                  {t("button.download", { ns: "common" })}
+                </div>
+              </Button>
+              <LogSettingsButton
+                selectedLabels={filterSeverity}
+                updateLabelFilter={setFilterSeverity}
+                logSettings={logSettings}
+                setLogSettings={setLogSettings}
+              />
+            </div>
+          </div>
+
+          <div className="border-secondary bg-background_alt relative my-2 flex size-full flex-col overflow-hidden rounded-md border font-mono text-xs whitespace-pre-wrap sm:p-1">
+            <div className="*:text-primary/40 grid grid-cols-5 *:px-0 *:py-3 *:text-sm md:grid-cols-12">
+              <div className="col-span-3 lg:col-span-2">
+                <div className="flex w-full flex-row items-center">
+                  <div className="smart-capitalize ml-1 min-w-16 lg:min-w-20">
+                    {t("logs.type.label")}
+                  </div>
+                  <div className="mr-3">{t("logs.type.timestamp")}</div>
+                </div>
+              </div>
+              <div
+                className={cn(
+                  "flex items-center",
+                  logService == "frigate" ? "col-span-2" : "col-span-1",
+                )}
+              >
+                {t("logs.type.tag")}
+              </div>
+              <div
+                className={cn(
+                  "col-span-5 flex items-center",
+                  logService == "frigate"
+                    ? "md:col-span-7 lg:col-span-8"
+                    : "md:col-span-8 lg:col-span-9",
+                )}
+              >
+                <div className="flex flex-1">{t("logs.type.message")}</div>
+              </div>
+            </div>
+
+            <div ref={lazyLogWrapperRef} className="size-full">
+              {isLoading ? (
+                <ActivityIndicator className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" />
+              ) : (
+                <EnhancedScrollFollow
+                  startFollowing={!isLoading}
+                  onCustomScroll={handleScroll}
+                  render={({ follow, onScroll }) => (
+                    <>
+                      {follow && !logSettings.disableStreaming && (
+                        <div className="absolute top-3 right-1">
+                          <Tooltip>
+                            <TooltipTrigger>
+                              <MdCircle className="text-selected shadow-selected mr-2 size-2 animate-pulse cursor-default drop-shadow-md" />
+                            </TooltipTrigger>
+                            <TooltipContent>{t("logs.tips")}</TooltipContent>
+                          </Tooltip>
+                        </div>
+                      )}
+                      <LazyLog
+                        ref={lazyLogRef}
+                        enableLineNumbers={false}
+                        selectableLines
+                        lineClassName="text-primary bg-background"
+                        highlightLineClassName="bg-primary/20"
+                        onRowClick={handleRowClick}
+                        formatPart={formatPart}
+                        text={logs.join("\n")}
+                        follow={follow}
+                        onScroll={onScroll}
+                        loadingComponent={
+                          <ActivityIndicator className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" />
+                        }
+                        loading={isLoading}
+                      />
+                    </>
+                  )}
+                />
               )}
-            />
-          )}
+            </div>
+          </div>
         </div>
-      </div>
-    </div>
+      </SidebarAppContent>
+    </>
   );
 }
 
@@ -626,7 +638,7 @@ function LogLineData({
   return (
     <div
       className={cn(
-        "grid w-full cursor-pointer grid-cols-5 gap-2 border-t border-secondary bg-background_alt py-1 hover:bg-muted md:grid-cols-12 md:py-0",
+        "border-secondary bg-background_alt hover:bg-muted grid w-full cursor-pointer grid-cols-5 gap-2 border-t py-1 md:grid-cols-12 md:py-0",
         className,
         "text-xs lg:text-sm/5",
       )}

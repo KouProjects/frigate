@@ -269,7 +269,7 @@ export default function CreateTriggerDialog({
                     <FormLabel className="text-base">
                       {t("enabled", { ns: "common" })}
                     </FormLabel>
-                    <div className="text-sm text-muted-foreground">
+                    <div className="text-muted-foreground text-sm">
                       {t("triggers.dialog.form.enabled.description")}
                     </div>
                   </div>

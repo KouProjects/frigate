@@ -131,7 +131,7 @@ export default function PtzControlPanel({
   return (
     <div
       className={cn(
-        "absolute inset-x-2 bottom-[10%] flex select-none flex-wrap items-center justify-center gap-1 md:left-[50%] md:-translate-x-[50%] md:flex-nowrap",
+        "absolute inset-x-2 bottom-[10%] flex flex-wrap items-center justify-center gap-1 select-none md:left-[50%] md:-translate-x-[50%] md:flex-nowrap",
         className ?? "",
         isMobile && "landscape:ml-12",
       )}

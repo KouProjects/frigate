@@ -110,7 +110,7 @@ export default function AnnotationOffsetSlider({ className }: Props) {
       </div>
       <div
         className={cn(
-          "flex items-center gap-2 text-xs text-muted-foreground",
+          "text-muted-foreground flex items-center gap-2 text-xs",
           isMobile && "landscape:flex-col landscape:items-start",
         )}
       >

@@ -265,7 +265,7 @@ export default function EventView({
   return (
     <div className="flex size-full flex-col pt-2 md:py-2">
       <Toaster closeButton={true} />
-      <div className="relative mb-2 flex h-11 items-center justify-between pl-2 pr-2 md:pl-3">
+      <div className="relative mb-2 flex h-11 items-center justify-between pr-2 pl-2 md:pl-3">
         {isMobile && (
           <Logo className="absolute inset-x-1/2 h-8 -translate-x-1/2" />
         )}
@@ -285,7 +285,7 @@ export default function EventView({
           >
             <div
               className={cn(
-                "flex size-6 items-center justify-center rounded text-severity_alert sm:hidden",
+                "text-severity_alert flex size-6 items-center justify-center rounded sm:hidden",
                 severityToggle == "alert" ? "font-semibold" : "font-medium",
               )}
             >
@@ -296,7 +296,7 @@ export default function EventView({
               )}
             </div>
             <div className="hidden items-center sm:flex">
-              <MdCircle className="size-2 text-severity_alert md:mr-[10px]" />
+              <MdCircle className="text-severity_alert size-2 md:mr-[10px]" />
               <div className="hidden md:flex md:flex-row md:items-center">
                 {t("alerts")}
                 {reviewCounts.alert > -1 ? (
@@ -316,7 +316,7 @@ export default function EventView({
           >
             <div
               className={cn(
-                "flex size-6 items-center justify-center rounded text-severity_detection sm:hidden",
+                "text-severity_detection flex size-6 items-center justify-center rounded sm:hidden",
                 severityToggle == "detection" ? "font-semibold" : "font-medium",
               )}
             >
@@ -327,7 +327,7 @@ export default function EventView({
               )}
             </div>
             <div className="hidden items-center sm:flex">
-              <MdCircle className="size-2 text-severity_detection md:mr-[10px]" />
+              <MdCircle className="text-severity_detection size-2 md:mr-[10px]" />
               <div className="hidden md:flex md:flex-row md:items-center">
                 {t("detections")}
                 {reviewCounts.detection > -1 ? (
@@ -346,9 +346,9 @@ export default function EventView({
             value="significant_motion"
             aria-label={t("motion.label")}
           >
-            <GiSoundWaves className="size-6 rotate-90 text-severity_significant_motion sm:hidden" />
+            <GiSoundWaves className="text-severity_significant_motion size-6 rotate-90 sm:hidden" />
             <div className="hidden items-center sm:flex">
-              <MdCircle className="size-2 text-severity_significant_motion md:mr-[10px]" />
+              <MdCircle className="text-severity_significant_motion size-2 md:mr-[10px]" />
               <div className="hidden md:block">{t("motion.label")}</div>
             </div>
           </ToggleGroupItem>
@@ -714,20 +714,20 @@ function DetectionReview({
         )}
 
         {!currentItems && (
-          <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
             <ActivityIndicator />
           </div>
         )}
 
         {!loading && currentItems?.length === 0 && (
-          <div className="absolute left-1/2 top-1/2 flex -translate-x-1/2 -translate-y-1/2 flex-col items-center justify-center text-center">
+          <div className="absolute top-1/2 left-1/2 flex -translate-x-1/2 -translate-y-1/2 flex-col items-center justify-center text-center">
             <LuFolderCheck className="size-16" />
             {t("empty." + severity.replace(/_/g, " "))}
           </div>
         )}
 
         <div
-          className="grid w-full gap-2 px-1 sm:grid-cols-2 md:mx-2 md:grid-cols-3 md:gap-4 3xl:grid-cols-4"
+          className="3xl:grid-cols-4 grid w-full gap-2 px-1 sm:grid-cols-2 md:mx-2 md:grid-cols-3 md:gap-4"
           ref={contentRef}
         >
           {!loading && currentItems
@@ -1072,7 +1072,7 @@ function MotionReview({
 
   if (motionData?.length === 0) {
     return (
-      <div className="absolute left-1/2 top-1/2 flex -translate-x-1/2 -translate-y-1/2 flex-col items-center justify-center text-center">
+      <div className="absolute top-1/2 left-1/2 flex -translate-x-1/2 -translate-y-1/2 flex-col items-center justify-center text-center">
         <LuFolderX className="size-16" />
         {t("empty.motion")}
       </div>
@@ -1095,7 +1095,7 @@ function MotionReview({
               isMobile &&
               "portrait:md:grid-cols-2 landscape:md:grid-cols-3",
             isDesktop && "grid-cols-2 lg:grid-cols-3",
-            "gap-2 overflow-auto px-1 md:mx-2 md:gap-4 xl:grid-cols-3 3xl:grid-cols-4",
+            "3xl:grid-cols-4 gap-2 overflow-auto px-1 md:mx-2 md:gap-4 xl:grid-cols-3",
           )}
         >
           {reviewCameras.map((camera) => {
@@ -1183,7 +1183,7 @@ function MotionReview({
       </div>
 
       <VideoControls
-        className="absolute bottom-16 left-1/2 -translate-x-1/2 bg-secondary"
+        className="bg-secondary absolute bottom-16 left-1/2 -translate-x-1/2"
         features={{
           volume: false,
           seek: true,

@@ -21,7 +21,7 @@ export function EmptyCard({
     <div className="flex flex-col items-center gap-2">
       {icon}
       <Heading as="h4">{title}</Heading>
-      <div className="mb-3 text-secondary-foreground">{description}</div>
+      <div className="text-secondary-foreground mb-3">{description}</div>
       {buttonText?.length && (
         <Button size="sm" variant="select">
           <Link to={link ?? "#"}>{buttonText}</Link>

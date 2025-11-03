@@ -361,7 +361,7 @@ export default function LiveDashboardView({
 
   return (
     <div
-      className="scrollbar-container size-full select-none overflow-y-auto px-1 pt-2 md:p-2"
+      className="scrollbar-container size-full overflow-y-auto px-1 pt-2 select-none md:p-2"
       ref={containerRef}
     >
       {isMobile && (
@@ -375,11 +375,11 @@ export default function LiveDashboardView({
               <Button
                 className={`p-1 ${
                   mobileLayout == "grid"
-                    ? "bg-blue-900 bg-opacity-60 focus:bg-blue-900 focus:bg-opacity-60"
+                    ? "bg-opacity-60 focus:bg-opacity-60 bg-blue-900 focus:bg-blue-900"
                     : "bg-secondary"
                 }`}
                 aria-label="Use mobile grid layout"
-                size="xs"
+                size="icon"
                 onClick={() => setMobileLayout("grid")}
               >
                 <LiveGridIcon layout={mobileLayout} />
@@ -387,11 +387,11 @@ export default function LiveDashboardView({
               <Button
                 className={`p-1 ${
                   mobileLayout == "list"
-                    ? "bg-blue-900 bg-opacity-60 focus:bg-blue-900 focus:bg-opacity-60"
+                    ? "bg-opacity-60 focus:bg-opacity-60 bg-blue-900 focus:bg-blue-900"
                     : "bg-secondary"
                 }`}
                 aria-label="Use mobile list layout"
-                size="xs"
+                size="icon"
                 onClick={() => setMobileLayout("list")}
               >
                 <LiveListIcon layout={mobileLayout} />
@@ -408,7 +408,7 @@ export default function LiveDashboardView({
                     : "bg-secondary text-secondary-foreground",
                 )}
                 aria-label="Enter layout editing mode"
-                size="xs"
+                size="icon"
                 onClick={() =>
                   setIsEditMode((prevIsEditMode) => !prevIsEditMode)
                 }
@@ -446,7 +446,7 @@ export default function LiveDashboardView({
             className={cn(
               "mt-2 grid grid-cols-1 gap-2 px-2 md:gap-4",
               mobileLayout == "grid" &&
-                "grid-cols-2 xl:grid-cols-3 3xl:grid-cols-4",
+                "3xl:grid-cols-4 grid-cols-2 xl:grid-cols-3",
               isMobile && "px-0",
             )}
           >
@@ -578,7 +578,7 @@ export default function LiveDashboardView({
               <Tooltip>
                 <TooltipTrigger asChild>
                   <div
-                    className="cursor-pointer rounded-lg bg-secondary text-secondary-foreground opacity-60 transition-all duration-300 hover:bg-muted hover:opacity-100"
+                    className="bg-secondary text-secondary-foreground hover:bg-muted cursor-pointer rounded-lg opacity-60 transition-all duration-300 hover:opacity-100"
                     onClick={toggleFullscreen}
                   >
                     {fullscreen ? (

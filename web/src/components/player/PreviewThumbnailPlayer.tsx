@@ -191,7 +191,7 @@ export default function PreviewThumbnailPlayer({
       {...swipeHandlers}
     >
       {playingBack && (
-        <div className="absolute inset-0 animate-in fade-in">
+        <div className="animate-in fade-in absolute inset-0">
           <PreviewContent
             review={review}
             relevantPreview={relevantPreview}
@@ -210,7 +210,7 @@ export default function PreviewThumbnailPlayer({
       <div className={`${imgLoaded ? "visible" : "invisible"}`}>
         <img
           ref={imgRef}
-          className={`size-full select-none transition-opacity ${
+          className={`size-full transition-opacity select-none ${
             playingBack ? "opacity-0" : "opacity-100"
           }`}
           style={
@@ -238,7 +238,7 @@ export default function PreviewThumbnailPlayer({
         )}
         <div
           className={cn(
-            "absolute left-0 top-2 flex gap-2",
+            "absolute top-2 left-0 flex gap-2",
             !isSafari && "z-40",
           )}
         >

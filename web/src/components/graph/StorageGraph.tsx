@@ -88,13 +88,13 @@ export function StorageGraph({ graphId, used, total }: StorageGraphProps) {
     <div className="flex w-full flex-col gap-2.5">
       <div className="flex w-full items-center justify-between gap-1">
         <div className="flex items-center gap-1">
-          <div className="text-xs text-primary">{getUnitSize(used)}</div>
-          <div className="text-xs text-primary">/</div>
-          <div className="text-xs text-muted-foreground">
+          <div className="text-primary text-xs">{getUnitSize(used)}</div>
+          <div className="text-primary text-xs">/</div>
+          <div className="text-muted-foreground text-xs">
             {getUnitSize(total)}
           </div>
         </div>
-        <div className="text-xs text-primary">
+        <div className="text-primary text-xs">
           {Math.round((used / total) * 100)}%
         </div>
       </div>

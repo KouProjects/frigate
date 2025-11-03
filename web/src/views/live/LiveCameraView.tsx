@@ -462,7 +462,7 @@ export default function LiveCameraView({
         <div
           className={
             fullscreen
-              ? `absolute right-32 top-1 z-40 ${isMobile ? "landscape:bottom-1 landscape:left-2 landscape:right-auto landscape:top-auto" : ""}`
+              ? `absolute top-1 right-32 z-40 ${isMobile ? "landscape:top-auto landscape:right-auto landscape:bottom-1 landscape:left-2" : ""}`
               : `flex h-12 w-full flex-row items-center justify-between ${isMobile ? "landscape:h-full landscape:w-12 landscape:flex-col" : ""}`
           }
         >
@@ -476,7 +476,7 @@ export default function LiveCameraView({
                 size="sm"
                 onClick={() => navigate(-1)}
               >
-                <IoMdArrowRoundBack className="size-5 text-secondary-foreground" />
+                <IoMdArrowRoundBack className="text-secondary-foreground size-5" />
                 {isDesktop && (
                   <div className="text-primary">
                     {t("button.back", { ns: "common" })}
@@ -500,7 +500,7 @@ export default function LiveCameraView({
                   });
                 }}
               >
-                <LuHistory className="size-5 text-secondary-foreground" />
+                <LuHistory className="text-secondary-foreground size-5" />
                 {isDesktop && (
                   <div className="text-primary">
                     {t("button.history", { ns: "common" })}
@@ -516,12 +516,12 @@ export default function LiveCameraView({
           >
             {fullscreen && (
               <Button
-                className="bg-gray-500 bg-linear-to-br from-gray-400 to-gray-500 text-primary"
+                className="text-primary bg-gray-500 bg-linear-to-br from-gray-400 to-gray-500"
                 aria-label={t("label.back", { ns: "common" })}
                 size="sm"
                 onClick={() => navigate(-1)}
               >
-                <IoMdArrowRoundBack className="size-5 text-secondary-foreground" />
+                <IoMdArrowRoundBack className="text-secondary-foreground size-5" />
                 {isDesktop && (
                   <div className="text-secondary-foreground">
                     {t("button.back", { ns: "common" })}
@@ -701,7 +701,7 @@ export default function LiveCameraView({
       {camera.onvif.host != "" && (
         <div className="flex flex-col items-center justify-center">
           <PtzControlPanel
-            className={debug && isMobile ? "bottom-auto top-[25%]" : ""}
+            className={debug && isMobile ? "top-[25%] bottom-auto" : ""}
             camera={camera.name}
             enabled={cameraEnabled}
             clickOverlay={clickOverlay}
@@ -1031,7 +1031,7 @@ function FrigateCameraFeatures({
           <DropdownMenuTrigger>
             <div
               className={cn(
-                "flex flex-col items-center justify-center rounded-lg bg-secondary p-2 text-secondary-foreground md:p-0",
+                "bg-secondary text-secondary-foreground flex flex-col items-center justify-center rounded-lg p-2 md:p-0",
               )}
             >
               <FaCog
@@ -1046,8 +1046,8 @@ function FrigateCameraFeatures({
                   <Label>
                     {t("streaming.label", { ns: "components/dialog" })}
                   </Label>
-                  <div className="flex flex-row items-center gap-1 text-sm text-muted-foreground">
-                    <LuX className="size-4 text-danger" />
+                  <div className="text-muted-foreground flex flex-row items-center gap-1 text-sm">
+                    <LuX className="text-danger size-4" />
                     <div>
                       {t("streaming.restreaming.disabled", {
                         ns: "components/dialog",
@@ -1066,7 +1066,7 @@ function FrigateCameraFeatures({
                         {t("streaming.restreaming.desc.title", {
                           ns: "components/dialog",
                         })}
-                        <div className="mt-2 flex items-center text-primary">
+                        <div className="text-primary mt-2 flex items-center">
                           <Link
                             to={getLocaleDocUrl("configuration/live")}
                             target="_blank"
@@ -1121,9 +1121,9 @@ function FrigateCameraFeatures({
                     </Select>
 
                     {debug && (
-                      <div className="flex flex-row items-center gap-1 text-sm text-muted-foreground">
+                      <div className="text-muted-foreground flex flex-row items-center gap-1 text-sm">
                         <>
-                          <LuX className="size-8 text-danger" />
+                          <LuX className="text-danger size-8" />
                           <div>{t("stream.debug.picker")}</div>
                         </>
                       </div>
@@ -1132,15 +1132,15 @@ function FrigateCameraFeatures({
                     {preferredLiveMode != "jsmpeg" &&
                       !debug &&
                       isRestreamed && (
-                        <div className="flex flex-row items-center gap-1 text-sm text-muted-foreground">
+                        <div className="text-muted-foreground flex flex-row items-center gap-1 text-sm">
                           {supportsAudioOutput ? (
                             <>
-                              <LuCheck className="size-4 text-success" />
+                              <LuCheck className="text-success size-4" />
                               <div>{t("stream.audio.available")}</div>
                             </>
                           ) : (
                             <>
-                              <LuX className="size-4 text-danger" />
+                              <LuX className="text-danger size-4" />
                               <div>{t("stream.audio.unavailable")}</div>
                               <Popover>
                                 <PopoverTrigger asChild>
@@ -1153,7 +1153,7 @@ function FrigateCameraFeatures({
                                 </PopoverTrigger>
                                 <PopoverContent className="w-80 text-xs">
                                   {t("stream.audio.tips.title")}
-                                  <div className="mt-2 flex items-center text-primary">
+                                  <div className="text-primary mt-2 flex items-center">
                                     <Link
                                       to={getLocaleDocUrl("configuration/live")}
                                       target="_blank"
@@ -1176,15 +1176,15 @@ function FrigateCameraFeatures({
                       !debug &&
                       isRestreamed &&
                       supportsAudioOutput && (
-                        <div className="flex flex-row items-center gap-1 text-sm text-muted-foreground">
+                        <div className="text-muted-foreground flex flex-row items-center gap-1 text-sm">
                           {supports2WayTalk ? (
                             <>
-                              <LuCheck className="size-4 text-success" />
+                              <LuCheck className="text-success size-4" />
                               <div>{t("stream.twoWayTalk.available")}</div>
                             </>
                           ) : (
                             <>
-                              <LuX className="size-4 text-danger" />
+                              <LuX className="text-danger size-4" />
                               <div>{t("stream.twoWayTalk.unavailable")}</div>
                               <Popover>
                                 <PopoverTrigger asChild>
@@ -1197,7 +1197,7 @@ function FrigateCameraFeatures({
                                 </PopoverTrigger>
                                 <PopoverContent className="w-80 text-xs">
                                   {t("stream.twoWayTalk.tips")}
-                                  <div className="mt-2 flex items-center text-primary">
+                                  <div className="text-primary mt-2 flex items-center">
                                     <Link
                                       to={getLocaleDocUrl(
                                         "configuration/live/#webrtc-extra-configuration",
@@ -1224,7 +1224,7 @@ function FrigateCameraFeatures({
                       isRestreamed && (
                         <div className="flex flex-col items-center gap-3">
                           <div className="flex flex-row items-center gap-2">
-                            <IoIosWarning className="mr-1 size-8 text-danger" />
+                            <IoIosWarning className="text-danger mr-1 size-8" />
 
                             <p className="text-sm">
                               {t("stream.lowBandwidth.tips")}
@@ -1237,7 +1237,7 @@ function FrigateCameraFeatures({
                             size="sm"
                             onClick={() => setLowBandwidth(false)}
                           >
-                            <MdOutlineRestartAlt className="size-5 text-primary-variant" />
+                            <MdOutlineRestartAlt className="text-primary-variant size-5" />
                             <div className="text-primary-variant">
                               {t("stream.lowBandwidth.resetStream")}
                             </div>
@@ -1250,7 +1250,7 @@ function FrigateCameraFeatures({
                 <div className="flex flex-col gap-1">
                   <div className="flex items-center justify-between">
                     <Label
-                      className="mx-0 cursor-pointer text-primary"
+                      className="text-primary mx-0 cursor-pointer"
                       htmlFor="backgroundplay"
                     >
                       {t("stream.playInBackground.label")}
@@ -1265,7 +1265,7 @@ function FrigateCameraFeatures({
                       }
                     />
                   </div>
-                  <p className="text-sm text-muted-foreground">
+                  <p className="text-muted-foreground text-sm">
                     {t("stream.playInBackground.tips")}
                   </p>
                 </div>
@@ -1273,7 +1273,7 @@ function FrigateCameraFeatures({
               <div className="flex flex-col gap-1">
                 <div className="flex items-center justify-between">
                   <Label
-                    className="mx-0 cursor-pointer text-primary"
+                    className="text-primary mx-0 cursor-pointer"
                     htmlFor="showstats"
                   >
                     {t("streaming.showStats.label", {
@@ -1288,7 +1288,7 @@ function FrigateCameraFeatures({
                     onCheckedChange={(checked) => setShowStats(checked)}
                   />
                 </div>
-                <p className="text-sm text-muted-foreground">
+                <p className="text-muted-foreground text-sm">
                   {t("streaming.showStats.desc", {
                     ns: "components/dialog",
                   })}
@@ -1297,7 +1297,7 @@ function FrigateCameraFeatures({
               <div className="flex flex-col gap-1">
                 <div className="flex items-center justify-between">
                   <Label
-                    className="mx-0 cursor-pointer text-primary"
+                    className="text-primary mx-0 cursor-pointer"
                     htmlFor="debug"
                   >
                     {t("streaming.debugView", {
@@ -1405,8 +1405,8 @@ function FrigateCameraFeatures({
           {!isRestreamed && (
             <div className="flex flex-col gap-2 p-2">
               <Label>{t("stream.title")}</Label>
-              <div className="flex flex-row items-center gap-1 text-sm text-muted-foreground">
-                <LuX className="size-4 text-danger" />
+              <div className="text-muted-foreground flex flex-row items-center gap-1 text-sm">
+                <LuX className="text-danger size-4" />
                 <div>
                   {t("streaming.restreaming.disabled", {
                     ns: "components/dialog",
@@ -1425,7 +1425,7 @@ function FrigateCameraFeatures({
                     {t("streaming.restreaming.desc.title", {
                       ns: "components/dialog",
                     })}
-                    <div className="mt-2 flex items-center text-primary">
+                    <div className="text-primary mt-2 flex items-center">
                       <Link
                         to={getLocaleDocUrl("configuration/live")}
                         target="_blank"
@@ -1477,24 +1477,24 @@ function FrigateCameraFeatures({
               </Select>
 
               {debug && (
-                <div className="flex flex-row items-center gap-1 text-sm text-muted-foreground">
+                <div className="text-muted-foreground flex flex-row items-center gap-1 text-sm">
                   <>
-                    <LuX className="size-8 text-danger" />
+                    <LuX className="text-danger size-8" />
                     <div>{t("stream.debug.picker")}</div>
                   </>
                 </div>
               )}
 
               {preferredLiveMode != "jsmpeg" && !debug && isRestreamed && (
-                <div className="mt-1 flex flex-row items-center gap-1 text-sm text-muted-foreground">
+                <div className="text-muted-foreground mt-1 flex flex-row items-center gap-1 text-sm">
                   {supportsAudioOutput ? (
                     <>
-                      <LuCheck className="size-4 text-success" />
+                      <LuCheck className="text-success size-4" />
                       <div>{t("stream.audio.available")}</div>
                     </>
                   ) : (
                     <>
-                      <LuX className="size-4 text-danger" />
+                      <LuX className="text-danger size-4" />
                       <div>{t("stream.audio.unavailable")}</div>
                       <Popover>
                         <PopoverTrigger asChild>
@@ -1507,7 +1507,7 @@ function FrigateCameraFeatures({
                         </PopoverTrigger>
                         <PopoverContent className="w-52 text-xs">
                           {t("stream.audio.tips.title")}
-                          <div className="mt-2 flex items-center text-primary">
+                          <div className="text-primary mt-2 flex items-center">
                             <Link
                               to={getLocaleDocUrl("configuration/live")}
                               target="_blank"
@@ -1528,15 +1528,15 @@ function FrigateCameraFeatures({
                 !debug &&
                 isRestreamed &&
                 supportsAudioOutput && (
-                  <div className="flex flex-row items-center gap-1 text-sm text-muted-foreground">
+                  <div className="text-muted-foreground flex flex-row items-center gap-1 text-sm">
                     {supports2WayTalk ? (
                       <>
-                        <LuCheck className="size-4 text-success" />
+                        <LuCheck className="text-success size-4" />
                         <div>{t("stream.twoWayTalk.available")}</div>
                       </>
                     ) : (
                       <>
-                        <LuX className="size-4 text-danger" />
+                        <LuX className="text-danger size-4" />
                         <div>{t("stream.twoWayTalk.unavailable")}</div>
                         <Popover>
                           <PopoverTrigger asChild>
@@ -1549,7 +1549,7 @@ function FrigateCameraFeatures({
                           </PopoverTrigger>
                           <PopoverContent className="w-52 text-xs">
                             {t("stream.twoWayTalk.tips")}
-                            <div className="mt-2 flex items-center text-primary">
+                            <div className="text-primary mt-2 flex items-center">
                               <Link
                                 to={getLocaleDocUrl(
                                   "configuration/live/#webrtc-extra-configuration",
@@ -1571,7 +1571,7 @@ function FrigateCameraFeatures({
               {preferredLiveMode == "jsmpeg" && isRestreamed && (
                 <div className="mt-2 flex flex-col items-center gap-3">
                   <div className="flex flex-row items-center gap-2">
-                    <IoIosWarning className="mr-1 size-8 text-danger" />
+                    <IoIosWarning className="text-danger mr-1 size-8" />
                     <p className="text-sm">{t("stream.lowBandwidth.tips")}</p>
                   </div>
                   <Button
@@ -1582,7 +1582,7 @@ function FrigateCameraFeatures({
                     disabled={debug}
                     onClick={() => setLowBandwidth(false)}
                   >
-                    <MdOutlineRestartAlt className="size-5 text-primary-variant" />
+                    <MdOutlineRestartAlt className="text-primary-variant size-5" />
                     <div className="text-primary-variant">
                       {t("stream.lowBandwidth.resetStream")}
                     </div>
@@ -1592,7 +1592,7 @@ function FrigateCameraFeatures({
             </div>
           )}
           <div className="flex flex-col gap-1 px-2">
-            <div className="mb-1 text-sm font-medium leading-none">
+            <div className="mb-1 text-sm leading-none font-medium">
               {t("manualRecording.title")}
             </div>
             <div className="flex flex-row items-stretch gap-2">
@@ -1617,7 +1617,7 @@ function FrigateCameraFeatures({
                 {t("manualRecording." + (isRecording ? "end" : "start"))}
               </Button>
             </div>
-            <p className="text-sm text-muted-foreground">
+            <p className="text-muted-foreground text-sm">
               {t("manualRecording.tips")}
             </p>
           </div>
@@ -1632,7 +1632,7 @@ function FrigateCameraFeatures({
                   }}
                   disabled={debug}
                 />
-                <p className="mx-2 -mt-2 text-sm text-muted-foreground">
+                <p className="text-muted-foreground mx-2 -mt-2 text-sm">
                   {t("manualRecording.playInBackground.desc")}
                 </p>
               </div>
@@ -1645,7 +1645,7 @@ function FrigateCameraFeatures({
                   }}
                   disabled={debug}
                 />
-                <p className="mx-2 -mt-2 text-sm text-muted-foreground">
+                <p className="text-muted-foreground mx-2 -mt-2 text-sm">
                   {t("manualRecording.showStats.desc")}
                 </p>
               </div>

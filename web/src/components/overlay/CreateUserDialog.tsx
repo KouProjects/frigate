@@ -160,7 +160,7 @@ export default function CreateUserDialog({
                       {...field}
                     />
                   </FormControl>
-                  <FormDescription className="text-xs text-muted-foreground">
+                  <FormDescription className="text-muted-foreground text-xs">
                     {t("users.dialog.form.user.desc")}
                   </FormDescription>
                   <FormMessage />
@@ -251,7 +251,7 @@ export default function CreateUserDialog({
                         className="flex items-center gap-2"
                       >
                         <div className="flex items-center gap-2">
-                          <Shield className="h-4 w-4 text-primary" />
+                          <Shield className="text-primary h-4 w-4" />
                           <span>{t("role.admin", { ns: "common" })}</span>
                         </div>
                       </SelectItem>
@@ -260,13 +260,13 @@ export default function CreateUserDialog({
                         className="flex items-center gap-2"
                       >
                         <div className="flex items-center gap-2">
-                          <User className="h-4 w-4 text-muted-foreground" />
+                          <User className="text-muted-foreground h-4 w-4" />
                           <span>{t("role.viewer", { ns: "common" })}</span>
                         </div>
                       </SelectItem>
                     </SelectContent>
                   </Select>
-                  <FormDescription className="text-xs text-muted-foreground">
+                  <FormDescription className="text-muted-foreground text-xs">
                     {t("role.desc", { ns: "common" })}
                   </FormDescription>
                   <FormMessage />

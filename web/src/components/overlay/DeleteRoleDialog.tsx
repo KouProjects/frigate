@@ -57,7 +57,7 @@ export default function DeleteRoleDialog({
         </DialogHeader>
 
         <div className="py-3">
-          <div className="text-sm text-muted-foreground">
+          <div className="text-muted-foreground text-sm">
             <p>
               <Trans
                 ns={"views/settings"}

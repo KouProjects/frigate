@@ -58,7 +58,7 @@ export function MinimapBounds({
     <>
       {isFirstSegmentInMinimap && (
         <div
-          className="pointer-events-none absolute inset-0 -bottom-7 z-20 flex w-full select-none scroll-mt-8 items-center justify-center text-center text-[10px] font-medium text-primary"
+          className="text-primary pointer-events-none absolute inset-0 -bottom-7 z-20 flex w-full scroll-mt-8 items-center justify-center text-center text-[10px] font-medium select-none"
           ref={firstMinimapSegmentRef}
         >
           {formattedStartTime}
@@ -66,7 +66,7 @@ export function MinimapBounds({
       )}
 
       {isLastSegmentInMinimap && (
-        <div className="pointer-events-none absolute inset-0 -top-3 z-20 flex w-full select-none items-center justify-center text-center text-[10px] font-medium text-primary">
+        <div className="text-primary pointer-events-none absolute inset-0 -top-3 z-20 flex w-full items-center justify-center text-center text-[10px] font-medium select-none">
           {formattedEndTime}
         </div>
       )}
@@ -82,11 +82,11 @@ export function Tick({ timestamp, timestampSpread }: TickSegmentProps) {
           className={`pointer-events-none h-0.5 select-none ${
             timestamp.getMinutes() % timestampSpread === 0 &&
             timestamp.getSeconds() === 0
-              ? "w-[12px] bg-neutral_variant dark:bg-neutral"
+              ? "bg-neutral_variant dark:bg-neutral w-[12px]"
               : timestamp.getMinutes() % (timestampSpread == 15 ? 5 : 1) ===
                     0 && timestamp.getSeconds() === 0
-                ? "w-[8px] bg-neutral" // Minor tick mark
-                : "w-[5px] bg-neutral-400 dark:bg-neutral_variant"
+                ? "bg-neutral w-[8px]" // Minor tick mark
+                : "dark:bg-neutral_variant w-[5px] bg-neutral-400"
           }`}
         ></div>
       </div>
@@ -125,7 +125,7 @@ export function Timestamp({
       {!isFirstSegmentInMinimap && !isLastSegmentInMinimap && shouldDisplay && (
         <div
           key={`${segmentKey}_timestamp`}
-          className="pointer-events-none select-none text-[8px] text-neutral_variant dark:text-neutral"
+          className="text-neutral_variant dark:text-neutral pointer-events-none text-[8px] select-none"
         >
           {formattedTimestamp}
         </div>

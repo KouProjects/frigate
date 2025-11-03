@@ -298,7 +298,7 @@ export default function Settings() {
       <>
         {!contentMobileOpen && (
           <div className="flex size-full flex-col">
-            <div className="sticky -top-2 z-50 mb-2 bg-background p-4">
+            <div className="bg-background sticky -top-2 z-50 mb-2 p-4">
               <div className="flex items-center justify-center">
                 <Logo className="h-8" />
               </div>
@@ -318,7 +318,7 @@ export default function Settings() {
                 return (
                   <div key={group.label} className="mb-3">
                     {filteredItems.length > 1 && (
-                      <h3 className="mb-2 ml-2 text-sm font-medium text-secondary-foreground">
+                      <h3 className="text-secondary-foreground mb-2 ml-2 text-sm font-medium">
                         <div className="smart-capitalize">
                           {t("menu." + group.label)}
                         </div>
@@ -429,7 +429,7 @@ export default function Settings() {
 
   return (
     <div className="flex h-full flex-col">
-      <div className="flex items-center justify-between border-b border-secondary p-3">
+      <div className="border-secondary flex items-center justify-between border-b p-3">
         <Heading as="h3" className="mb-0">
           {t("menu.settings", { ns: "common" })}
         </Heading>
@@ -452,8 +452,8 @@ export default function Settings() {
         )}
       </div>
       <SidebarProvider>
-        <Sidebar variant="inset" className="relative mb-8 pl-0 pt-0">
-          <SidebarContent className="scrollbar-container mb-24 overflow-y-auto border-r border-secondary bg-background py-2">
+        <Sidebar variant="inset" className="relative mb-8 pt-0 pl-0">
+          <SidebarContent className="scrollbar-container border-secondary bg-background mb-24 overflow-y-auto border-r py-2">
             <SidebarMenu>
               {settingsGroups.map((group) => {
                 const filteredItems = group.items.filter((item) =>
@@ -523,7 +523,7 @@ export default function Settings() {
                                   }
                                 }}
                               >
-                                <div className="w-full cursor-pointer smart-capitalize">
+                                <div className="smart-capitalize w-full cursor-pointer">
                                   {t("menu." + item.key)}
                                 </div>
                               </SidebarMenuSubButton>
@@ -608,12 +608,12 @@ function CameraSelectButton({
 
   const trigger = (
     <Button
-      className="flex items-center gap-2 bg-selected smart-capitalize hover:bg-selected"
+      className="bg-selected smart-capitalize hover:bg-selected flex items-center gap-2"
       aria-label="Select a camera"
       size="sm"
     >
       <FaVideo className="text-background dark:text-primary" />
-      <div className="hidden text-background dark:text-primary md:block">
+      <div className="text-background dark:text-primary hidden md:block">
         {selectedCamera == undefined ? (
           t("cameraSetting.noCamera")
         ) : (
@@ -632,7 +632,7 @@ function CameraSelectButton({
           <DropdownMenuSeparator />
         </>
       )}
-      <div className="scrollbar-container mb-5 h-auto max-h-[80dvh] overflow-y-auto overflow-x-hidden p-4 md:mb-1">
+      <div className="scrollbar-container mb-5 h-auto max-h-[80dvh] overflow-x-hidden overflow-y-auto p-4 md:mb-1">
         <div className="flex flex-col gap-2.5">
           {allCameras.map((item) => {
             const isEnabled = cameraEnabledStates[item.name];

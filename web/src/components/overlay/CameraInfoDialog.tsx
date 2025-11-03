@@ -101,7 +101,7 @@ export default function CameraInfoDialog({
               <div>
                 {ffprobeInfo.map((stream, idx) => (
                   <div key={idx} className="mb-5">
-                    <div className="mb-1 rounded-md bg-secondary p-2 text-lg text-primary">
+                    <div className="bg-secondary text-primary mb-1 rounded-md p-2 text-lg">
                       {t("cameras.info.stream", {
                         idx: idx + 1,
                       })}
@@ -159,7 +159,7 @@ export default function CameraInfoDialog({
                               </div>
                             ) : (
                               <div className="text-muted-foreground">
-                                <div className="ml-2 mt-1">Audio:</div>
+                                <div className="mt-1 ml-2">Audio:</div>
                                 <div className="ml-4">
                                   {t("cameras.info.codec")}{" "}
                                   <span className="text-primary">

@@ -366,7 +366,7 @@ export default function CameraWizardDialog({
         </DialogHeader>
 
         {currentStep > 0 && state.wizardData.cameraName && (
-          <div className="text-center text-primary-variant md:text-start">
+          <div className="text-primary-variant text-center md:text-start">
             {state.wizardData.cameraName}
           </div>
         )}

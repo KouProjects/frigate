@@ -56,25 +56,25 @@ export default function LogInfoDialog({
         {logLine && (
           <div className="flex size-full flex-col gap-5">
             <div className="flex w-min flex-col gap-1.5">
-              <div className="text-sm text-primary/40">
+              <div className="text-primary/40 text-sm">
                 {t("logs.type.label")}
               </div>
               <LogChip severity={logLine.severity} />
             </div>
             <div className="flex flex-col gap-1.5">
-              <div className="text-sm text-primary/40">
+              <div className="text-primary/40 text-sm">
                 {t("logs.type.timestamp")}
               </div>
               <div className="text-sm">{logLine.dateStamp}</div>
             </div>
             <div className="flex flex-col gap-1.5">
-              <div className="text-sm text-primary/40">
+              <div className="text-primary/40 text-sm">
                 {t("logs.type.tag")}
               </div>
               <div className="text-sm">{logLine.section}</div>
             </div>
             <div className="flex flex-col gap-1.5">
-              <div className="text-sm text-primary/40">
+              <div className="text-primary/40 text-sm">
                 {t("logs.type.message")}
               </div>
               <div className="text-sm">
@@ -88,10 +88,10 @@ export default function LogInfoDialog({
             </div>
             {helpfulLinks.length > 0 && (
               <div className="flex flex-col gap-1.5">
-                <div className="text-sm text-primary/40">Helpful Links</div>
+                <div className="text-primary/40 text-sm">Helpful Links</div>
                 {helpfulLinks.map((tip) => (
                   <Link to={tip.link} target="_blank" rel="noopener noreferrer">
-                    <div className="text-sm text-selected hover:underline">
+                    <div className="text-selected text-sm hover:underline">
                       {tip.text}
                     </div>
                   </Link>

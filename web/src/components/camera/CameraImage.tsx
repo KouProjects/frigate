@@ -98,10 +98,10 @@ export default function CameraImage({
           loading="lazy"
         />
       ) : (
-        <div className="size-full rounded-lg border-2 border-muted bg-background_alt text-center md:rounded-2xl" />
+        <div className="border-muted bg-background_alt size-full rounded-lg border-2 text-center md:rounded-2xl" />
       )}
       {!imageLoaded && enabled ? (
-        <div className="absolute bottom-0 left-0 right-0 top-0 flex items-center justify-center">
+        <div className="absolute top-0 right-0 bottom-0 left-0 flex items-center justify-center">
           <ActivityIndicator />
         </div>
       ) : null}

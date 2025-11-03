@@ -233,7 +233,7 @@ export default function Step3Validation({
 
   return (
     <div className="space-y-6">
-      <div className="text-sm text-muted-foreground">
+      <div className="text-muted-foreground text-sm">
         {t("cameraWizard.step3.description")}
       </div>
 
@@ -280,7 +280,7 @@ export default function Step3Validation({
                           ))}
                         </div>
                         {result && result.success && (
-                          <div className="mb-2 text-sm text-muted-foreground">
+                          <div className="text-muted-foreground mb-2 text-sm">
                             {[
                               result.resolution,
                               result.fps
@@ -297,7 +297,7 @@ export default function Step3Validation({
                     </div>
                     {result?.success && (
                       <div className="flex items-center gap-2 text-sm">
-                        <FaCircleCheck className="size-4 text-success" />
+                        <FaCircleCheck className="text-success size-4" />
                         <span className="text-success">
                           {t("cameraWizard.step2.connected")}
                         </span>
@@ -305,7 +305,7 @@ export default function Step3Validation({
                     )}
                     {result && !result.success && (
                       <div className="flex items-center gap-2 text-sm">
-                        <LuX className="size-4 text-danger" />
+                        <LuX className="text-danger size-4" />
                         <span className="text-danger">
                           {t("cameraWizard.step2.notConnected")}
                         </span>
@@ -323,7 +323,7 @@ export default function Step3Validation({
                   )}
 
                   <div className="mb-2 flex flex-col justify-between gap-1 md:flex-row md:items-center">
-                    <span className="break-all text-sm text-muted-foreground">
+                    <span className="text-muted-foreground text-sm break-all">
                       {stream.url}
                     </span>
                     <Button
@@ -364,7 +364,7 @@ export default function Step3Validation({
                       <div className="text-xs">
                         {t("cameraWizard.step3.issues.title")}
                       </div>
-                      <div className="rounded-lg bg-background p-3">
+                      <div className="bg-background rounded-lg p-3">
                         <StreamIssues
                           stream={stream}
                           measuredBandwidth={measuredBandwidth}
@@ -375,7 +375,7 @@ export default function Step3Validation({
                   )}
 
                   {result && !result.success && (
-                    <div className="rounded-md border border-danger/20 bg-danger/10 p-3 text-sm text-danger">
+                    <div className="border-danger/20 bg-danger/10 text-danger rounded-md border p-3 text-sm">
                       <div className="font-medium">
                         {t("cameraWizard.step2.testFailedTitle")}
                       </div>
@@ -562,13 +562,13 @@ function StreamIssues({
         {issues.map((issue, index) => (
           <div key={index} className="flex items-center gap-2 text-sm">
             {issue.type === "good" && (
-              <FaCircleCheck className="size-4 shrink-0 text-success" />
+              <FaCircleCheck className="text-success size-4 shrink-0" />
             )}
             {issue.type === "warning" && (
               <FaTriangleExclamation className="size-4 shrink-0 text-yellow-500" />
             )}
             {issue.type === "error" && (
-              <LuX className="size-4 shrink-0 text-danger" />
+              <LuX className="text-danger size-4 shrink-0" />
             )}
             <span
               className={
@@ -612,13 +612,13 @@ function BandwidthDisplay({
 
   return (
     <div className="mb-2 text-sm">
-      <span className="font-medium text-muted-foreground">
+      <span className="text-muted-foreground font-medium">
         {t("cameraWizard.step3.estimatedBandwidth")}:
       </span>{" "}
       <span className="text-secondary-foreground">
         {streamBandwidth.toFixed(1)} {t("unit.data.kbps", { ns: "common" })}
       </span>
-      <span className="ml-2 text-muted-foreground">({perHourDisplay})</span>
+      <span className="text-muted-foreground ml-2">({perHourDisplay})</span>
     </div>
   );
 }
@@ -694,10 +694,10 @@ function StreamPreview({ stream, onBandwidthUpdate }: StreamPreviewProps) {
   if (error) {
     return (
       <div
-        className="flex max-h-[30dvh] flex-col items-center justify-center gap-2 rounded-lg bg-secondary p-4 md:max-h-[20dvh]"
+        className="bg-secondary flex max-h-[30dvh] flex-col items-center justify-center gap-2 rounded-lg p-4 md:max-h-[20dvh]"
         style={{ aspectRatio }}
       >
-        <span className="text-sm text-danger">
+        <span className="text-danger text-sm">
           {t("cameraWizard.step3.streamUnavailable")}
         </span>
         <Button
@@ -716,7 +716,7 @@ function StreamPreview({ stream, onBandwidthUpdate }: StreamPreviewProps) {
   if (!registered) {
     return (
       <div
-        className="flex max-h-[30dvh] items-center justify-center rounded-lg bg-secondary md:max-h-[20dvh]"
+        className="bg-secondary flex max-h-[30dvh] items-center justify-center rounded-lg md:max-h-[20dvh]"
         style={{ aspectRatio }}
       >
         <ActivityIndicator className="size-4" />

@@ -159,7 +159,7 @@ export default function MobileReviewSettingsDrawer({
               setMode("select");
             }}
           >
-            <FaArrowDown className="rounded-md bg-secondary-foreground fill-secondary p-1" />
+            <FaArrowDown className="bg-secondary-foreground fill-secondary rounded-md p-1" />
             {t("export")}
           </Button>
         )}
@@ -220,12 +220,12 @@ export default function MobileReviewSettingsDrawer({
       <div className="flex w-full flex-col">
         <div className="relative h-8 w-full">
           <div
-            className="absolute left-0 text-selected"
+            className="text-selected absolute left-0"
             onClick={() => setDrawerMode("select")}
           >
             {t("button.back", { ns: "common" })}
           </div>
-          <div className="absolute left-1/2 -translate-x-1/2 text-muted-foreground">
+          <div className="text-muted-foreground absolute left-1/2 -translate-x-1/2">
             {t("calendar")}
           </div>
         </div>
@@ -267,15 +267,15 @@ export default function MobileReviewSettingsDrawer({
     );
   } else if (drawerMode == "filter") {
     content = (
-      <div className="scrollbar-container flex h-auto w-full flex-col overflow-y-auto overflow-x-hidden">
+      <div className="scrollbar-container flex h-auto w-full flex-col overflow-x-hidden overflow-y-auto">
         <div className="relative mb-2 h-8 w-full">
           <div
-            className="absolute left-0 text-selected"
+            className="text-selected absolute left-0"
             onClick={() => setDrawerMode("select")}
           >
             {t("button.back", { ns: "common" })}
           </div>
-          <div className="absolute left-1/2 -translate-x-1/2 text-muted-foreground">
+          <div className="text-muted-foreground absolute left-1/2 -translate-x-1/2">
             {t("filter")}
           </div>
         </div>
@@ -306,7 +306,7 @@ export default function MobileReviewSettingsDrawer({
   return (
     <>
       <SaveExportOverlay
-        className="pointer-events-none absolute left-1/2 top-8 z-50 -translate-x-1/2"
+        className="pointer-events-none absolute top-8 left-1/2 z-50 -translate-x-1/2"
         show={mode == "timeline"}
         onSave={() => onStartExport()}
         onCancel={() => setMode("none")}
@@ -329,7 +329,7 @@ export default function MobileReviewSettingsDrawer({
       >
         <DrawerTrigger asChild>
           <Button
-            className="rounded-lg smart-capitalize"
+            className="smart-capitalize rounded-lg"
             aria-label={t("filters")}
             variant={
               filter?.labels || filter?.after || filter?.zones

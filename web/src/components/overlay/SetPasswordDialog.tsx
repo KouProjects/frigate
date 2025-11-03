@@ -135,13 +135,13 @@ export default function SetPasswordDialog({
             {/* Password strength indicator */}
             {password && (
               <div className="mt-2 space-y-1">
-                <div className="flex h-1.5 w-full overflow-hidden rounded-full bg-secondary-foreground">
+                <div className="bg-secondary-foreground flex h-1.5 w-full overflow-hidden rounded-full">
                   <div
                     className={`${getStrengthColor()} transition-all duration-300`}
                     style={{ width: `${(passwordStrength / 3) * 100}%` }}
                   />
                 </div>
-                <p className="text-xs text-muted-foreground">
+                <p className="text-muted-foreground text-xs">
                   {t("users.dialog.form.password.strength.title")}
                   <span className="font-medium">{getStrengthLabel()}</span>
                 </p>
@@ -190,7 +190,7 @@ export default function SetPasswordDialog({
           </div>
 
           {error && (
-            <div className="rounded-md bg-destructive/10 p-3 text-sm text-destructive">
+            <div className="bg-destructive/10 text-destructive rounded-md p-3 text-sm">
               {error}
             </div>
           )}

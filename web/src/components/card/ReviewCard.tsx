@@ -142,7 +142,7 @@ export default function ReviewCard({
         className={cn(
           "size-full rounded-lg",
           activeReviewItem?.id == event.id &&
-            "outline outline-[3px] outline-offset-1 outline-selected",
+            "outline-selected outline outline-[3px] outline-offset-1",
           imgLoaded ? "visible" : "invisible",
         )}
         src={`${baseUrl}${event.thumb_path.replace("/media/frigate/", "")}`}
@@ -199,7 +199,7 @@ export default function ReviewCard({
           </TooltipContent>
         </Tooltip>
         <TimeAgo
-          className="text-xs text-muted-foreground"
+          className="text-muted-foreground text-xs"
           time={event.start_time * 1000}
           dense
         />

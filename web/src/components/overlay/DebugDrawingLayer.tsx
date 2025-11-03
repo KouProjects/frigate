@@ -150,18 +150,18 @@ function DebugDrawingLayer({
           </PopoverTrigger>
           <PopoverContent className="w-auto p-5 text-center">
             <div className="flex flex-col gap-2">
-              <div className="flex flex-col text-primary">
+              <div className="text-primary flex flex-col">
                 Area:{" "}
-                <span className="text-sm text-primary-variant">
+                <span className="text-primary-variant text-sm">
                   px: {calculateArea().toFixed(0)}
                 </span>
-                <span className="text-sm text-primary-variant">
+                <span className="text-primary-variant text-sm">
                   %: {calculateAreaPercentage().toFixed(4)}
                 </span>
               </div>
-              <div className="flex flex-col text-primary">
+              <div className="text-primary flex flex-col">
                 Ratio:{" "}
-                <span className="text-sm text-primary-variant">
+                <span className="text-primary-variant text-sm">
                   {" "}
                   {calculateRatio().toFixed(2)}
                 </span>

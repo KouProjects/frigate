@@ -107,13 +107,13 @@ export function GenericVideoPlayer({
     <div ref={containerRef} className="relative flex h-full w-full flex-col">
       <div className="relative flex grow items-center justify-center">
         {!sourceExists ? (
-          <div className="flex aspect-video w-full items-center justify-center bg-background_alt text-lg text-primary">
+          <div className="bg-background_alt text-primary flex aspect-video w-full items-center justify-center text-lg">
             Video not available
           </div>
         ) : (
           <>
             {isLoading && (
-              <ActivityIndicator className="absolute left-1/2 top-1/2 z-10 -translate-x-1/2 -translate-y-1/2" />
+              <ActivityIndicator className="absolute top-1/2 left-1/2 z-10 -translate-x-1/2 -translate-y-1/2" />
             )}
             <div
               className="relative flex items-center justify-center"

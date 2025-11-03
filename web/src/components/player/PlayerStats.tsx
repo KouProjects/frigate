@@ -103,8 +103,8 @@ export function PlayerStats({ stats, minimal }: PlayerStatsProps) {
         className={cn(
           minimal
             ? "absolute bottom-0 left-0 max-h-[50%] w-full overflow-y-auto rounded-b-lg p-1 md:rounded-b-xl md:p-3"
-            : "absolute bottom-2 right-2 min-w-52 rounded-2xl p-4",
-          "z-50 flex flex-col gap-1 bg-black/70 text-[9px] duration-300 animate-in fade-in md:text-xs",
+            : "absolute right-2 bottom-2 min-w-52 rounded-2xl p-4",
+          "animate-in fade-in z-50 flex flex-col gap-1 bg-black/70 text-[9px] duration-300 md:text-xs",
         )}
       >
         {minimal ? minimalStatsContent : fullStatsContent}

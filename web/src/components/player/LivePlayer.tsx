@@ -317,8 +317,8 @@ export default function LivePlayer({
         "relative flex w-full cursor-pointer justify-center outline",
         activeTracking &&
           ((showStillWithoutActivity && !liveReady) || liveReady)
-          ? "outline-3 rounded-lg shadow-severity_alert outline-severity_alert md:rounded-2xl"
-          : "outline-0 outline-background",
+          ? "shadow-severity_alert outline-severity_alert rounded-lg outline-3 md:rounded-2xl"
+          : "outline-background outline-0",
         "transition-all duration-500",
         className,
       )}
@@ -341,7 +341,7 @@ export default function LivePlayer({
 
       {((showStillWithoutActivity && !liveReady) || liveReady) &&
         objects.length > 0 && (
-          <div className="absolute left-0 top-2 z-40">
+          <div className="absolute top-2 left-0 z-40">
             <Tooltip>
               <div className="flex">
                 <TooltipTrigger asChild>
@@ -406,8 +406,8 @@ export default function LivePlayer({
       </div>
 
       {offline && !showStillWithoutActivity && cameraEnabled && (
-        <div className="absolute inset-0 left-1/2 top-1/2 flex h-96 w-96 -translate-x-1/2 -translate-y-1/2">
-          <div className="flex flex-col items-center justify-center rounded-lg bg-background/50 p-5">
+        <div className="absolute inset-0 top-1/2 left-1/2 flex h-96 w-96 -translate-x-1/2 -translate-y-1/2">
+          <div className="bg-background/50 flex flex-col items-center justify-center rounded-lg p-5">
             <p className="my-5 text-lg">{t("streamOffline.title")}</p>
             <TbExclamationCircle className="mb-3 size-10" />
             <p className="max-w-96 text-center">
@@ -425,7 +425,7 @@ export default function LivePlayer({
       )}
 
       {!cameraEnabled && (
-        <div className="relative flex h-full w-full items-center justify-center rounded-2xl border border-secondary-foreground bg-background_alt">
+        <div className="border-secondary-foreground bg-background_alt relative flex h-full w-full items-center justify-center rounded-2xl border">
           <div className="flex h-32 flex-col items-center justify-center rounded-lg p-4 md:h-48 md:w-48">
             <LuVideoOff className="mb-2 size-8 md:size-10" />
             <p className="max-w-32 text-center text-sm md:max-w-40 md:text-base">
@@ -435,7 +435,7 @@ export default function LivePlayer({
         </div>
       )}
 
-      <div className="absolute right-2 top-2 flex items-center gap-3">
+      <div className="absolute top-2 right-2 flex items-center gap-3">
         {(alwaysShowCameraName ||
           (offline && showStillWithoutActivity) ||
           !cameraEnabled) && (
@@ -449,7 +449,7 @@ export default function LivePlayer({
           !offline &&
           activeMotion &&
           ((showStillWithoutActivity && !liveReady) || liveReady) && (
-            <MdCircle className="mr-2 size-2 animate-pulse text-danger shadow-danger drop-shadow-md" />
+            <MdCircle className="text-danger shadow-danger mr-2 size-2 animate-pulse drop-shadow-md" />
           )}
       </div>
       {showStats && (

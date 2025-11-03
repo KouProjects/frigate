@@ -1,7 +1,8 @@
-@import 'tailwindcss';
+@import "tailwindcss";
 
 @import "../themes/tailwind-base.css";
 @import "../themes/theme-modern-edge.css";
+@import "tw-animate-css";
 
 /* Duplicated var names with color space modifiers for swatches in vscode. See https://github.com/tailwindlabs/tailwindcss/discussions/10619 */
 
@@ -169,4 +170,3 @@ html {
 .react-lazylog-searchbar {
   background-color: transparent !important;
 }
-

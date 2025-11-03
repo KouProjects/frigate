@@ -50,7 +50,7 @@ export default function EventMenu({
       <DropdownMenu open={isOpen} onOpenChange={setIsOpen}>
         <DropdownMenuTrigger>
           <div className="rounded p-1 pr-2" role="button">
-            <HiDotsHorizontal className="size-4 text-muted-foreground" />
+            <HiDotsHorizontal className="text-muted-foreground size-4" />
           </div>
         </DropdownMenuTrigger>
         <DropdownMenuPortal>

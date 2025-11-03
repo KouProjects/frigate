@@ -106,7 +106,7 @@ export default function SearchThumbnail({
           ref={imgRef}
           onClick={handleOnClick}
           className={cn(
-            "size-full select-none object-cover object-center opacity-100 transition-opacity",
+            "size-full object-cover object-center opacity-100 transition-opacity select-none",
           )}
           style={
             isIOS
@@ -124,7 +124,7 @@ export default function SearchThumbnail({
           }}
         />
 
-        <div className="absolute left-0 top-2 z-40">
+        <div className="absolute top-2 left-0 z-40">
           <Tooltip>
             <div className="flex">
               <TooltipTrigger asChild>

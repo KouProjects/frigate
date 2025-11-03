@@ -433,7 +433,7 @@ export function TrackingDetails({
                   key={event.id}
                   ref={imgRef}
                   className={cn(
-                    "max-h-[50dvh] max-w-full select-none rounded-lg object-contain",
+                    "max-h-[50dvh] max-w-full rounded-lg object-contain select-none",
                   )}
                   loading={isSafari ? "eager" : "lazy"}
                   style={
@@ -536,10 +536,10 @@ export function TrackingDetails({
             </div>
           </div>
           <div className="flex flex-row items-center justify-between">
-            <div className="mb-2 text-sm text-muted-foreground">
+            <div className="text-muted-foreground mb-2 text-sm">
               {t("trackingDetails.scrollViewTips")}
             </div>
-            <div className="min-w-20 text-right text-sm text-muted-foreground">
+            <div className="text-muted-foreground min-w-20 text-right text-sm">
               {t("trackingDetails.count", {
                 first: eventSequence?.length ?? 0,
                 second: eventSequence?.length ?? 0,
@@ -548,7 +548,7 @@ export function TrackingDetails({
           </div>
           {config?.cameras[event.camera]?.onvif.autotracking
             .enabled_in_config && (
-            <div className="-mt-2 mb-2 text-sm text-danger">
+            <div className="text-danger -mt-2 mb-2 text-sm">
               {t("trackingDetails.autoTrackingTips")}
             </div>
           )}
@@ -572,7 +572,7 @@ export function TrackingDetails({
           <div className="mt-4">
             <div
               className={cn(
-                "rounded-md bg-secondary p-3 outline outline-[3px] -outline-offset-[2.8px] outline-transparent duration-500",
+                "bg-secondary rounded-md p-3 outline outline-[3px] -outline-offset-[2.8px] outline-transparent duration-500",
               )}
             >
               <div className="flex w-full items-center justify-between">
@@ -589,7 +589,7 @@ export function TrackingDetails({
                 >
                   <div
                     className={cn(
-                      "relative ml-2 rounded-full bg-muted-foreground p-2",
+                      "bg-muted-foreground relative ml-2 rounded-full p-2",
                     )}
                   >
                     {getIconForLabel(
@@ -605,7 +605,7 @@ export function TrackingDetails({
                     {event.data?.recognized_license_plate && (
                       <>
                         <span className="text-secondary-foreground">·</span>
-                        <div className="text-sm text-secondary-foreground">
+                        <div className="text-secondary-foreground text-sm">
                           <Link
                             to={`/explore?recognized_license_plate=${event.data.recognized_license_plate}`}
                             className="text-sm"
@@ -623,15 +623,15 @@ export function TrackingDetails({
                 {!eventSequence ? (
                   <ActivityIndicator className="size-2" size={2} />
                 ) : eventSequence.length === 0 ? (
-                  <div className="py-2 text-muted-foreground">
+                  <div className="text-muted-foreground py-2">
                     {t("detail.noObjectDetailData", { ns: "views/events" })}
                   </div>
                 ) : (
                   <div className="-pb-2 relative mx-0">
-                    <div className="absolute -top-2 bottom-8 left-6 z-0 w-0.5 -translate-x-1/2 bg-secondary-foreground" />
+                    <div className="bg-secondary-foreground absolute -top-2 bottom-8 left-6 z-0 w-0.5 -translate-x-1/2" />
                     {isWithinEventRange && (
                       <div
-                        className="absolute left-6 top-2 z-5 max-h-[calc(100%-3rem)] w-0.5 -translate-x-1/2 bg-selected transition-all duration-300"
+                        className="bg-selected absolute top-2 left-6 z-5 max-h-[calc(100%-3rem)] w-0.5 -translate-x-1/2 transition-all duration-300"
                         style={{ height: `${blueLineHeight}%` }}
                       />
                     )}
@@ -751,8 +751,8 @@ function LifecycleIconRow({
       role="button"
       onClick={onClick}
       className={cn(
-        "rounded-md p-2 pr-0 text-sm text-primary-variant",
-        isActive && "bg-secondary-highlight font-semibold text-primary",
+        "text-primary-variant rounded-md p-2 pr-0 text-sm",
+        isActive && "bg-secondary-highlight text-primary font-semibold",
         !isActive && "duration-500",
       )}
     >
@@ -760,7 +760,7 @@ function LifecycleIconRow({
         <div className="relative ml-2 flex size-4 items-center justify-center">
           <LuCircle
             className={cn(
-              "relative z-10 size-2.5 fill-secondary-foreground stroke-none",
+              "fill-secondary-foreground relative z-10 size-2.5 stroke-none",
               (isActive || (effectiveTime ?? 0) >= (item?.timestamp ?? 0)) &&
                 isTimelineActive &&
                 "fill-selected duration-300",
@@ -770,22 +770,22 @@ function LifecycleIconRow({
 
         <div className="ml-2 flex w-full min-w-0 flex-1">
           <div className="flex flex-col">
-            <div className="text-md flex items-start wrap-break-word text-left">
+            <div className="text-md flex items-start text-left wrap-break-word">
               {getLifecycleItemDescription(item)}
             </div>
-            <div className="mt-1 flex flex-wrap items-center gap-2 text-xs text-secondary-foreground md:gap-5">
+            <div className="text-secondary-foreground mt-1 flex flex-wrap items-center gap-2 text-xs md:gap-5">
               <div className="flex items-center gap-1">
                 <span className="text-primary-variant">
                   {t("trackingDetails.lifecycleItemDesc.header.ratio")}
                 </span>
-                <span className="font-medium text-primary">{ratio}</span>
+                <span className="text-primary font-medium">{ratio}</span>
               </div>
               <div className="flex items-center gap-1">
                 <span className="text-primary-variant">
                   {t("trackingDetails.lifecycleItemDesc.header.area")}
                 </span>
                 {areaPx !== undefined && areaPct !== undefined ? (
-                  <span className="font-medium text-primary">
+                  <span className="text-primary font-medium">
                     {t("information.pixels", { ns: "common", area: areaPx })} ·{" "}
                     {areaPct}%
                   </span>
@@ -832,14 +832,14 @@ function LifecycleIconRow({
             </div>
           </div>
         </div>
-        <div className="ml-3 shrink-0 px-1 text-right text-xs text-primary-variant">
+        <div className="text-primary-variant ml-3 shrink-0 px-1 text-right text-xs">
           <div className="flex flex-row items-center gap-3">
             <div className="whitespace-nowrap">{formattedEventTimestamp}</div>
             {(config?.plus?.enabled || item.data.box) && (
               <DropdownMenu open={isOpen} onOpenChange={setIsOpen}>
                 <DropdownMenuTrigger>
                   <div className="rounded p-1 pr-2" role="button">
-                    <HiDotsHorizontal className="size-4 text-muted-foreground" />
+                    <HiDotsHorizontal className="text-muted-foreground size-4" />
                   </div>
                 </DropdownMenuTrigger>
                 <DropdownMenuPortal>

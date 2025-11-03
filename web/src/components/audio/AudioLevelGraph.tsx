@@ -151,8 +151,8 @@ export function AudioLevelGraph({ cameraName }: AudioLevelGraphProps) {
                 className="size-2"
                 style={{ color: GRAPH_COLORS[idx] }}
               />
-              <div className="text-xs text-secondary-foreground">{label}</div>
-              <div className="text-xs text-primary">
+              <div className="text-secondary-foreground text-xs">{label}</div>
+              <div className="text-primary text-xs">
                 {lastValues[idx].toFixed(1)}
               </div>
             </div>

@@ -94,7 +94,7 @@ export default function FaceSelectionDialog({
               )}
             >
               <SelectorItem
-                className="flex cursor-pointer gap-2 smart-capitalize"
+                className="smart-capitalize flex cursor-pointer gap-2"
                 onClick={() => setNewFace(true)}
               >
                 <LuPlus />
@@ -103,7 +103,7 @@ export default function FaceSelectionDialog({
               {faceNames.sort().map((faceName) => (
                 <SelectorItem
                   key={faceName}
-                  className="flex cursor-pointer gap-2 smart-capitalize"
+                  className="smart-capitalize flex cursor-pointer gap-2"
                   onClick={() => onTrainAttempt(faceName)}
                 >
                   <LuScanFace />

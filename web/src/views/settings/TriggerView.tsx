@@ -423,14 +423,14 @@ export default function TriggerView({
   return (
     <div className="flex size-full flex-col md:flex-row">
       <Toaster position="top-center" closeButton={true} />
-      <div className="scrollbar-container order-last mb-10 mt-2 flex h-full w-full flex-col overflow-y-auto pb-2 md:order-0 md:mr-3 md:mt-0">
+      <div className="scrollbar-container order-last mt-2 mb-10 flex h-full w-full flex-col overflow-y-auto pb-2 md:order-0 md:mt-0 md:mr-3">
         {!isSemanticSearchEnabled ? (
           <div className="mb-5 flex flex-row items-center justify-between gap-2">
             <div className="flex flex-col items-start">
               <Heading as="h4" className="mb-2">
                 {t("triggers.management.title")}
               </Heading>
-              <p className="mb-5 text-sm text-muted-foreground">
+              <p className="text-muted-foreground mb-5 text-sm">
                 {t("triggers.management.desc", {
                   camera: cameraName,
                 })}
@@ -464,7 +464,7 @@ export default function TriggerView({
                 <Heading as="h4" className="mb-2">
                   {t("triggers.management.title")}
                 </Heading>
-                <p className="text-sm text-muted-foreground">
+                <p className="text-muted-foreground text-sm">
                   {t("triggers.management.desc", {
                     camera: cameraName,
                   })}
@@ -487,8 +487,8 @@ export default function TriggerView({
             <div className="mb-6 flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
               <div className="flex flex-1 flex-col gap-2 md:hidden">
                 {triggers.length === 0 ? (
-                  <div className="flex h-24 items-center justify-center rounded-lg border border-border bg-background_alt">
-                    <p className="text-center text-muted-foreground">
+                  <div className="border-border bg-background_alt flex h-24 items-center justify-center rounded-lg border">
+                    <p className="text-muted-foreground text-center">
                       {t("triggers.table.noTriggers")}
                     </p>
                   </div>
@@ -497,7 +497,7 @@ export default function TriggerView({
                     <div
                       key={trigger.name}
                       id={`trigger-${trigger.name}`}
-                      className="rounded-lg border border-border bg-background p-4"
+                      className="border-border bg-background rounded-lg border p-4"
                     >
                       <div className="flex items-start justify-between gap-3">
                         <div className="flex items-start gap-3">
@@ -540,7 +540,7 @@ export default function TriggerView({
                               <Link
                                 to={`/explore?event_id=${trigger_status?.triggers[trigger.name]?.triggering_event_id || ""}`}
                                 className={cn(
-                                  "flex items-center gap-1.5 text-xs text-muted-foreground",
+                                  "text-muted-foreground flex items-center gap-1.5 text-xs",
                                   !trigger_status?.triggers[trigger.name]
                                     ?.triggering_event_id &&
                                     "pointer-events-none",
@@ -634,10 +634,10 @@ export default function TriggerView({
               </div>
 
               {/* Desktop Table View */}
-              <div className="scrollbar-container hidden flex-1 overflow-hidden rounded-lg border border-border bg-background_alt md:mr-3 md:block">
+              <div className="scrollbar-container border-border bg-background_alt hidden flex-1 overflow-hidden rounded-lg border md:mr-3 md:block">
                 <div className="h-full overflow-auto">
                   <Table>
-                    <TableHeader className="sticky top-0 bg-muted/50">
+                    <TableHeader className="bg-muted/50 sticky top-0">
                       <TableRow>
                         <TableHead className="w-4"></TableHead>
                         <TableHead>{t("name", { ns: "common" })}</TableHead>

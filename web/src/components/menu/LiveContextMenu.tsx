@@ -276,7 +276,7 @@ export default function LiveContextMenu({
             </div>
             {preferredLiveMode == "jsmpeg" && isRestreamed && (
               <div className="flex flex-row items-center gap-1">
-                <IoIosWarning className="mr-1 size-4 text-danger" />
+                <IoIosWarning className="text-danger mr-1 size-4" />
                 <p className="mr-2 text-xs">{t("lowBandwidthMode")}</p>
               </div>
             )}
@@ -294,7 +294,7 @@ export default function LiveContextMenu({
                     />
                     <VolumeSlider
                       disabled={!audioState || !isEnabled}
-                      className="my-3 ml-0.5 rounded-lg bg-background/60"
+                      className="bg-background/60 my-3 ml-0.5 rounded-lg"
                       value={[volumeState ?? 0]}
                       min={0}
                       max={1}
@@ -409,14 +409,14 @@ export default function LiveContextMenu({
                         <>
                           {isSuspended ? (
                             <>
-                              <IoIosNotificationsOff className="size-5 text-muted-foreground" />
+                              <IoIosNotificationsOff className="text-muted-foreground size-5" />
                               <span>
                                 {t("button.suspended", { ns: "common" })}
                               </span>
                             </>
                           ) : (
                             <>
-                              <IoIosNotifications className="size-5 text-muted-foreground" />
+                              <IoIosNotifications className="text-muted-foreground size-5" />
                               <span>
                                 {t("button.enabled", { ns: "common" })}
                               </span>
@@ -425,13 +425,13 @@ export default function LiveContextMenu({
                         </>
                       ) : (
                         <>
-                          <IoIosNotificationsOff className="size-5 text-danger" />
+                          <IoIosNotificationsOff className="text-danger size-5" />
                           <span>{t("button.disabled", { ns: "common" })}</span>
                         </>
                       )}
                     </div>
                     {isSuspended && (
-                      <span className="text-xs text-primary-variant">
+                      <span className="text-primary-variant text-xs">
                         {formatSuspendedUntil(notificationSuspendUntil)}
                       </span>
                     )}
@@ -467,7 +467,7 @@ export default function LiveContextMenu({
                       <>
                         <ContextMenuSeparator />
                         <div className="px-2 py-1.5">
-                          <p className="mb-2 text-sm font-medium text-muted-foreground">
+                          <p className="text-muted-foreground mb-2 text-sm font-medium">
                             {t("suspend.forTime")}
                           </p>
                           <div className="space-y-1">

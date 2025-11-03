@@ -62,7 +62,7 @@ export function CamerasFilterButton({
 
   const trigger = (
     <Button
-      className="flex items-center gap-2 smart-capitalize"
+      className="smart-capitalize flex items-center gap-2"
       aria-label={t("cameras.label")}
       variant={selectedCameras?.length == undefined ? "default" : "select"}
       size="sm"
@@ -155,7 +155,7 @@ export function CamerasFilterContent({
           <DropdownMenuSeparator />
         </>
       )}
-      <div className="scrollbar-container flex h-auto max-h-[80dvh] flex-col gap-2 overflow-y-auto overflow-x-hidden p-4">
+      <div className="scrollbar-container flex h-auto max-h-[80dvh] flex-col gap-2 overflow-x-hidden overflow-y-auto p-4">
         <FilterSwitch
           isChecked={currentCameras == undefined}
           label={t("cameras.all.title")}
@@ -172,7 +172,7 @@ export function CamerasFilterContent({
               return (
                 <div
                   key={name}
-                  className="w-full cursor-pointer rounded-lg px-2 py-0.5 text-sm text-primary smart-capitalize hover:bg-muted"
+                  className="text-primary smart-capitalize hover:bg-muted w-full cursor-pointer rounded-lg px-2 py-0.5 text-sm"
                   onClick={() => {
                     setCurrentCameras([...conf.cameras]);
                   }}

@@ -127,8 +127,8 @@ export default function ReviewActionGroup({
         </AlertDialogContent>
       </AlertDialog>
 
-      <div className="absolute inset-x-2 inset-y-0 flex items-center justify-between gap-2 bg-background py-2 md:left-auto">
-        <div className="mx-1 flex items-center justify-center text-sm text-muted-foreground">
+      <div className="bg-background absolute inset-x-2 inset-y-0 flex items-center justify-between gap-2 py-2 md:left-auto">
+        <div className="text-muted-foreground mx-1 flex items-center justify-center text-sm">
           <div className="p-1">
             {t("selected", {
               ns: "views/events",
@@ -137,7 +137,7 @@ export default function ReviewActionGroup({
           </div>
           <div className="p-1">{"|"}</div>
           <div
-            className="cursor-pointer p-2 text-primary hover:rounded-lg hover:bg-secondary"
+            className="text-primary hover:bg-secondary cursor-pointer p-2 hover:rounded-lg"
             onClick={onClearSelected}
           >
             {t("button.unselect", { ns: "common" })}

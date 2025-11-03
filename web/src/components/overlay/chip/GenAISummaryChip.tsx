@@ -21,7 +21,7 @@ export function GenAISummaryChip({ review, onClick }: GenAISummaryChipProps) {
   return (
     <div
       className={cn(
-        "absolute left-1/2 top-8 z-30 flex max-w-[90vw] -translate-x-[50%] cursor-pointer select-none items-center gap-2 rounded-full p-2 text-sm transition-all duration-500",
+        "absolute top-8 left-1/2 z-30 flex max-w-[90vw] -translate-x-[50%] cursor-pointer items-center gap-2 rounded-full p-2 text-sm transition-all duration-500 select-none",
         isVisible ? "translate-y-0 opacity-100" : "-translate-y-4 opacity-0",
         isDesktop ? "bg-card" : "bg-secondary-foreground",
       )}
@@ -102,15 +102,15 @@ export function GenAISummaryDialog({
         )}
       >
         {t("aiAnalysis.title")}
-        <div className="text-sm text-primary/40">
+        <div className="text-primary/40 text-sm">
           {t("details.description.label")}
         </div>
         <div className="text-sm">{aiAnalysis.scene}</div>
-        <div className="text-sm text-primary/40">
+        <div className="text-primary/40 text-sm">
           {t("details.score.label")}
         </div>
         <div className="text-sm">{aiAnalysis.confidence * 100}%</div>
-        <div className="text-sm text-primary/40">{t("concerns.label")}</div>
+        <div className="text-primary/40 text-sm">{t("concerns.label")}</div>
         <div className="text-sm">{aiThreatLevel}</div>
       </Content>
     </Overlay>

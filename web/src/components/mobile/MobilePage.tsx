@@ -150,7 +150,7 @@ export function MobilePageContent({
       {isVisible && (
         <motion.div
           className={cn(
-            "fixed inset-0 z-50 mb-12 bg-background",
+            "bg-background fixed inset-0 z-50 mb-12",
             isPWA && "mb-16",
             "landscape:mb-14 landscape:md:mb-16",
             className,
@@ -196,7 +196,7 @@ export function MobilePageHeader({
   return (
     <div
       className={cn(
-        "sticky -top-2 z-50 mb-2 flex items-center justify-center bg-background p-4",
+        "bg-background sticky -top-2 z-50 mb-2 flex items-center justify-center p-4",
         className,
       )}
       {...props}
@@ -207,7 +207,7 @@ export function MobilePageHeader({
         size="sm"
         onClick={handleClose}
       >
-        <IoMdArrowRoundBack className="size-5 text-secondary-foreground" />
+        <IoMdArrowRoundBack className="text-secondary-foreground size-5" />
       </Button>
       <div className="flex flex-row text-center">{children}</div>
       {actions && (
@@ -232,6 +232,6 @@ export function MobilePageDescription({
   ...props
 }: MobilePageDescriptionProps) {
   return (
-    <p className={cn("text-sm text-muted-foreground", className)} {...props} />
+    <p className={cn("text-muted-foreground text-sm", className)} {...props} />
   );
 }

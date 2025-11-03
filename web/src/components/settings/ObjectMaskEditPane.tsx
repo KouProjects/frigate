@@ -281,10 +281,10 @@ export default function ObjectMaskEditPane({
           ? t("masksAndZones.objectMasks.edit")
           : t("masksAndZones.objectMasks.add")}
       </Heading>
-      <div className="my-2 text-sm text-muted-foreground">
+      <div className="text-muted-foreground my-2 text-sm">
         <p>{t("masksAndZones.objectMasks.context")}</p>
       </div>
-      <Separator className="my-3 bg-secondary" />
+      <Separator className="bg-secondary my-3" />
       {polygons && activePolygonIndex !== undefined && (
         <div className="my-2 flex w-full flex-row justify-between text-sm">
           <div className="my-1 inline-flex">
@@ -304,11 +304,11 @@ export default function ObjectMaskEditPane({
           />
         </div>
       )}
-      <div className="mb-3 text-sm text-muted-foreground">
+      <div className="text-muted-foreground mb-3 text-sm">
         {t("masksAndZones.objectMasks.clickDrawPolygon")}
       </div>
 
-      <Separator className="my-3 bg-secondary" />
+      <Separator className="bg-secondary my-3" />
 
       <Form {...form}>
         <form

@@ -100,7 +100,7 @@ export default function ImagePicker({
   const renderImageGrid = () => (
     <div className="grid grid-cols-2 gap-4 pr-1 sm:grid-cols-6">
       {images.length === 0 ? (
-        <div className="col-span-2 text-center text-sm text-muted-foreground sm:col-span-6">
+        <div className="text-muted-foreground col-span-2 text-center text-sm sm:col-span-6">
           {t("imagePicker.noImages")}
         </div>
       ) : (
@@ -108,9 +108,9 @@ export default function ImagePicker({
           <div
             key={image.id}
             className={cn(
-              "relative aspect-square cursor-pointer overflow-hidden rounded-lg border-2 bg-background transition-all",
+              "bg-background relative aspect-square cursor-pointer overflow-hidden rounded-lg border-2 transition-all",
               selectedImageId === image.id &&
-                "border-selected ring-2 ring-selected",
+                "border-selected ring-selected ring-2",
             )}
           >
             <img
@@ -152,7 +152,7 @@ export default function ImagePicker({
         <DialogTrigger asChild>
           {!selectedImageId ? (
             <Button
-              className="mt-2 w-full text-muted-foreground"
+              className="text-muted-foreground mt-2 w-full"
               aria-label={t("imagePicker.selectImage")}
             >
               {t("imagePicker.selectImage")}
@@ -179,7 +179,7 @@ export default function ImagePicker({
                       </div>
                     )}
                   </div>
-                  <div className="text-sm smart-capitalize">
+                  <div className="smart-capitalize text-sm">
                     {selectedImage?.label || t("imagePicker.unknownLabel")}
                     {selectedImage?.sub_label
                       ? ` (${selectedImage.sub_label})`
@@ -211,7 +211,7 @@ export default function ImagePicker({
         >
           <div className="mb-3 flex flex-col items-start justify-start">
             <Heading as="h4">{t("imagePicker.selectImage")}</Heading>
-            <div className="text-sm text-muted-foreground">
+            <div className="text-muted-foreground text-sm">
               {t("triggers.dialog.form.content.imageDesc", {
                 ns: "views/settings",
               })}

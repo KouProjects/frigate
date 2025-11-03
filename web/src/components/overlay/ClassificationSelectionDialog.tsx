@@ -130,7 +130,7 @@ export default function ClassificationSelectionDialog({
               {classes.sort().map((category) => (
                 <SelectorItem
                   key={category}
-                  className="flex cursor-pointer gap-2 smart-capitalize"
+                  className="smart-capitalize flex cursor-pointer gap-2"
                   onClick={() => onCategorizeImage(category)}
                 >
                   {category.replaceAll("_", " ")}
@@ -138,7 +138,7 @@ export default function ClassificationSelectionDialog({
               ))}
               <Separator />
               <SelectorItem
-                className="flex cursor-pointer gap-2 smart-capitalize"
+                className="smart-capitalize flex cursor-pointer gap-2"
                 onClick={() => setNewClass(true)}
               >
                 {t("createCategory.new")}

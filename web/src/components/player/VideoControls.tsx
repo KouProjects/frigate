@@ -195,7 +195,7 @@ export default function VideoControls({
   return (
     <div
       className={cn(
-        "z-50 flex w-auto items-center justify-between gap-4 rounded-lg bg-background/60 px-4 py-2 text-primary sm:flex-nowrap sm:gap-8",
+        "bg-background/60 text-primary z-50 flex w-auto items-center justify-between gap-4 rounded-lg px-4 py-2 sm:flex-nowrap sm:gap-8",
         className,
         isMobileOnly &&
           Object.values(features).filter((feat) => feat).length >
@@ -233,9 +233,9 @@ export default function VideoControls({
       )}
       <div className="cursor-pointer" onClick={onTogglePlay}>
         {isPlaying ? (
-          <LuPause className="size-5 fill-primary text-primary" />
+          <LuPause className="fill-primary text-primary size-5" />
         ) : (
-          <LuPlay className="size-5 fill-primary text-primary" />
+          <LuPlay className="fill-primary text-primary size-5" />
         )}
       </div>
       {features.seek && (

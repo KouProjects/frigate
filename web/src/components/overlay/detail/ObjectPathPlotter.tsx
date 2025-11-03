@@ -223,7 +223,7 @@ export default function ObjectPathPlotter() {
                   }}
                 />
                 <span className="text-sm">
-                  <strong className="mr-1 smart-capitalize">
+                  <strong className="smart-capitalize mr-1">
                     {event.label}
                   </strong>
                   {formatUnixTimestampToDateTime(event.start_time, {

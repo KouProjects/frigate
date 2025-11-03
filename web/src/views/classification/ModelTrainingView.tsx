@@ -333,7 +333,7 @@ export default function ModelTrainingView({ model }: ModelTrainingViewProps) {
             aria-label={t("label.back", { ns: "common" })}
             onClick={() => navigate(-1)}
           >
-            <IoMdArrowRoundBack className="size-5 text-secondary-foreground" />
+            <IoMdArrowRoundBack className="text-secondary-foreground size-5" />
             {isDesktop && (
               <div className="text-primary">
                 {t("button.back", { ns: "common" })}
@@ -351,11 +351,11 @@ export default function ModelTrainingView({ model }: ModelTrainingViewProps) {
         </div>
         {selectedImages?.length > 0 ? (
           <div className="flex items-center justify-center gap-2">
-            <div className="mx-1 flex w-48 items-center justify-center text-sm text-muted-foreground">
+            <div className="text-muted-foreground mx-1 flex w-48 items-center justify-center text-sm">
               <div className="p-1">{`${selectedImages.length} selected`}</div>
               <div className="p-1">{"|"}</div>
               <div
-                className="cursor-pointer p-2 text-primary hover:rounded-lg hover:bg-secondary"
+                className="text-primary hover:bg-secondary cursor-pointer p-2 hover:rounded-lg"
                 onClick={() => setSelectedImages([])}
               >
                 {t("button.unselect", { ns: "common" })}
@@ -365,7 +365,7 @@ export default function ModelTrainingView({ model }: ModelTrainingViewProps) {
               className="flex gap-2"
               onClick={() => setDeleteDialogOpen(selectedImages)}
             >
-              <LuTrash2 className="size-7 rounded-md p-1 text-secondary-foreground" />
+              <LuTrash2 className="text-secondary-foreground size-7 rounded-md p-1" />
               {isDesktop && t("button.deleteImages")}
             </Button>
           </div>
@@ -522,9 +522,9 @@ function LibrarySelector({
 
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
-          <Button className="flex justify-between smart-capitalize">
+          <Button className="smart-capitalize flex justify-between">
             {pageTitle}
-            <span className="ml-2 text-primary-variant">
+            <span className="text-primary-variant ml-2">
               (
               {(pageToggle &&
                 (pageToggle == "train"
@@ -552,7 +552,7 @@ function LibrarySelector({
           {trainImages.length > 0 && Object.keys(dataset).length > 0 && (
             <>
               <DropdownMenuSeparator />
-              <div className="mb-1 ml-1.5 text-xs text-secondary-foreground">
+              <div className="text-secondary-foreground mb-1 ml-1.5 text-xs">
                 {t("categories")}
               </div>
             </>
@@ -567,7 +567,7 @@ function LibrarySelector({
                 onClick={() => setPageToggle(id)}
               >
                 {id.replaceAll("_", " ")}
-                <span className="ml-2 text-muted-foreground">
+                <span className="text-muted-foreground ml-2">
                   ({dataset?.[id].length})
                 </span>
               </div>
@@ -583,7 +583,7 @@ function LibrarySelector({
                         setRenameFace(id);
                       }}
                     >
-                      <LuPencil className="size-4 text-primary" />
+                      <LuPencil className="text-primary size-4" />
                     </Button>
                   </TooltipTrigger>
                   <TooltipPortal>
@@ -603,7 +603,7 @@ function LibrarySelector({
                         setConfirmDelete(id);
                       }}
                     >
-                      <LuTrash2 className="size-4 text-destructive" />
+                      <LuTrash2 className="text-destructive size-4" />
                     </Button>
                   </TooltipTrigger>
                   <TooltipPortal>
@@ -649,7 +649,7 @@ function DatasetGrid({
   return (
     <div
       ref={contentRef}
-      className="scrollbar-container grid grid-cols-2 gap-2 overflow-y-scroll p-1 md:grid-cols-4 xl:grid-cols-8 2xl:grid-cols-10 3xl:grid-cols-12"
+      className="scrollbar-container 3xl:grid-cols-12 grid grid-cols-2 gap-2 overflow-y-scroll p-1 md:grid-cols-4 xl:grid-cols-8 2xl:grid-cols-10"
     >
       {classData.map((image) => (
         <div key={image} className="aspect-square w-full">
@@ -667,7 +667,7 @@ function DatasetGrid({
             <Tooltip>
               <TooltipTrigger>
                 <LuTrash2
-                  className="size-5 cursor-pointer text-primary-variant hover:text-danger"
+                  className="text-primary-variant hover:text-danger size-5 cursor-pointer"
                   onClick={(e) => {
                     e.stopPropagation();
                     onDelete([image]);
@@ -809,7 +809,7 @@ function StateTrainGrid({
     <div
       ref={contentRef}
       className={cn(
-        "scrollbar-container grid grid-cols-2 gap-3 overflow-y-scroll p-1 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8 2xl:grid-cols-10 3xl:grid-cols-12",
+        "scrollbar-container 3xl:grid-cols-12 grid grid-cols-2 gap-3 overflow-y-scroll p-1 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8 2xl:grid-cols-10",
       )}
     >
       {trainData?.map((data) => (
@@ -947,7 +947,7 @@ function ObjectTrainGrid({
       <div
         ref={contentRef}
         className={cn(
-          "scrollbar-container grid grid-cols-2 gap-3 overflow-y-scroll p-1 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8 2xl:grid-cols-10 3xl:grid-cols-12",
+          "scrollbar-container 3xl:grid-cols-12 grid grid-cols-2 gap-3 overflow-y-scroll p-1 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8 2xl:grid-cols-10",
         )}
       >
         {Object.entries(groups).map(([key, group]) => {

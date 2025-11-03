@@ -99,7 +99,7 @@ export default function ExploreView({
 
   if (isLoading) {
     return (
-      <ActivityIndicator className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2" />
+      <ActivityIndicator className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" />
     );
   }
 
@@ -154,11 +154,11 @@ function ThumbnailRow({
   };
 
   return (
-    <div className="rounded-lg bg-background_alt p-2 md:px-4">
-      <div className="flex flex-row items-center text-lg smart-capitalize">
+    <div className="bg-background_alt rounded-lg p-2 md:px-4">
+      <div className="smart-capitalize flex flex-row items-center text-lg">
         {getTranslatedLabel(label, labelType)}
         {searchResults && (
-          <span className="ml-3 text-sm text-secondary-foreground">
+          <span className="text-secondary-foreground ml-3 text-sm">
             {t("trackedObjectsCount", {
               // @ts-expect-error we know this is correct
               count: searchResults[0].event_count,
@@ -189,7 +189,7 @@ function ThumbnailRow({
           <Tooltip>
             <TooltipTrigger>
               <BsArrowRightCircle
-                className="ml-2 text-secondary-foreground transition-all duration-300 hover:text-primary"
+                className="text-secondary-foreground hover:text-primary ml-2 transition-all duration-300"
                 size={24}
               />
             </TooltipTrigger>
@@ -283,7 +283,7 @@ function ExploreThumbnailImage({
           alt={`${event.label} thumbnail`}
         />
         {isDesktop && (
-          <div className="absolute bottom-1 right-1 z-10 rounded-lg bg-black/50 px-2 py-1 text-xs text-white">
+          <div className="absolute right-1 bottom-1 z-10 rounded-lg bg-black/50 px-2 py-1 text-xs text-white">
             {event.end_time ? (
               <TimeAgo time={event.start_time * 1000} dense />
             ) : (

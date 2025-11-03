@@ -160,7 +160,7 @@ export default function GeneralSettings({ className }: GeneralSettingsProps) {
                 className={cn(
                   "flex flex-col items-center justify-center",
                   isDesktop
-                    ? "cursor-pointer rounded-lg bg-secondary text-secondary-foreground hover:bg-muted"
+                    ? "bg-secondary text-secondary-foreground hover:bg-muted cursor-pointer rounded-lg"
                     : "text-secondary-foreground",
                   className,
                 )}
@@ -190,7 +190,7 @@ export default function GeneralSettings({ className }: GeneralSettingsProps) {
               : "max-h-[75dvh] overflow-hidden p-2"
           }
         >
-          <div className="scrollbar-container w-full flex-col overflow-y-auto overflow-x-hidden">
+          <div className="scrollbar-container w-full flex-col overflow-x-hidden overflow-y-auto">
             {isMobile && (
               <div className="mb-2">
                 <DropdownMenuLabel>
@@ -369,7 +369,7 @@ export default function GeneralSettings({ className }: GeneralSettingsProps) {
                           {label}
                         </>
                       ) : (
-                        <span className="ml-6 mr-2">{label}</span>
+                        <span className="mr-2 ml-6">{label}</span>
                       )}
                     </MenuItem>
                   ))}
@@ -403,11 +403,11 @@ export default function GeneralSettings({ className }: GeneralSettingsProps) {
                   >
                     {theme === "light" ? (
                       <>
-                        <LuSun className="mr-2 size-4 rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
+                        <LuSun className="mr-2 size-4 scale-100 rotate-0 transition-all dark:scale-0 dark:-rotate-90" />
                         {t("menu.darkMode.light")}
                       </>
                     ) : (
-                      <span className="ml-6 mr-2">
+                      <span className="mr-2 ml-6">
                         {t("menu.darkMode.light")}
                       </span>
                     )}
@@ -423,11 +423,11 @@ export default function GeneralSettings({ className }: GeneralSettingsProps) {
                   >
                     {theme === "dark" ? (
                       <>
-                        <LuMoon className="mr-2 size-4 rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
+                        <LuMoon className="mr-2 size-4 scale-0 rotate-90 transition-all dark:scale-100 dark:rotate-0" />
                         {t("menu.darkMode.dark")}
                       </>
                     ) : (
-                      <span className="ml-6 mr-2">
+                      <span className="mr-2 ml-6">
                         {t("menu.darkMode.dark")}
                       </span>
                     )}
@@ -447,7 +447,7 @@ export default function GeneralSettings({ className }: GeneralSettingsProps) {
                         {t("menu.withSystem")}
                       </>
                     ) : (
-                      <span className="ml-6 mr-2">{t("menu.withSystem")}</span>
+                      <span className="mr-2 ml-6">{t("menu.withSystem")}</span>
                     )}
                   </MenuItem>
                 </SubItemContent>
@@ -482,11 +482,11 @@ export default function GeneralSettings({ className }: GeneralSettingsProps) {
                     >
                       {scheme === colorScheme ? (
                         <>
-                          <IoColorPalette className="mr-2 size-4 rotate-0 scale-100 transition-all" />
+                          <IoColorPalette className="mr-2 size-4 scale-100 rotate-0 transition-all" />
                           {t(friendlyColorSchemeName(scheme))}
                         </>
                       ) : (
-                        <span className="ml-6 mr-2">
+                        <span className="mr-2 ml-6">
                           {t(friendlyColorSchemeName(scheme))}
                         </span>
                       )}

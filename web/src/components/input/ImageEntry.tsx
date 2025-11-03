@@ -142,17 +142,17 @@ export default function ImageEntry({
                         "flex h-40 flex-col items-center justify-center rounded-lg border-2 border-dashed p-6 transition-colors",
                         isDragActive && "border-primary bg-primary/5",
                         isDragReject && "border-destructive bg-destructive/5",
-                        "cursor-pointer hover:border-primary hover:bg-primary/5",
+                        "hover:border-primary hover:bg-primary/5 cursor-pointer",
                       )}
                     >
                       <input {...getInputProps()} />
-                      <LuUpload className="mb-2 h-10 w-10 text-muted-foreground" />
-                      <p className="text-center text-sm text-muted-foreground">
+                      <LuUpload className="text-muted-foreground mb-2 h-10 w-10" />
+                      <p className="text-muted-foreground text-center text-sm">
                         {isDragActive
                           ? t("imageEntry.dropActive")
                           : t("imageEntry.dropInstructions")}
                       </p>
-                      <p className="mt-1 text-xs text-muted-foreground">
+                      <p className="text-muted-foreground mt-1 text-xs">
                         {t("imageEntry.maxSize", {
                           size: Math.round(maxSize / (1024 * 1024)),
                         })}
@@ -169,7 +169,7 @@ export default function ImageEntry({
                         type="button"
                         variant="destructive"
                         size="icon"
-                        className="absolute right-2 top-2 size-5 rounded-full"
+                        className="absolute top-2 right-2 size-5 rounded-full"
                         onClick={clearSelection}
                       >
                         <LuX className="size-3" />

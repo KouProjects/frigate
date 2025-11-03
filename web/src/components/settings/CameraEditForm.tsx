@@ -363,10 +363,10 @@ export default function CameraEditForm({
           ? t("cameraManagement.cameraConfig.edit")
           : t("cameraManagement.cameraConfig.add")}
       </Heading>
-      <div className="my-3 text-sm text-muted-foreground">
+      <div className="text-muted-foreground my-3 text-sm">
         {t("cameraManagement.cameraConfig.description")}
       </div>
-      <Separator className="my-3 bg-secondary" />
+      <Separator className="bg-secondary my-3" />
 
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
@@ -459,7 +459,7 @@ export default function CameraEditForm({
                     <Label className="text-sm font-medium">
                       {t("cameraManagement.cameraConfig.ffmpeg.roles")}
                     </Label>
-                    <div className="rounded-lg bg-background p-3">
+                    <div className="bg-background rounded-lg p-3">
                       <div className="flex flex-wrap gap-2">
                         {(["detect", "record", "audio"] as const).map(
                           (role) => {

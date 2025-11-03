@@ -276,7 +276,7 @@ export default function SearchDetailDialog({
                   )}
                   {page === "snapshot" && !search.has_snapshot && (
                     <img
-                      className="size-full select-none rounded-lg object-contain transition-opacity"
+                      className="size-full rounded-lg object-contain transition-opacity select-none"
                       style={
                         isIOS
                           ? {
@@ -364,7 +364,7 @@ export default function SearchDetailDialog({
                   )}
                   {page == "snapshot" && !search.has_snapshot && (
                     <img
-                      className="w-full select-none rounded-lg object-contain transition-opacity"
+                      className="w-full rounded-lg object-contain transition-opacity select-none"
                       style={
                         isIOS
                           ? {
@@ -377,7 +377,7 @@ export default function SearchDetailDialog({
                       src={`${apiHost}api/events/${search.id}/thumbnail.webp`}
                     />
                   )}
-                  <Heading as="h3" className="mt-2 smart-capitalize">
+                  <Heading as="h3" className="smart-capitalize mt-2">
                     {t("type.details")}
                   </Heading>
                   <ObjectDetailsTab
@@ -867,8 +867,8 @@ function ObjectDetailsTab({
       <div className="flex w-full flex-row">
         <div className="flex w-full flex-col gap-3">
           <div className="flex flex-col gap-1.5">
-            <div className="text-sm text-primary/40">{t("details.label")}</div>
-            <div className="flex flex-row items-center gap-2 text-sm smart-capitalize">
+            <div className="text-primary/40 text-sm">{t("details.label")}</div>
+            <div className="smart-capitalize flex flex-row items-center gap-2 text-sm">
               {getIconForLabel(search.label, "size-4 text-primary")}
               {getTranslatedLabel(search.label)}
               {search.sub_label && ` (${search.sub_label})`}
@@ -877,7 +877,7 @@ function ObjectDetailsTab({
                   <TooltipTrigger asChild>
                     <span>
                       <FaPencilAlt
-                        className="size-4 cursor-pointer text-primary/40 hover:text-primary/80"
+                        className="text-primary/40 hover:text-primary/80 size-4 cursor-pointer"
                         onClick={() => {
                           setIsSubLabelDialogOpen(true);
                         }}
@@ -895,7 +895,7 @@ function ObjectDetailsTab({
           </div>
           {search?.data.recognized_license_plate && (
             <div className="flex flex-col gap-1.5">
-              <div className="text-sm text-primary/40">
+              <div className="text-primary/40 text-sm">
                 {t("details.recognizedLicensePlate")}
               </div>
               <div className="flex flex-col space-y-0.5 text-sm">
@@ -908,7 +908,7 @@ function ObjectDetailsTab({
                       <TooltipTrigger asChild>
                         <span>
                           <FaPencilAlt
-                            className="size-4 cursor-pointer text-primary/40 hover:text-primary/80"
+                            className="text-primary/40 hover:text-primary/80 size-4 cursor-pointer"
                             onClick={() => {
                               setIsLPRDialogOpen(true);
                             }}
@@ -927,7 +927,7 @@ function ObjectDetailsTab({
             </div>
           )}
           <div className="flex flex-col gap-1.5">
-            <div className="text-sm text-primary/40">
+            <div className="text-primary/40 text-sm">
               <div className="flex flex-row items-center gap-1">
                 {t("details.topScore.label")}
                 <Popover>
@@ -949,7 +949,7 @@ function ObjectDetailsTab({
           </div>
           {snapScore != undefined && (
             <div className="flex flex-col gap-1.5">
-              <div className="text-sm text-primary/40">
+              <div className="text-primary/40 text-sm">
                 <div className="flex flex-row items-center gap-1">
                   {t("details.snapshotScore.label")}
                 </div>
@@ -959,7 +959,7 @@ function ObjectDetailsTab({
           )}
           {averageEstimatedSpeed && (
             <div className="flex flex-col gap-1.5">
-              <div className="text-sm text-primary/40">
+              <div className="text-primary/40 text-sm">
                 {t("details.estimatedSpeed")}
               </div>
               <div className="flex flex-col space-y-0.5 text-sm">
@@ -985,13 +985,13 @@ function ObjectDetailsTab({
             </div>
           )}
           <div className="flex flex-col gap-1.5">
-            <div className="text-sm text-primary/40">{t("details.camera")}</div>
-            <div className="text-sm smart-capitalize">
+            <div className="text-primary/40 text-sm">{t("details.camera")}</div>
+            <div className="smart-capitalize text-sm">
               <CameraNameLabel camera={search.camera} />
             </div>
           </div>
           <div className="flex flex-col gap-1.5">
-            <div className="text-sm text-primary/40">
+            <div className="text-primary/40 text-sm">
               {t("details.timestamp")}
             </div>
             <div className="text-sm">{formattedDate}</div>
@@ -1000,7 +1000,7 @@ function ObjectDetailsTab({
         {showThumbnail && (
           <div className="flex w-full flex-col gap-2 pl-6">
             <img
-              className="aspect-video select-none rounded-lg object-contain transition-opacity"
+              className="aspect-video rounded-lg object-contain transition-opacity select-none"
               style={
                 isIOS
                   ? {
@@ -1078,10 +1078,10 @@ function ObjectDetailsTab({
             search.label,
           )) ? (
           <>
-            <div className="text-sm text-primary/40">
+            <div className="text-primary/40 text-sm">
               {t("details.description.label")}
             </div>
-            <div className="flex h-64 flex-col items-center justify-center gap-3 border p-4 text-sm text-primary/40">
+            <div className="text-primary/40 flex h-64 flex-col items-center justify-center gap-3 border p-4 text-sm">
               <div className="flex">
                 <ActivityIndicator />
               </div>
@@ -1090,7 +1090,7 @@ function ObjectDetailsTab({
           </>
         ) : (
           <>
-            <div className="text-sm text-primary/40"></div>
+            <div className="text-primary/40 text-sm"></div>
             <Textarea
               className="text-md h-64"
               placeholder={t("details.description.placeholder")}
@@ -1266,7 +1266,7 @@ export function ObjectSnapshotTab({
                   />
                   <div
                     className={cn(
-                      "absolute right-1 top-1 flex items-center gap-2",
+                      "absolute top-1 right-1 flex items-center gap-2",
                     )}
                   >
                     <Tooltip>
@@ -1300,7 +1300,7 @@ export function ObjectSnapshotTab({
                       <div className={"text-lg leading-none"}>
                         {t("explore.plus.submitToPlus.label")}
                       </div>
-                      <div className="text-sm text-muted-foreground">
+                      <div className="text-muted-foreground text-sm">
                         {t("explore.plus.submitToPlus.desc")}
                       </div>
                     </div>
@@ -1345,7 +1345,7 @@ export function ObjectSnapshotTab({
                           </div>
                           <div className="flex w-full flex-row gap-2">
                             <Button
-                              className="flex-1 bg-success"
+                              className="bg-success flex-1"
                               aria-label={t("button.yes", { ns: "common" })}
                               onClick={() => {
                                 setState("uploading");

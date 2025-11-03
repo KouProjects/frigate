@@ -25,6 +25,13 @@ import axios from "axios";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
 import useSWR from "swr";
+import {
+  BreadcrumbItem,
+  SidebarAppContent,
+  SidebarAppHeader,
+} from "@/components/SidebarAppWrapper";
+
+const breadcrumbs: BreadcrumbItem[] = [{ path: "/review", name: "Review" }];
 
 export default function Events() {
   const { t } = useTranslation(["views/events"]);
@@ -474,42 +481,52 @@ export default function Events() {
   if (recording) {
     if (selectedReviewData) {
       return (
-        <RecordingView
-          key={selectedTimeRange.before}
-          startCamera={selectedReviewData.camera}
-          startTime={selectedReviewData.start_time}
-          allCameras={selectedReviewData.allCameras}
-          reviewItems={reviews}
-          reviewSummary={reviewSummary}
-          allPreviews={allPreviews}
-          timeRange={selectedTimeRange}
-          filter={reviewFilter}
-          updateFilter={onUpdateFilter}
-          refreshData={reloadData}
-        />
+        <>
+          <SidebarAppHeader breadcrumbs={breadcrumbs} />
+          <SidebarAppContent>
+            <RecordingView
+              key={selectedTimeRange.before}
+              startCamera={selectedReviewData.camera}
+              startTime={selectedReviewData.start_time}
+              allCameras={selectedReviewData.allCameras}
+              reviewItems={reviews}
+              reviewSummary={reviewSummary}
+              allPreviews={allPreviews}
+              timeRange={selectedTimeRange}
+              filter={reviewFilter}
+              updateFilter={onUpdateFilter}
+              refreshData={reloadData}
+            />
+          </SidebarAppContent>
+        </>
       );
     }
   } else {
     return (
-      <EventView
-        reviewItems={reviewItems}
-        currentReviewItems={currentItems}
-        reviewSummary={reviewSummary}
-        recordingsSummary={recordingsSummary}
-        relevantPreviews={allPreviews}
-        timeRange={selectedTimeRange}
-        filter={reviewFilter}
-        severity={severity ?? "alert"}
-        startTime={startTime}
-        showReviewed={showReviewed ?? false}
-        setShowReviewed={setShowReviewed}
-        setSeverity={setSeverity}
-        markItemAsReviewed={markItemAsReviewed}
-        markAllItemsAsReviewed={markAllItemsAsReviewed}
-        onOpenRecording={setRecording}
-        pullLatestData={reloadData}
-        updateFilter={onUpdateFilter}
-      />
+      <>
+        <SidebarAppHeader breadcrumbs={breadcrumbs} />
+        <SidebarAppContent>
+          <EventView
+            reviewItems={reviewItems}
+            currentReviewItems={currentItems}
+            reviewSummary={reviewSummary}
+            recordingsSummary={recordingsSummary}
+            relevantPreviews={allPreviews}
+            timeRange={selectedTimeRange}
+            filter={reviewFilter}
+            severity={severity ?? "alert"}
+            startTime={startTime}
+            showReviewed={showReviewed ?? false}
+            setShowReviewed={setShowReviewed}
+            setSeverity={setSeverity}
+            markItemAsReviewed={markItemAsReviewed}
+            markAllItemsAsReviewed={markAllItemsAsReviewed}
+            onOpenRecording={setRecording}
+            pullLatestData={reloadData}
+            updateFilter={onUpdateFilter}
+          />
+        </SidebarAppContent>
+      </>
     );
   }
 }

@@ -286,7 +286,7 @@ function GeneralFilterButton({
     <Button
       size="sm"
       variant={selectedLabels?.length ? "select" : "default"}
-      className="flex items-center gap-2 smart-capitalize"
+      className="smart-capitalize flex items-center gap-2"
       aria-label={t("labels.label")}
     >
       <MdLabel
@@ -371,9 +371,9 @@ export function GeneralFilterContent({
   return (
     <>
       <div className="overflow-x-hidden">
-        <div className="mb-5 mt-2.5 flex items-center justify-between">
+        <div className="mt-2.5 mb-5 flex items-center justify-between">
           <Label
-            className="mx-2 cursor-pointer text-primary"
+            className="text-primary mx-2 cursor-pointer"
             htmlFor="allLabels"
           >
             {t("labels.all.title")}
@@ -481,7 +481,7 @@ function SortTypeButton({
           ? "select"
           : "default"
       }
-      className="flex items-center gap-2 smart-capitalize"
+      className="smart-capitalize flex items-center gap-2"
       aria-label={t("labels.label")}
     >
       <MdSort

@@ -204,8 +204,8 @@ export function CameraStreamingDialog({
         {!isRestreamed && (
           <div className="flex flex-col gap-2">
             <Label></Label>
-            <div className="flex flex-row items-center gap-1 text-sm text-muted-foreground">
-              <LuX className="size-4 text-danger" />
+            <div className="text-muted-foreground flex flex-row items-center gap-1 text-sm">
+              <LuX className="text-danger size-4" />
               <div>
                 {t("streaming.restreaming.disabled", {
                   ns: "components/dialog",
@@ -224,7 +224,7 @@ export function CameraStreamingDialog({
                   {t("streaming.restreaming.desc.title", {
                     ns: "components/dialog",
                   })}
-                  <div className="mt-2 flex items-center text-primary">
+                  <div className="text-primary mt-2 flex items-center">
                     <Link
                       to={getLocaleDocUrl("configuration/live")}
                       target="_blank"
@@ -262,15 +262,15 @@ export function CameraStreamingDialog({
                       ),
                     )}
                 </SelectContent>
-                <div className="flex flex-row items-center gap-1 text-sm text-muted-foreground">
+                <div className="text-muted-foreground flex flex-row items-center gap-1 text-sm">
                   {supportsAudioOutput ? (
                     <>
-                      <LuCheck className="size-4 text-success" />
+                      <LuCheck className="text-success size-4" />
                       <div>{t("group.camera.setting.audioIsAvailable")}</div>
                     </>
                   ) : (
                     <>
-                      <LuX className="size-4 text-danger" />
+                      <LuX className="text-danger size-4" />
                       <div>{t("group.camera.setting.audioIsUnavailable")}</div>
                       <Popover>
                         <PopoverTrigger asChild>
@@ -283,7 +283,7 @@ export function CameraStreamingDialog({
                         </PopoverTrigger>
                         <PopoverContent className="w-80 text-xs">
                           {t("group.camera.setting.audio.tips.title")}
-                          <div className="mt-2 flex items-center text-primary">
+                          <div className="text-primary mt-2 flex items-center">
                             <Link
                               to={getLocaleDocUrl("configuration/live")}
                               target="_blank"
@@ -334,12 +334,12 @@ export function CameraStreamingDialog({
             </SelectContent>
           </Select>
           {streamType === "no-streaming" && (
-            <p className="text-sm text-muted-foreground">
+            <p className="text-muted-foreground text-sm">
               {t("group.camera.setting.streamMethod.method.noStreaming.desc")}
             </p>
           )}
           {streamType === "smart" && (
-            <p className="text-sm text-muted-foreground">
+            <p className="text-muted-foreground text-sm">
               {t(
                 "group.camera.setting.streamMethod.method.smartStreaming.desc",
               )}
@@ -347,13 +347,13 @@ export function CameraStreamingDialog({
           )}
           {streamType === "continuous" && (
             <>
-              <p className="text-sm text-muted-foreground">
+              <p className="text-muted-foreground text-sm">
                 {t(
                   "group.camera.setting.streamMethod.method.continuousStreaming.desc.title",
                 )}
               </p>
               <div className="flex items-center gap-2">
-                <IoIosWarning className="mr-2 size-5 text-danger" />
+                <IoIosWarning className="text-danger mr-2 size-5" />
                 <div className="max-w-[85%] text-sm">
                   {t(
                     "group.camera.setting.streamMethod.method.continuousStreaming.desc.warning",
@@ -367,19 +367,19 @@ export function CameraStreamingDialog({
           <div className="flex items-center gap-2">
             <Checkbox
               id="compatibility"
-              className="size-5 text-white accent-white data-[state=checked]:bg-selected data-[state=checked]:text-white"
+              className="data-[state=checked]:bg-selected size-5 text-white accent-white data-[state=checked]:text-white"
               checked={compatibilityMode}
               onCheckedChange={() => setCompatibilityMode(!compatibilityMode)}
             />
             <Label
               htmlFor="compatibility"
-              className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+              className="text-sm leading-none font-medium peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
             >
               {t("group.camera.setting.compatibilityMode.label")}
             </Label>
           </div>
           <div className="flex flex-col gap-2 leading-none">
-            <p className="text-sm text-muted-foreground">
+            <p className="text-muted-foreground text-sm">
               {t("group.camera.setting.compatibilityMode.desc")}
             </p>
           </div>

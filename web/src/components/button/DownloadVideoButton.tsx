@@ -53,7 +53,7 @@ export function DownloadVideoButton({
       >
         <a href={source} download={filename} onClick={handleDownloadStart}>
           <FaDownload
-            className={cn("size-4 text-secondary-foreground", className)}
+            className={cn("text-secondary-foreground size-4", className)}
           />
         </a>
       </Button>

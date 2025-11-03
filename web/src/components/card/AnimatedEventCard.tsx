@@ -134,7 +134,7 @@ export function AnimatedEventCard({
     <Tooltip>
       <TooltipTrigger asChild>
         <div
-          className="relative h-24 shrink-0 overflow-hidden rounded md:rounded-lg 4k:h-32"
+          className="4k:h-32 relative h-24 shrink-0 overflow-hidden rounded md:rounded-lg"
           style={{
             aspectRatio: alertVideos ? aspectRatio : undefined,
           }}
@@ -145,8 +145,8 @@ export function AnimatedEventCard({
             <Tooltip>
               <TooltipTrigger asChild>
                 <Button
-                  className="absolute left-2 top-1 z-40 bg-gray-500 bg-linear-to-br from-gray-400 to-gray-500"
-                  size="xs"
+                  className="absolute top-1 left-2 z-40 bg-gray-500 bg-linear-to-br from-gray-400 to-gray-500"
+                  size="icon"
                   aria-label={t("markAsReviewed")}
                   onClick={async () => {
                     await axios.post(`reviews/viewed`, { ids: [event.id] });
@@ -174,7 +174,7 @@ export function AnimatedEventCard({
               {!alertVideos ? (
                 <img
                   className={cn(
-                    "h-full w-auto min-w-10 select-none object-contain",
+                    "h-full w-auto min-w-10 object-contain select-none",
                     isSafari && !isLoaded ? "hidden" : "visible",
                   )}
                   src={`${apiHost}${event.thumb_path.replace("/media/frigate/", "")}`}

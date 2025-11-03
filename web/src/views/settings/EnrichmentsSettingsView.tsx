@@ -244,19 +244,19 @@ export default function EnrichmentsSettingsView({
   return (
     <div className="flex size-full flex-col md:flex-row">
       <Toaster position="top-center" closeButton={true} />
-      <div className="scrollbar-container order-last mb-10 mt-2 flex h-full w-full flex-col overflow-y-auto pb-2 md:order-0">
+      <div className="scrollbar-container order-last mt-2 mb-10 flex h-full w-full flex-col overflow-y-auto pb-2 md:order-0">
         <Heading as="h4" className="mb-2">
           {t("enrichments.title")}
         </Heading>
-        <Separator className="my-2 flex bg-secondary" />
+        <Separator className="bg-secondary my-2 flex" />
         <Heading as="h4" className="my-2">
           {t("enrichments.semanticSearch.title")}
         </Heading>
         <div className="max-w-6xl">
-          <div className="mb-5 mt-2 flex max-w-5xl flex-col gap-2 text-sm text-primary-variant">
+          <div className="text-primary-variant mt-2 mb-5 flex max-w-5xl flex-col gap-2 text-sm">
             <p>{t("enrichments.semanticSearch.desc")}</p>
 
-            <div className="flex items-center text-primary">
+            <div className="text-primary flex items-center">
               <Link
                 to={getLocaleDocUrl("configuration/semantic_search")}
                 target="_blank"
@@ -298,7 +298,7 @@ export default function EnrichmentsSettingsView({
             >
               {t("enrichments.semanticSearch.reindexNow.label")}
             </Button>
-            <div className="mt-3 text-sm text-muted-foreground">
+            <div className="text-muted-foreground mt-3 text-sm">
               <Trans ns="views/settings">
                 enrichments.semanticSearch.reindexNow.desc
               </Trans>
@@ -309,7 +309,7 @@ export default function EnrichmentsSettingsView({
               <div className="text-md">
                 {t("enrichments.semanticSearch.modelSize.label")}
               </div>
-              <div className="space-y-1 text-sm text-muted-foreground">
+              <div className="text-muted-foreground space-y-1 text-sm">
                 <p>
                   <Trans ns="views/settings">
                     enrichments.semanticSearch.modelSize.desc
@@ -393,16 +393,16 @@ export default function EnrichmentsSettingsView({
         </AlertDialog>
 
         <div className="my-2 space-y-6">
-          <Separator className="my-2 flex bg-secondary" />
+          <Separator className="bg-secondary my-2 flex" />
 
           <Heading as="h4" className="my-2">
             {t("enrichments.faceRecognition.title")}
           </Heading>
           <div className="max-w-6xl">
-            <div className="mb-5 mt-2 flex max-w-5xl flex-col gap-2 text-sm text-primary-variant">
+            <div className="text-primary-variant mt-2 mb-5 flex max-w-5xl flex-col gap-2 text-sm">
               <p>{t("enrichments.faceRecognition.desc")}</p>
 
-              <div className="flex items-center text-primary">
+              <div className="text-primary flex items-center">
                 <Link
                   to={getLocaleDocUrl("configuration/face_recognition")}
                   target="_blank"
@@ -439,7 +439,7 @@ export default function EnrichmentsSettingsView({
               <div className="text-md">
                 {t("enrichments.faceRecognition.modelSize.label")}
               </div>
-              <div className="space-y-1 text-sm text-muted-foreground">
+              <div className="text-muted-foreground space-y-1 text-sm">
                 <p>
                   <Trans ns="views/settings">
                     enrichments.faceRecognition.modelSize.desc
@@ -494,16 +494,16 @@ export default function EnrichmentsSettingsView({
             </Select>
           </div>
 
-          <Separator className="my-2 flex bg-secondary" />
+          <Separator className="bg-secondary my-2 flex" />
 
           <Heading as="h4" className="my-2">
             {t("enrichments.licensePlateRecognition.title")}
           </Heading>
           <div className="max-w-6xl">
-            <div className="mb-5 mt-2 flex max-w-5xl flex-col gap-2 text-sm text-primary-variant">
+            <div className="text-primary-variant mt-2 mb-5 flex max-w-5xl flex-col gap-2 text-sm">
               <p>{t("enrichments.licensePlateRecognition.desc")}</p>
 
-              <div className="flex items-center text-primary">
+              <div className="text-primary flex items-center">
                 <Link
                   to={getLocaleDocUrl(
                     "configuration/license_plate_recognition",
@@ -540,16 +540,16 @@ export default function EnrichmentsSettingsView({
             </div>
           </div>
 
-          <Separator className="my-2 flex bg-secondary" />
+          <Separator className="bg-secondary my-2 flex" />
 
           <Heading as="h4" className="my-2">
             {t("enrichments.birdClassification.title")}
           </Heading>
           <div className="max-w-6xl">
-            <div className="mb-5 mt-2 flex max-w-5xl flex-col gap-2 text-sm text-primary-variant">
+            <div className="text-primary-variant mt-2 mb-5 flex max-w-5xl flex-col gap-2 text-sm">
               <p>{t("enrichments.birdClassification.desc")}</p>
 
-              <div className="flex items-center text-primary">
+              <div className="text-primary flex items-center">
                 <Link
                   to={getLocaleDocUrl("configuration/bird_classification")}
                   target="_blank"
@@ -584,7 +584,7 @@ export default function EnrichmentsSettingsView({
             </div>
           </div>
 
-          <Separator className="my-2 flex bg-secondary" />
+          <Separator className="bg-secondary my-2 flex" />
 
           <div className="flex w-full flex-row items-center gap-2 pt-2 md:w-[25%]">
             <Button

@@ -106,7 +106,7 @@ function StatusAlertNav({ className }: StatusAlertNavProps) {
     <Drawer>
       <DrawerTrigger asChild>
         <div className="p-2">
-          <IoIosWarning className="size-5 text-danger md:m-[6px]" />
+          <IoIosWarning className="text-danger size-5 md:m-[6px]" />
         </div>
       </DrawerTrigger>
       <DrawerContent
@@ -115,7 +115,7 @@ function StatusAlertNav({ className }: StatusAlertNavProps) {
           className,
         )}
       >
-        <div className="scrollbar-container flex h-auto w-full flex-col items-center gap-2 overflow-y-auto overflow-x-hidden py-4">
+        <div className="scrollbar-container flex h-auto w-full flex-col items-center gap-2 overflow-x-hidden overflow-y-auto py-4">
           {Object.entries(messages).map(([key, messageArray]) => (
             <div key={key} className="flex w-full items-center gap-2">
               {messageArray.map(({ id, text, color, link }: StatusMessage) => {

@@ -24,12 +24,12 @@ export default function SaveExportOverlay({
       <div
         className={cn(
           "pointer-events-auto flex items-center justify-center gap-2 rounded-lg px-2",
-          show ? "duration-500 animate-in slide-in-from-top" : "invisible",
+          show ? "animate-in slide-in-from-top duration-500" : "invisible",
           "mx-auto mt-5 text-center",
         )}
       >
         <Button
-          className="flex items-center gap-1 text-primary"
+          className="text-primary flex items-center gap-1"
           aria-label={t("button.cancel", { ns: "common" })}
           size="sm"
           onClick={onCancel}

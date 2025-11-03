@@ -207,7 +207,7 @@ export default function LiveBirdseyeView({
         <div
           className={
             fullscreen
-              ? `absolute right-32 top-1 z-40 ${isMobile ? "landscape:bottom-1 landscape:left-2 landscape:right-auto landscape:top-auto" : ""}`
+              ? `absolute top-1 right-32 z-40 ${isMobile ? "landscape:top-auto landscape:right-auto landscape:bottom-1 landscape:left-2" : ""}`
               : `flex h-12 w-full flex-row items-center justify-between ${isMobile ? "landscape:h-full landscape:w-min landscape:flex-col" : ""}`
           }
         >

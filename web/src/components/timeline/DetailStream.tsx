@@ -199,7 +199,7 @@ export default function DetailStream({
         >
           <div className="space-y-4 py-2">
             {reviewItems?.length === 0 ? (
-              <div className="py-8 text-center text-muted-foreground">
+              <div className="text-muted-foreground py-8 text-center">
                 {t("detail.noDataFound")}
               </div>
             ) : (
@@ -227,7 +227,7 @@ export default function DetailStream({
 
         <div
           className={cn(
-            "absolute bottom-0 left-0 right-0 z-30 rounded-t-md border border-secondary-highlight bg-background_alt shadow-md",
+            "border-secondary-highlight bg-background_alt absolute right-0 bottom-0 left-0 z-30 rounded-t-md border shadow-md",
             isDesktop && "border-b-0",
           )}
         >
@@ -240,9 +240,9 @@ export default function DetailStream({
               <span>{t("detail.settings")}</span>
             </div>
             {controlsExpanded ? (
-              <LuChevronDown className="size-4 text-primary-variant" />
+              <LuChevronDown className="text-primary-variant size-4" />
             ) : (
-              <LuChevronRight className="size-4 text-primary-variant" />
+              <LuChevronRight className="text-primary-variant size-4" />
             )}
           </button>
           {controlsExpanded && (
@@ -258,7 +258,7 @@ export default function DetailStream({
                     onCheckedChange={setAlwaysExpandActive}
                   />
                 </div>
-                <div className="text-xs text-muted-foreground">
+                <div className="text-muted-foreground text-xs">
                   {t("detail.alwaysExpandActive.desc")}
                 </div>
               </div>
@@ -367,25 +367,25 @@ function ReviewGroup({
   return (
     <div
       data-review-id={id}
-      className="cursor-pointer rounded-lg bg-secondary py-3"
+      className="bg-secondary cursor-pointer rounded-lg py-3"
     >
       <div
         className={cn(
           "flex items-start",
-          open && "border-b border-secondary-highlight pb-4",
+          open && "border-secondary-highlight border-b pb-4",
         )}
         onClick={() => {
           onActivate?.();
           onSeek(startRecord);
         }}
       >
-        <div className="ml-4 mr-2 mt-1.5 flex flex-row items-start">
+        <div className="mt-1.5 mr-2 ml-4 flex flex-row items-start">
           <LuCircle
             className={cn(
               "size-3",
               isActive
                 ? "fill-selected text-selected"
-                : "fill-muted duration-500 dark:fill-secondary-highlight dark:text-secondary-highlight",
+                : "fill-muted dark:fill-secondary-highlight dark:text-secondary-highlight duration-500",
             )}
           />
         </div>
@@ -397,7 +397,7 @@ function ReviewGroup({
                 {iconLabels.slice(0, 5).map((lbl, idx) => (
                   <div
                     key={`${lbl}-${idx}`}
-                    className="rounded-full bg-muted-foreground p-1"
+                    className="bg-muted-foreground rounded-full p-1"
                   >
                     {getIconForLabel(lbl, "size-3 text-white")}
                   </div>
@@ -406,17 +406,17 @@ function ReviewGroup({
             </div>
             <div className="flex flex-col gap-0.5">
               {review.data.metadata?.title && (
-                <div className="mb-1 text-sm text-primary-variant">
+                <div className="text-primary-variant mb-1 text-sm">
                   {review.data.metadata.title}
                 </div>
               )}
               <div className="flex flex-row items-center gap-1.5">
-                <div className="text-xs text-primary-variant">{reviewInfo}</div>
+                <div className="text-primary-variant text-xs">{reviewInfo}</div>
 
                 {reviewDuration && (
                   <>
-                    <span className="text-[5px] text-primary-variant">•</span>
-                    <div className="text-xs text-primary-variant">
+                    <span className="text-primary-variant text-[5px]">•</span>
+                    <div className="text-primary-variant text-xs">
                       {reviewDuration}
                     </div>
                   </>
@@ -429,12 +429,12 @@ function ReviewGroup({
               e.stopPropagation();
               setOpen((v) => !v);
             }}
-            className="ml-2 inline-flex items-center justify-center rounded p-1 hover:bg-secondary/10"
+            className="hover:bg-secondary/10 ml-2 inline-flex items-center justify-center rounded p-1"
           >
             {open ? (
-              <LuChevronDown className="size-4 text-primary-variant" />
+              <LuChevronDown className="text-primary-variant size-4" />
             ) : (
-              <LuChevronRight className="size-4 text-primary-variant" />
+              <LuChevronRight className="text-primary-variant size-4" />
             )}
           </div>
         </div>
@@ -449,7 +449,7 @@ function ReviewGroup({
               return (
                 <div
                   key={`event-${event.id}-${index}`}
-                  className="border-b border-secondary-highlight pb-0.5 last:border-0 last:pb-0"
+                  className="border-secondary-highlight border-b pb-0.5 last:border-0 last:pb-0"
                 >
                   <EventList
                     key={event.id}
@@ -468,10 +468,10 @@ function ReviewGroup({
               {review.data.audio.map((audioLabel) => (
                 <div
                   key={audioLabel}
-                  className="rounded-md bg-secondary p-2 outline outline-[3px] -outline-offset-[2.8px] outline-transparent duration-500"
+                  className="bg-secondary rounded-md p-2 outline outline-[3px] -outline-offset-[2.8px] outline-transparent duration-500"
                 >
                   <div className="ml-1.5 flex items-center gap-2 text-sm font-medium">
-                    <div className="rounded-full bg-muted-foreground p-1">
+                    <div className="bg-muted-foreground rounded-full p-1">
                       {getIconForLabel(audioLabel, "size-3 text-white")}
                     </div>
                     <span>{getTranslatedLabel(audioLabel)}</span>
@@ -546,7 +546,7 @@ function EventList({
     <>
       <div
         className={cn(
-          "rounded-md bg-secondary p-2",
+          "bg-secondary rounded-md p-2",
           isSelected
             ? "bg-secondary-highlight"
             : "outline-transparent duration-500",
@@ -587,7 +587,7 @@ function EventList({
                 {event.data?.recognized_license_plate && (
                   <>
                     <span className="text-secondary-foreground">·</span>
-                    <div className="text-sm text-secondary-foreground">
+                    <div className="text-secondary-foreground text-sm">
                       <Link
                         to={`/explore?recognized_license_plate=${event.data.recognized_license_plate}`}
                         className="text-sm"
@@ -698,16 +698,16 @@ function LifecycleItem({
         onSeek?.(recordTimestamp, false);
       }}
       className={cn(
-        "flex cursor-pointer items-center gap-2 text-sm text-primary-variant",
+        "text-primary-variant flex cursor-pointer items-center gap-2 text-sm",
         isActive
-          ? "font-semibold text-primary dark:font-normal"
+          ? "text-primary font-semibold dark:font-normal"
           : "duration-500",
       )}
     >
       <div className="relative flex size-4 items-center justify-center">
         <LuCircle
           className={cn(
-            "relative z-10 size-2.5 fill-secondary-foreground stroke-none",
+            "fill-secondary-foreground relative z-10 size-2.5 stroke-none",
             (isActive || (effectiveTime ?? 0) >= (item?.timestamp ?? 0)) &&
               isTimelineActive &&
               "fill-selected duration-300",
@@ -718,18 +718,18 @@ function LifecycleItem({
       <div className="ml-0.5 flex min-w-0 flex-1">
         <Tooltip>
           <TooltipTrigger>
-            <div className="flex items-start wrap-break-word text-left">
+            <div className="flex items-start text-left wrap-break-word">
               {getLifecycleItemDescription(item)}
             </div>
           </TooltipTrigger>
           <TooltipContent>
-            <div className="mt-1 flex flex-wrap items-start gap-3 text-sm text-secondary-foreground">
+            <div className="text-secondary-foreground mt-1 flex flex-wrap items-start gap-3 text-sm">
               <div className="flex flex-col gap-1">
                 <div className="flex items-start gap-1">
                   <span className="text-muted-foreground">
                     {t("trackingDetails.lifecycleItemDesc.header.ratio")}
                   </span>
-                  <span className="font-medium text-foreground">{ratio}</span>
+                  <span className="text-foreground font-medium">{ratio}</span>
                 </div>
 
                 <div className="flex items-start gap-1">
@@ -737,7 +737,7 @@ function LifecycleItem({
                     {t("trackingDetails.lifecycleItemDesc.header.area")}
                   </span>
                   {areaPx !== undefined && areaPct !== undefined ? (
-                    <span className="font-medium text-foreground">
+                    <span className="text-foreground font-medium">
                       {areaPx} {t("pixels", { ns: "common" })}{" "}
                       <span className="text-secondary-foreground">·</span>{" "}
                       {areaPct}%
@@ -752,7 +752,7 @@ function LifecycleItem({
         </Tooltip>
       </div>
 
-      <div className="ml-3 shrink-0 px-1 text-right text-xs text-primary-variant">
+      <div className="text-primary-variant ml-3 shrink-0 px-1 text-right text-xs">
         <div className="whitespace-nowrap">{formattedEventTimestamp}</div>
       </div>
     </div>
@@ -789,7 +789,7 @@ function ObjectTimeline({
 
   if (!timeline || timeline.length === 0) {
     return (
-      <div className="py-2 text-sm text-muted-foreground">
+      <div className="text-muted-foreground py-2 text-sm">
         {t("detail.noObjectDetailData")}
       </div>
     );
@@ -851,11 +851,11 @@ function ObjectTimeline({
 
   return (
     <div className="-pb-2 relative mx-2">
-      <div className="absolute -top-2 bottom-2 left-2 z-0 w-0.5 -translate-x-1/2 bg-secondary-foreground" />
+      <div className="bg-secondary-foreground absolute -top-2 bottom-2 left-2 z-0 w-0.5 -translate-x-1/2" />
       {isWithinEventRange && (
         <div
           className={cn(
-            "absolute left-2 top-2 z-5 max-h-[calc(100%-1rem)] w-0.5 -translate-x-1/2 bg-selected transition-all duration-300",
+            "bg-selected absolute top-2 left-2 z-5 max-h-[calc(100%-1rem)] w-0.5 -translate-x-1/2 transition-all duration-300",
           )}
           style={{ height: `${activeLineHeight}%` }}
         />

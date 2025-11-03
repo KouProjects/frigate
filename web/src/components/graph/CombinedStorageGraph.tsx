@@ -189,11 +189,11 @@ export function CombinedStorageGraph({
     <div className="flex w-full flex-col gap-2.5">
       <div className="flex w-full items-center justify-between gap-1">
         <div className="flex items-center gap-1">
-          <div className="text-xs text-primary">
+          <div className="text-primary text-xs">
             {getUnitSize(totalStorage.camera)}
           </div>
-          <div className="text-xs text-primary">/</div>
-          <div className="text-xs text-muted-foreground">
+          <div className="text-primary text-xs">/</div>
+          <div className="text-muted-foreground text-xs">
             {getUnitSize(totalStorage.total)}
           </div>
         </div>
@@ -216,7 +216,7 @@ export function CombinedStorageGraph({
           <TableBody>
             {series.map((item) => (
               <TableRow key={item.name}>
-                <TableCell className="flex flex-row items-center gap-2 font-medium smart-capitalize">
+                <TableCell className="smart-capitalize flex flex-row items-center gap-2 font-medium">
                   {" "}
                   <div
                     className="size-3 rounded-md"

@@ -107,7 +107,7 @@ export function UserAuthForm({ className, ...props }: UserAuthFormProps) {
                 <FormLabel>{t("form.user")}</FormLabel>
                 <FormControl>
                   <Input
-                    className="text-md w-full border border-input bg-background p-2 hover:bg-accent hover:text-accent-foreground dark:scheme-dark"
+                    className="text-md border-input bg-background hover:bg-accent hover:text-accent-foreground w-full border p-2 dark:scheme-dark"
                     autoFocus
                     autoCapitalize="off"
                     autoCorrect="off"
@@ -125,7 +125,7 @@ export function UserAuthForm({ className, ...props }: UserAuthFormProps) {
                 <FormLabel>{t("form.password")}</FormLabel>
                 <FormControl>
                   <Input
-                    className="text-md w-full border border-input bg-background p-2 hover:bg-accent hover:text-accent-foreground dark:scheme-dark"
+                    className="text-md border-input bg-background hover:bg-accent hover:text-accent-foreground w-full border p-2 dark:scheme-dark"
                     type="password"
                     {...field}
                   />
@@ -149,14 +149,14 @@ export function UserAuthForm({ className, ...props }: UserAuthFormProps) {
       {showFirstTimeLink && (
         <Card className="mt-4 p-4 text-center text-sm">
           <CardContent className="p-2">
-            <p className="mb-2 text-primary-variant">
+            <p className="text-primary-variant mb-2">
               {t("form.firstTimeLogin")}
             </p>
             <a
               href={getLocaleDocUrl("configuration/authentication#onboarding")}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center text-primary"
+              className="text-primary inline-flex items-center"
             >
               {t("readTheDocumentation", { ns: "common" })}
               <LuExternalLink className="ml-2 size-3" />

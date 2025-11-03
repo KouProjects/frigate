@@ -282,7 +282,7 @@ function ShowReviewFilter({
   );
   return (
     <>
-      <div className="hidden h-9 cursor-pointer items-center justify-start rounded-md bg-secondary p-2 text-sm hover:bg-secondary/80 md:flex">
+      <div className="bg-secondary hover:bg-secondary/80 hidden h-9 cursor-pointer items-center justify-start rounded-md p-2 text-sm md:flex">
         <Switch
           id="reviewed"
           checked={showReviewedSwitch}
@@ -290,7 +290,7 @@ function ShowReviewFilter({
             setShowReviewedSwitch(showReviewedSwitch == false ? true : false)
           }
         />
-        <Label className="ml-2 cursor-pointer text-primary" htmlFor="reviewed">
+        <Label className="text-primary ml-2 cursor-pointer" htmlFor="reviewed">
           {t("review.showReviewed")}
         </Label>
       </div>
@@ -361,7 +361,7 @@ function GeneralFilterButton({
       variant={
         selectedLabels?.length || selectedZones?.length ? "select" : "default"
       }
-      className="flex items-center gap-2 smart-capitalize"
+      className="smart-capitalize flex items-center gap-2"
       aria-label={t("filter")}
     >
       <FaFilter
@@ -456,7 +456,7 @@ export function GeneralFilterContent({
   const { t } = useTranslation(["components/filter", "views/events"]);
   return (
     <>
-      <div className="scrollbar-container h-auto max-h-[80dvh] overflow-y-auto overflow-x-hidden">
+      <div className="scrollbar-container h-auto max-h-[80dvh] overflow-x-hidden overflow-y-auto">
         {currentSeverity && (
           <div className="my-2.5 flex flex-col gap-2.5">
             <FilterSwitch
@@ -482,9 +482,9 @@ export function GeneralFilterContent({
             <DropdownMenuSeparator />
           </div>
         )}
-        <div className="mb-5 mt-2.5 flex items-center justify-between">
+        <div className="mt-2.5 mb-5 flex items-center justify-between">
           <Label
-            className="mx-2 cursor-pointer text-primary"
+            className="text-primary mx-2 cursor-pointer"
             htmlFor="allLabels"
           >
             {t("labels.all.title")}
@@ -528,9 +528,9 @@ export function GeneralFilterContent({
         {allZones && (
           <>
             <DropdownMenuSeparator />
-            <div className="mb-5 mt-2.5 flex items-center justify-between">
+            <div className="mt-2.5 mb-5 flex items-center justify-between">
               <Label
-                className="mx-2 cursor-pointer text-primary"
+                className="text-primary mx-2 cursor-pointer"
                 htmlFor="allZones"
               >
                 {t("zones.all.title")}
@@ -617,7 +617,7 @@ function ShowMotionOnlyButton({
 
   return (
     <>
-      <div className="mx-1 hidden h-9 cursor-pointer items-center justify-center whitespace-nowrap rounded-md bg-secondary px-3 text-sm text-primary hover:bg-secondary/80 md:inline-flex">
+      <div className="bg-secondary text-primary hover:bg-secondary/80 mx-1 hidden h-9 cursor-pointer items-center justify-center rounded-md px-3 text-sm whitespace-nowrap md:inline-flex">
         <Switch
           className="ml-1"
           id="collapse-motion"
@@ -625,7 +625,7 @@ function ShowMotionOnlyButton({
           onCheckedChange={setMotionOnlyButton}
         />
         <Label
-          className="mx-2 cursor-pointer text-primary"
+          className="text-primary mx-2 cursor-pointer"
           htmlFor="collapse-motion"
         >
           {t("motion.only")}

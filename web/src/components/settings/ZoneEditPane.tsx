@@ -509,10 +509,10 @@ export default function ZoneEditPane({
           ? t("masksAndZones.zones.edit")
           : t("masksAndZones.zones.add")}
       </Heading>
-      <div className="my-2 text-sm text-muted-foreground">
+      <div className="text-muted-foreground my-2 text-sm">
         <p>{t("masksAndZones.zones.desc.title")}</p>
       </div>
-      <Separator className="my-3 bg-secondary" />
+      <Separator className="bg-secondary my-3" />
       {polygons && activePolygonIndex !== undefined && (
         <div className="my-2 flex w-full flex-row justify-between text-sm">
           <div className="my-1 inline-flex">
@@ -533,11 +533,11 @@ export default function ZoneEditPane({
           />
         </div>
       )}
-      <div className="mb-3 text-sm text-muted-foreground">
+      <div className="text-muted-foreground mb-3 text-sm">
         {t("masksAndZones.zones.clickDrawPolygon")}
       </div>
 
-      <Separator className="my-3 bg-secondary" />
+      <Separator className="bg-secondary my-3" />
 
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="mt-2 space-y-6">
@@ -549,7 +549,7 @@ export default function ZoneEditPane({
                 <FormLabel>{t("masksAndZones.zones.name.title")}</FormLabel>
                 <FormControl>
                   <Input
-                    className="text-md w-full border border-input bg-background p-2 hover:bg-accent hover:text-accent-foreground dark:scheme-dark"
+                    className="text-md border-input bg-background hover:bg-accent hover:text-accent-foreground w-full border p-2 dark:scheme-dark"
                     placeholder={t("masksAndZones.zones.name.inputPlaceHolder")}
                     {...field}
                   />
@@ -561,7 +561,7 @@ export default function ZoneEditPane({
               </FormItem>
             )}
           />
-          <Separator className="my-2 flex bg-secondary" />
+          <Separator className="bg-secondary my-2 flex" />
           <FormField
             control={form.control}
             name="inertia"
@@ -570,7 +570,7 @@ export default function ZoneEditPane({
                 <FormLabel>{t("masksAndZones.zones.inertia.title")}</FormLabel>
                 <FormControl>
                   <Input
-                    className="text-md w-full border border-input bg-background p-2 hover:bg-accent hover:text-accent-foreground dark:scheme-dark"
+                    className="text-md border-input bg-background hover:bg-accent hover:text-accent-foreground w-full border p-2 dark:scheme-dark"
                     placeholder="3"
                     {...field}
                   />
@@ -584,7 +584,7 @@ export default function ZoneEditPane({
               </FormItem>
             )}
           />
-          <Separator className="my-2 flex bg-secondary" />
+          <Separator className="bg-secondary my-2 flex" />
           <FormField
             control={form.control}
             name="loitering_time"
@@ -595,7 +595,7 @@ export default function ZoneEditPane({
                 </FormLabel>
                 <FormControl>
                   <Input
-                    className="text-md w-full border border-input bg-background p-2 hover:bg-accent hover:text-accent-foreground dark:scheme-dark"
+                    className="text-md border-input bg-background hover:bg-accent hover:text-accent-foreground w-full border p-2 dark:scheme-dark"
                     placeholder="0"
                     {...field}
                   />
@@ -609,7 +609,7 @@ export default function ZoneEditPane({
               </FormItem>
             )}
           />
-          <Separator className="my-2 flex bg-secondary" />
+          <Separator className="bg-secondary my-2 flex" />
           <FormItem>
             <FormLabel>{t("masksAndZones.zones.objects.title")}</FormLabel>
             <FormDescription>
@@ -634,7 +634,7 @@ export default function ZoneEditPane({
             />
           </FormItem>
 
-          <Separator className="my-2 flex bg-secondary" />
+          <Separator className="bg-secondary my-2 flex" />
           <FormField
             control={form.control}
             name="speedEstimation"
@@ -644,7 +644,7 @@ export default function ZoneEditPane({
                   <FormControl>
                     <div className="my-2.5 flex w-full items-center justify-between">
                       <FormLabel
-                        className="cursor-pointer text-primary"
+                        className="text-primary cursor-pointer"
                         htmlFor="allLabels"
                       >
                         {t("masksAndZones.zones.speedEstimation.title")}
@@ -683,7 +683,7 @@ export default function ZoneEditPane({
                 </div>
                 <FormDescription>
                   {t("masksAndZones.zones.speedEstimation.desc")}
-                  <div className="mt-2 flex items-center text-primary">
+                  <div className="text-primary mt-2 flex items-center">
                     <Link
                       to={getLocaleDocUrl(
                         "configuration/zones#speed-estimation",
@@ -725,7 +725,7 @@ export default function ZoneEditPane({
                       </FormLabel>
                       <FormControl>
                         <Input
-                          className="text-md w-full border border-input bg-background p-2 hover:bg-accent hover:text-accent-foreground dark:scheme-dark"
+                          className="text-md border-input bg-background hover:bg-accent hover:text-accent-foreground w-full border p-2 dark:scheme-dark"
                           {...field}
                           onFocus={() => setActiveLine(1)}
                           onBlur={() => setActiveLine(undefined)}
@@ -752,7 +752,7 @@ export default function ZoneEditPane({
                       </FormLabel>
                       <FormControl>
                         <Input
-                          className="text-md w-full border border-input bg-background p-2 hover:bg-accent hover:text-accent-foreground dark:scheme-dark"
+                          className="text-md border-input bg-background hover:bg-accent hover:text-accent-foreground w-full border p-2 dark:scheme-dark"
                           {...field}
                           onFocus={() => setActiveLine(2)}
                           onBlur={() => setActiveLine(undefined)}
@@ -779,7 +779,7 @@ export default function ZoneEditPane({
                       </FormLabel>
                       <FormControl>
                         <Input
-                          className="text-md w-full border border-input bg-background p-2 hover:bg-accent hover:text-accent-foreground dark:scheme-dark"
+                          className="text-md border-input bg-background hover:bg-accent hover:text-accent-foreground w-full border p-2 dark:scheme-dark"
                           {...field}
                           onFocus={() => setActiveLine(3)}
                           onBlur={() => setActiveLine(undefined)}
@@ -806,7 +806,7 @@ export default function ZoneEditPane({
                       </FormLabel>
                       <FormControl>
                         <Input
-                          className="text-md w-full border border-input bg-background p-2 hover:bg-accent hover:text-accent-foreground dark:scheme-dark"
+                          className="text-md border-input bg-background hover:bg-accent hover:text-accent-foreground w-full border p-2 dark:scheme-dark"
                           {...field}
                           onFocus={() => setActiveLine(4)}
                           onBlur={() => setActiveLine(undefined)}
@@ -816,7 +816,7 @@ export default function ZoneEditPane({
                   )}
                 />
 
-                <Separator className="my-2 flex bg-secondary" />
+                <Separator className="bg-secondary my-2 flex" />
                 <FormField
                   control={form.control}
                   name="speed_threshold"
@@ -833,7 +833,7 @@ export default function ZoneEditPane({
                       </FormLabel>
                       <FormControl>
                         <Input
-                          className="text-md w-full border border-input bg-background p-2 hover:bg-accent hover:text-accent-foreground dark:scheme-dark"
+                          className="text-md border-input bg-background hover:bg-accent hover:text-accent-foreground w-full border p-2 dark:scheme-dark"
                           {...field}
                         />
                       </FormControl>
@@ -955,9 +955,9 @@ export function ZoneObjectSelector({
 
   return (
     <>
-      <div className="scrollbar-container h-auto overflow-y-auto overflow-x-hidden">
+      <div className="scrollbar-container h-auto overflow-x-hidden overflow-y-auto">
         <div className="my-2.5 flex items-center justify-between">
-          <Label className="cursor-pointer text-primary" htmlFor="allLabels">
+          <Label className="text-primary cursor-pointer" htmlFor="allLabels">
             {t("masksAndZones.zones.allObjects")}
           </Label>
           <Switch
@@ -976,7 +976,7 @@ export function ZoneObjectSelector({
           {allLabels.map((item) => (
             <div key={item} className="flex items-center justify-between">
               <Label
-                className="w-full cursor-pointer text-primary smart-capitalize"
+                className="text-primary smart-capitalize w-full cursor-pointer"
                 htmlFor={item}
               >
                 {getTranslatedLabel(item)}

@@ -191,14 +191,14 @@ export default function MotionTunerView({
   return (
     <div className="flex size-full flex-col md:flex-row">
       <Toaster position="top-center" closeButton={true} />
-      <div className="scrollbar-container order-last mb-10 mt-2 flex h-full w-full flex-col overflow-y-auto rounded-lg border border-secondary-foreground bg-background_alt p-2 md:order-0 md:mr-3 md:mt-0 md:w-3/12">
+      <div className="scrollbar-container border-secondary-foreground bg-background_alt order-last mt-2 mb-10 flex h-full w-full flex-col overflow-y-auto rounded-lg border p-2 md:order-0 md:mt-0 md:mr-3 md:w-3/12">
         <Heading as="h4" className="mb-2">
           {t("motionDetectionTuner.title")}
         </Heading>
-        <div className="my-3 space-y-3 text-sm text-muted-foreground">
+        <div className="text-muted-foreground my-3 space-y-3 text-sm">
           <p>{t("motionDetectionTuner.desc.title")}</p>
 
-          <div className="flex items-center text-primary">
+          <div className="text-primary flex items-center">
             <Link
               to={getLocaleDocUrl("configuration/motion_detection")}
               target="_blank"
@@ -210,14 +210,14 @@ export default function MotionTunerView({
             </Link>
           </div>
         </div>
-        <Separator className="my-2 flex bg-secondary" />
+        <Separator className="bg-secondary my-2 flex" />
         <div className="flex w-full flex-col space-y-6">
           <div className="mt-2 space-y-6">
             <div className="space-y-0.5">
               <Label htmlFor="motion-threshold" className="text-md">
                 {t("motionDetectionTuner.Threshold.title")}
               </Label>
-              <div className="my-2 text-sm text-muted-foreground">
+              <div className="text-muted-foreground my-2 text-sm">
                 <Trans ns="views/settings">
                   motionDetectionTuner.Threshold.desc
                 </Trans>
@@ -236,7 +236,7 @@ export default function MotionTunerView({
                   handleMotionConfigChange({ threshold: value[0] });
                 }}
               />
-              <div className="align-center ml-6 mr-2 flex text-lg">
+              <div className="align-center mr-2 ml-6 flex text-lg">
                 {motionSettings.threshold}
               </div>
             </div>
@@ -246,7 +246,7 @@ export default function MotionTunerView({
               <Label htmlFor="motion-threshold" className="text-md">
                 {t("motionDetectionTuner.contourArea.title")}
               </Label>
-              <div className="my-2 text-sm text-muted-foreground">
+              <div className="text-muted-foreground my-2 text-sm">
                 <p>
                   <Trans ns="views/settings">
                     motionDetectionTuner.contourArea.desc
@@ -267,18 +267,18 @@ export default function MotionTunerView({
                   handleMotionConfigChange({ contour_area: value[0] });
                 }}
               />
-              <div className="align-center ml-6 mr-2 flex text-lg">
+              <div className="align-center mr-2 ml-6 flex text-lg">
                 {motionSettings.contour_area}
               </div>
             </div>
           </div>
-          <Separator className="my-2 flex bg-secondary" />
+          <Separator className="bg-secondary my-2 flex" />
           <div className="flex flex-row items-center justify-between">
             <div className="space-y-0.5">
               <Label htmlFor="improve-contrast">
                 {t("motionDetectionTuner.improveContrast.title")}
               </Label>
-              <div className="text-sm text-muted-foreground">
+              <div className="text-muted-foreground text-sm">
                 <Trans ns="views/settings">
                   motionDetectionTuner.improveContrast.desc
                 </Trans>
