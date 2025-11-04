@@ -4,24 +4,25 @@ import { NavData } from "@/types/navigation";
 import { useMemo } from "react";
 import { isDesktop } from "react-device-detect";
 import {
-  Play,
-  Clapperboard,
-  Search,
-  Download,
-  Wrench,
-  Users,
-  Tag,
-} from "lucide-react";
+  ID_LIVE,
+  ID_REVIEW,
+  ID_EXPLORE,
+  ID_EXPORT,
+  ID_PLAYGROUND,
+  ID_FACE_LIBRARY,
+  ID_CLASSIFICATION,
+  sidebarData,
+} from "@/components/sidebar/sidebar-data";
 import useSWR from "swr";
 import { useIsAdmin } from "./use-is-admin";
 
-export const ID_LIVE = 1;
-export const ID_REVIEW = 2;
-export const ID_EXPLORE = 3;
-export const ID_EXPORT = 4;
-export const ID_PLAYGROUND = 5;
-export const ID_FACE_LIBRARY = 6;
-export const ID_CLASSIFICATION = 7;
+export const ID_LIVE_HOOK = ID_LIVE;
+export const ID_REVIEW_HOOK = ID_REVIEW;
+export const ID_EXPLORE_HOOK = ID_EXPLORE;
+export const ID_EXPORT_HOOK = ID_EXPORT;
+export const ID_PLAYGROUND_HOOK = ID_PLAYGROUND;
+export const ID_FACE_LIBRARY_HOOK = ID_FACE_LIBRARY;
+export const ID_CLASSIFICATION_HOOK = ID_CLASSIFICATION;
 
 export default function useNavigation(
   variant: "primary" | "secondary" = "primary",
@@ -33,60 +34,31 @@ export default function useNavigation(
 
   return useMemo(
     () =>
-      [
-        {
-          id: ID_LIVE,
+      sidebarData.main
+        .map((item) => ({
+          id: item.id || 0,
           variant,
-          icon: Play,
-          title: "menu.live.title",
-          url: "/",
-        },
-        {
-          id: ID_REVIEW,
-          variant,
-          icon: Clapperboard,
-          title: "menu.review",
-          url: "/review",
-        },
-        {
-          id: ID_EXPLORE,
-          variant,
-          icon: Search,
-          title: "menu.explore",
-          url: "/explore",
-        },
-        {
-          id: ID_EXPORT,
-          variant,
-          icon: Download,
-          title: "menu.export",
-          url: "/export",
-        },
-        {
-          id: ID_PLAYGROUND,
-          variant,
-          icon: Wrench,
-          title: "menu.uiPlayground",
-          url: "/playground",
-          enabled: ENV !== "production",
-        },
-        {
-          id: ID_FACE_LIBRARY,
-          variant,
-          icon: Users,
-          title: "menu.faceLibrary",
-          url: "/faces",
-          enabled: isDesktop && config?.face_recognition.enabled && isAdmin,
-        },
-        {
-          id: ID_CLASSIFICATION,
-          variant,
-          icon: Tag,
-          title: "menu.classification",
-          url: "/classification",
-          enabled: isDesktop && isAdmin,
-        },
-      ] as NavData[],
+          icon: item.icon,
+          title: item.titleKey || item.title,
+          url: item.url,
+          enabled: item.enabled ?? true,
+        }))
+        .map((item) => {
+          // Apply dynamic conditions
+          if (item.id === ID_PLAYGROUND && ENV === "production") {
+            return { ...item, enabled: false };
+          }
+          if (
+            item.id === ID_FACE_LIBRARY &&
+            (!isDesktop || !config?.face_recognition?.enabled || !isAdmin)
+          ) {
+            return { ...item, enabled: false };
+          }
+          if (item.id === ID_CLASSIFICATION && (!isDesktop || !isAdmin)) {
+            return { ...item, enabled: false };
+          }
+          return item;
+        }) as NavData[],
     [config?.face_recognition?.enabled, variant, isAdmin],
   );
 }

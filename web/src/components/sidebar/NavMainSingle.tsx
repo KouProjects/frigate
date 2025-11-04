@@ -11,7 +11,7 @@ import { NavLink } from "react-router-dom";
 
 type NavMainSingleProps = {
   nav_title?: string;
-  items: NavItem[];
+  items: (NavItem & { enabled?: boolean })[];
 };
 
 export function NavMainSingle({ nav_title, items }: NavMainSingleProps) {
@@ -20,26 +20,40 @@ export function NavMainSingle({ nav_title, items }: NavMainSingleProps) {
     <SidebarGroup>
       {nav_title && <SidebarGroupLabel>{nav_title}</SidebarGroupLabel>}
       <SidebarMenu>
-        {items.map((item) => (
-          <SidebarMenuItem key={item.title}>
-            <NavLink to={item.url} className="w-full" end>
-              {({ isActive }) => (
+        {items.map((item) => {
+          const isDisabled = item.enabled === false;
+          return (
+            <SidebarMenuItem key={item.title}>
+              {isDisabled ? (
                 <SidebarMenuButton
-                  isActive={isActive}
+                  disabled
+                  className="cursor-not-allowed opacity-50"
                   tooltip={item.title}
-                  onClick={() => {
-                    if (!open) {
-                      setOpen(true);
-                    }
-                  }}
                 >
                   <item.icon className="" />
                   <span>{item.title}</span>
                 </SidebarMenuButton>
+              ) : (
+                <NavLink to={item.url} className="w-full" end>
+                  {({ isActive }) => (
+                    <SidebarMenuButton
+                      isActive={isActive}
+                      tooltip={item.title}
+                      onClick={() => {
+                        if (!open) {
+                          setOpen(true);
+                        }
+                      }}
+                    >
+                      <item.icon className="" />
+                      <span>{item.title}</span>
+                    </SidebarMenuButton>
+                  )}
+                </NavLink>
               )}
-            </NavLink>
-          </SidebarMenuItem>
-        ))}
+            </SidebarMenuItem>
+          );
+        })}
       </SidebarMenu>
     </SidebarGroup>
   );

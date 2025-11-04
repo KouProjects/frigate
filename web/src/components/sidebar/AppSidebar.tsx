@@ -17,20 +17,28 @@ import useNavigation from "@/hooks/use-navigation";
 import { NavUser } from "./nav-user";
 import { NavMainSingle } from "./NavMainSingle";
 import { CameraGroupNavItem } from "./CameraGroupNavItem";
+import { sidebarData } from "./sidebar-data";
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   const { t } = useTranslation();
   const navbarLinks = useNavigation();
 
   const navMain = React.useMemo(() => {
-    return navbarLinks
-      .filter((item) => item.enabled !== false)
-      .map((item) => ({
-        title: t(item.title),
-        url: item.url,
-        icon: item.icon,
-      }));
+    return navbarLinks.map((item) => ({
+      title: t(item.title),
+      url: item.url,
+      icon: item.icon,
+      enabled: item.enabled,
+    }));
   }, [navbarLinks, t]);
+
+  const navSystem = React.useMemo(() => {
+    return sidebarData.system.map((item) => ({
+      title: t(item.title),
+      url: item.url,
+      icon: item.icon,
+    }));
+  }, [t]);
 
   return (
     <Sidebar collapsible="icon" {...props}>
@@ -52,6 +60,10 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
       <SidebarContent>
         <CameraGroupNavItem />
         <NavMainSingle items={navMain} />
+        <NavMainSingle
+          nav_title={t("menu.system", { ns: "common" })}
+          items={navSystem}
+        />
       </SidebarContent>
       <SidebarFooter>
         <NavUser
