@@ -6,8 +6,6 @@ ARG DEBIAN_FRONTEND=noninteractive
 # Globally set pip break-system-packages option to avoid having to specify it every time
 ARG PIP_BREAK_SYSTEM_PACKAGES=1
 
-ARG GO2RTC_VERSION=1.9.14
-
 FROM wheels as rk-wheels
 COPY docker/main/requirements-wheels.txt /requirements-wheels.txt
 COPY docker/rockchip/requirements-wheels-rk.txt /requirements-wheels-rk.txt
@@ -27,10 +25,6 @@ RUN --mount=type=bind,from=rk-wheels,source=/rk-wheels,target=/deps/rk-wheels \
 
 WORKDIR /opt/frigate/
 COPY --from=rootfs / /
-# Rockchip-tagged go2rtc image bundles MarcA711 ffmpeg; we only take the binary
-# (Frigate already installs matching ffmpeg builds below and sets ffmpeg.bin in
-# create_config.py).
-COPY --from=alexxit/go2rtc:${GO2RTC_VERSION}-rockchip /usr/local/bin/go2rtc /usr/local/go2rtc/bin/go2rtc
 COPY docker/rockchip/COCO /COCO
 COPY docker/rockchip/conv2rknn.py /opt/conv2rknn.py
 
