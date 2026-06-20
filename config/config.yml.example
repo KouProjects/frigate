@@ -1,16 +1,73 @@
 mqtt:
   host: mqtt
 
+ffmpeg:
+  hwaccel_args: preset-rk-h265   # atau preset-rkmpp
+
+detectors:
+  rknn_0:
+    type: rknn
+    num_cores: 3
+
+model:
+  path: 
+    /config/model_cache/rknn_cache/frigate-fp16-yolov9-t-rk3588-v2.3.2-2.rknn
+  model_type: yolo-generic
+  labelmap_path: /labelmap/coco-80.txt
+  width: 320
+  height: 320
+  input_tensor: nhwc
+
+go2rtc:
+  streams:
+    Dahua_0a81omll_main:
+      - ffmpeg:rtsp://admin:N@250478110987@192.168.18.244:554/cam/realmonitor?channel=1&subtype=0&unicast=false&proto=Onvif#video=h264#audio=copy#hardware
+    Dahua_xflldjjp_main:
+      - ffmpeg:rtsp://admin:N@250478110987@192.168.18.246:554/cam/realmonitor?channel=1&subtype=0&unicast=false&proto=Onvif#video=h264#audio=copy#hardware
+    EZIP_c6862ira_main:
+      - ffmpeg:rtsp://admin:N@250478110987@192.168.18.243:554/cam/realmonitor?channel=1&subtype=0&unicast=false&proto=Onvif#video=h264#audio=copy#hardware
+    EZIP_x5bsd6qo_main:
+      - ffmpeg:rtsp://admin:N@250478110987@192.168.18.241:554/cam/realmonitor?channel=1&subtype=0&unicast=false&proto=Onvif#video=h264#audio=copy#hardware
 cameras:
-  test:
+  DEV_RK_88__Dahua_0a81omll:
     ffmpeg:
       inputs:
-        - path: /media/frigate/car-stopping.mp4
-          input_args: -re -stream_loop -1 -fflags +genpts
+        - input_args: preset-rtsp-restream
+          path: rtsp://127.0.0.1:8554/Dahua_0a81omll_main
           roles:
+            - record
             - detect
-            - rtmp
-    detect:
-      height: 1080
-      width: 1920
-      fps: 5
+  DEV_RK_88__Dahua_xflldjjp:
+    ffmpeg:
+      inputs:
+        - input_args: preset-rtsp-restream
+          path: rtsp://127.0.0.1:8554/Dahua_xflldjjp_main
+          roles:
+            - record
+            - detect
+  DEV_RK_88__EZIP_c6862ira:
+    ffmpeg:
+      inputs:
+        - input_args: preset-rtsp-restream
+          path: rtsp://127.0.0.1:8554/EZIP_c6862ira_main
+          roles:
+            - record
+            - detect
+  DEV_RK_88__EZIP_x5bsd6qo:
+    ffmpeg:
+      inputs:
+        - input_args: preset-rtsp-restream
+          path: rtsp://127.0.0.1:8554/EZIP_x5bsd6qo_main
+          roles:
+            - record
+            - detect
+
+detect:
+  enabled: true
+  height: 1080
+  width: 1920
+  fps: 5
+version: 0.18-0
+telemetry:
+  stats:
+    network_bandwidth: true

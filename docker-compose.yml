@@ -42,6 +42,38 @@ services:
       - ./config:/config
       - ./debug:/media/frigate
 
+  frigate:
+    privileged: true
+    container_name: frigate
+    restart: unless-stopped
+    stop_grace_period: 30s
+    image: ghcr.io/blakeblackshear/frigate:5003ab8-rk
+    security_opt:
+      - apparmor=unconfined
+      - systempaths=unconfined
+    shm_size: "4096mb"
+    devices:
+      # - /dev/bus/usb:/dev/bus/usb # Uncomment for Google Coral USB
+      - /dev/dri:/dev/dri
+      - /dev/dma_heap:/dev/dma_heap
+      - /dev/mpp_service:/dev/mpp_service
+      - /dev/mali0:/dev/mali0
+      - /dev/rga:/dev/rga
+    volumes:
+      - ./config:/config
+      - ./storage:/media/frigate
+      - /sys:/sys:ro
+      - type: tmpfs
+        target: /tmp/cache
+        tmpfs:
+          size: 1000000000
+    ports:
+      - "8971:8971"
+      - "8554:8554"
+      - "5000:5000"
+      - "1984:1984"
+      - "8555:8555/tcp"
+      - "8555:8555/udp"
   mqtt:
     container_name: mqtt
     image: eclipse-mosquitto:2.0
