@@ -1,13 +1,14 @@
 services:
   devcontainer:
+    privileged: true
     container_name: frigate-devcontainer
     # Check host system's actual render/video/plugdev group IDs with 'getent group render', 'getent group video', and 'getent group plugdev'
     # Must add these exact IDs in container's group_add section or OpenVINO GPU acceleration will fail
     group_add:
       - "109" # render
       - "110" # render
-      - "44"  # video
-      - "46"  # plugdev
+      - "44" # video
+      - "46" # plugdev
     shm_size: "256mb"
     build:
       context: .
@@ -15,7 +16,7 @@ services:
       # Use target devcontainer-trt for TensorRT dev
       target: devcontainer
       cache_from:
-        - ghcr.io/blakeblackshear/frigate:cache-amd64
+        - ghcr.io/blakeblackshear/frigate:cache-arm64
     ## Uncomment this block for nvidia gpu support
     # deploy:
     #       resources:
@@ -26,16 +27,21 @@ services:
     #                     capabilities: [gpu]
     environment:
       YOLO_MODELS: ""
-    # devices:
+    devices:
       # - /dev/bus/usb:/dev/bus/usb # Uncomment for Google Coral USB
-      # - /dev/dri:/dev/dri # for intel hwaccel, needs to be updated for your hardware
+      - /dev/dri:/dev/dri
+      - /dev/dma_heap:/dev/dma_heap
+      - /dev/mpp_service:/dev/mpp_service
+      - /dev/mali0:/dev/mali0
+      - /dev/rga:/dev/rga
     volumes:
       - .:/workspace/frigate:cached
       - ./web/dist:/opt/frigate/web:cached
       - /etc/localtime:/etc/localtime:ro
+      - /sys:/sys:ro
       - ./config:/config
       - ./debug:/media/frigate
-     # - /dev/bus/usb:/dev/bus/usb # Uncomment for Google Coral USB
+
   mqtt:
     container_name: mqtt
     image: eclipse-mosquitto:2.0

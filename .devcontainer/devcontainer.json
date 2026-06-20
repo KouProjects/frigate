@@ -25,7 +25,8 @@
     5001,
     5173,
     8554,
-    8555
+    8555,
+    1984
   ],
   "portsAttributes": {
     "8971": {
@@ -50,6 +51,10 @@
     },
     "8555": {
       "label": "go2rtc WebRTC",
+      "onAutoForward": "silent"
+    },
+    "1984": {
+      "label": "Go2RTC Web UI",
       "onAutoForward": "silent"
     }
   },

@@ -1,0 +1,6 @@
+{
+  "include": ["frigate", "migrations"],
+  "stubPath": "typings",
+  "pythonVersion": "3.11",
+  "typeCheckingMode": "basic"
+}
