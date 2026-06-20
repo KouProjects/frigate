@@ -47,7 +47,7 @@ services:
     container_name: frigate
     restart: unless-stopped
     stop_grace_period: 30s
-    image: ghcr.io/blakeblackshear/frigate:5003ab8-rk
+    image: frigate:latest-rk
     security_opt:
       - apparmor=unconfined
       - systempaths=unconfined
