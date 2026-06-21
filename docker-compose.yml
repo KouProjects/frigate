@@ -74,9 +74,16 @@ services:
       - "1984:1984"
       - "8555:8555/tcp"
       - "8555:8555/udp"
+    depends_on:
+      - mqtt
   mqtt:
     container_name: mqtt
-    image: eclipse-mosquitto:2.0
-    command: mosquitto -c /mosquitto-no-auth.conf # enable no-auth mode
+    image: emqx/emqx-edge:1.4.0
+    restart: unless-stopped
     ports:
-      - "1883:1883"
+      - "1883:1883"   # MQTT
+      - "8883:8883"   # MQTT TLS
+      - "8083:8083"   # WebSocket
+      - "8081:8081"   # Dashboard
+    volumes:
+      - ./emqx-edge/data:/opt/emqx-edge/data
