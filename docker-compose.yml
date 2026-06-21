@@ -78,12 +78,14 @@ services:
       - mqtt
   mqtt:
     container_name: mqtt
-    image: emqx/emqx-edge:1.4.0
+    image: emqx/nanomq:latest-slim
     restart: unless-stopped
+    environment:
+      - NANOMQ_CONF_PATH=/etc/nanomq.conf
     ports:
       - "1883:1883"   # MQTT
-      - "8883:8883"   # MQTT TLS
       - "8083:8083"   # WebSocket
-      - "8081:8081"   # Dashboard
+      - "8883:8883"   # MQTT TLS (enable listeners.ssl in nanomq.conf)
     volumes:
-      - ./emqx-edge/data:/opt/emqx-edge/data
+      - ./nanomq/nanomq.conf:/etc/nanomq.conf:ro
+      - ./nanomq/data:/var/lib/nanomq

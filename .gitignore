@@ -9,6 +9,7 @@ debug
 !.vscode/launch.json
 config/*
 !config/*.example
+nanomq/data
 models
 *.mp4
 *.db

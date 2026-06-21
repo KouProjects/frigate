@@ -1,5 +1,7 @@
 mqtt:
   host: mqtt
+  topic_prefix: windedge/jakarta/edge-01
+  client_id: windedge-jakarta-edge-01
 
 ffmpeg:
   hwaccel_args: preset-rk-h265   # atau preset-rkmpp
