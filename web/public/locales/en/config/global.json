@@ -322,7 +322,7 @@
       },
       "model_type": {
         "label": "Object Detection Model Type",
-        "description": "Detector model architecture type (ssd, yolox, yolonas) used by some detectors for optimization."
+        "description": "Detector model architecture type (ssd, yolox, yolonas, yolo-generic, rfdetr, dfine) used by some detectors for optimization."
       }
     },
     "model_path": {
@@ -495,7 +495,7 @@
     },
     "model_type": {
       "label": "Object Detection Model Type",
-      "description": "Detector model architecture type (ssd, yolox, yolonas) used by some detectors for optimization."
+      "description": "Detector model architecture type (ssd, yolox, yolonas, yolo-generic, rfdetr, dfine) used by some detectors for optimization."
     }
   },
   "genai": {
@@ -1035,6 +1035,9 @@
       "max_concurrent": {
         "label": "Maximum concurrent exports",
         "description": "Maximum number of export jobs to process at the same time."
+      },
+      "chapters": {
+        "label": "Chapter metadata to embed in exported recordings"
       }
     },
     "preview": {

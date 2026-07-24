@@ -11,7 +11,6 @@ import secrets
 import time
 from datetime import datetime
 from pathlib import Path
-from typing import List, Optional
 from urllib.parse import parse_qs, urlparse
 
 from fastapi import APIRouter, Depends, HTTPException, Request, Response
@@ -254,7 +253,14 @@ rateLimiter = RateLimiter()
 
 
 def get_remote_addr(request: Request):
-    route = list(reversed(request.headers.get("x-forwarded-for").split(",")))
+    # fall back to the direct TCP peer when no proxy chain is present
+    direct_addr = request.client.host if request.client else None
+
+    forwarded_for = request.headers.get("x-forwarded-for")
+    if not forwarded_for:
+        return direct_addr or "127.0.0.1"
+
+    route = list(reversed(forwarded_for.split(",")))
     logger.debug(f"IP Route: {[r for r in route]}")
     trusted_proxies = []
     for proxy in request.app.frigate_config.auth.trusted_proxies:
@@ -291,13 +297,8 @@ def get_remote_addr(request: Request):
             logger.debug(f"First untrusted IP: {str(ip)}")
             return str(ip)
 
-    # if there wasn't anything in the route, just return the default
-    remote_addr = None
-
-    if hasattr(request, "remote_addr"):
-        remote_addr = request.remote_addr
-
-    return remote_addr or "127.0.0.1"
+    # every hop in the route was trusted, so fall back to the direct peer
+    return direct_addr or "127.0.0.1"
 
 
 def _cleanup_first_load_seen() -> None:
@@ -388,7 +389,7 @@ def verify_password(password, password_hash):
     return secrets.compare_digest(password_hash, compare_hash)
 
 
-def validate_password_strength(password: str) -> tuple[bool, Optional[str]]:
+def validate_password_strength(password: str) -> tuple[bool, str | None]:
     """
     Validate password strength.
 
@@ -414,13 +415,19 @@ def create_encoded_jwt(user, role, expiration, secret):
     )
 
 
-def set_jwt_cookie(response: Response, cookie_name, encoded_jwt, expiration, secure):
+def set_jwt_cookie(response: Response, cookie_name, encoded_jwt, max_age, secure):
     # TODO: ideally this would set secure as well, but that requires TLS
+    # SameSite is intentionally left unset (browsers default to Lax). Setting
+    # SameSite=Lax/Strict would stop the cookie from being sent in cross-origin
+    # iframes, breaking embedded views such as the Home Assistant Frigate card.
+    # CSRF is instead mitigated by requiring a custom X-CSRF-TOKEN header, which
+    # cross-origin pages cannot set without a CORS preflight that Frigate never
+    # grants (see check_csrf in api/fastapi_app.py).
     response.set_cookie(
         key=cookie_name,
         value=encoded_jwt,
         httponly=True,
-        expires=expiration,
+        max_age=max_age,
         secure=secure,
     )
 
@@ -437,7 +444,7 @@ async def get_current_user(request: Request):
     return {"username": username, "role": role}
 
 
-def require_role(required_roles: List[str]):
+def require_role(required_roles: list[str]):
     async def role_checker(request: Request):
         proxy_config: ProxyConfig = request.app.frigate_config.proxy
         config_roles = list(request.app.frigate_config.auth.roles.keys())
@@ -755,7 +762,7 @@ def auth(request: Request):
                 success_response,
                 JWT_COOKIE_NAME,
                 new_encoded_jwt,
-                new_expiration,
+                JWT_SESSION_LENGTH,
                 JWT_COOKIE_SECURE,
             )
 
@@ -868,7 +875,11 @@ def login(request: Request, body: AppPostLoginBody):
         encoded_jwt = create_encoded_jwt(user, role, expiration, request.app.jwt_token)
         response = Response("", 200)
         set_jwt_cookie(
-            response, JWT_COOKIE_NAME, encoded_jwt, expiration, JWT_COOKIE_SECURE
+            response,
+            JWT_COOKIE_NAME,
+            encoded_jwt,
+            JWT_SESSION_LENGTH,
+            JWT_COOKIE_SECURE,
         )
         # Clear admin_first_time_login flag after successful admin login so the
         # UI stops showing the first-time login documentation link.
@@ -1030,7 +1041,11 @@ async def update_password(
         )
         # Set new JWT cookie on response
         set_jwt_cookie(
-            response, JWT_COOKIE_NAME, encoded_jwt, expiration, JWT_COOKIE_SECURE
+            response,
+            JWT_COOKIE_NAME,
+            encoded_jwt,
+            JWT_SESSION_LENGTH,
+            JWT_COOKIE_SECURE,
         )
 
     return response
@@ -1075,7 +1090,7 @@ async def update_role(
 
 
 async def require_camera_access(
-    camera_name: Optional[str] = None,
+    camera_name: str | None = None,
     request: Request = None,
 ):
     """Dependency to enforce camera access based on user role."""
@@ -1140,8 +1155,8 @@ GO2RTC_STREAM_PROXY_PATHS = frozenset(
 
 
 def deny_response_for_go2rtc_stream(
-    original_url: Optional[str], role: Optional[str], request: Request
-) -> Optional[int]:
+    original_url: str | None, role: str | None, request: Request
+) -> int | None:
     """Block role-restricted users from go2rtc live streams they cannot access.
 
     Returns 403 when any `src` stream named in `original_url` resolves to a
@@ -1186,7 +1201,7 @@ def deny_response_for_go2rtc_stream(
 
 
 async def require_go2rtc_stream_access(
-    stream_name: Optional[str] = None,
+    stream_name: str | None = None,
     request: Request = None,
 ):
     """Dependency to enforce go2rtc stream access based on owning camera access."""

@@ -65,6 +65,7 @@ import { Textarea } from "../ui/textarea";
 import { useNavigate } from "react-router-dom";
 import { useIsAdmin } from "@/hooks/use-is-admin";
 import { isReplayCamera } from "@/utils/cameraUtil";
+import { isValidIconName } from "@/utils/iconUtil";
 
 const EXPORT_OPTIONS = [
   "1",
@@ -134,7 +135,7 @@ export default function ExportDialog({
     }
 
     if (!range) {
-      toast.error(t("export.toast.error.noVaildTimeSelected"), {
+      toast.error(t("export.toast.error.noValidTimeSelected"), {
         position: "top-center",
       });
       return false;
@@ -443,10 +444,10 @@ export function ExportContent({
     }
 
     setRange({
-      before: latestTime,
-      after: latestTime - 3600,
+      before: currentTime + 1800,
+      after: currentTime - 1800,
     });
-  }, [activeTab, latestTime, range, setRange]);
+  }, [activeTab, currentTime, range, setRange]);
 
   const { data: events, isLoading: isEventsLoading } = useSWR<Event[]>(
     activeTab === "multi" && debouncedRange
@@ -665,7 +666,7 @@ export function ExportContent({
     }
 
     if (!range) {
-      toast.error(t("export.toast.error.noVaildTimeSelected"), {
+      toast.error(t("export.toast.error.noValidTimeSelected"), {
         position: "top-center",
       });
       return;
@@ -816,7 +817,19 @@ export function ExportContent({
 
       <Tabs
         value={activeTab}
-        onValueChange={(value) => setActiveTab(value as ExportTab)}
+        onValueChange={(value) => {
+          const tab = value as ExportTab;
+          if (tab === "multi") {
+            setRange({
+              before: currentTime + 1800,
+              after: currentTime - 1800,
+            });
+          } else {
+            onSelectTime(selectedOption);
+          }
+
+          setActiveTab(tab);
+        }}
         className={cn("w-full", !isDesktop && "flex min-h-0 flex-1 flex-col")}
       >
         <TabsList className="grid w-full grid-cols-2">
@@ -1066,7 +1079,11 @@ export function ExportContent({
                                 }
                               >
                                 <IconRenderer
-                                  icon={LuIcons[group.icon]}
+                                  icon={
+                                    isValidIconName(group.icon)
+                                      ? LuIcons[group.icon]
+                                      : LuIcons.LuFolder
+                                  }
                                   className="mr-2 size-4 text-secondary-foreground"
                                 />
                                 <span className="truncate">{group.name}</span>

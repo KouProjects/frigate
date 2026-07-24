@@ -1053,7 +1053,7 @@
       },
       "createUser": {
         "title": "Create New User",
-        "desc": "Add a new user account and specify an role for access to areas of the Frigate UI.",
+        "desc": "Add a new user account and specify a role for access to areas of the Frigate UI.",
         "usernameOnlyInclude": "Username may only include letters, numbers, . or _",
         "confirmPassword": "Please confirm your password"
       },
@@ -1490,7 +1490,14 @@
       "keyLabel": "Key",
       "valueLabel": "Value",
       "keyPlaceholder": "New key",
-      "remove": "Remove"
+      "remove": "Remove",
+      "providerNameLabel": "Provider name",
+      "providerNamePlaceholder": "e.g., openai",
+      "variableNameLabel": "Variable name",
+      "variableNamePlaceholder": "e.g., MY_VARIABLE",
+      "loggerNameLabel": "Logger name",
+      "loggerNamePlaceholder": "e.g., frigate.record",
+      "keyPatternError": "Use only letters, numbers, hyphens, and underscores (no spaces)"
     },
     "knownPlates": {
       "namePlaceholder": "e.g., Wife's Car",
@@ -1924,8 +1931,13 @@
       "resolutionHigh": "This detect resolution is higher than recommended and may cause increased resource usage without improving detection accuracy. A detect resolution at or below 1080p is recommended for most cameras.",
       "globalResolutionMultipleCameras": "A global detect resolution is set while multiple cameras are configured. Unless all cameras share the same resolution and aspect ratio, the detect width and height should be defined per camera to match each camera's native aspect ratio."
     },
+    "model": {
+      "optimizedFor320": "Frigate is optimized for a 320x320 model, which is the best choice for most setups. A 640x640 model is slower and only helps in specific scenarios.",
+      "inputDimensionsNotDetectResolution": "Model input width and height are the input dimensions of the object detection model, not your camera's detect resolution. They should match the dimensions of the model you're using — typically a square size like 320x320 or 640x640."
+    },
     "ffmpeg": {
-      "hwaccelManualNotRecommended": "Manual hardware acceleration arguments are not recommended. Unless a specific requirement exists, select the preset that matches your hardware."
+      "hwaccelManualNotRecommended": "Manual hardware acceleration arguments are not recommended. Unless a specific requirement exists, select the preset that matches your hardware.",
+      "inputsMissingGo2rtcStream": "An input below points at a go2rtc restream that no longer exists. Select an existing restream or enter the camera's URL manually, otherwise this camera will fail to connect."
     },
     "objects": {
       "genaiNoDescriptionsProvider": "You must configure a GenAI provider with the 'descriptions' role for descriptions to be generated."

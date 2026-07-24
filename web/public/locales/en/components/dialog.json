@@ -24,6 +24,9 @@
         },
         "state": {
           "submitted": "Submitted"
+        },
+        "toast": {
+          "error": "Failed to submit to Frigate+. Please check your network connection and try again."
         }
       }
     },
@@ -120,7 +123,7 @@
       "error": {
         "failed": "Failed to queue export: {{error}}",
         "endTimeMustAfterStartTime": "End time must be after start time",
-        "noVaildTimeSelected": "No valid time range selected"
+        "noValidTimeSelected": "No valid time range selected"
       }
     },
     "fromTimeline": {
