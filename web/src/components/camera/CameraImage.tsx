@@ -11,6 +11,7 @@ type CameraImageProps = {
   className?: string;
   camera: string;
   onload?: () => void;
+  onError?: () => void;
   searchParams?: string;
 };
 
@@ -18,6 +19,7 @@ export default function CameraImage({
   className,
   camera,
   onload,
+  onError,
   searchParams = "",
 }: CameraImageProps) {
   const { data: config } = useSWR("config");
@@ -81,6 +83,12 @@ export default function CameraImage({
     }
   };
 
+  const handleImageError = () => {
+    setImageLoaded(false);
+    setIsPortraitImage(false);
+    onError?.();
+  };
+
   return (
     <div className={className} ref={containerRef}>
       {enabled ? (
@@ -96,6 +104,7 @@ export default function CameraImage({
             "rounded-lg md:rounded-2xl",
           )}
           onLoad={handleImageLoad}
+          onError={handleImageError}
           loading="lazy"
         />
       ) : (

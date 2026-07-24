@@ -70,6 +70,19 @@ export default function AutoUpdatingCameraImage({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [key, setFps]);
 
+  const handleError = useCallback(() => {
+    if (reloadInterval === -1) {
+      return;
+    }
+
+    if (timeoutRef.current) {
+      clearTimeout(timeoutRef.current);
+    }
+
+    timeoutRef.current = null;
+    setKey(Date.now());
+  }, [reloadInterval]);
+
   // periodic cache to reduce loading indicator
 
   const [isCached, setIsCached] = useState(false);
@@ -94,6 +107,7 @@ export default function AutoUpdatingCameraImage({
       <CameraImage
         camera={camera}
         onload={handleLoad}
+        onError={handleError}
         searchParams={cacheKey}
         className={cameraClasses}
       />
