@@ -1,0 +1,10 @@
+services:
+  frigate:
+    image: ${FRIGATE_IMAGE:-frigate:latest}
+    environment:
+      CONFIG_FILE: ${FRIGATE_CONFIG_FILE:-/config/config.intel.yml}
+    group_add:
+      - "${FRIGATE_RENDER_GID:-109}"
+      - "${FRIGATE_VIDEO_GID:-44}"
+    devices:
+      - /dev/dri:/dev/dri

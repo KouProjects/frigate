@@ -1,0 +1,48 @@
+mqtt:
+  host: mqtt
+
+ffmpeg:
+  path: /usr/lib/ffmpeg/8.0
+  hwaccel_args: preset-vaapi
+
+detectors:
+  onnx:
+    type: onnx
+
+model:
+  path: /config/model_cache/yolo_nas_s.onnx
+  model_type: yolonas
+  width: 320
+  height: 320
+  input_pixel_format: bgr
+  input_tensor: nchw
+  input_dtype: float
+  labelmap_path: /labelmap/coco-80.txt
+
+objects:
+  track:
+    - person
+
+go2rtc:
+  streams:
+    ppe_area: "exec:/usr/lib/ffmpeg/8.0/bin/ffmpeg -hide_banner -re -stream_loop -1 -fflags +genpts -i /media/frigate/debug/ppe-area.mp4 -an -c:v copy -rtsp_transport tcp -f rtsp {{output}}"
+
+cameras:
+  ppe_area:
+    ffmpeg:
+      inputs:
+        - path: rtsp://127.0.0.1:8554/ppe_area
+          input_args: preset-rtsp-restream
+          roles:
+            - detect
+    detect:
+      enabled: true
+      width: 2560
+      height: 1792
+      fps: 5
+    record:
+      enabled: false
+    snapshots:
+      enabled: false
+
+version: 0.18-0

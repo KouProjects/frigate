@@ -1,0 +1,9 @@
+services:
+  frigate:
+    image: ${FRIGATE_IMAGE:-frigate:latest}
+    environment:
+      CONFIG_FILE: ${FRIGATE_CONFIG_FILE:-/config/config.hailo.yml}
+    group_add:
+      - "${FRIGATE_DEVICE_GID:-44}"
+    devices:
+      - /dev/hailo0:/dev/hailo0

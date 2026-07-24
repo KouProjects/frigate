@@ -193,6 +193,7 @@ const sidebars: SidebarsConfig = {
     ],
     Development: [
       "development/contributing",
+      "development/local-hardware-workflow",
       "development/contributing-boards",
     ],
   },

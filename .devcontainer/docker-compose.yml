@@ -1,0 +1,43 @@
+services:
+  devcontainer:
+    privileged: true
+    container_name: frigate-devcontainer
+    group_add:
+      - "${FRIGATE_RENDER_GID:-990}"
+      - "${FRIGATE_VIDEO_GID:-44}"
+    shm_size: "256mb"
+    build:
+      context: ..
+      dockerfile: docker/main/Dockerfile
+      target: devcontainer
+      cache_from:
+        - ghcr.io/blakeblackshear/frigate:cache-amd64
+    environment:
+      CONFIG_FILE: /config/config.yml
+      GO2RTC_ALLOW_ARBITRARY_EXEC: "true"
+      LIBVA_DRIVER_NAME: iHD
+      YOLO_MODELS: ""
+    devices:
+      - /dev/dri:/dev/dri
+    depends_on:
+      - mqtt
+    volumes:
+      - ..:/workspace/frigate:cached
+      - ../web/dist:/opt/frigate/web:cached
+      - /etc/localtime:/etc/localtime:ro
+      - /sys:/sys:ro
+      - ../config:/config
+      - ../debug:/media/frigate/debug:ro
+
+  mqtt:
+    image: emqx/nanomq:latest-slim
+    restart: unless-stopped
+    environment:
+      NANOMQ_CONF_PATH: /etc/nanomq.conf
+    ports:
+      - "1883:1883"
+      - "8083:8083"
+      - "8883:8883"
+    volumes:
+      - ../nanomq/nanomq.conf:/etc/nanomq.conf:ro
+      - ../nanomq/data:/var/lib/nanomq

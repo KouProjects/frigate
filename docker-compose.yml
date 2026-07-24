@@ -1,68 +1,17 @@
 services:
-  devcontainer:
-    privileged: true
-    container_name: frigate-devcontainer
-    # Check host system's actual render/video/plugdev group IDs with 'getent group render', 'getent group video', and 'getent group plugdev'
-    # Must add these exact IDs in container's group_add section or OpenVINO GPU acceleration will fail
-    group_add:
-      - "109" # render
-      - "110" # render
-      - "44" # video
-      - "46" # plugdev
-    shm_size: "256mb"
-    build:
-      context: .
-      dockerfile: docker/main/Dockerfile
-      # Use target devcontainer-trt for TensorRT dev
-      target: devcontainer
-      cache_from:
-        - ghcr.io/blakeblackshear/frigate:cache-arm64
-    ## Uncomment this block for nvidia gpu support
-    # deploy:
-    #       resources:
-    #           reservations:
-    #               devices:
-    #                   - driver: nvidia
-    #                     count: 1
-    #                     capabilities: [gpu]
-    environment:
-      YOLO_MODELS: ""
-    devices:
-      # - /dev/bus/usb:/dev/bus/usb # Uncomment for Google Coral USB
-      - /dev/dri:/dev/dri
-      - /dev/dma_heap:/dev/dma_heap
-      - /dev/mpp_service:/dev/mpp_service
-      - /dev/mali0:/dev/mali0
-      - /dev/rga:/dev/rga
-    volumes:
-      - .:/workspace/frigate:cached
-      - ./web/dist:/opt/frigate/web:cached
-      - /etc/localtime:/etc/localtime:ro
-      - /sys:/sys:ro
-      - ./config:/config
-      - ./debug:/media/frigate
-
   frigate:
-    privileged: true
     container_name: frigate
     restart: unless-stopped
     stop_grace_period: 30s
-    image: frigate:latest-rk
-    security_opt:
-      - apparmor=unconfined
-      - systempaths=unconfined
+    image: ${FRIGATE_IMAGE:-frigate:latest}
     shm_size: "4096mb"
-    devices:
-      # - /dev/bus/usb:/dev/bus/usb # Uncomment for Google Coral USB
-      - /dev/dri:/dev/dri
-      - /dev/dma_heap:/dev/dma_heap
-      - /dev/mpp_service:/dev/mpp_service
-      - /dev/mali0:/dev/mali0
-      - /dev/rga:/dev/rga
+    environment:
+      GO2RTC_ALLOW_ARBITRARY_EXEC: "true"
     volumes:
       - ./config:/config
       - ./storage:/media/frigate
-      - /sys:/sys:ro
+      - ./debug:/media/frigate/debug:ro
+      - /etc/localtime:/etc/localtime:ro
       - type: tmpfs
         target: /tmp/cache
         tmpfs:
@@ -76,16 +25,17 @@ services:
       - "8555:8555/udp"
     depends_on:
       - mqtt
+
   mqtt:
     container_name: mqtt
     image: emqx/nanomq:latest-slim
     restart: unless-stopped
     environment:
-      - NANOMQ_CONF_PATH=/etc/nanomq.conf
+      NANOMQ_CONF_PATH: /etc/nanomq.conf
     ports:
-      - "1883:1883"   # MQTT
-      - "8083:8083"   # WebSocket
-      - "8883:8883"   # MQTT TLS (enable listeners.ssl in nanomq.conf)
+      - "1883:1883"
+      - "8083:8083"
+      - "8883:8883"
     volumes:
       - ./nanomq/nanomq.conf:/etc/nanomq.conf:ro
       - ./nanomq/data:/var/lib/nanomq

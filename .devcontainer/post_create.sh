@@ -14,7 +14,9 @@ fi
 # the folders. But the devcontainer runs as the host user, so we need to
 # create the folders and give the host user permission to write to them.
 sudo mkdir -p /media/frigate
-sudo chown -R "$(id -u):$(id -g)" /media/frigate
+# The debug video is mounted read-only at /media/frigate/debug. Only change
+# ownership of the writable parent so the read-only bind mount is untouched.
+sudo chown "$(id -u):$(id -g)" /media/frigate
 
 # When started as a service, LIBAVFORMAT_VERSION_MAJOR is defined in the
 # s6 service file. For dev, where frigate is started from an interactive

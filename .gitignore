@@ -1,4 +1,6 @@
 .DS_Store
+.env
+.devcontainer/.env
 __pycache__
 .mypy_cache
 *.swp

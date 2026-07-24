@@ -1,0 +1,19 @@
+services:
+  frigate:
+    image: ${FRIGATE_IMAGE:-frigate:latest-rk}
+    environment:
+      CONFIG_FILE: ${FRIGATE_CONFIG_FILE:-/config/config.rockchip.yml}
+    privileged: true
+    group_add:
+      - "${FRIGATE_RENDER_GID:-109}"
+      - "${FRIGATE_VIDEO_GID:-44}"
+    security_opt:
+      - apparmor=unconfined
+      - systempaths=unconfined
+    devices:
+      - /dev/dri:/dev/dri
+      - /dev/dma_heap:/dev/dma_heap
+      - /dev/mpp_service:/dev/mpp_service
+      - /dev/rga:/dev/rga
+    volumes:
+      - /sys:/sys:ro
