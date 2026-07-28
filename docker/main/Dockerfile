@@ -327,6 +327,8 @@ CMD ["sleep", "infinity"]
 FROM --platform=$BUILDPLATFORM node:20 AS web-build
 
 WORKDIR /work
+ARG NODE_OPTIONS="--max-old-space-size=4096"
+ENV NODE_OPTIONS=$NODE_OPTIONS
 COPY web/package.json web/package-lock.json ./
 RUN npm install
 

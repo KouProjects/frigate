@@ -29,6 +29,16 @@ build-trt:
 	$(JETPACK6_ARGS) docker buildx bake --file=docker/tensorrt/trt.hcl tensorrt \
 		--set tensorrt.tags=$(IMAGE_REPO):${GITHUB_REF_NAME}-$(COMMIT_HASH)-tensorrt-jp6
 
+board-build-trt: version
+	@mkdir -p $(DIST_ROOT)/$(DIST_VERSION)/trt
+	$(X86_DGPU_ARGS) docker buildx bake --file=docker/tensorrt/trt.hcl tensorrt \
+		--set tensorrt.tags=frigate:$(DIST_VERSION)-trt \
+		--set tensorrt.output=type=docker,dest=$(DIST_ROOT)/$(DIST_VERSION)/trt/frigate-trt.tar
+	python3 docker/build_distribution.py --board trt --compatibility trt \
+		--version $(DIST_VERSION) --image-tag frigate:$(DIST_VERSION)-trt \
+		--image-tar $(DIST_ROOT)/$(DIST_VERSION)/trt/frigate-trt.tar \
+		--output-root $(DIST_ROOT)
+
 push-trt: build-trt
 	$(X86_DGPU_ARGS) docker buildx bake --file=docker/tensorrt/trt.hcl tensorrt \
 		--set tensorrt.tags=$(IMAGE_REPO):${GITHUB_REF_NAME}-$(COMMIT_HASH)-tensorrt \
